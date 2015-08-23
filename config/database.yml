@@ -1,0 +1,25 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  host: localhost
+  database: mead_project_development
+  username: postgres
+  password: 5438795
+
+test:
+  <<: *default
+  database: mead_project_test
+  host: localhost
+  username: postgres
+  password: 5438795
+
+production:
+  <<: *default
+  database: mead_project_production
+  host: localhost
+  username: postgres
+  password: 5438795
