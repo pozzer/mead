@@ -13,6 +13,7 @@ gem 'devise'
 gem 'haml'
 gem 'haml-rails'
 gem 'materialize-sass'
+gem 'git_remote_branch'
 
 group :development, :test do
   gem 'byebug'
