@@ -22,5 +22,6 @@ group :development, :test do
   gem 'pry', '0.9.12.6'
   gem 'pry-nav', '0.2.4'
   gem 'pry-doc', '0.6.0'
+  gem 'better_errors'
 end
 
