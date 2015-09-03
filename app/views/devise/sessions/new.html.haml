@@ -1,10 +1,10 @@
 .session.row
-  .z-depth-4.card-panel.s12.m3.l6  
+  .z-depth-4.card-panel.s12.m3.l6
     = form_for(resource, as: resource_name, html: { class: "" } ,url: session_path(resource_name)) do |f|
-      = render "devise/shared/logo"
-      .row 
+      = render "shared/logo"
+      .row
         = devise_error_messages!
-      .row 
+      .row
         .input-field.col.s12.m12.l12.login-text
           %i.mdi-action-lock-outline.prefix.email
           = f.text_field :email, class: 'validate', type: "email", 'data-error': "wrong", "data-success": "right"

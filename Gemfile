@@ -10,12 +10,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'pg'
 gem 'devise'
+gem 'omniauth-facebook'
 gem 'haml'
 gem 'haml-rails'
 gem 'materialize-sass'
 gem 'git_remote_branch'
 gem 'simple_form'
 gem 'i18n'
+
 
 group :development, :test do
   gem 'byebug'

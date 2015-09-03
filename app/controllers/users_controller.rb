@@ -1,51 +1,42 @@
 class UsersController < ApplicationController
+  before_filter :set_user, only: [:show, :edit, :update]
+  before_filter :validate_authorization_for_user, only: [:edit, :update]
+
+  # GET /users/1
+  def show
+  end
+
+  # GET /users/1/edit
+  def edit
+  end
 
   def index
     @users = User.all
   end
 
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(@user, :notice => 'Usuário foi criado com sucesso.') }
-        format.xml { render :xml => @user, :status => :created, :location => @user }
-      else
-        format.html { render :action => "new" }
-        format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  def edit
-    @user = User.find(params[:id])
-  end
-
+  # PATCH/PUT /users/1
   def update
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      if @user.update_attributes(user_params)
-        format.html { redirect_to(@user, notice: 'Usuário foi atualizado com sucesso.') }
-        format.xml { render xml: @user, status: :updated, location: @user }
-      else
-        format.html { render action: "edit" }
-        format.xml { render xml: @user.errors, status: unprocessable_entity }
-      end
+    # 2015-07-23 RICHARD: Updated to use strong parameters
+    if @user.update_attributes(user_params)
+      redirect_to @user, notice: 'User was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
-  def show
-  end
 
   private
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    def validate_authorization_for_user
+       redirect_to root_path unless @user == current_user
+    end
+
+    # 2015-07-23 RICHARD: Added to implement strong parameters
     def user_params
-      params.require(:user).permit(:name, :email, :password)
+      params.require(:user).permit(:name, :user, :about)
     end
 end
