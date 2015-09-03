@@ -55,3 +55,19 @@ p {
 footer.page-footer {
   margin: 0;
 }
+
+div.session{
+  width:465px;
+  margin:0 auto;  
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+    

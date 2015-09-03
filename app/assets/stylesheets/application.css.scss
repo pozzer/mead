@@ -5,3 +5,8 @@
 @import "materialize/components/color";
 @import 'materialize';
 @import 'mead_project';
+
+
+.ilike-blue-container {
+	@extend .blue-text, .text-lighten-4;
+}

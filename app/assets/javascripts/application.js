@@ -16,3 +16,30 @@
 //= require_tree .
 //= require jquery
 //= require materialize-sprockets
+//= require bubble.js
+
+$(document).ready(function(){
+	$('.parallax').parallax();
+	$('select').material_select();
+});
+
+function debug(msg) {
+    if (window.console) {
+        console.info(msg);
+    }
+}
+
+$(function() {
+  mead_project.actual = {};
+  mead_project.actual.controller = $('body').attr('data-controller');
+  mead_project.actual.action = $('body').attr('data-action');
+
+  try {
+      mead_project[mead_project.actual.controller][mead_project.actual.action]['init'].call();
+  } catch (e) {
+      console.debug(e);
+      console.debug(e.stack);
+      console.debug("\"mead_project." + mead_project.actual.controller + "." + mead_project.actual.action + ".init()\" not found.");
+  }
+
+});
