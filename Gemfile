@@ -17,6 +17,7 @@ gem 'materialize-sass'
 gem 'git_remote_branch'
 gem 'simple_form'
 gem 'i18n'
+gem 'acts-as-taggable-on'
 
 
 group :development, :test do
