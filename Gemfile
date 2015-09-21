@@ -18,6 +18,7 @@ gem 'git_remote_branch'
 gem 'simple_form'
 gem 'i18n'
 gem 'acts-as-taggable-on'
+gem 'activerecord-reputation-system'
 
 
 group :development, :test do
