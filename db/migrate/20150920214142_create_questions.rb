@@ -3,8 +3,8 @@ class CreateQuestions < ActiveRecord::Migration
     create_table :questions do |t|
       t.string :title
       t.text :content
-      t.interger :user_id
-      t.interger :answer_id
+      t.integer :user_id
+      t.integer :answer_id
       t.boolean :best, :default=>false, :null=>false
       t.timestamp
     end
