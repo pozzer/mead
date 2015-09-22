@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :messages, class_name: "MessageTrade"
   has_many :avaliations, class_name: "AvaliationTrade"
   has_many :pictures
+  has_many :favorite_questions
   has_one :profile
 
   has_reputation :karma,

@@ -4,7 +4,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.integer :user_id
-      t.timestamp
+      t.timestamps :null => false
     end
   end
 end

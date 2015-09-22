@@ -6,7 +6,7 @@ class CreateAvaliationTrade < ActiveRecord::Migration
       t.integer :trade_id
       t.integer :assessed_id
       t.integer :appraiser_id
-      t.timestamp
+      t.timestamps :null => false
     end
   end
 end

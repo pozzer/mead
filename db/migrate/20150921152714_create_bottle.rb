@@ -11,7 +11,7 @@ class CreateBottle < ActiveRecord::Migration
       t.string :abv
       t.boolean :private
       t.integer :user_id
-      t.timestamp
+      t.timestamps :null => false
     end
   end
 end

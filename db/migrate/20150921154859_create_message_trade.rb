@@ -4,7 +4,7 @@ class CreateMessageTrade < ActiveRecord::Migration
       t.integer :user_id
       t.integer :trade_id
       t.text :content
-      t.timestamp
+      t.timestamps :null => false
     end
   end
 end
