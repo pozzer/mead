@@ -8,7 +8,7 @@ class CreatePicture < ActiveRecord::Migration
       t.datetime :picture_update_at
       t.integer :attachable_id
       t.string :attachable_type
-      t.timestamps :null => false
+      t.timestamps
     end
   end
 end

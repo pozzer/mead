@@ -5,7 +5,7 @@ class CreateBottleTrade < ActiveRecord::Migration
       t.integer :trade_id
       t.integer :bottle_id
       t.integer :amount
-      t.timestamps :null => false
+      t.timestamps
     end
   end
 end

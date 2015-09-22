@@ -8,7 +8,7 @@ class CreateProfileTable < ActiveRecord::Migration
 			t.string :city_id
 			t.text :about
 			t.string :organization_name
-			t.timestamps :null => false
+			t.timestamps
     end
   end
 end

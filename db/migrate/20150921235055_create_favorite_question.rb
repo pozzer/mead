@@ -3,7 +3,7 @@ class CreateFavoriteQuestion < ActiveRecord::Migration
     create_table :favorite_questions do |t|
     	t.integer :question_id
     	t.integer :user_id
-    	t.timestamps :null => false
+    	t.timestamps
     end
   end
 end
