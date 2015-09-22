@@ -4,7 +4,7 @@ class CreateTrade < ActiveRecord::Migration
       t.integer :negotiator_id
       t.integer :negotiant_id
       t.integer :status
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

@@ -17,56 +17,69 @@ ActiveRecord::Schema.define(version: 20150921235055) do
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.text    "content"
-    t.integer "user_id"
-    t.integer "question_id"
-    t.boolean "best",        default: false, null: false
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.boolean  "answers",     default: false, null: false
+    t.boolean  "best",        default: false, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "avaliation_trades", force: :cascade do |t|
-    t.integer "rating"
-    t.text    "content"
-    t.integer "trade_id"
-    t.integer "assessed_id"
-    t.integer "appraiser_id"
+    t.integer  "rating"
+    t.text     "content"
+    t.integer  "trade_id"
+    t.integer  "assessed_id"
+    t.integer  "appraiser_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "bottle_trades", force: :cascade do |t|
-    t.integer "owner_id"
-    t.integer "trade_id"
-    t.integer "bottle_id"
-    t.integer "amount"
+    t.integer  "owner_id"
+    t.integer  "trade_id"
+    t.integer  "bottle_id"
+    t.integer  "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "bottles", force: :cascade do |t|
-    t.string  "label"
-    t.string  "organization_name"
-    t.date    "filling_date"
-    t.string  "style"
-    t.integer "amount"
-    t.text    "about"
-    t.string  "measure"
-    t.string  "abv"
-    t.boolean "private"
-    t.integer "user_id"
+    t.string   "label"
+    t.string   "organization_name"
+    t.date     "filling_date"
+    t.string   "style"
+    t.integer  "amount"
+    t.text     "about"
+    t.string   "measure"
+    t.string   "abv"
+    t.boolean  "private"
+    t.integer  "user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
     t.integer  "state_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorite_questions", force: :cascade do |t|
-    t.integer "question_id"
-    t.integer "user_id"
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "message_trades", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "trade_id"
-    t.text    "content"
+    t.integer  "user_id"
+    t.integer  "trade_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -77,6 +90,8 @@ ActiveRecord::Schema.define(version: 20150921235055) do
     t.datetime "picture_update_at"
     t.integer  "attachable_id"
     t.string   "attachable_type"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -87,14 +102,16 @@ ActiveRecord::Schema.define(version: 20150921235055) do
     t.string   "city_id"
     t.text     "about"
     t.string   "organization_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string  "title"
-    t.text    "content"
-    t.integer "user_id"
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "rs_evaluations", force: :cascade do |t|
@@ -104,8 +121,8 @@ ActiveRecord::Schema.define(version: 20150921235055) do
     t.integer  "target_id"
     t.string   "target_type"
     t.float    "value",           default: 0.0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.text     "data"
   end
 
@@ -119,8 +136,8 @@ ActiveRecord::Schema.define(version: 20150921235055) do
     t.string   "sender_type"
     t.integer  "receiver_id"
     t.float    "weight",      default: 1.0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "rs_reputation_messages", ["receiver_id", "sender_id", "sender_type"], name: "index_rs_reputation_messages_on_receiver_id_and_sender", unique: true, using: :btree
@@ -134,8 +151,8 @@ ActiveRecord::Schema.define(version: 20150921235055) do
     t.integer  "target_id"
     t.string   "target_type"
     t.boolean  "active",          default: true
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.text     "data"
   end
 
@@ -145,8 +162,8 @@ ActiveRecord::Schema.define(version: 20150921235055) do
 
   create_table "states", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -156,23 +173,28 @@ ActiveRecord::Schema.define(version: 20150921235055) do
     t.integer  "tagger_id"
     t.string   "tagger_type"
     t.string   "context",       limit: 128
-    t.datetime "created_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
+    t.string   "name"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "taggings_count", default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "trades", force: :cascade do |t|
-    t.integer "negotiator_id"
-    t.integer "negotiant_id"
-    t.integer "status"
+    t.integer  "negotiator_id"
+    t.integer  "negotiant_id"
+    t.integer  "status"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -194,8 +216,8 @@ ActiveRecord::Schema.define(version: 20150921235055) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
   end

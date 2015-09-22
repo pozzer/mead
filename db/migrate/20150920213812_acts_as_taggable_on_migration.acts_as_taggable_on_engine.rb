@@ -3,6 +3,7 @@ class ActsAsTaggableOnMigration < ActiveRecord::Migration
   def self.up
     create_table :tags do |t|
       t.string :name
+      t.timestamps null: false
     end
 
     create_table :taggings do |t|
@@ -17,7 +18,7 @@ class ActsAsTaggableOnMigration < ActiveRecord::Migration
       # length for MyISAM table type: http://bit.ly/vgW2Ql
       t.string :context, limit: 128
 
-      t.datetime :created_at
+      t.timestamps null: false
     end
 
     add_index :taggings, :tag_id

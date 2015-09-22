@@ -21,7 +21,7 @@ class CreateReputationSystem < ActiveRecord::Migration
       t.references  :source, :polymorphic => true
       t.references  :target, :polymorphic => true
       t.float       :value, :default => 0
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :rs_evaluations, :reputation_name
@@ -34,7 +34,7 @@ class CreateReputationSystem < ActiveRecord::Migration
       t.string      :aggregated_by
       t.references  :target, :polymorphic => true
       t.boolean     :active, :default => true
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :rs_reputations, :reputation_name
@@ -44,7 +44,7 @@ class CreateReputationSystem < ActiveRecord::Migration
       t.references  :sender, :polymorphic => true
       t.integer     :receiver_id
       t.float       :weight, :default => 1
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :rs_reputation_messages, [:sender_id, :sender_type]
