@@ -1,0 +1,19 @@
+%h1 Listing trades
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @trades.each do |trade|
+      %tr
+        %td= link_to 'Show', trade
+        %td= link_to 'Edit', edit_trade_path(trade)
+        %td= link_to 'Destroy', trade, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Trade', new_trade_path

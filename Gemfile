@@ -19,7 +19,7 @@ gem 'simple_form'
 gem 'i18n'
 gem 'acts-as-taggable-on'
 gem 'activerecord-reputation-system'
-
+gem "friendly_id"
 
 group :development, :test do
   gem 'byebug'
@@ -31,5 +31,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'railroady'
   gem 'rails-erd'
+  gem 'rspec-rails', '~> 3.0'
 end
 

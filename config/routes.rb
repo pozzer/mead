@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :trades
+  resources :bottles
+  resources :questions
+  resources :profiles
+
   devise_for :users, :path => '' do
     get :sign_out
   end
 
   root to: "homepages#index"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

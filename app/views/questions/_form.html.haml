@@ -1,0 +1,8 @@
+= simple_form_for(@question) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title, label: 'Your username please', error: 'Username is mandatory, please specify one'
+
+  .form-actions
+    = f.button :submit
