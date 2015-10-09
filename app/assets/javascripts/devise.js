@@ -14,4 +14,4 @@ mead_project.sessions = {
     }()
 };
 
-mead_project.sessions.new = mead_project.sessions.common;
+mead_project.sessions.index = mead_project.sessions.new = mead_project.sessions.common;

@@ -4,7 +4,7 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body.cyan{"data-controller" => controller.controller_name, "data-action" => controller.action_name}
+  %body.grey.lighten-3{"data-controller" => controller.controller_name, "data-action" => controller.action_name}
     %main
       %canvas#bubble-canvas{:height => "471", :style => "position: fixed; top: 0px; left: 0px;", :width => "1920"}
       = yield

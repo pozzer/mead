@@ -1,23 +1,20 @@
 .session.row
   .z-depth-4.card-panel.s12.m3.l6
-    = form_for(resource, as: resource_name, html: { class: "" } ,url: session_path(resource_name)) do |f|
+    = simple_form_for(resource, as: resource_name, html: { class: "" } ,url: session_path(resource_name)) do |f|
       = render "shared/logo"
       .row
         = devise_error_messages!
       .row
         .input-field.col.s12.m12.l12.login-text
-          %i.mdi-action-lock-outline.prefix.email
-          = f.text_field :email, class: 'validate', type: "email", 'data-error': "wrong", "data-success": "right"
-          = f.label :email
+          = f.input :email
       .row
         .input-field.col.s12.m12.l12.login-text
-          %i.mdi-action-lock-outline.prefix
-          = f.text_field :password, class: 'validate', type: "password", 'data-error': "wrong", "data-success": "right"
-          = f.label :password
+          = f.input :password
       .row
         .input-field.col.s12.m12.l12.login-text
-          = f.check_box :remember_me if devise_mapping.rememberable?
-          = f.label :remember_me
+          = f.input :remember_me
+          =# f.check_box :remember_me if devise_mapping.rememberable?
+          =# f.label :remember_me
       .row
         .input-field.col.s12.m12.l12
           = f.submit class: 'btn col s12 m12 l12'
