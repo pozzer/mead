@@ -15,8 +15,8 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery
-//= require materialize-sprockets
 //= require bubble.js
+//= require materialize.min
 
 $(document).ready(function(){
 	$('.parallax').parallax();
