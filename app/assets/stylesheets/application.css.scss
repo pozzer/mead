@@ -2,8 +2,11 @@
  *= require_tree .
  *= require_self
  */
+ 
 
 @import "materialize.min";
+@import "admin";
+@import "perfect-scrollbar";
 @import 'mead_project';
 
 .ilike-blue-container {

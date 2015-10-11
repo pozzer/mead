@@ -17,16 +17,17 @@
 //= require jquery
 //= require bubble.js
 //= require materialize.min
+//= require plugins.js
+//= perfect-scrollbar.mim
 
 $(document).ready(function(){
-	$('.parallax').parallax();
-	$('select').material_select();
+  $('.collapsible').collapsible();
 });
 
 function debug(msg) {
-    if (window.console) {
-        console.info(msg);
-    }
+  if (window.console) {
+    console.info(msg);
+  } 
 }
 
 $(function() {
@@ -37,9 +38,9 @@ $(function() {
   try {
       mead_project[mead_project.actual.controller][mead_project.actual.action]['init'].call();
   } catch (e) {
-      console.debug(e);
-      console.debug(e.stack);
-      console.debug("\"mead_project." + mead_project.actual.controller + "." + mead_project.actual.action + ".init()\" not found.");
+    console.debug(e);
+    console.debug(e.stack);
+    console.debug("\"mead_project." + mead_project.actual.controller + "." + mead_project.actual.action + ".init()\" not found.");
   }
 
 });
