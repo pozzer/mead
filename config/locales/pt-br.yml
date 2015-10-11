@@ -13,6 +13,7 @@ pt-br:
         name: Nome
         email: E-mail
         password: Senha
+        password_confirmation: Confirme a senha
         remember_me: "Mantenha-me conectado"
   date:
     abbr_day_names:

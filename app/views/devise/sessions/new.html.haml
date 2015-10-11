@@ -1,6 +1,6 @@
 .session.row
   .z-depth-4.card-panel.s12.m3.l6
-    = simple_form_for(resource, as: resource_name, html: { class: "" } ,url: session_path(resource_name)) do |f|
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = render "shared/logo"
       .row
         = devise_error_messages!
