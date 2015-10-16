@@ -19,7 +19,6 @@ gem 'i18n'
 gem 'acts-as-taggable-on'
 gem 'activerecord-reputation-system'
 gem "friendly_id"
-gem "bower-rails", "~> 0.10.0"
 
 group :development, :test do
   gem 'byebug'
