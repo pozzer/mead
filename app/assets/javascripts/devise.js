@@ -1,16 +1,12 @@
 if (window.mead_project === undefined) window.mead_project = {};
 
 mead_project.sessions = {
-
     common: function() {
         var priv = {};
         var pub = {};
 
-        pub.init = function() {
-          startBubbles();
-        }
+        pub.init = function() {}
         return pub;
-
     }()
 };
 
