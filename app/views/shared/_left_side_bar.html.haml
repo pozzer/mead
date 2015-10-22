@@ -3,10 +3,11 @@
     %li.user-details.cyan.darken-2
       .row
         .col.col.s4.m4.l4
-          %img.circle.responsive-img.valign.profile-image{:alt => "", :src => "images/avatar.jpg"}/
+          = image_tag('feliphe.jpg', class: "circle responsive-img valign profile-image")
+
         .col.col.s8.m8.l8
           %a.btn-flat.dropdown-button.waves-effect.waves-light.white-text.profile-btn{"data-activates" => "profile-dropdown", :href => "#"}
-            John Doe
+            Feliphe Pozzer
             %i.mdi-navigation-arrow-drop-down.right
           %ul#profile-dropdown.dropdown-content
             %li
@@ -30,7 +31,7 @@
               %a{:href => "#"}
                 %i.mdi-hardware-keyboard-tab
                 Logout
-          %p.user-roal Administrator
+          %p.user-roal MeadMaker
     %li.bold.active
       %a.waves-effect.waves-cyan{:href => "index.html"}
         %i.mdi-action-dashboard
