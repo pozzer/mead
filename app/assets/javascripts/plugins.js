@@ -13,11 +13,11 @@ $(function() {
   /*Preloader*/
   $(window).load(function() {
     setTimeout(function() {
-      $('body').addClass('loaded');      
+      $('body').addClass('loaded');
     }, 200);
-  });  
+  });
 
-  
+
   // Search class for focus
   $('.header-search-input').focus(
   function(){
@@ -25,7 +25,7 @@ $(function() {
   }).blur(
   function(){
       $(this).parent('div').removeClass('header-search-wrapper-focus');
-  });  
+  });
 
   // Check first if any of the task is checked
   $('#task-card input:checkbox').each(function() {
@@ -40,10 +40,10 @@ $(function() {
   // Check Uncheck function
   function checkbox_check(el){
       if (!$(el).is(':checked')) {
-          $(el).next().css('text-decoration', 'none'); // or addClass            
+          $(el).next().css('text-decoration', 'none'); // or addClass
       } else {
           $(el).next().css('text-decoration', 'line-through'); //or addClass
-      }    
+      }
   }
 
   /*----------------------
@@ -82,17 +82,17 @@ $(function() {
     delay: 50
   });
 
-  // Materialize sideNav  
+  // Materialize sideNav
 
   //Main Left Sidebar Menu
   $('.sidebar-collapse').sideNav({
-    edge: 'left', // Choose the horizontal origin    
+    edge: 'left', // Choose the horizontal origin
   });
 
   // FULL SCREEN MENU (Layout 02)
   $('.menu-sidebar-collapse').sideNav({
         menuWidth: 240,
-        edge: 'left', // Choose the horizontal origin     
+        edge: 'left', // Choose the horizontal origin
         //defaultOpen:true // Set if default menu open is true
       });
 
@@ -106,7 +106,7 @@ $(function() {
       belowOrigin: true // Displays dropdown below the button
     });
 
-  
+
   //Main Left Sidebar Chat
   $('.chat-collapse').sideNav({
     menuWidth: 300,
@@ -127,7 +127,7 @@ $(function() {
 
   // Perfect Scrollbar
   $('select').not('.disabled').material_select();
-    var leftnav = $(".page-topbar").height();  
+    var leftnav = $(".page-topbar").height();
     var leftnavHeight = window.innerHeight - leftnav;
   $('.leftside-navigation').height(leftnavHeight).perfectScrollbar({
     suppressScrollX: true
@@ -135,9 +135,9 @@ $(function() {
     var righttnav = $("#chat-out").height();
   $('.rightside-navigation').height(righttnav).perfectScrollbar({
     suppressScrollX: true
-  });  
-  
-  
+  });
+
+
   // Fullscreen
   function toggleFullScreen() {
     if ((document.fullScreenElement && document.fullScreenElement !== null) ||
@@ -170,32 +170,15 @@ $(function() {
   });
 
 
-  // Floating-Fixed table of contents (Materialize pushpin)
-  if ($('nav').length) {
-    $('.toc-wrapper').pushpin({
-      top: $('nav').height()
-    });
-  }
-  else if ($('#index-banner').length) {
-    $('.toc-wrapper').pushpin({
-      top: $('#index-banner').height()
-    });
-  }
-  else {
-    $('.toc-wrapper').pushpin({
-      top: 0
-    });
-  }
 
   // Toggle Flow Text
-  var toggleFlowTextButton = $('#flow-toggle')
+  var toggleFlowTextButton = $('#flow-toggle');
   toggleFlowTextButton.click(function() {
     $('#flow-text-demo').children('p').each(function() {
       $(this).toggleClass('flow-text');
     })
   });
-  
-  
+
   //Toggle Containers on page
   var toggleContainersButton = $('#container-toggle-button');
   toggleContainersButton.click(function() {
@@ -227,19 +210,8 @@ $(function() {
     })
   }
 
-  //LINE CHART WITH AREA IN SIDEBAR
-    new Chartist.Line('#ct2-chart', {
-        labels: [1, 2, 3, 4, 5, 6, 7, 8],
-        series: [
-            [5, 9, 7, 8, 5, 3, 5, 4]
-        ]
-    }, {
-        low: 0,
-        showArea: true
-    });
-    
   //Trending chart for small screen
-  if(window_width <= 480){    
+  if(window_width <= 480){
     $("#trending-line-chart").attr({
       height: '200'
     });

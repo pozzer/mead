@@ -12,9 +12,7 @@
           = f.input :password
       .row
         .input-field.col.s12.m12.l12.login-text
-          = f.input :remember_me
-          =# f.check_box :remember_me if devise_mapping.rememberable?
-          =# f.label :remember_me
+          = f.input :remember_me, as: :boolean, checked_value: true, unchecked_value: false
       .row
         .input-field.col.s12.m12.l12
           = f.submit "Entrar", class: 'btn col s12 m12 l12'
