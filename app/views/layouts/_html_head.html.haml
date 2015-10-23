@@ -1,7 +1,9 @@
 %html
-	%head
-		%title MeadProject
-		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-		= javascript_include_tag 'application', 'data-turbolinks-track' => true
-		= csrf_meta_tags
-	%body{"data-controller" => controller.controller_name, "data-action" => controller.action_name, :class=> locals[:body_class]}
+  %head
+    %title MeadProject
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons', media: 'all'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+
+    = csrf_meta_tags
+  %body{"data-controller" => controller.controller_name, "data-action" => controller.action_name, :class=> locals[:body_class]}

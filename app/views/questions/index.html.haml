@@ -1,19 +1,45 @@
 %h1 Listing questions
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
-  %tbody
-    - @questions.each do |question|
-      %tr
-        %td= link_to 'Show', question
-        %td= link_to 'Edit', edit_question_path(question)
-        %td= link_to 'Destroy', question, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
 = link_to 'New Question', new_question_path
+
+%ul.collection
+  - @questions.each do |question|
+    %li.collection-item.avatar
+      %img.circle{:alt => "", :src => "images/yuna.jpg"}/
+      %span.title
+        = link_to question.title, question
+      %p
+        First Line
+        %br/
+        Second Line
+      %a.secondary-content{:href => "#!"}
+        %i.material-icons grade
+  %li.collection-item.avatar
+    %i.material-icons.circle folder
+    %span.title Title
+    %p
+      First Line
+      %br/
+      Second Line
+    %a.secondary-content{:href => "#!"}
+      %i.material-icons grade
+  %li.collection-item.avatar
+    %i.material-icons.circle.green insert_chart
+    %span.title Title
+    %p
+      First Line
+      %br/
+      Second Line
+    %a.secondary-content{:href => "#!"}
+      %i.material-icons grade
+  %li.collection-item.avatar
+    %i.material-icons.circle.red play_arrow
+    %span.title Title
+    %p
+      First Line
+      %br/
+      Second Line
+    %a.secondary-content{:href => "#!"}
+      %i.material-icons grade
+
+%i.large.material-icons add

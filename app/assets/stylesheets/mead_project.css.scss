@@ -58,7 +58,7 @@ footer.page-footer {
 
 div.session{
   width:465px;
-  margin:0 auto;  
+  margin:0 auto;
 }
 
 body {
@@ -70,4 +70,7 @@ body {
 main {
   flex: 1 0 auto;
 }
-        
+
+#content{
+  min-height: 700px;
+}
