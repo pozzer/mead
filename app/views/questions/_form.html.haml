@@ -1,8 +1,14 @@
+= render "nav"
 = simple_form_for(@question) do |f|
   = f.error_notification
 
-  .form-inputs
-    = f.input :title, label: 'Your username please', error: 'Username is mandatory, please specify one'
+  .row
+    .input-field.col.s12.m12.l12
+      = f.input :title
+  .row
+    .input-field.col.s12.m12.l12
+      = f.input :content, as: :text, input_html: { class: 'materialize-textarea' }
+  .row
+    = quill_editor
 
-  .form-actions
-    = f.button :submit
+  = f.submit "Publicar sua pergunta", class: 'btn'

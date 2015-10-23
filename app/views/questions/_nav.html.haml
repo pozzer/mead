@@ -1,0 +1,7 @@
+.row
+  .right
+    %a.waves-effect.waves-light.btn Stuff
+    %a.waves-effect.waves-light.btn
+      %i.material-icons.left> cloud
+      button
+    = link_to (content_tag(:i,"cloud", class: " material-icons right") + 'Faça uma pergunta').html_safe, new_question_path, class: "waves-effect waves-light btn"

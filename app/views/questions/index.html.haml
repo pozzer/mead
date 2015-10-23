@@ -1,44 +1,43 @@
-%h1 Listing questions
-
-= link_to 'New Question', new_question_path
-
-%ul.collection
-  - @questions.each do |question|
+%h4 Examinar nossas perguntas
+= render "nav"
+.row
+  %ul.collection
+    - @questions.each do |question|
+      %li.collection-item.avatar
+        = image_tag('feliphe.jpg', class: "circle responsive-img valign profile-image")
+        %span.title
+          = link_to question.title, question
+        %p
+          First Line
+          %br/
+          Second Line
+        %a.secondary-content{:href => "#!"}
+          %i.material-icons grade
     %li.collection-item.avatar
-      = image_tag('feliphe.jpg', class: "circle responsive-img valign profile-image")
-      %span.title
-        = link_to question.title, question
+      %i.material-icons.circle folder
+      %span.title Title
       %p
         First Line
         %br/
         Second Line
       %a.secondary-content{:href => "#!"}
         %i.material-icons grade
-  %li.collection-item.avatar
-    %i.material-icons.circle folder
-    %span.title Title
-    %p
-      First Line
-      %br/
-      Second Line
-    %a.secondary-content{:href => "#!"}
-      %i.material-icons grade
-  %li.collection-item.avatar
-    %i.material-icons.circle.green insert_chart
-    %span.title Title
-    %p
-      First Line
-      %br/
-      Second Line
-    %a.secondary-content{:href => "#!"}
-      %i.material-icons grade
-  %li.collection-item.avatar
-    %i.material-icons.circle.red play_arrow
-    %span.title Title
-    %p
-      First Line
-      %br/
-      Second Line
-    %a.secondary-content{:href => "#!"}
-      %i.material-icons grade
+    %li.collection-item.avatar
+      %i.material-icons.circle.green insert_chart
+      %span.title Title
+      %p
+        First Line
+        %br/
+        Second Line
+      %a.secondary-content{:href => "#!"}
+        %i.material-icons grade
+    %li.collection-item.avatar
+      %i.material-icons.circle.red play_arrow
+      %span.title Title
+      %p
+        First Line
+        %br/
+        Second Line
+      %a.secondary-content{:href => "#!"}
+        %i.material-icons grade
 
