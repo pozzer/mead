@@ -9,6 +9,9 @@ class Question < ActiveRecord::Base
   acts_as_taggable # Alias for acts_as_taggable_on :tags
   acts_as_taggable_on :tags
 
+  validates :title, presence: true
+  validates :content, presence: true
+
   def to_param
     [id, title.parameterize].join("-")
   end

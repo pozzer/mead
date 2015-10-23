@@ -1,6 +1,52 @@
-%p#notice= notice
-
-
-= link_to 'Edit', edit_question_path(@question)
-\|
-= link_to 'Back', questions_path
+%h4
+= render "nav"
+.card-panel
+  .row
+    %h5
+      = @question.title
+    %hr
+  .row
+    %p
+      = @question.content
+  %br
+  .row
+    .chip
+      Hidromel
+    .chip
+      Fermentação
+  .row
+    .col.s12.m2.user-details.cyan.darken-2.z-depth-1.right
+      .row
+        .col.col.s4.m4.l4
+          = image_tag('feliphe.jpg', class: "circle responsive-img valign profile-image")
+        .col.col.s8.m8.l8
+          %span.white-text
+            Feliphe Pozzer
+%ul.collection
+  %li.collection-item.avatar
+    %i.material-icons.circle folder
+    %span.title Title
+    %p
+      First Line
+      %br/
+      Second Line
+    %a.secondary-content{:href => "#!"}
+      %i.material-icons grade
+  %li.collection-item.avatar
+    %i.material-icons.circle.green insert_chart
+    %span.title Title
+    %p
+      First Line
+      %br/
+      Second Line
+    %a.secondary-content{:href => "#!"}
+      %i.material-icons grade
+  %li.collection-item.avatar
+    %i.material-icons.circle.red play_arrow
+    %span.title Title
+    %p
+      First Line
+      %br/
+      Second Line
+    %a.secondary-content{:href => "#!"}
+      %i.material-icons grade
