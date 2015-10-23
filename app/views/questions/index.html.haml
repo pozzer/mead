@@ -5,7 +5,7 @@
 %ul.collection
   - @questions.each do |question|
     %li.collection-item.avatar
-      %img.circle{:alt => "", :src => "images/yuna.jpg"}/
+      = image_tag('feliphe.jpg', class: "circle responsive-img valign profile-image")
       %span.title
         = link_to question.title, question
       %p
@@ -42,4 +42,3 @@
     %a.secondary-content{:href => "#!"}
       %i.material-icons grade
 
-%i.large.material-icons add
