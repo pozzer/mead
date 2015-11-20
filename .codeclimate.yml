@@ -1,1 +1,8 @@
-Ruby: true
+languages:
+   Ruby: true
+   JavaScript: false
+   Python: false
+   PHP: false
+exclude_paths:
+- "app/assets/*"
+- "vendor/*"
