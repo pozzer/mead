@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'spec_helper'
 
 class ProfilesControllerTest < ActionController::TestCase
   setup do
