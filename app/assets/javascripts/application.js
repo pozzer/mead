@@ -22,6 +22,10 @@
 
 $(document).ready(function(){
   $('.collapsible').collapsible();
+  $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
 });
 
 function debug(msg) {
@@ -43,4 +47,8 @@ $(function() {
     console.debug("\"mead_project." + mead_project.actual.controller + "." + mead_project.actual.action + ".init()\" not found.");
   }
 
+});
+$(document).on("page:load ready", function(){
+  debug("sadasd")
+  
 });

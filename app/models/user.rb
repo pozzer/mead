@@ -1,10 +1,6 @@
 class User < ActiveRecord::Base
-  
-  devise :database_authenticatable, :registerable,
-      :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  validates_presence_of :email
 
+  has_one :profile
   has_many :trades
   has_many :questions
   has_many :answers
@@ -16,7 +12,8 @@ class User < ActiveRecord::Base
   has_many :pictures
   has_many :favorite_questions
 
-  has_one :profile
+  #accepts_nested_attributes_for :profile
+
 
   has_reputation :karma,
       :source => [
@@ -28,5 +25,13 @@ class User < ActiveRecord::Base
 
   has_reputation :answering_skill,
       :source => { :reputation => :avg_rating, :of => :answers }
-   
+
+  after_create :build_profile       
+
+  validates_presence_of :email
+
+  devise :database_authenticatable, :registerable,
+      :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+
 end

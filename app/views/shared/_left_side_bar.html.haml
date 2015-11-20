@@ -28,9 +28,7 @@
                 %i.mdi-action-lock-outline
                 Lock
             %li
-              %a{:href => "#"}
-                %i.mdi-hardware-keyboard-tab
-                Logout
+              = link_to (content_tag(:i, "", class: "mdi-hardware-keyboard-tab") + 'Sair').html_safe, destroy_user_session_path, method: :delete
           %p.user-roal MeadMaker
     %li.bold.active
       %a.waves-effect.waves-cyan{:href => "index.html"}

@@ -15,4 +15,5 @@ class Question < ActiveRecord::Base
   def to_param
     [id, title.parameterize].join("-")
   end
+
 end
