@@ -5,9 +5,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :profiles
 
-  devise_for :users, :path => '' do
-    get :sign_out
-  end
+  devise_for :users, :path => ''
 
   root to: "homepages#index"
 
