@@ -1,5 +1,6 @@
-[![Code Climate](https://codeclimate.com/github/pozzer/mead/badges/gpa.svg)](https://codeclimate.com/github/pozzer/mead)
+
 == README
+[![Code Climate](https://codeclimate.com/github/pozzer/mead/badges/gpa.svg)](https://codeclimate.com/github/pozzer/mead)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
