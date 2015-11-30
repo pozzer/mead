@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :profiles
 
-  devise_for :users, :path => ''
+  devise_for :users,  :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
 
   root to: "homepages#index"
 
