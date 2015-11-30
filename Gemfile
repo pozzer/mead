@@ -10,7 +10,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'pg'
 gem 'devise'
+gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'oauth2'
 gem 'haml'
 gem 'haml-rails'
 gem 'git_remote_branch'
@@ -36,4 +38,6 @@ end
 group :test do
   gem 'codeclimate-test-reporter', require: nil
 end
+
+
 
