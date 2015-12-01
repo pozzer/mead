@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :pictures
   has_many :favorite_questions
 
+  accepts_nested_attributes_for :profile
+
   #accepts_nested_attributes_for :profile
   has_reputation :karma,
       :source => [
@@ -33,14 +35,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    binding.pry
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first || User.where(:email=> auth.info.email).first
     unless user
-      user = User.create(name:auth.extra.raw_info.name,
-                           provider:auth.provider,
-                           uid:auth.uid,
-                           email:auth.info.email,
-                           password:Devise.friendly_token[0,20]
-                           )
+      user = User.create(provider:auth.provider, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20])
+      Profile.create(first_name: auth.extra.raw_info.first_name, last_name: auth.extra.raw_info.last_name, :user => user)
+    else
+      user.update_attributes({:provider => auth.provider, :uid => auth.uid}) if user.provider.blank? or user.uid.blank?
     end
     user
   end
@@ -50,18 +51,6 @@ class User < ActiveRecord::Base
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
         user.email = data["email"]
       end
-    end
-  end
-
-  def self.from_omniauth(auth)
-    binding.pry
-    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-      user.provider = auth[:provider]
-      user.uid = auth[:uid]
-      user.email = auth[:info][:email]
-      #user.oauth_token = auth[:credentials][:token]
-      #user.oauth_expires_at = Time.at(auth[:credentials][:expires_at])
-      user.save!
     end
   end
 
