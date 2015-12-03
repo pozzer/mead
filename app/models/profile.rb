@@ -8,7 +8,7 @@ class Profile < ActiveRecord::Base
   acts_as_taggable_on :tags
 
   def full_name
-    first_name + " " + last_name
+    "#{first_name} #{last_name}"
   end
 
 end

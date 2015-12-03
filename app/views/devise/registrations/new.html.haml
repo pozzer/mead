@@ -4,9 +4,8 @@
       - resource.build_profile
       = render "shared/logo"
       = devise_error_messages!
-      %p.login-box-msg Cadastre-se!
-      
-      = f.simple_fields_for resource.profile do |p|
+      %p.login-box-msg 
+      = f.simple_fields_for :profile, @profile  do |p|
         .row
           .input-field.col.s12.m12.l12.login-text
             = p.input :first_name
