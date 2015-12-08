@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   resources :trades
   resources :bottles
   resources :questions

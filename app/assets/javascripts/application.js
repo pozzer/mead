@@ -19,6 +19,7 @@
 //= require materialize.min
 //= require plugins.js
 //= perfect-scrollbar.mim
+//= require ckeditor/init
 
 $(document).ready(function(){
   $('.collapsible').collapsible();
@@ -31,7 +32,7 @@ $(document).ready(function(){
 function debug(msg) {
   if (window.console) {
     console.info(msg);
-  } 
+  }
 }
 
 $(function() {
@@ -50,5 +51,5 @@ $(function() {
 });
 $(document).on("page:load ready", function(){
   debug("sadasd")
-  
+
 });
