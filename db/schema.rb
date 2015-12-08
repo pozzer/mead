@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023103807) do
+ActiveRecord::Schema.define(version: 20151203014233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,14 +26,8 @@ ActiveRecord::Schema.define(version: 20151023103807) do
     t.datetime "updated_at",                  null: false
   end
 
-  create_table "authorizations", force: :cascade do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.integer  "user_id"
-    t.string   "token"
-    t.string   "secret"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "artigos", force: :cascade do |t|
+    t.string "title"
   end
 
   create_table "avaliation_trades", force: :cascade do |t|
@@ -77,30 +71,6 @@ ActiveRecord::Schema.define(version: 20151023103807) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "doc", primary_key: "doc_pk", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "doc_empl", id: false, force: :cascade do |t|
-    t.integer "doc_k",  null: false
-    t.integer "empl_k", null: false
-  end
-
-  create_table "empl", primary_key: "empl_pk", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "empl_addr", id: false, force: :cascade do |t|
-    t.integer "empl_k",  null: false
-    t.string  "type",    null: false
-    t.string  "address"
-  end
-
-  create_table "empl_doc", id: false, force: :cascade do |t|
-    t.integer "empl_k", null: false
-    t.integer "doc_k",  null: false
-  end
-
   create_table "favorite_questions", force: :cascade do |t|
     t.integer  "question_id"
     t.integer  "user_id"
@@ -139,6 +109,7 @@ ActiveRecord::Schema.define(version: 20151023103807) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "user_id"
+    t.integer  "user"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -233,7 +204,6 @@ ActiveRecord::Schema.define(version: 20151023103807) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                   default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -264,9 +234,4 @@ ActiveRecord::Schema.define(version: 20151023103807) do
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
-  add_foreign_key "doc_empl", "doc", column: "doc_k", primary_key: "doc_pk", name: "doc_empl_doc_k_fkey"
-  add_foreign_key "doc_empl", "empl", column: "empl_k", primary_key: "empl_pk", name: "doc_empl_empl_k_fkey"
-  add_foreign_key "empl_addr", "empl", column: "empl_k", primary_key: "empl_pk", name: "empl_addr_empl_k_fkey"
-  add_foreign_key "empl_doc", "doc", column: "doc_k", primary_key: "doc_pk", name: "empl_doc_doc_k_fkey"
-  add_foreign_key "empl_doc", "empl", column: "empl_k", primary_key: "empl_pk", name: "empl_doc_empl_k_fkey"
 end
