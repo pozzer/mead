@@ -12,7 +12,10 @@ class User < ActiveRecord::Base
   has_many :pictures
   has_many :favorite_questions
 
-  #accepts_nested_attributes_for :profile
+  accepts_nested_attributes_for :profile
+
+  after_initialize :initialize_profile
+
   has_reputation :karma,
       :source => [
           { :reputation => :questioning_skill, :weight => 0.8 },
@@ -24,8 +27,6 @@ class User < ActiveRecord::Base
   has_reputation :answering_skill,
       :source => { :reputation => :avg_rating, :of => :answers }
 
-  after_create :build_profile
-
   validates_presence_of :email
 
   devise :database_authenticatable, :registerable,
@@ -33,14 +34,15 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first || User.where(:email=> auth.info.email).first
     unless user
-      user = User.create(name:auth.extra.raw_info.name,
-                           provider:auth.provider,
-                           uid:auth.uid,
-                           email:auth.info.email,
-                           password:Devise.friendly_token[0,20]
-                           )
+      user = User.new(provider:auth.provider,
+                         uid:auth.uid,
+                         email:auth.info.email,
+                         password:Devise.friendly_token[0,20])
+      user.profile({first_name: auth.extra.raw_info.first_name, last_name: auth.extra.raw_info.last_name, :user => user})
+    else
+      user.update_attributes({:provider => auth.provider, :uid => auth.uid}) if user.provider.blank? or user.uid.blank?
     end
     user
   end
@@ -52,5 +54,10 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  private
+    def initialize_profile
+      self.profile = self.build_profile if self.profile.nil?
+    end
 
 end
