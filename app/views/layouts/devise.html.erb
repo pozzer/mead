@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>MeadProject</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="grey lighten-3" data-action="<%= controller.action_name %>" data-controller="<%= controller.controller_name %>">
+    <main>
+      <canvas height="471" id="bubble-canvas" style="position: fixed; top: 0px; left: 0px;" width="1920"></canvas>
+      <%= yield %>
+    </main>
+  </body>
+</html>
