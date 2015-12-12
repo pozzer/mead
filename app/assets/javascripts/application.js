@@ -22,7 +22,7 @@
 //= require js/core/jquery.countTo.min
 //= require js/core/jquery.placeholder.min
 //= require js/core/js.cookie.min
-//= require js/app
+//= require js/app.js
 //= require ckeditor/init
 //= require js/plugins/slick/slick.min
 //= require js/plugins/chartjs/Chart.min
@@ -50,7 +50,7 @@ $(function() {
   }
 
 });
+
 $(document).on("page:load ready", function(){
   debug("sadasd")
-
 });

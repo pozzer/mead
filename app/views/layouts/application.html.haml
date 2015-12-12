@@ -1,9 +1,0 @@
-= render "layouts/html_head", locals: {body_class: ""}
-= render "shared/application_nav"
-#main
-  .wrapper
-    = render "shared/left_side_bar"
-    %section#content
-      .container				
-        = yield
-= render "shared/footer"

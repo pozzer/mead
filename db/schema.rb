@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 20151208082947) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -88,32 +87,6 @@ ActiveRecord::Schema.define(version: 20151208082947) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
-  create_table "doc", primary_key: "doc_pk", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "doc_empl", id: false, force: :cascade do |t|
-    t.integer "doc_k",  null: false
-    t.integer "empl_k", null: false
-  end
-
-  create_table "empl", primary_key: "empl_pk", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "empl_addr", id: false, force: :cascade do |t|
-    t.integer "empl_k",  null: false
-    t.string  "type",    null: false
-    t.string  "address"
-  end
-
-  create_table "empl_doc", id: false, force: :cascade do |t|
-    t.integer "empl_k", null: false
-    t.integer "doc_k",  null: false
-  end
-
-=======
->>>>>>> 80811d4206644ba129159572034068d5df59a521
   create_table "favorite_questions", force: :cascade do |t|
     t.integer  "question_id"
     t.integer  "user_id"

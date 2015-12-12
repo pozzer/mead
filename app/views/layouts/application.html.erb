@@ -1,0 +1,14 @@
+<%= render "layouts/html_head"%>
+<%#= render "shared/application_nav" %>
+<div id="main">
+  <div class="wrapper">
+    <%= render "shared/left_side_bar" %>
+    <section id="content">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </section>
+  </div>
+</div>
+<%= render "shared/footer" %>
+<%= render "app_js_init" %>
