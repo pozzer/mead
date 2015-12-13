@@ -59,9 +59,7 @@
             <div class="side-content">
                 <ul class="nav-main">
                     <li>
-                        <a class="active" href="start_frontend.html">
-                            <i class="si si-home"></i>
-                            <span class="sidebar-mini-hide">Home</span>
+                        <%= link_to (content_tag(:i, "", class: "si si-home") + content_tag(:span, "Home", class: "sidebar-mini-hide")).html_safe, homepages_path %>
                         </a>
                     </li>
                     <li>

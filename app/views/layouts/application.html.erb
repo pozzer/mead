@@ -1,14 +1,23 @@
-<%= render "layouts/html_head"%>
-<%#= render "shared/application_nav" %>
-<div id="main">
-  <div class="wrapper">
-    <%= render "shared/left_side_bar" %>
-    <section id="content">
-      <div class="container">
-        <%= yield %>
-      </div>
-    </section>
-  </div>
-</div>
-<%= render "shared/footer" %>
-<%= render "app_js_init" %>
+<html>
+	<%= render "layouts/html_head"%>
+	<body data-action="<%= controller.action_name %>" data-controller="<%= controller.controller_name %>">
+		<!-- Side Overlay-->
+		<%= render "shared/application/aside" %>
+		<!-- Sidebar -->
+		<%= render "shared/application/sidebar" %>
+		<!-- END Sidebar -->
+		<!-- Header -->
+		<%= render "shared/application/header" %>
+		<!-- END Header -->
+		<!-- Main Container -->
+  	<main id="main-container">
+      <%= yield %>
+    </main>
+    <!-- END Main Container -->
+		<!-- Footer -->
+    <%= render "shared/application/footer" %>
+    <!-- END Footer -->
+    <%= render "layouts/app_js_init" %>
+  </body>
+</html>
+

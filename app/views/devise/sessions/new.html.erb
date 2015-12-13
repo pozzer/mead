@@ -3,7 +3,7 @@
 <!-- <div class="session row">
   <div class="z-depth-4 card-panel s12 m3 l6">
     <%#= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%#= render "shared/logo" %>
+      
       <div class="row">
         <%#= devise_error_messages! %>
       </div>
@@ -40,19 +40,11 @@
             <!-- Login Block -->
             <div class="block block-themed animated fadeIn">
                 <div class="block-header bg-primary">
-                    <ul class="block-options">
-                        <li>
-                            <a href="base_pages_reminder.html">Forgot Password?</a>
-                        </li>
-                        <li>
-                            <a href="base_pages_register.html" data-toggle="tooltip" data-placement="left" title="New Account"><i class="si si-plus"></i></a>
-                        </li>
-                    </ul>
                     <h3 class="block-title">Login</h3>
                 </div>
                 <div class="block-content block-content-full block-content-narrow">
                     <!-- Login Title -->
-                    <h1 class="h2 font-w600 push-30-t push-5">OneUI</h1>
+                    <h1 class="h2 font-w600 push-30-t push-5">Mead</h1>
                     <p>Welcome, please login.</p>
                     <!-- END Login Title -->
                     <%= devise_error_messages! %>
@@ -71,23 +63,24 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="form-material form-material-primary floating">
-                                    <input class="form-control" type="password" id="login-password" name="login-password">
-                                    <label for="login-password">Password</label>
+                                  <%= f.password_field :password, class: "form-control" %>
+                                  <%= f.label :password %>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <label class="css-input switch switch-sm switch-primary">
-                                    <input type="checkbox" id="login-remember-me" name="login-remember-me"><span></span> Remember Me?
+                                  <%= f.check_box :remember_me %><span></span> Remember Me?
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-xs-12 col-sm-6 col-md-4">
-                                <button class="btn btn-block btn-primary" type="submit"><i class="si si-login pull-right"></i> Log in</button>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <button class="btn btn-block btn-primary" type="submit"><i class="si si-login pull-left "></i> Log in</button>
                             </div>
-                        </div>
+                        </div>                        
+                        <%= render "devise/shared/links", locals: {} %>                        
                     <% end %>
                     <!-- END Login Form -->
                 </div>
