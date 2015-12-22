@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   has_reputation :answering_skill,
       :source => { :reputation => :avg_rating, :of => :answers }
 
-  validates_presence_of :email
+  validates_presence_of :email, :password
 
   devise :database_authenticatable, :registerable,
       :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
