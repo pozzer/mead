@@ -1,0 +1,49 @@
+
+
+<div class="content content-narrow">
+  <%= render "nav"%>
+  <ol class="breadcrumb push-15">
+    <li><a class="text-muted" href="base_pages_forum_categories.php">Question</a></li>
+    <li><a class="link-effect" href="base_pages_forum_new_topic.php"><i class="fa fa-plus"></i> New Question</a></li>
+  </ol>
+  <div class="block">
+    <div class="block-header bg-gray-lighter">
+      <ul class="block-options">
+        <li>
+          <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"><i class="si si-size-fullscreen"></i></button>
+        </li>
+        <li>
+          <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+        </li>
+      </ul>
+      <h3 class="block-title"><i class="fa fa-plus"></i> New Topic</h3>
+    </div>
+    <div class="block-content block-content-full block-content-narrow">
+      <%= simple_form_for(@question) do |f| %>
+      <div class="col-md-7">
+        <div class="form-material form-material-primary">
+          <%= f.input :title %>
+        </div>
+      </div>
+        
+        <%= f.input :content, :as => :ckeditor, :label=>false, :input_html => { :ckeditor => {:toolbar => 'mini'} } %>
+        <%= f.submit "Publicar sua pergunta", class: 'btn'%>
+
+      <% end %>  
+    </div>
+  </div>
+</div>
+
+
+  = f.error_notification
+  .row
+    .card-panel
+      .row
+        .input-field.col.s12.m12.l12
+          
+      .row
+        .input-field.col.s12.m12.l12
+          
+          =# f.input :content, as: :text, input_html: { class: 'materialize-textarea' }
+      .row
+

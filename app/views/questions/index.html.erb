@@ -1,43 +1,168 @@
-%h4 Examinar nossas perguntas
-= render "nav"
-.row
-  %ul.collection
-    - @questions.each do |question|
-      %li.collection-item.avatar
-        = image_tag('feliphe.jpg', class: "circle responsive-img valign profile-image")
-        %span.title
-          = link_to question.title, question
-        %p
-          First Line
-          %br/
-          Second Line
-        %a.secondary-content{:href => "#!"}
-          %i.material-icons grade
-    %li.collection-item.avatar
-      %i.material-icons.circle folder
-      %span.title Title
-      %p
-        First Line
-        %br/
-        Second Line
-      %a.secondary-content{:href => "#!"}
-        %i.material-icons grade
-    %li.collection-item.avatar
-      %i.material-icons.circle.green insert_chart
-      %span.title Title
-      %p
-        First Line
-        %br/
-        Second Line
-      %a.secondary-content{:href => "#!"}
-        %i.material-icons grade
-    %li.collection-item.avatar
-      %i.material-icons.circle.red play_arrow
-      %span.title Title
-      %p
-        First Line
-        %br/
-        Second Line
-      %a.secondary-content{:href => "#!"}
-        %i.material-icons grade
 
+<table class="table table-striped table-vcenter">
+<thead>
+<tr>
+<th><i class="fa fa-suitcase text-gray"></i> Project Name</th>
+<th class="text-center hidden-xs" style="width: 15%;"><i class="fa fa-ticket text-gray"></i> Tickets</th>
+<th class="text-center hidden-xs hidden-sm" style="width: 15%;"><i class="fa fa-bar-chart text-gray"></i> Sales</th>
+<th class="text-right" style="width: 15%; min-width: 110px;"><i class="fa fa-trophy text-gray"></i> Earnings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<h3 class="h5 font-w600 push-10">
+<a class="link-effect" href="javascript:void(0)">Web Application Framework</a>
+</h3>
+<div class="push-10">
+<span class="label label-success"><i class="fa fa-check"></i> Completed</span>
+</div>
+<div class="font-s13 text-muted hidden-xs">
+<p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+</div>
+</td>
+<td class="h3 text-center hidden-xs">15</td>
+<td class="h3 text-center hidden-xs hidden-sm">520</td>
+<td class="h3 text-primary text-right">$ 7,850</td>
+</tr>
+<tr>
+<td>
+<h3 class="h5 font-w600 push-10">
+<a class="link-effect" href="javascript:void(0)">Wordpress Theme</a>
+</h3>
+<div class="push-10">
+<span class="label label-warning"><i class="fa fa-refresh fa-spin"></i> In Progress</span>
+</div>
+<div class="font-s13 text-muted hidden-xs">
+<p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+</div>
+</td>
+<td class="h3 text-center hidden-xs">-</td>
+<td class="h3 text-center hidden-xs hidden-sm">-</td>
+<td class="h3 text-primary text-right">-</td>
+</tr>
+<tr>
+<td>
+<h3 class="h5 font-w600 push-10">
+<a class="link-effect" href="javascript:void(0)">Mobile Application</a>
+</h3>
+<div class="push-10">
+<span class="label label-success"><i class="fa fa-check"></i> Completed</span>
+</div>
+<div class="font-s13 text-muted hidden-xs">
+<p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+</div>
+</td>
+<td class="h3 text-center hidden-xs">25</td>
+<td class="h3 text-center hidden-xs hidden-sm">980</td>
+<td class="h3 text-primary text-right">$ 16,698</td>
+</tr>
+<tr>
+<td>
+<h3 class="h5 font-w600 push-10">
+<a class="link-effect" href="javascript:void(0)">UI Kit</a>
+</h3>
+<div class="push-10">
+<span class="label label-danger"><i class="fa fa-times"></i> Cancelled</span>
+</div>
+<div class="font-s13 text-muted hidden-xs">
+<p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+</div>
+</td>
+<td class="h3 text-center hidden-xs">-</td>
+<td class="h3 text-center hidden-xs hidden-sm">-</td>
+<td class="h3 text-primary text-right">-</td>
+</tr>
+<tr>
+<td>
+<h3 class="h5 font-w600 push-10">
+<a class="link-effect" href="javascript:void(0)">Admin Template</a>
+</h3>
+<div class="push-10">
+<span class="label label-success"><i class="fa fa-check"></i> Completed</span>
+</div>
+<div class="font-s13 text-muted hidden-xs">
+<p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+</div>
+</td>
+<td class="h3 text-center hidden-xs">262</td>
+<td class="h3 text-center hidden-xs hidden-sm">1600</td>
+<td class="h3 text-primary text-right">$ 12,320</td>
+</tr>
+<tr>
+<td>
+<h3 class="h5 font-w600 push-10">
+<a class="link-effect" href="javascript:void(0)">Flat Icon Set</a>
+</h3>
+<div class="push-10">
+<span class="label label-success"><i class="fa fa-check"></i> Completed</span>
+</div>
+<div class="font-s13 text-muted hidden-xs">
+<p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+</div>
+</td>
+<td class="h3 text-center hidden-xs">3</td>
+<td class="h3 text-center hidden-xs hidden-sm">148</td>
+<td class="h3 text-primary text-right">$ 6,320</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Examinar nossas perguntas</h4>
+<%= render "nav" %>
+<div class="row">
+  <ul class="collection">
+    <% @questions.each do |question| %>
+      <li class="collection-item avatar">
+        <%= image_tag('feliphe.jpg', class: "circle responsive-img valign profile-image") %>
+        <span class="title">
+          <%= link_to question.title, question %>
+        </span>
+        <p>
+          First Line
+          <br/>
+          Second Line
+        </p>
+        <a class="secondary-content" href="#!">
+          <i class="material-icons">grade</i>
+        </a>
+      </li>
+    <% end %>
+    <li class="collection-item avatar">
+      <i class="material-icons circle">folder</i>
+      <span class="title">Title</span>
+      <p>
+        First Line
+        <br/>
+        Second Line
+      </p>
+      <a class="secondary-content" href="#!">
+        <i class="material-icons">grade</i>
+      </a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle green">insert_chart</i>
+      <span class="title">Title</span>
+      <p>
+        First Line
+        <br/>
+        Second Line
+      </p>
+      <a class="secondary-content" href="#!">
+        <i class="material-icons">grade</i>
+      </a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle red">play_arrow</i>
+      <span class="title">Title</span>
+      <p>
+        First Line
+        <br/>
+        Second Line
+      </p>
+      <a class="secondary-content" href="#!">
+        <i class="material-icons">grade</i>
+      </a>
+    </li>
+  </ul>
+</div>
