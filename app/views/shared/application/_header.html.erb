@@ -4,7 +4,7 @@
       <li>
           <div class="btn-group">
               <button class="btn btn-default btn-image dropdown-toggle" data-toggle="dropdown" type="button">
-                  <img src="assets/img/avatars/avatar10.jpg" alt="Avatar">
+                  <img src="assets/img/avatars/avatar14.jpg" alt="Avatar">
                   <span class="caret"></span>
               </button>
               <ul class="dropdown-menu dropdown-menu-right">
@@ -16,10 +16,7 @@
                       </a>
                   </li>
                   <li>
-                      <a tabindex="-1" href="base_pages_profile.html">
-                          <i class="si si-user pull-right"></i>
-                          <span class="badge badge-success pull-right">1</span>Profile
-                      </a>
+                    <%= link_to (content_tag(:i, "", class: "si si-user pull-right") + 'Profile').html_safe, profile_path(current_user.profile) %>
                   </li>
                   <li>
                       <a tabindex="-1" href="javascript:void(0)">
@@ -30,13 +27,12 @@
                   <li class="dropdown-header">Actions</li>
                   <li>
                       <a tabindex="-1" href="base_pages_lock.html">
-                          <i class="si si-lock pull-right"></i>Lock Account
+                        <i class="si si-lock pull-right"></i>Lock Account
                       </a>
                   </li>
                   <li>
-                      <a tabindex="-1" href="base_pages_login.html">
-                          <i class="si si-logout pull-right"></i>Log out
-                      </a>
+                    <%= link_to (content_tag(:i, "", class: "si si-logout pull-right") + 'Sign out').html_safe, destroy_user_session_path, method: :delete %>
+                    
                   </li>
               </ul>
           </div>
