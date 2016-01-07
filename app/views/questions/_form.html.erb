@@ -19,17 +19,11 @@
       <h3 class="block-title"><i class="fa fa-plus"></i> New Topic</h3>
     </div>
     <div class="block-content block-content-full block-content-narrow">
-      <%= simple_form_for(@question) do |f| %>
-      <div class="col-md-7">
-        <div class="form-material form-material-primary">
-          <%= f.input :title %>
-        </div>
-      </div>
-        
+      <%= simple_form_for(@question, wrapper: :vertical_form_devise) do |f| %>
+        <%= f.input :title %>
         <%= f.input :content, :as => :ckeditor, :label=>false, :input_html => { :ckeditor => {:toolbar => 'mini'} } %>
         <%= f.submit "Publicar sua pergunta", class: 'btn'%>
-
-      <% end %>  
+      <% end %>
     </div>
   </div>
 </div>
@@ -40,10 +34,10 @@
     .card-panel
       .row
         .input-field.col.s12.m12.l12
-          
+
       .row
         .input-field.col.s12.m12.l12
-          
+
           =# f.input :content, as: :text, input_html: { class: 'materialize-textarea' }
       .row
 
