@@ -1,25 +1,31 @@
-<html>
-	<%= render "layouts/html_head"%>
-	<body data-action="<%= controller.action_name %>" data-controller="<%= controller.controller_name %>">
-		<div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
-			<!-- Side Overlay-->
-			<%= render "shared/application/aside" %>
-			<!-- Sidebar -->
-			<%= render "shared/application/sidebar" %>
-			<!-- END Sidebar -->
-			<!-- Header -->
-			<%= render "shared/application/header" %>
-			<!-- END Header -->
-			<!-- Main Container -->
-	  	<main id="main-container">
-	      <%= yield %>
-	    </main>
-	    <!-- END Main Container -->
-			<!-- Footer -->
-	    <%= render "shared/application/footer" %>
-	    <!-- END Footer -->
-	    <%= render "layouts/app_js_init" %>
+<!DOCTYPE html>
+<!--[if IE 9] <html class="ie9 no-focus">
+-->
+<!-- [if gt IE 9]><!
+-->
+<html class="no-focus">
+  <!-- <![endif]
+  -->
+  <%= render "layouts/html_head"%>
+  <body data-action="<%= controller.action_name %>" data-controller="<%= controller.controller_name %>">
+    <div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
+      <!-- Side Overlay-->
+      <%= render "shared/application/aside" %>
+      <!-- Sidebar -->
+      <%= render "shared/application/sidebar" %>
+      <!-- END Sidebar -->
+      <!-- Header -->
+      <%= render "shared/application/header" %>
+      <!-- END Header -->
+      <!-- Main Container -->
+      <main id="main-container">
+        <%= yield %>
+      </main>
+      <!-- END Main Container -->
+      <!-- Footer -->
+      <%= render "shared/application/footer" %>
+      <!-- END Footer -->
     </div>
+    <%= render "layouts/app_js_init" %>
   </body>
 </html>
-

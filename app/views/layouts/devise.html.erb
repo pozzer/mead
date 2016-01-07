@@ -1,4 +1,11 @@
-<html>
+<!DOCTYPE html>
+<!--[if IE 9] <html class="ie9 no-focus">
+-->
+<!-- [if gt IE 9]><!
+-->
+<html class="no-focus">
+  <!-- <![endif]
+  -->
   <%= render "layouts/html_head"%>
   <body data-action="<%= controller.action_name %>" data-controller="<%= controller.controller_name %>">
     <main>
@@ -6,5 +13,5 @@
       <%= yield %>
     </main>
     <%= render "layouts/app_js_init" %>
-  </body> 
+  </body>
 </html>

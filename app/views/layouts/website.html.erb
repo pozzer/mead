@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <!--[if IE 9] <html class="ie9 no-focus">
 -->
 <!-- [if gt IE 9]><!
@@ -25,7 +25,7 @@
 
         'header-navbar-fixed'        Enables fixed header
         'header-navbar-transparent'  Enables a transparent header (if also fixed, it will get a solid dark background color on scrolling)
-        -->    
+        -->
         <div id="page-container" class="sidebar-l sidebar-mini sidebar-o side-scroll header-navbar-fixed header-navbar-transparent">
             <!-- Sidebar -->
             <%= render "shared/website/sidebar" %>
@@ -34,7 +34,7 @@
             <!-- Header -->
             <%= render "shared/website/header" %>
             <!-- END Header -->
-            
+
             <!-- Main Container -->
             <main id="main-container">
                 <%= yield %>
@@ -45,7 +45,7 @@
             <%= render "shared/website/footer" %>
             <!-- END Footer -->
         </div>
-      
+
         <!-- END Page Container -->
 
         <%= render "layouts/app_js_init" %>
