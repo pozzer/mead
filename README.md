@@ -1,6 +1,6 @@
 # rendal
-{<img src="https://codeclimate.com/github/pozzer/mead/badges/gpa.svg" />}[https://codeclimate.com/github/pozzer/mead]
-{<img src="https://codeclimate.com/repos/564f06971787d7038500a970/badges/afc2ae57cb930a3d493e/gpa.svg" />}[https://codeclimate.com/repos/564f06971787d7038500a970
+[![Code Climate](https://codeclimate.com/github/pozzer/mead/badges/gpa.svg)](https://codeclimate.com/github/pozzer/mead)
+[![Test Coverage](https://codeclimate.com/github/pozzer/mead/badges/coverage.svg)](https://codeclimate.com/github/pozzer/mead/coverage)
 Esta é uma aplicação em [Rails](http://rubyonrails.org/) utilizado para...
 
 ## Dependências
