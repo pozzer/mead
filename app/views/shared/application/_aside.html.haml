@@ -1,0 +1,162 @@
+%aside#side-overlay
+  / Side Overlay Scroll Container
+  #side-overlay-scroll
+    / Side Header
+    .side-header.side-content
+      / Layout API, functionality initialized in App() -> uiLayoutApi()
+      %button.btn.btn-default.pull-right{"data-action" => "side_overlay_close", "data-toggle" => "layout", :type => "button"}
+        %i.fa.fa-times
+      %span
+        %img.img-avatar.img-avatar32{:alt => "", :src => "assets/img/avatars/avatar10.jpg"}/
+        %span.font-w600.push-10-l Dennis Ross
+    / END Side Header
+    / Side Content
+    .side-content.remove-padding-t
+      / Notifications
+      .block.pull-r-l
+        .block-header.bg-gray-lighter
+          %ul.block-options
+            %li
+              %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+                %i.si.si-refresh
+            %li
+              %button{"data-action" => "content_toggle", "data-toggle" => "block-option", :type => "button"}
+          %h3.block-title Recent Activity
+        .block-content
+          / Activity List
+          %ul.list.list-activity
+            %li
+              %i.si.si-wallet.text-success
+              .font-w600 New sale ($15)
+              %div
+                %a{:href => "javascript:void(0)"} Admin Template
+              %div
+                %small.text-muted 3 min ago
+            %li
+              %i.si.si-pencil.text-info
+              .font-w600 You edited the file
+              %div
+                %a{:href => "javascript:void(0)"}
+                  %i.fa.fa-file-text-o
+                  Documentation.doc
+              %div
+                %small.text-muted 15 min ago
+            %li
+              %i.si.si-close.text-danger
+              .font-w600 Project deleted
+              %div
+                %a{:href => "javascript:void(0)"} Line Icon Set
+              %div
+                %small.text-muted 4 hours ago
+            %li
+              %i.si.si-wrench.text-warning
+              .font-w600 Core v2.5 is available
+              %div
+                %a{:href => "javascript:void(0)"} Update now
+              %div
+                %small.text-muted 6 hours ago
+          .text-center
+            %small
+              %a{:href => "javascript:void(0)"} Load More..
+          / END Activity List
+      / END Notifications
+      / Online Friends
+      .block.pull-r-l
+        .block-header.bg-gray-lighter
+          %ul.block-options
+            %li
+              %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+                %i.si.si-refresh
+            %li
+              %button{"data-action" => "content_toggle", "data-toggle" => "block-option", :type => "button"}
+          %h3.block-title Online Friends
+        .block-content.block-content-full
+          / Users Navigation
+          %ul.nav-users
+            %li
+              %a{:href => "base_pages_profile.html"}
+                %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar2.jpg"}/
+                %i.fa.fa-circle.text-success
+                Ashley Welch
+                .font-w400.text-muted
+                  %small Copywriter
+            %li
+              %a{:href => "base_pages_profile.html"}
+                %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar9.jpg"}/
+                %i.fa.fa-circle.text-success
+                Ryan Hall
+                .font-w400.text-muted
+                  %small Web Developer
+            %li
+              %a{:href => "base_pages_profile.html"}
+                %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar7.jpg"}/
+                %i.fa.fa-circle.text-success
+                Judy Alvarez
+                .font-w400.text-muted
+                  %small Web Designer
+            %li
+              %a{:href => "base_pages_profile.html"}
+                %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar6.jpg"}/
+                %i.fa.fa-circle.text-warning
+                Evelyn Willis
+                .font-w400.text-muted
+                  %small Photographer
+            %li
+              %a{:href => "base_pages_profile.html"}
+                %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar9.jpg"}/
+                %i.fa.fa-circle.text-warning
+                Keith Simpson
+                .font-w400.text-muted
+                  %small Graphic Designer
+          / END Users Navigation
+      / END Online Friends
+      / Quick Settings
+      .block.pull-r-l
+        .block-header.bg-gray-lighter
+          %ul.block-options
+            %li
+              %button{"data-action" => "content_toggle", "data-toggle" => "block-option", :type => "button"}
+          %h3.block-title Quick Settings
+        .block-content
+          / Quick Settings Form
+          %form.form-bordered{:action => "index.html", :method => "post", :onsubmit => "return false;"}
+            .form-group
+              .row
+                .col-xs-8
+                  .font-s13.font-w600 Online Status
+                  .font-s13.font-w400.text-muted Show your status to all
+                .col-xs-4.text-right
+                  %label.css-input.switch.switch-sm.switch-primary.push-10-t
+                    %input{:type => "checkbox"}/
+                    %span
+            .form-group
+              .row
+                .col-xs-8
+                  .font-s13.font-w600 Auto Updates
+                  .font-s13.font-w400.text-muted Keep up to date
+                .col-xs-4.text-right
+                  %label.css-input.switch.switch-sm.switch-primary.push-10-t
+                    %input{:type => "checkbox"}/
+                    %span
+            .form-group
+              .row
+                .col-xs-8
+                  .font-s13.font-w600 Notifications
+                  .font-s13.font-w400.text-muted Do you need them?
+                .col-xs-4.text-right
+                  %label.css-input.switch.switch-sm.switch-primary.push-10-t
+                    %input{:checked => "checked", :type => "checkbox"}/
+                    %span
+            .form-group
+              .row
+                .col-xs-8
+                  .font-s13.font-w600 API Access
+                  .font-s13.font-w400.text-muted Enable/Disable access
+                .col-xs-4.text-right
+                  %label.css-input.switch.switch-sm.switch-primary.push-10-t
+                    %input{:checked => "checked", :type => "checkbox"}/
+                    %span
+          / END Quick Settings Form
+      / END Quick Settings
+    / END Side Content
+  / END Side Overlay Scroll Container

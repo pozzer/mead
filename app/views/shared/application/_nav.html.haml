@@ -1,0 +1,271 @@
+%nav#sidebar
+  / Sidebar Scroll Container
+  #sidebar-scroll
+    / Sidebar Content
+    / Adding .sidebar-mini-hide to an element will hide it when the sidebar is in mini mode
+    .sidebar-content
+      / Side Header
+      .side-header.side-content.bg-white-op
+        / Layout API, functionality initialized in App() -> uiLayoutApi()
+        %button.btn.btn-link.text-gray.pull-right.hidden-md.hidden-lg{"data-action" => "sidebar_close", "data-toggle" => "layout", :type => "button"}
+          %i.fa.fa-times
+        / Themes functionality initialized in App() -> uiHandleTheme()
+        .btn-group.pull-right
+          %button.btn.btn-link.text-gray.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+            %i.si.si-drop
+          %ul.dropdown-menu.dropdown-menu-right.font-s13.sidebar-mini-hide
+            %li
+              %a{"data-theme" => "default", "data-toggle" => "theme", :href => "javascript:void(0)", :tabindex => "-1"}
+                %i.fa.fa-circle.text-default.pull-right
+                %span.font-w600 Default
+            %li
+              %a{"data-theme" => "assets/css/themes/amethyst.min.css", "data-toggle" => "theme", :href => "javascript:void(0)", :tabindex => "-1"}
+                %i.fa.fa-circle.text-amethyst.pull-right
+                %span.font-w600 Amethyst
+            %li
+              %a{"data-theme" => "assets/css/themes/city.min.css", "data-toggle" => "theme", :href => "javascript:void(0)", :tabindex => "-1"}
+                %i.fa.fa-circle.text-city.pull-right
+                %span.font-w600 City
+            %li
+              %a{"data-theme" => "assets/css/themes/flat.min.css", "data-toggle" => "theme", :href => "javascript:void(0)", :tabindex => "-1"}
+                %i.fa.fa-circle.text-flat.pull-right
+                %span.font-w600 Flat
+            %li
+              %a{"data-theme" => "assets/css/themes/modern.min.css", "data-toggle" => "theme", :href => "javascript:void(0)", :tabindex => "-1"}
+                %i.fa.fa-circle.text-modern.pull-right
+                %span.font-w600 Modern
+            %li
+              %a{"data-theme" => "assets/css/themes/smooth.min.css", "data-toggle" => "theme", :href => "javascript:void(0)", :tabindex => "-1"}
+                %i.fa.fa-circle.text-smooth.pull-right
+                %span.font-w600 Smooth
+        %a.h5.text-white{:href => "index.html"}
+          %i.fa.fa-circle-o-notch.text-primary
+          %span.h4.font-w600.sidebar-mini-hide ne
+      / END Side Header
+      / Side Content
+      .side-content
+        %ul.nav-main
+          %li
+            %a{:href => "index.html"}
+              %i.si.si-speedometer
+              %span.sidebar-mini-hide Dashboard
+          %li.nav-main-heading
+            %span.sidebar-mini-hide User Interface
+          %li
+            %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
+              %i.si.si-badge
+              %span.sidebar-mini-hide UI Elements
+            %ul
+              %li
+                %a{:href => "base_ui_widgets.html"} Widgets
+              %li
+                %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"} Blocks
+                %ul
+                  %li
+                    %a{:href => "base_ui_blocks.html"} Styles
+                  %li
+                    %a{:href => "base_ui_blocks_api.html"} Blocks API
+                  %li
+                    %a{:href => "base_ui_blocks_draggable.html"} Draggable
+              %li
+                %a{:href => "base_ui_grid.html"} Grid
+              %li
+                %a{:href => "base_ui_typography.html"} Typography
+              %li
+                %a{:href => "base_ui_icons.html"} Icons
+              %li
+                %a{:href => "base_ui_buttons.html"} Buttons
+              %li
+                %a{:href => "base_ui_activity.html"} Activity
+              %li
+                %a{:href => "base_ui_tabs.html"} Tabs
+              %li
+                %a{:href => "base_ui_tiles.html"} Tiles
+              %li
+                %a{:href => "base_ui_timeline.html"} Timeline
+              %li
+                %a{:href => "base_ui_navigation.html"} Navigation
+              %li
+                %a{:href => "base_ui_modals_tooltips.html"} Modals & Tooltips
+              %li
+                %a{:href => "base_ui_color_themes.html"} Color Themes
+          %li
+            %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
+              %i.si.si-grid
+              %span.sidebar-mini-hide Tables
+            %ul
+              %li
+                %a{:href => "base_tables_styles.html"} Styles
+              %li
+                %a{:href => "base_tables_responsive.html"} Responsive
+              %li
+                %a{:href => "base_tables_tools.html"} Tools
+              %li
+                %a{:href => "base_tables_pricing.html"} Pricing
+              %li
+                %a{:href => "base_tables_datatables.html"} DataTables
+          %li
+            %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
+              %i.si.si-note
+              %span.sidebar-mini-hide Forms
+            %ul
+              %li
+                %a{:href => "base_forms_premade.html"} Pre-made
+              %li
+                %a{:href => "base_forms_elements.html"} Elements
+              %li
+                %a{:href => "base_forms_pickers_more.html"} Pickers & More
+              %li
+                %a{:href => "base_forms_editors.html"} Text Editors
+              %li
+                %a{:href => "base_forms_validation.html"} Validation
+              %li
+                %a{:href => "base_forms_wizard.html"} Wizard
+          %li.nav-main-heading
+            %span.sidebar-mini-hide Develop
+          %li.open
+            %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
+              %i.si.si-wrench
+              %span.sidebar-mini-hide Components
+            %ul
+              %li
+                %a{:href => "base_comp_images.html"} Images
+              %li
+                %a{:href => "base_comp_charts.html"} Charts
+              %li
+                %a{:href => "base_comp_calendar.html"} Calendar
+              %li
+                %a{:href => "base_comp_sliders.html"} Sliders
+              %li
+                %a{:href => "base_comp_maps.html"} Maps
+              %li
+                %a{:href => "base_comp_animations.html"} Animations
+              %li
+                %a{:href => "base_comp_syntax_highlighting.html"} Syntax Highlighting
+              %li.open
+                %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"} Gallery
+                %ul
+                  %li
+                    %a.active{:href => "base_comp_gallery_simple.html"} Simple
+                  %li
+                    %a{:href => "base_comp_gallery_advanced.html"} Advanced
+          %li
+            %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
+              %i.si.si-magic-wand
+              %span.sidebar-mini-hide Layouts
+            %ul
+              %li
+                %a{:href => "base_layouts_api.html"} Layout API
+              %li
+                %a{:href => "base_layouts_default.html"} Default
+              %li
+                %a{:href => "base_layouts_default_flipped.html"} Default Flipped
+              %li
+                %a{:href => "base_layouts_header_static.html"} Static Header
+              %li
+                %a{:href => "base_layouts_sidebar_mini_hoverable.html"} Mini Sidebar (Hoverable)
+              %li
+                %a{:href => "base_layouts_side_overlay_hoverable.html"} Side Overlay (Hoverable)
+              %li
+                %a{:href => "base_layouts_side_overlay_open.html"} Side Overlay (Open)
+              %li
+                %a{:href => "base_layouts_side_native_scrolling.html"} Side Native Scrolling
+              %li
+                %a{:href => "base_layouts_sidebar_hidden.html"} Hidden Sidebar
+          %li
+            %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
+              %i.si.si-puzzle
+              %span.sidebar-mini-hide Multi Level Menu
+            %ul
+              %li
+                %a{:href => "#"} Link 1-1
+              %li
+                %a{:href => "#"} Link 1-2
+              %li
+                %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"} Sub Level 2
+                %ul
+                  %li
+                    %a{:href => "#"} Link 2-1
+                  %li
+                    %a{:href => "#"} Link 2-2
+                  %li
+                    %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"} Sub Level 3
+                    %ul
+                      %li
+                        %a{:href => "#"} Link 3-1
+                      %li
+                        %a{:href => "#"} Link 3-2
+                      %li
+                        %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"} Sub Level 4
+                        %ul
+                          %li
+                            %a{:href => "#"} Link 4-1
+                          %li
+                            %a{:href => "#"} Link 4-2
+                          %li
+                            %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"} Sub Level 5
+                            %ul
+                              %li
+                                %a{:href => "#"} Link 5-1
+                              %li
+                                %a{:href => "#"} Link 5-2
+                              %li
+                                %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"} Sub Level 6
+                                %ul
+                                  %li
+                                    %a{:href => "#"} Link 6-1
+                                  %li
+                                    %a{:href => "#"} Link 6-2
+          %li.nav-main-heading
+            %span.sidebar-mini-hide Pages
+          %li
+            %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
+              %i.si.si-layers
+              %span.sidebar-mini-hide Generic
+            %ul
+              %li
+                %a{:href => "base_pages_blank.html"} Blank
+              %li
+                %a{:href => "base_pages_profile.html"} User Profile
+              %li
+                %a{:href => "base_pages_search.html"} Search Results
+              %li
+                %a{:href => "base_pages_invoice.html"} Invoice
+              %li
+                %a{:href => "base_pages_faq.html"} FAQ
+              %li
+                %a{:href => "base_pages_inbox.html"} Inbox
+              %li
+                %a{:href => "base_pages_login.html"} Log In
+              %li
+                %a{:href => "base_pages_register.html"} Register
+              %li
+                %a{:href => "base_pages_lock.html"} Lock Screen
+              %li
+                %a{:href => "base_pages_reminder.html"} Password Reminder
+              %li
+                %a{:href => "base_pages_coming_soon.html"} Coming Soon
+          %li
+            %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
+              %i.si.si-fire
+              %span.sidebar-mini-hide Error Pages
+            %ul
+              %li
+                %a{:href => "base_pages_400.html"} 400
+              %li
+                %a{:href => "base_pages_401.html"} 401
+              %li
+                %a{:href => "base_pages_403.html"} 403
+              %li
+                %a{:href => "base_pages_404.html"} 404
+              %li
+                %a{:href => "base_pages_500.html"} 500
+              %li
+                %a{:href => "base_pages_503.html"} 503
+          %li.nav-main-heading
+            %span.sidebar-mini-hide Apps
+          %li
+            = link_to (content_tag(:i, "", class: "i.si.si-rocket") + content_tag(:span, "Questions and answers", class: "sidebar-mini-hide")).html_safe, questions_path
+      / END Side Content
+    / Sidebar Content
+  / END Sidebar Scroll Container

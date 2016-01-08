@@ -1,0 +1,14 @@
+!!!
+/
+  [if IE 9] <html class="ie9 no-focus">
+/
+  [if gt IE 9]><!
+%html.no-focus
+  /
+    <![endif]
+  %body
+    = render "layouts/html_head"
+    %main
+      %canvas#bubble-canvas{:height => "471", :style => "position: fixed; top: 0px; left: 0px;", :width => "1920"}
+      = yield
+    = render "layouts/app_js_init"

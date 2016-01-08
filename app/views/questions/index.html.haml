@@ -1,0 +1,245 @@
+.content.content-narrow
+  %ol.breadcrumb.push-15
+    %li
+      %a.text-muted{:href => "base_pages_forum_categories.php"} Forums
+  .block
+    .block-header.bg-gray-lighter
+      %ul.block-options
+        %li
+          %button{"data-action" => "fullscreen_toggle", "data-toggle" => "block-option", :type => "button"}
+            %i.si.si-size-fullscreen
+        %li
+          %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+            %i.si.si-refresh
+      %h3.block-title Welcome to our forums
+    .block-content.block-content-full
+      %table.table.table-striped.table-borderless.table-vcenter
+        %thead
+          %tr
+            %th{:colspan => "2"} Introduction
+            %th.text-center.hidden-xs.hidden-sm{:style => "width: 100px;"} Topics
+            %th.text-center.hidden-xs.hidden-sm{:style => "width: 100px;"} Posts
+            %th.hidden-xs.hidden-sm{:style => "width: 200px;"} Last Post
+        %tbody
+          - @questions.each do |question|
+            %tr
+              %td.text-center
+                = image_tag('feliphe.jpg', class: "circle responsive-img valign profile-image")
+              %td
+                %h4.h5.font-w600.push-5
+                  = link_to question.title, question
+                .font-s13.text-muted Discuss with other users
+              %td.text-center.hidden-xs.hidden-sm
+                %a.font-w600{:href => "javascript:void(0)"} 580
+              %td.text-center.hidden-xs.hidden-sm
+                %a.font-w600{:href => "javascript:void(0)"} 980
+              %td.hidden-xs.hidden-sm
+                %span.font-s13
+                  by
+                  %a{:href => "base_pages_profile.php"} Evelyn Willis
+                  = succeed "July" do
+                    %br/
+          %tr
+            %td.text-center{:style => "width: 75px;"}
+              %i.si.si-check.fa-2x
+            %td
+              %h4.h5.font-w600.push-5
+                %a{:href => "base_pages_forum_topics.php"} Welcome
+              .font-s13.text-muted Feel free to introduce yourself
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 195
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 756
+            %td.hidden-xs.hidden-sm
+              %span.font-s13
+                by
+                %a{:href => "base_pages_profile.php"} John Parker
+                = succeed "July" do
+                  %br/
+          %tr
+            %td.text-center
+              %i.si.si-bell.fa-2x
+            %td
+              %h4.h5.font-w600.push-5
+                %a{:href => "base_pages_forum_topics.php"} Announcements
+              .font-s13.text-muted For the latest news, this is the place
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 150
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 1300
+            %td.hidden-xs.hidden-sm
+              %span.font-s13
+                by
+                %a{:href => "base_pages_profile.php"} Susan Elliott
+                = succeed "July" do
+                  %br/
+          %tr
+            %td.text-center
+              %i.si.si-badge.fa-2x
+            %td
+              %h4.h5.font-w600.push-5
+                %a{:href => "base_pages_forum_topics.php"} Terms & Conditions
+              .font-s13.text-muted Please read the our forum’s rules
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 15
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 250
+            %td.hidden-xs.hidden-sm
+              %span.font-s13
+                by
+                %a{:href => "base_pages_profile.php"} Amy Hunter
+                = succeed "July" do
+                  %br/
+      %table.table.table-striped.table-borderless.table-vcenter
+        %thead
+          %tr
+            %th{:colspan => "2"} Web Application
+            %th.text-center.hidden-xs.hidden-sm{:style => "width: 100px;"} Topics
+            %th.text-center.hidden-xs.hidden-sm{:style => "width: 100px;"} Posts
+            %th.hidden-xs.hidden-sm{:style => "width: 200px;"} Last Post
+        %tbody
+          %tr
+            %td.text-center{:style => "width: 75px;"}
+              %i.si.si-check.fa-2x
+            %td
+              %h4.h5.font-w600.push-5
+                %a{:href => "base_pages_forum_topics.php"} Getting Started
+              .font-s13.text-muted New user? Don't worry, you will find everything you need
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 210
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 980
+            %td.hidden-xs.hidden-sm
+              %span.font-s13
+                by
+                %a{:href => "base_pages_profile.php"} Linda Moore
+                = succeed "July" do
+                  %br/
+          %tr
+            %td.text-center
+              %i.si.si-badge.fa-2x
+            %td
+              %h4.h5.font-w600.push-5
+                %a{:href => "base_pages_forum_topics.php"} Tutorials
+              .font-s13.text-muted The best place for learning
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 350
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 1680
+            %td.hidden-xs.hidden-sm
+              %span.font-s13
+                by
+                %a{:href => "base_pages_profile.php"} Walter Fox
+                = succeed "July" do
+                  %br/
+          %tr
+            %td.text-center
+              %i.si.si-settings.fa-2x
+            %td
+              %h4.h5.font-w600.push-5
+                %a{:href => "base_pages_forum_topics.php"} Plugins
+              .font-s13.text-muted The best of the best out there
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 960
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 3500
+            %td.hidden-xs.hidden-sm
+              %span.font-s13
+                by
+                %a{:href => "base_pages_profile.php"} Evelyn Willis
+                = succeed "July" do
+                  %br/
+          %tr
+            %td.text-center
+              %i.si.si-wrench.fa-2x
+            %td
+              %h4.h5.font-w600.push-5
+                %a{:href => "base_pages_forum_topics.php"} API
+              .font-s13.text-muted API related discussions
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 480
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 1020
+            %td.hidden-xs.hidden-sm
+              %span.font-s13
+                by
+                %a{:href => "base_pages_profile.php"} Megan Dean
+                = succeed "July" do
+                  %br/
+          %tr
+            %td.text-center
+              %i.si.si-chemistry.fa-2x
+            %td
+              %h4.h5.font-w600.push-5
+                %a{:href => "base_pages_forum_topics.php"} Extentions
+              .font-s13.text-muted Extend our web application’s features
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 350
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 1980
+            %td.hidden-xs.hidden-sm
+              %span.font-s13
+                by
+                %a{:href => "base_pages_profile.php"} Denise Watson
+                = succeed "July" do
+                  %br/
+      %table.table.table-striped.table-borderless.table-vcenter
+        %thead
+          %tr
+            %th{:colspan => "2"} Support
+            %th.text-center.hidden-xs.hidden-sm{:style => "width: 100px;"} Topics
+            %th.text-center.hidden-xs.hidden-sm{:style => "width: 100px;"} Posts
+            %th.hidden-xs.hidden-sm{:style => "width: 200px;"} Last Post
+        %tbody
+          %tr
+            %td.text-center{:style => "width: 75px;"}
+              %i.si.si-info.fa-2x
+            %td
+              %h4.h5.font-w600.push-5
+                %a{:href => "base_pages_forum_topics.php"} How To Guides
+              .font-s13.text-muted The best hand crafted guides just for you
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 980
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 2156
+            %td.hidden-xs.hidden-sm
+              %span.font-s13
+                by
+                %a{:href => "base_pages_profile.php"} Roger Hart
+                = succeed "July" do
+                  %br/
+          %tr
+            %td.text-center
+              %i.si.si-question.fa-2x
+            %td
+              %h4.h5.font-w600.push-5
+                %a{:href => "base_pages_forum_topics.php"} Questions
+              .font-s13.text-muted Need assistance? Don’t worry, we are here to help
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 350
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 580
+            %td.hidden-xs.hidden-sm
+              %span.font-s13
+                by
+                %a{:href => "base_pages_profile.php"} Amanda Powell
+                = succeed "July" do
+                  %br/
+          %tr
+            %td.text-center
+              %i.si.si-users.fa-2x
+            %td
+              %h4.h5.font-w600.push-5
+                %a{:href => "base_pages_forum_topics.php"} User Sandbox
+              .font-s13.text-muted Discuss with other users
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 580
+            %td.text-center.hidden-xs.hidden-sm
+              %a.font-w600{:href => "javascript:void(0)"} 980
+            %td.hidden-xs.hidden-sm
+              %span.font-s13
+                by
+                %a{:href => "base_pages_profile.php"} Evelyn Willis
+                = succeed "July" do
+                  %br/
+

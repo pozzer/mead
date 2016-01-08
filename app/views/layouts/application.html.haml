@@ -1,0 +1,26 @@
+!!!
+/
+  [if IE 9] <html class="ie9 no-focus">
+/
+  [if gt IE 9]><!
+%html.no-focus
+  /
+    <![endif]
+  %body
+    = render "layouts/html_head"
+    #page-container.sidebar-l.sidebar-o.side-scroll.header-navbar-fixed
+      / Side Overlay
+      = render "shared/application/aside"
+      / Sidebar
+      = render "shared/application/sidebar"
+      / END Sidebar
+      / Header
+      = render "shared/application/header"
+      / END Header
+      / Main Container
+      %main#main-container= yield
+      / END Main Container
+      / Footer
+      = render "shared/application/footer"
+      / END Footer
+    = render "layouts/app_js_init"

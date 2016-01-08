@@ -1,0 +1,46 @@
+%header#header-navbar.content-mini.content-mini-full.hidden-md.hidden-lg
+  .content-boxed
+    / Header Navigation Right
+    %ul.nav-header.pull-right
+      %li
+        / Themes functionality initialized in App() -> uiHandleTheme()
+        .btn-group
+          %button.btn.btn-link.text-white.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+            %i.si.si-drop
+          %ul.dropdown-menu.dropdown-menu-right.sidebar-mini-hide.font-s13
+            %li
+              %a{"data-theme" => "default", "data-toggle" => "theme", :href => "javascript:void(0)", :tabindex => "-1"}
+                %i.fa.fa-circle.text-default.pull-right
+                %span.font-w600 Default
+            %li
+              %a{"data-theme" => "assets/css/themes/amethyst.min.css", "data-toggle" => "theme", :href => "javascript:void(0)", :tabindex => "-1"}
+                %i.fa.fa-circle.text-amethyst.pull-right
+                %span.font-w600 Amethyst
+            %li
+              %a{"data-theme" => "assets/css/themes/city.min.css", "data-toggle" => "theme", :href => "javascript:void(0)", :tabindex => "-1"}
+                %i.fa.fa-circle.text-city.pull-right
+                %span.font-w600 City
+            %li
+              %a{"data-theme" => "assets/css/themes/flat.min.css", "data-toggle" => "theme", :href => "javascript:void(0)", :tabindex => "-1"}
+                %i.fa.fa-circle.text-flat.pull-right
+                %span.font-w600 Flat
+            %li
+              %a{"data-theme" => "assets/css/themes/modern.min.css", "data-toggle" => "theme", :href => "javascript:void(0)", :tabindex => "-1"}
+                %i.fa.fa-circle.text-modern.pull-right
+                %span.font-w600 Modern
+            %li
+              %a{"data-theme" => "assets/css/themes/smooth.min.css", "data-toggle" => "theme", :href => "javascript:void(0)", :tabindex => "-1"}
+                %i.fa.fa-circle.text-smooth.pull-right
+                %span.font-w600 Smooth
+      %li
+        / Layout API, functionality initialized in App() -> uiLayoutApi()
+        %button.btn.btn-link.text-white.pull-right{"data-action" => "sidebar_open", "data-toggle" => "layout", :type => "button"}
+          %i.fa.fa-navicon
+    / END Header Navigation Right
+    / Header Navigation Left
+    %ul.nav-header.pull-left
+      %li.header-content
+        %a.h5{:href => "start_frontend.html"}
+          %i.fa.fa-circle-o-notch.text-primary
+          %span.h4.font-w600.text-white ne
+    / END Header Navigation Left
