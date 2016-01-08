@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   has_reputation :answering_skill,
       :source => { :reputation => :avg_rating, :of => :answers }
 
-  validates_presence_of :email
+  validates_presence_of :email, :password
 
   devise :database_authenticatable, :registerable,
       :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
@@ -36,11 +36,12 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first || User.where(:email=> auth.info.email).first
     unless user
-      user = User.new(provider:auth.provider,
+      user = User.create(provider:auth.provider,
                          uid:auth.uid,
                          email:auth.info.email,
                          password:Devise.friendly_token[0,20])
-      user.profile({first_name: auth.extra.raw_info.first_name, last_name: auth.extra.raw_info.last_name, :user => user})
+      user.profile.attributes={first_name: auth.extra.raw_info.first_name, last_name: auth.extra.raw_info.last_name}
+      user.save
     else
       user.update_attributes({:provider => auth.provider, :uid => auth.uid}) if user.provider.blank? or user.uid.blank?
     end

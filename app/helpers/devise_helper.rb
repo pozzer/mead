@@ -20,14 +20,13 @@ module DeviseHelper
                                  :resource => resource.class.model_name.human.downcase)
 
     html = <<-HTML
-      <div class="card red lighten-1">
-        <div class="card-content white-text" id="error_explanation">
-          #{messages}
-        </div>
+      <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4 class="font-w300 push-15">Opps!</h4>
+        <p>#{messages}</p>
       </div>
     HTML
 
     html.html_safe
   end
-
 end

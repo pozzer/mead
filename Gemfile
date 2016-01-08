@@ -23,6 +23,8 @@ gem 'activerecord-reputation-system'
 gem 'friendly_id'
 gem 'ckeditor'
 gem 'paperclip'
+gem 'less-rails', github: "metaskills/less-rails"
+gem 'therubyracer'
 
 group :development, :test do
   gem 'byebug'

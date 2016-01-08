@@ -13,21 +13,22 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
-//= require jquery
-//= require bubble.js
-//= require materialize.min
-//= require plugins.js
-//= perfect-scrollbar.mim
-//= require ckeditor/init
 
-$(document).ready(function(){
-  $('.collapsible').collapsible();
-  $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
-  });
-});
+// OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js
+//= require js/core/bootstrap.min
+//= require js/core/jquery.slimscroll.min
+//= require js/core/jquery.scrollLock.min
+//= require js/core/jquery.appear.min
+//= require js/core/jquery.countTo.min
+//= require js/core/jquery.placeholder.min
+//= require js/core/js.cookie.min
+//= require js/app.js
+//= require ckeditor/init
+//= require js/plugins/slick/slick.min
+//= require js/plugins/chartjs/Chart.min
+
+//= require_tree .
+
 
 function debug(msg) {
   if (window.console) {
@@ -49,7 +50,7 @@ $(function() {
   }
 
 });
+
 $(document).on("page:load ready", function(){
   debug("sadasd")
-
 });

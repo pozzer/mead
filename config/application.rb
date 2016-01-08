@@ -21,6 +21,7 @@ module MeadProject
     # config.i18n.default_locale = :de
     config.i18n.default_locale = :'pt-br'
     config.encoding = "utf-8"
+    config.less.compress = true
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end

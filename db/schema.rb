@@ -26,8 +26,14 @@ ActiveRecord::Schema.define(version: 20151208082947) do
     t.datetime "updated_at",                  null: false
   end
 
-  create_table "artigos", force: :cascade do |t|
-    t.string "title"
+  create_table "authorizations", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.string   "token"
+    t.string   "secret"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "avaliation_trades", force: :cascade do |t|
@@ -71,7 +77,6 @@ ActiveRecord::Schema.define(version: 20151208082947) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -112,8 +117,6 @@ ActiveRecord::Schema.define(version: 20151208082947) do
     t.integer "doc_k",  null: false
   end
 
-=======
->>>>>>> 80811d4206644ba129159572034068d5df59a521
   create_table "favorite_questions", force: :cascade do |t|
     t.integer  "question_id"
     t.integer  "user_id"
@@ -277,4 +280,9 @@ ActiveRecord::Schema.define(version: 20151208082947) do
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "doc_empl", "doc", column: "doc_k", primary_key: "doc_pk", name: "doc_empl_doc_k_fkey"
+  add_foreign_key "doc_empl", "empl", column: "empl_k", primary_key: "empl_pk", name: "doc_empl_empl_k_fkey"
+  add_foreign_key "empl_addr", "empl", column: "empl_k", primary_key: "empl_pk", name: "empl_addr_empl_k_fkey"
+  add_foreign_key "empl_doc", "doc", column: "doc_k", primary_key: "doc_pk", name: "empl_doc_doc_k_fkey"
+  add_foreign_key "empl_doc", "empl", column: "empl_k", primary_key: "empl_pk", name: "empl_doc_empl_k_fkey"
 end

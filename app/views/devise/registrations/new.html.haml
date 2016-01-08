@@ -1,27 +1,29 @@
-.session.row
-  .z-depth-4.card-panel.s12.m3.l6
-    = render "shared/logo"
-    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = devise_error_messages!
-      %p.login-box-msg
-      = f.simple_fields_for :profile  do |p|
-        .row
-          .input-field.col.s12.m12.l12.login-text
-            = p.input :first_name
-        .row
-          .input-field.col.s12.m12.l12.login-text
-            = p.input :birth_date, as: :string, input_html: {class: "datepicker"}
-      .row
-        .input-field.col.s12.m12.l12.login-text
-          = f.input :email, class: 'validate', type: "email", 'data-error': "wrong", "data-success": "right"
-      .row
-        .input-field.col.s12.m12.l12.login-text
-          = f.input :password, class: 'validate', type: "password", 'data-error': "wrong", "data-success": "right"
-      .row
-        .input-field.col.s12.m12.l12.login-text
-          = f.input :password_confirmation, class: 'validate', type: "password", 'data-error': "wrong", "data-success": "right"
-      .row
-        .input-field.col.s12.m12.l12
-          = f.submit class: 'btn col s12 m12 l12'
-      .row
-        = render "devise/shared/links", locals: {}
+.bg-white.pulldown
+  .content.content-boxed.overflow-hidden
+    .row
+      .col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-4.col-lg-offset-4
+        .push-30-t.push-20.animated.fadeIn
+          .text-center
+            %i.fa.fa-2x.fa-circle-o-notch.text-primary
+            %h1.h3.push-10-t Create Account
+          = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :vertical_form_devise, html: { class: "form-horizontal push-50-t push-50" }) do |f|
+            = devise_error_messages!
+            = f.simple_fields_for :profile  do |p|
+              = p.input :first_name
+              = p.input :birth_date, as: :string
+            = f.input :email, type: "email"
+            = f.input :password, type: "password"
+            = f.input :password_confirmation, type: "password"
+            .form-group
+              .col-xs-7.col-sm-8
+                %label.css-input.switch.switch-sm.switch-success
+                  %input#register-terms{:name => "register-terms", :type => "checkbox"}/
+                  %span
+                  I agree with terms & conditions
+              .col-xs-5.col-sm-4
+                .font-s13.text-right.push-5-t
+                  %a{"data-target" => "#modal-terms", "data-toggle" => "modal", :href => "#"} View Terms
+            .form-group
+              .col-xs-12.col-sm-6.col-sm-offset-3
+                = f.submit class: 'btn btn-sm btn-block btn-success'
+          = render "devise/shared/links", locals: {}
