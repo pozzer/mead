@@ -1,7 +1,8 @@
-# rendal
+# mead
 [![Code Climate](https://codeclimate.com/github/pozzer/mead/badges/gpa.svg)](https://codeclimate.com/github/pozzer/mead)
 [![Test Coverage](https://codeclimate.com/github/pozzer/mead/badges/coverage.svg)](https://codeclimate.com/github/pozzer/mead/coverage)
-Esta é uma aplicação em [Rails](http://rubyonrails.org/) utilizado para...
+
+Esta é uma aplicação em Rails utilizado para...
 
 ## Dependências
 
@@ -16,8 +17,8 @@ Para rodar este projeto você precisa ter:
 ## Setup do projeto
 
 1. Instalar as dependências a baixo:
-2. `$ git clone --recursive git@github.com:Sislam2/rendal.git` - Clone o projeto
-3. `$ cd rendal` - Entre na pasta do projeto
+2. `$ git clone --recursive git@github.com:Sislam2/mead.git` - Clone o projeto
+3. `$ cd mead` - Entre na pasta do projeto
 4. `$ bin/setup` - Executar o script de setup
 5. `$ rspec` - Executar as specs para ver se está tudo funcionando como deveria
 
