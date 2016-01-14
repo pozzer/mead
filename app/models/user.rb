@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
       :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+
+  default_scope -> { includes(:profile) }
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
@@ -54,6 +56,10 @@ class User < ActiveRecord::Base
         user.email = data["email"]
       end
     end
+  end
+
+  def full_name
+    profile.full_name
   end
 
   private

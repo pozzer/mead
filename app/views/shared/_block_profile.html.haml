@@ -1,0 +1,12 @@
+.block.block-rounded.block-bordered
+  .block-header.bg-gray-lighter
+    %h3.block-title
+      = title
+  .block-content.block-content-full.clearfix
+    .text-right.pull-right.push-10-t
+      .font-w600.push-5
+        = current_user.full_name
+      .text-muted
+        Aesir
+    .pull-left
+      %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/

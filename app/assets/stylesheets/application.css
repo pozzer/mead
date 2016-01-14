@@ -18,3 +18,14 @@
  *= require_self
  */
 
+.row_iten {
+  margin-bottom: 10px;
+}
+
+.best-answer-icon-size{
+  font-size: 35px;
+}
+
+.best-answer-icon-color {
+  color: green;
+}

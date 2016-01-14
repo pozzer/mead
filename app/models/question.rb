@@ -16,4 +16,8 @@ class Question < ActiveRecord::Base
     [id, title.parameterize].join("-")
   end
 
+  def have_best_answer?
+    [true, false].sample
+  end
+
 end
