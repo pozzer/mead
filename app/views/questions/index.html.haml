@@ -17,32 +17,32 @@
         - @questions.each do |question|
           %li
             .row
-              .col-md-1.text-center
-                .row_iten
+              .col-lg-1.text-center
+                .row_item
                   .row
                     12
                   .row
                     %b Votos
-                .row_iten
+                .row_item
                   .row
                     %i.fa.fa-check-circle-o.best-answer-icon-size{ class: (question.have_best_answer? ? "best-answer-icon-color" : "")}
                   .row
                     = question.answers.size
                   .row
                     %b Respostas
-                .row_iten
+                .row_item
                   .row
                     60
                   .row
                     %b Visitas
-              .col-md-11
-                .col-md-12
+              .col-lg-11
+                .col-lg-12
                   %h4= link_to question.title, question
                   .font-s13.text-muted
                     = question.content.to_s.html_safe
-                .col-md-9
+                .col-lg-9.col-sm-7.col-xm-12
                   %span.label.label-success Hidromel
                   %span.label.label-success Receita
                   %span.label.label-success Mosto
-                .col-md-3
+                .col-lg-3.col-sm-5.col-xm-12
                   = render partial: "shared/block_profile", locals: {title: "Criada em #{question.created_at}"}

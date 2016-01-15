@@ -1,52 +1,75 @@
-%h4
-= render "nav"
-.card-panel
-  .row
-    %h5
-      = @question.title
-    %hr
-  .row
-    %p
-      = @question.content.html_safe
-  %br
-  .row
-    .chip
-      Hidromel
-    .chip
-      Fermentação
-  .row
-    .col.s12.m2.user-details.cyan.darken-2.z-depth-1.right
-      .row
-        .col.col.s4.m4.l4
-          = image_tag('feliphe.jpg', class: "circle responsive-img valign profile-image")
-        .col.col.s8.m8.l8
-          %span.white-text
-            Feliphe Pozzer
-%ul.collection
-  %li.collection-item.avatar
-    %i.material-icons.circle folder
-    %span.title Title
-    %p
-      First Line
-      %br/
-      Second Line
-    %a.secondary-content{:href => "#!"}
-      %i.material-icons grade
-  %li.collection-item.avatar
-    %i.material-icons.circle.green insert_chart
-    %span.title Title
-    %p
-      First Line
-      %br/
-      Second Line
-    %a.secondary-content{:href => "#!"}
-      %i.material-icons grade
-  %li.collection-item.avatar
-    %i.material-icons.circle.red play_arrow
-    %span.title Title
-    %p
-      First Line
-      %br/
-      Second Line
-    %a.secondary-content{:href => "#!"}
-      %i.material-icons grade
+.content.content-narrow
+  %ol.breadcrumb.push-15
+    %li
+      %a.text-muted{:href => "base_pages_forum_categories.php"} Forums
+    %li
+      %a.link-effect{:href => "base_pages_forum_topics.php"} Introduction
+    %li
+      %a.link-effect{:href => "base_pages_forum_discussion.php"} New Member!
+  .col-lg-10
+    .block
+      .block-header.bg-gray-lighter
+        %h3.block-title= @question.title
+      .block-content
+        .row
+          .col-lg-1.text-center
+            .row_item
+              .row
+                12
+              .row
+                %b Votos
+            .row_item
+              .row
+                %i.fa.fa-check-circle-o.best-answer-icon-size{ class: (@question.have_best_answer? ? "best-answer-icon-color" : "")}
+              .row
+                = @question.answers.size
+              .row
+                %b Respostas
+            .row_item
+              .row
+                60
+              .row
+                %b Visitas
+          .col-lg-11
+            .col-lg-12
+              .font-s13.text-muted
+                = @question.content.to_s.html_safe
+            .col-lg-12.col-sm-7.col-xm-12
+              %span.label.label-success Hidromel
+              %span.label.label-success Receita
+              %span.label.label-success Mosto
+            .col-lg-4.col-sm-5.col-xm-12.pull-right
+              = render partial: "shared/block_profile", locals: {title: "Criada em #{@question.created_at}"}
+  .col-lg-2
+
+  .col-lg-10
+    .block
+      .block-header.bg-gray-lighter
+        %h3.block-title= "#{@question.answers.size} Respostas"
+
+      .block-content.block-content-full
+        %ul.list.list-activity.push
+          %li.push-30.push-30-t
+            .row
+              .col-lg-1.text-center
+                .row_item
+                .row_item
+                .row_item
+              .col-lg-11
+                .col-lg-12
+                  %p Potenti elit lectus augue eget iaculis vitae etiam, ullamcorper etiam bibendum ad feugiat magna accumsan dolor, nibh molestie cras hac ac ad massa, fusce ante convallis ante urna molestie vulputate bibendum tempus ante justo arcu erat accumsan adipiscing risus, libero condimentum venenatis sit nisl nisi ultricies sed, fames aliquet consectetur consequat nostra molestie neque nullam scelerisque neque commodo turpis quisque etiam egestas vulputate massa, curabitur tellus massa venenatis congue dolor enim integer luctus, nisi suscipit gravida fames quis vulputate nisi viverra luctus id leo dictum lorem, inceptos nibh orci.
+                .col-lg-4.col-sm-5.col-xm-12.pull-right
+                  = render partial: "shared/block_profile", locals: {title: "Criada em #{@question.created_at}"}
+          %li.push-30.push-30-t
+            .row
+              .col-lg-1.text-center
+                .row_item
+                .row_item
+                .row_item
+              .col-lg-11
+                .col-lg-12
+                  .font-s13.text-muted
+                    %p Potenti elit lectus augue eget iaculis vitae etiam, ullamcorper etiam bibendum ad feugiat magna accumsan dolor, nibh molestie cras hac ac ad massa, fusce ante convallis ante urna molestie vulputate bibendum tempus ante justo arcu erat accumsan adipiscing risus, libero condimentum venenatis sit nisl nisi ultricies sed, fames aliquet consectetur consequat nostra molestie neque nullam scelerisque neque commodo turpis quisque etiam egestas vulputate massa, curabitur tellus massa venenatis congue dolor enim integer luctus, nisi suscipit gravida fames quis vulputate nisi viverra luctus id leo dictum lorem, inceptos nibh orci.
+                .col-lg-4.col-sm-5.col-xm-12.pull-right
+                  = render partial: "shared/block_profile", locals: {title: "Criada em #{@question.created_at}"}
+
