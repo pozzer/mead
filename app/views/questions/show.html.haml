@@ -56,12 +56,13 @@
                         %i.fa.fa-chevron-down.best-answer-icon-size
                   .col-lg-11
                     .col-lg-12
-                      %p Potenti elit lectus augue eget iaculis vitae etiam, ullamcorper etiam bibendum ad feugiat magna accumsan dolor, nibh molestie cras hac ac ad massa, fusce ante convallis ante urna molestie vulputate bibendum tempus ante justo arcu erat accumsan adipiscing risus, libero condimentum venenatis sit nisl nisi ultricies sed, fames aliquet consectetur consequat nostra molestie neque nullam scelerisque neque commodo turpis quisque etiam egestas vulputate massa, curabitur tellus massa venenatis congue dolor enim integer luctus, nisi suscipit gravida fames quis vulputate nisi viverra luctus id leo dictum lorem, inceptos nibh orci.
+                      %p= answer.content
                     .col-lg-4.col-sm-5.col-xm-12.pull-right
-                      = render partial: "shared/block_profile", locals: {title: "Criada em #{@question.created_at}"}
+                      = render partial: "shared/block_profile", locals: {title: "Criada em #{answer.created_at}"}
             %li.push-30.list_answer
               = simple_form_for([@question, @answer], wrapper: :vertical_form_devise) do |f|
                 = f.input :content
+                = f.input :question_id, :as => :hidden
                 = f.submit
 
 
