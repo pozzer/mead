@@ -1,11 +1,10 @@
 class AnswersController < ApplicationController
   def create
-    binding.pry
     @answer = Answer.new(answer_params)
     @answer.user = current_user
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer.question, notice: 'Answer was successfully created.' }
+        format.html { redirect_to question_path(@answer.question, anchor: @answer.id), notice: 'Answer was successfully created.' }
       else
         format.html { redirect_to @answer.question, notice: 'Não foi hoje' }
       end

@@ -43,7 +43,7 @@
         .row
           %ul.list.list-activity.push
             - @question.answers.each do |answer|
-              %li.push-30.list_answer
+              %li.push-30.list_answer{id: answer.id}
                 .row
                   .col-lg-1.text-center
                     .row.push-10
