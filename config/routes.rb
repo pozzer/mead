@@ -4,9 +4,13 @@ Rails.application.routes.draw do
 
   resources :trades
   resources :bottles
-  resources :questions
+
   resources :profiles
   resources :homepages, only: :index
+
+  resources :questions do
+    resources :answers
+  end
 
   devise_for :users,  :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
 

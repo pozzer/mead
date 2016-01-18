@@ -29,3 +29,8 @@
 .best-answer-icon-color {
   color: green;
 }
+
+.list_answer{
+  padding-left: 13px !important;
+}
+

@@ -13,23 +13,19 @@
       .block-content
         .row
           .col-lg-1.text-center
-            .row_item
+            .row.push-10
               .row
-                12
+                %i.fa.fa-chevron-up.best-answer-icon-size
+            .row
+              %label.best-answer-icon-size= @question.answers.size
+            .row.push-10
               .row
-                %b Votos
-            .row_item
+                %i.fa.fa-chevron-down.best-answer-icon-size
+            .row.push-20-t.push-20
               .row
-                %i.fa.fa-check-circle-o.best-answer-icon-size{ class: (@question.have_best_answer? ? "best-answer-icon-color" : "")}
+                %i.fa.fa-star-o.best-answer-icon-size
               .row
-                = @question.answers.size
-              .row
-                %b Respostas
-            .row_item
-              .row
-                60
-              .row
-                %b Visitas
+                50
           .col-lg-11
             .col-lg-12
               .font-s13.text-muted
@@ -40,36 +36,34 @@
               %span.label.label-success Mosto
             .col-lg-4.col-sm-5.col-xm-12.pull-right
               = render partial: "shared/block_profile", locals: {title: "Criada em #{@question.created_at}"}
-  .col-lg-2
-
-  .col-lg-10
     .block
       .block-header.bg-gray-lighter
         %h3.block-title= "#{@question.answers.size} Respostas"
+      .block-content
+        .row
+          %ul.list.list-activity.push
+            - @question.answers.each do |answer|
+              %li.push-30.list_answer
+                .row
+                  .col-lg-1.text-center
+                    .row.push-10
+                      .row
+                        %i.fa.fa-chevron-up.best-answer-icon-size
+                    .row
+                      %label.best-answer-icon-size= @question.answers.size
+                    .row.push-10
+                      .row
+                        %i.fa.fa-chevron-down.best-answer-icon-size
+                  .col-lg-11
+                    .col-lg-12
+                      %p Potenti elit lectus augue eget iaculis vitae etiam, ullamcorper etiam bibendum ad feugiat magna accumsan dolor, nibh molestie cras hac ac ad massa, fusce ante convallis ante urna molestie vulputate bibendum tempus ante justo arcu erat accumsan adipiscing risus, libero condimentum venenatis sit nisl nisi ultricies sed, fames aliquet consectetur consequat nostra molestie neque nullam scelerisque neque commodo turpis quisque etiam egestas vulputate massa, curabitur tellus massa venenatis congue dolor enim integer luctus, nisi suscipit gravida fames quis vulputate nisi viverra luctus id leo dictum lorem, inceptos nibh orci.
+                    .col-lg-4.col-sm-5.col-xm-12.pull-right
+                      = render partial: "shared/block_profile", locals: {title: "Criada em #{@question.created_at}"}
+            %li.push-30.list_answer
+              = simple_form_for([@question, @answer], wrapper: :vertical_form_devise) do |f|
+                = f.input :content
+                = f.submit
 
-      .block-content.block-content-full
-        %ul.list.list-activity.push
-          %li.push-30.push-30-t
-            .row
-              .col-lg-1.text-center
-                .row_item
-                .row_item
-                .row_item
-              .col-lg-11
-                .col-lg-12
-                  %p Potenti elit lectus augue eget iaculis vitae etiam, ullamcorper etiam bibendum ad feugiat magna accumsan dolor, nibh molestie cras hac ac ad massa, fusce ante convallis ante urna molestie vulputate bibendum tempus ante justo arcu erat accumsan adipiscing risus, libero condimentum venenatis sit nisl nisi ultricies sed, fames aliquet consectetur consequat nostra molestie neque nullam scelerisque neque commodo turpis quisque etiam egestas vulputate massa, curabitur tellus massa venenatis congue dolor enim integer luctus, nisi suscipit gravida fames quis vulputate nisi viverra luctus id leo dictum lorem, inceptos nibh orci.
-                .col-lg-4.col-sm-5.col-xm-12.pull-right
-                  = render partial: "shared/block_profile", locals: {title: "Criada em #{@question.created_at}"}
-          %li.push-30.push-30-t
-            .row
-              .col-lg-1.text-center
-                .row_item
-                .row_item
-                .row_item
-              .col-lg-11
-                .col-lg-12
-                  .font-s13.text-muted
-                    %p Potenti elit lectus augue eget iaculis vitae etiam, ullamcorper etiam bibendum ad feugiat magna accumsan dolor, nibh molestie cras hac ac ad massa, fusce ante convallis ante urna molestie vulputate bibendum tempus ante justo arcu erat accumsan adipiscing risus, libero condimentum venenatis sit nisl nisi ultricies sed, fames aliquet consectetur consequat nostra molestie neque nullam scelerisque neque commodo turpis quisque etiam egestas vulputate massa, curabitur tellus massa venenatis congue dolor enim integer luctus, nisi suscipit gravida fames quis vulputate nisi viverra luctus id leo dictum lorem, inceptos nibh orci.
-                .col-lg-4.col-sm-5.col-xm-12.pull-right
-                  = render partial: "shared/block_profile", locals: {title: "Criada em #{@question.created_at}"}
 
+
+  .col-lg-2
