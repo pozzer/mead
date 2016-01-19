@@ -13,14 +13,7 @@
       .block-content
         .row
           .col-lg-1.text-center
-            .row.push-10
-              .row
-                %i.fa.fa-chevron-up.best-answer-icon-size
-            .row
-              %label.best-answer-icon-size= @question.answers.size
-            .row.push-10
-              .row
-                %i.fa.fa-chevron-down.best-answer-icon-size
+            = render partial: "shared/votes_column", locals: {count: @question.reputation_for(:votes).to_i, path: vote_question_path(@question)}
             .row.push-20-t.push-20
               .row
                 %i.fa.fa-star-o.best-answer-icon-size
@@ -42,29 +35,23 @@
       .block-content
         .row
           %ul.list.list-activity.push
-            - @question.answers.each do |answer|
+            - @question.answers_list.each do |answer|
               %li.push-30.list_answer{id: answer.id}
                 .row
                   .col-lg-1.text-center
-                    .row.push-10
-                      .row
-                        %i.fa.fa-chevron-up.best-answer-icon-size
-                    .row
-                      %label.best-answer-icon-size= @question.answers.size
-                    .row.push-10
-                      .row
-                        %i.fa.fa-chevron-down.best-answer-icon-size
+                    - if answer.best?
+                      .row_item
+                        .row
+                          %i.fa.fa-check-circle-o.best-answer-icon-size.best-answer-icon-color
+                    = render partial: "shared/votes_column", locals: {count:  answer.reputation_for(:votes).to_i, path: vote_question_answer_path(id:answer.id, question_id:answer.question_id)}
                   .col-lg-11
                     .col-lg-12
                       %p= answer.content
                     .col-lg-4.col-sm-5.col-xm-12.pull-right
                       = render partial: "shared/block_profile", locals: {title: "Criada em #{answer.created_at}"}
             %li.push-30.list_answer
-              = simple_form_for([@question, @answer], wrapper: :vertical_form_devise) do |f|
+              = simple_form_for([@question, @question.answers.new], wrapper: :vertical_form_devise) do |f|
                 = f.input :content
                 = f.input :question_id, :as => :hidden
                 = f.submit
-
-
-
   .col-lg-2

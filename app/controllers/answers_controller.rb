@@ -11,6 +11,13 @@ class AnswersController < ApplicationController
     end
   end
 
+  def vote
+    value = params[:type] == "up" ? 1 : -1
+    @answer = Answer.find(params[:id])
+    @answer.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back, notice: "Thank you for voting"
+  end
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params

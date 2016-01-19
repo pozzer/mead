@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   resources :homepages, only: :index
 
   resources :questions do
-    resources :answers
+    member { post :vote }
+    resources :answers do
+       member { post :vote }
+    end
   end
 
   devise_for :users,  :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }

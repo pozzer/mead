@@ -4,7 +4,8 @@ class Question < ActiveRecord::Base
 	belongs_to :user
 
 	has_reputation :votes,
-      :source => :user
+      source: :user,
+      aggregated_by: :sum
 
   acts_as_taggable # Alias for acts_as_taggable_on :tags
   acts_as_taggable_on :tags
@@ -17,7 +18,11 @@ class Question < ActiveRecord::Base
   end
 
   def have_best_answer?
-    [true, false].sample
+    answers.the_best.any?
+  end
+
+  def answers_list
+    answers.the_best + answers.remaining
   end
 
 end

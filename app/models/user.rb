@@ -11,29 +11,26 @@ class User < ActiveRecord::Base
   has_many :avaliations, class_name: "AvaliationTrade"
   has_many :pictures
   has_many :favorite_questions
+  has_many :evaluations, class_name: "RSEvaluation", as: :source
 
   accepts_nested_attributes_for :profile
 
   after_initialize :initialize_profile
 
+  has_reputation :questioning_skill, source: { reputation: :votes, of: :questions }
+  has_reputation :answering_skill, source: { reputation: :votes, of: :answers }
   has_reputation :karma,
-      :source => [
-          { :reputation => :questioning_skill, :weight => 0.8 },
-          { :reputation => :answering_skill }]
+      source: [{ reputation: :questioning_skill, weight: 0.8 },
+               { reputation: :answering_skill, weight: 0.5 }]
 
-  has_reputation :questioning_skill,
-      :source => { :reputation => :votes, :of => :questions }
-
-  has_reputation :answering_skill,
-      :source => { :reputation => :avg_rating, :of => :answers }
 
   validates_presence_of :email, :password
 
   devise :database_authenticatable, :registerable,
       :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+    # :confirmable, :lockable, :timeoutable and :omniauthable
 
   default_scope -> { includes(:profile) }
-  # :confirmable, :lockable, :timeoutable and :omniauthable
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first || User.where(:email=> auth.info.email).first
