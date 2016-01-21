@@ -1,16 +1,6 @@
-.content.content-narrow
-  %ol.breadcrumb.push-15
-    %li
-      = link_to("Questions",  questions_path, class:"text-muted")
+.col-lg-12
   .block
     .block-header.bg-gray-lighter
-      %ul.block-options
-        %li
-          %button{"data-action" => "fullscreen_toggle", "data-toggle" => "block-option", :type => "button"}
-            %i.si.si-size-fullscreen
-        %li
-          %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-            %i.si.si-refresh
       %h3.block-title Welcome to last Questions
     .block-content.block-content-full
       %ul.list.list-activity.push
@@ -25,7 +15,7 @@
                     %b Votos
                 .row_item
                   .row
-                    %i.fa.fa-check-circle-o.best-answer-icon-size{ class: (question.have_best_answer? ? "best-answer-icon-color" : "")}
+                    %i.fa.fa-check.best-answer-icon-size{ class: (question.have_best_answer? ? "best-answer-icon-color" : "")}
                   .row
                     = question.answers.size
                   .row
@@ -45,4 +35,4 @@
                   %span.label.label-success Receita
                   %span.label.label-success Mosto
                 .col-lg-3.col-sm-5.col-xm-12
-                  = render partial: "shared/block_profile", locals: {title: "Criada em #{question.created_at}"}
+                  = render partial: "shared/block_profile", locals: {title: "Criada em #{question.created_at}", user: question.user}

@@ -7,6 +7,10 @@ class Question < ActiveRecord::Base
       source: :user,
       aggregated_by: :sum
 
+  has_reputation :favorite_question,
+      source: :user,
+      aggregated_by: :sum
+
   acts_as_taggable # Alias for acts_as_taggable_on :tags
   acts_as_taggable_on :tags
 
@@ -23,6 +27,10 @@ class Question < ActiveRecord::Base
 
   def answers_list
     answers.the_best + answers.remaining
+  end
+
+  def favorite_count
+    favorite_questions.size
   end
 
 end

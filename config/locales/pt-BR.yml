@@ -1,13 +1,15 @@
-pt-br:
+pt-BR:
   activerecord:
     errors:
       models:
         user:
-
     models:
-      user:
-        one: Usuário
-        other: Usuários
+
+
+
+
+
+
     attributes:
       user:
         name: Nome

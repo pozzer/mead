@@ -19,9 +19,15 @@ class User < ActiveRecord::Base
 
   has_reputation :questioning_skill, source: { reputation: :votes, of: :questions }
   has_reputation :answering_skill, source: { reputation: :votes, of: :answers }
+  has_reputation :best_answering_skill, source: { reputation: :best_votes, of: :answers }
+  has_reputation :favorite_question_skill, source: { reputation: :favorite_question, of: :questions }
+
+
   has_reputation :karma,
       source: [{ reputation: :questioning_skill, weight: 0.8 },
-               { reputation: :answering_skill, weight: 0.5 }]
+               { reputation: :answering_skill, weight: 0.5 },
+               { reputation: :best_answering_skill, weight: 1 },
+               { reputation: :favorite_question_skill, weight: 1 }]
 
 
   validates_presence_of :email, :password
@@ -57,6 +63,10 @@ class User < ActiveRecord::Base
 
   def full_name
     profile.full_name
+  end
+
+  def favorite_question(question)
+    favorite_questions.where(question: question).first
   end
 
   private

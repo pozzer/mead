@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_action :set_answer, only: [:vote, :vote_best_answer]
+
   def create
     @answer = Answer.new(answer_params)
     @answer.user = current_user
@@ -18,7 +20,18 @@ class AnswersController < ApplicationController
     redirect_to :back, notice: "Thank you for voting"
   end
 
+  def vote_best_answer
+    @answer = Answer.find(params[:id])
+    @answer.voted_the_best
+    @answer.add_or_update_evaluation(:best_votes, 1, current_user)
+    redirect_to :back, notice: "Thank you for voting"
+  end
+
   private
+
+    def set_answer
+      @answer = Answer.find(params[:id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
       params.require(:answer).permit(:content, :question_id)

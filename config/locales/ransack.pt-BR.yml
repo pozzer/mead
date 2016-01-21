@@ -1,0 +1,11 @@
+pt-BR:
+  ransack:
+    asc: ascendente
+    desc: descendente
+    predicates:
+      cont: contém
+      not_cont: não contém
+      start: inicia com
+      end: termina com
+      gt: maior que
+      lt: menos que

@@ -18,7 +18,11 @@
       = render "shared/application/header"
       / END Header
       / Main Container
-      %main#main-container= yield
+      %main#main-container
+        .content.content-narrow
+          = render 'shared/alerts'
+          = render "shared/content_header", title: get_header_title
+          = yield
       / END Main Container
       / Footer
       = render "shared/application/footer"

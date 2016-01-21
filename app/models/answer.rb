@@ -8,4 +8,12 @@ class Answer < ActiveRecord::Base
   has_reputation :votes,
       source: :user,
       aggregated_by: :sum
+
+  has_reputation :best_votes,
+      source: :user,
+      aggregated_by: :sum
+
+  def voted_the_best
+    self.update_attributes(best: true) if !self.question.have_best_answer?
+  end
 end

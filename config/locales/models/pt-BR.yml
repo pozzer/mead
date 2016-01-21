@@ -1,0 +1,50 @@
+pt-BR:
+  models_and_attributes: &models_and_attributes
+    models:
+      question:
+        one: Pergunta
+        other: Perguntas
+      system:
+        one: Sistema
+        other: Sistemas
+      resource_class:
+        one: Classe
+        other: Classes
+      resource_type:
+        one: Tipo de recurso
+        other: Tipos de recursos
+      log:
+        one: Log
+        other: Logs
+    attributes:
+      # system:
+      # resource_class:
+      # resource_type:
+      log:
+        account: Conta
+        system: Sistema
+        resource: Recurso
+        status: Status
+        log_type: Tipo de Log
+        message: Mensagem
+        created_at: Criado em
+  activerecord:
+    <<: *models_and_attributes
+    errors:
+      models:
+        system:
+          attributes:
+            api_url:
+              url: não é uma URL válida
+  activemodel:
+    <<: *models_and_attributes
+  ransack:
+    attributes:
+      log:
+        system_id_eq: Sistema
+        resource_resource_type_id_eq: Tipo de Recurso
+        status_eq: Status
+        log_type_eq: Tipo de Log
+        created_at_gteq: Data maior ou igual
+        created_at_lteq: Data menor ou igual
+

@@ -1,57 +1,42 @@
-.content.content-narrow
-  %ol.breadcrumb.push-15
-    %li
-      %a.text-muted{:href => "base_pages_forum_categories.php"} Forums
-    %li
-      %a.link-effect{:href => "base_pages_forum_topics.php"} Introduction
-    %li
-      %a.link-effect{:href => "base_pages_forum_discussion.php"} New Member!
-  .col-lg-10
-    .block
-      .block-header.bg-gray-lighter
-        %h3.block-title= @question.title
-      .block-content
-        .row
-          .col-lg-1.text-center
-            = render partial: "shared/votes_column", locals: {count: @question.reputation_for(:votes).to_i, path: vote_question_path(@question)}
-            .row.push-20-t.push-20
+.col-lg-10
+  .block
+    .block-header.bg-gray-lighter
+      %h3.block-title= @question.title
+    .block-content
+      .row
+        .col-lg-1.text-center
+          = render partial: "shared/votes_column", locals: {count: @question.reputation_for(:votes).to_i, path: vote_question_path(@question)}
+          = render partial: "shared/favorite_question", locals: {question: @question}
+        .col-lg-11
+          .col-lg-12
+            .font-s13.text-muted
+              = @question.content.to_s.html_safe
+          .col-lg-12.col-sm-7.col-xm-12
+            %span.label.label-success Hidromel
+            %span.label.label-success Receita
+            %span.label.label-success Mosto
+          .col-lg-4.col-sm-5.col-xm-12.pull-right
+            = render partial: "shared/block_profile", locals: {title: "Criada em #{@question.created_at}", user: @question.user}
+  .block
+    .block-header.bg-gray-lighter
+      %h3.block-title= "#{@question.answers.size} Respostas"
+    .block-content
+      .row
+        %ul.list.list-activity.push
+          - @question.answers_list.each do |answer|
+            %li.push-30.list_answer{id: answer.id}
               .row
-                %i.fa.fa-star-o.best-answer-icon-size
-              .row
-                50
-          .col-lg-11
-            .col-lg-12
-              .font-s13.text-muted
-                = @question.content.to_s.html_safe
-            .col-lg-12.col-sm-7.col-xm-12
-              %span.label.label-success Hidromel
-              %span.label.label-success Receita
-              %span.label.label-success Mosto
-            .col-lg-4.col-sm-5.col-xm-12.pull-right
-              = render partial: "shared/block_profile", locals: {title: "Criada em #{@question.created_at}"}
-    .block
-      .block-header.bg-gray-lighter
-        %h3.block-title= "#{@question.answers.size} Respostas"
-      .block-content
-        .row
-          %ul.list.list-activity.push
-            - @question.answers_list.each do |answer|
-              %li.push-30.list_answer{id: answer.id}
-                .row
-                  .col-lg-1.text-center
-                    - if answer.best?
-                      .row_item
-                        .row
-                          %i.fa.fa-check-circle-o.best-answer-icon-size.best-answer-icon-color
-                    = render partial: "shared/votes_column", locals: {count:  answer.reputation_for(:votes).to_i, path: vote_question_answer_path(id:answer.id, question_id:answer.question_id)}
-                  .col-lg-11
-                    .col-lg-12
-                      %p= answer.content
-                    .col-lg-4.col-sm-5.col-xm-12.pull-right
-                      = render partial: "shared/block_profile", locals: {title: "Criada em #{answer.created_at}"}
-            %li.push-30.list_answer
-              = simple_form_for([@question, @question.answers.new], wrapper: :vertical_form_devise) do |f|
-                = f.input :content
-                = f.input :question_id, :as => :hidden
-                = f.submit
-  .col-lg-2
+                .col-lg-1.text-center
+                  = render partial: "shared/vote_best", locals: { question_user_id: @question.user_id, :answer => answer}
+                  = render partial: "shared/votes_column", locals: {count:  answer.reputation_for(:votes).to_i, path: vote_question_answer_path(id:answer.id, question_id:answer.question_id)}
+                .col-lg-11
+                  .col-lg-12
+                    %p= answer.content
+                  .col-lg-4.col-sm-5.col-xm-12.pull-right
+                    = render partial: "shared/block_profile", locals: {title: "Criada em #{answer.created_at}", user: answer.user}
+          %li.push-30.list_answer
+            = simple_form_for([@question, @question.answers.new], wrapper: :vertical_form_devise) do |f|
+              = f.input :content
+              = f.input :question_id, :as => :hidden
+              = f.submit
+.col-lg-2

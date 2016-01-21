@@ -1,0 +1,5 @@
+- flash.each do |tag, msg|
+  .alert.alert-dismissable{class: "alert-#{class_for_callout(tag)}"}
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+    %h3.font-w300.push-15a= class_for_callout(tag).humanize
+    %p= msg

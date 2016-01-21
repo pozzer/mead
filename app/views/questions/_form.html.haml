@@ -1,29 +1,28 @@
-.content.content-narrow
-  = render "nav"
-  %ol.breadcrumb.push-15
-    %li
-      %a.text-muted{:href => "base_pages_forum_categories.php"} Question
-    %li
-      %a.link-effect{:href => "base_pages_forum_new_topic.php"}
-        %i.fa.fa-plus
-        New Question
-  .block
-    .block-header.bg-gray-lighter
-      %ul.block-options
-        %li
-          %button{"data-action" => "fullscreen_toggle", "data-toggle" => "block-option", :type => "button"}
-            %i.si.si-size-fullscreen
-        %li
-          %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-            %i.si.si-refresh
-      %h3.block-title
-        %i.fa.fa-plus
-        New Topic
-    .block-content.block-content-full.block-content-narrow
-      = simple_form_for(@question, wrapper: :vertical_form_devise) do |f|
-        = f.input :title
-        = f.input :content, :as => :ckeditor, :label=>false, :input_html => { :ckeditor => {:toolbar => 'mini'} }
-        = f.submit "Publicar sua pergunta", class: 'btn'
+= render "nav"
+%ol.breadcrumb.push-15
+  %li
+    %a.text-muted{:href => "base_pages_forum_categories.php"} Question
+  %li
+    %a.link-effect{:href => "base_pages_forum_new_topic.php"}
+      %i.fa.fa-plus
+      New Question
+.block
+  .block-header.bg-gray-lighter
+    %ul.block-options
+      %li
+        %button{"data-action" => "fullscreen_toggle", "data-toggle" => "block-option", :type => "button"}
+          %i.si.si-size-fullscreen
+      %li
+        %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+          %i.si.si-refresh
+    %h3.block-title
+      %i.fa.fa-plus
+      New Topic
+  .block-content.block-content-full.block-content-narrow
+    = simple_form_for(@question, wrapper: :vertical_form_devise) do |f|
+      = f.input :title
+      = f.input :content, :as => :ckeditor, :label=>false, :input_html => { :ckeditor => {:toolbar => 'mini'} }
+      = f.submit "Publicar sua pergunta", class: 'btn'
 \= f.error_notification
 \.row
 \.card-panel

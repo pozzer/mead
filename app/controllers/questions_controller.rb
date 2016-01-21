@@ -1,4 +1,4 @@
-class QuestionsController < ApplicationController
+class QuestionsController < AppController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   # GET /questions
@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-
+    @question.user = current_user
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
@@ -66,7 +66,7 @@ class QuestionsController < ApplicationController
     value = params[:type] == "up" ? 1 : -1
     @question = Question.find(params[:id])
     @question.add_or_update_evaluation(:votes, value, current_user)
-    redirect_to :back, notice: "Thank you for voting"
+    redirect_to :back, msg: "Obrigado por votar", tag: "success"
   end
 
   private

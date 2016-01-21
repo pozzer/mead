@@ -29,13 +29,6 @@
 
 //= require_tree .
 
-
-function debug(msg) {
-  if (window.console) {
-    console.info(msg);
-  }
-}
-
 $(function() {
   mead_project.actual = {};
   mead_project.actual.controller = $('body').attr('data-controller');
@@ -49,8 +42,4 @@ $(function() {
     console.debug("\"mead_project." + mead_project.actual.controller + "." + mead_project.actual.action + ".init()\" not found.");
   }
 
-});
-
-$(document).on("page:load ready", function(){
-  debug("sadasd")
 });

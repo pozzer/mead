@@ -4,18 +4,31 @@ Rails.application.routes.draw do
 
   resources :trades
   resources :bottles
-
   resources :profiles
-  resources :homepages, only: :index
 
   resources :questions do
-    member { post :vote }
+    member do
+      post :vote
+    end
     resources :answers do
-       member { post :vote }
+      member do
+        post :vote
+        post :vote_best_answer
+      end
+    end
+  end
+
+  resources :users do
+    resources :favorite_questions do
+      member do
+        post :set_favorite, defaults: { :format => :js }
+        post :remove_favorite, defaults: { :format => :js }
+      end
     end
   end
 
   devise_for :users,  :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
+  resources :homepages, only: :index
 
   root to: "homepages#index"
 
