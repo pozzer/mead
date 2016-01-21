@@ -1,29 +1,21 @@
 class QuestionsController < AppController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  respond_to :js, only: [:vote]
 
-  # GET /questions
-  # GET /questions.json
   def index
     @questions = Question.all
   end
 
-  # GET /questions/1
-  # GET /questions/1.json
   def show
-    #@answer = @question.answers.new
   end
 
-  # GET /questions/new
   def new
     @question = Question.new
   end
 
-  # GET /questions/1/edit
   def edit
   end
 
-  # POST /questions
-  # POST /questions.json
   def create
     @question = Question.new(question_params)
     @question.user = current_user
@@ -38,8 +30,6 @@ class QuestionsController < AppController
     end
   end
 
-  # PATCH/PUT /questions/1
-  # PATCH/PUT /questions/1.json
   def update
     respond_to do |format|
       if @question.update(question_params)
@@ -52,8 +42,6 @@ class QuestionsController < AppController
     end
   end
 
-  # DELETE /questions/1
-  # DELETE /questions/1.json
   def destroy
     @question.destroy
     respond_to do |format|
@@ -66,7 +54,9 @@ class QuestionsController < AppController
     value = params[:type] == "up" ? 1 : -1
     @question = Question.find(params[:id])
     @question.add_or_update_evaluation(:votes, value, current_user)
-    redirect_to :back, msg: "Obrigado por votar", tag: "success"
+    respond_with(@question)
+
+    #redirect_to :back, msg: "Obrigado por votar", tag: "success"
   end
 
   private

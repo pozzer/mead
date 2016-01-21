@@ -1,22 +1,5 @@
 .col-lg-10
-  .block
-    .block-header.bg-gray-lighter
-      %h3.block-title= @question.title
-    .block-content
-      .row
-        .col-lg-1.text-center
-          = render partial: "shared/votes_column", locals: {count: @question.reputation_for(:votes).to_i, path: vote_question_path(@question)}
-          = render partial: "shared/favorite_question", locals: {question: @question}
-        .col-lg-11
-          .col-lg-12
-            .font-s13.text-muted
-              = @question.content.to_s.html_safe
-          .col-lg-12.col-sm-7.col-xm-12
-            %span.label.label-success Hidromel
-            %span.label.label-success Receita
-            %span.label.label-success Mosto
-          .col-lg-4.col-sm-5.col-xm-12.pull-right
-            = render partial: "shared/block_profile", locals: {title: "Criada em #{@question.created_at}", user: @question.user}
+  = render partial: "show"
   .block
     .block-header.bg-gray-lighter
       %h3.block-title= "#{@question.answers.size} Respostas"
@@ -24,7 +7,7 @@
       .row
         %ul.list.list-activity.push
           - @question.answers_list.each do |answer|
-            %li.push-30.list_answer{id: answer.id}
+            %li.push-30.list_answer{id: "answer_#{answer.id}" }
               .row
                 .col-lg-1.text-center
                   = render partial: "shared/vote_best", locals: { question_user_id: @question.user_id, :answer => answer}
@@ -33,7 +16,7 @@
                   .col-lg-12
                     %p= answer.content
                   .col-lg-4.col-sm-5.col-xm-12.pull-right
-                    = render partial: "shared/block_profile", locals: {title: "Criada em #{answer.created_at}", user: answer.user}
+                    = render partial: "shared/block_profile", locals: {title: "Respondeu a #{time_ago_in_words(answer.created_at)}", user: answer.user}
           %li.push-30.list_answer
             = simple_form_for([@question, @question.answers.new], wrapper: :vertical_form_devise) do |f|
               = f.input :content

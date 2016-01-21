@@ -8,11 +8,11 @@ Rails.application.routes.draw do
 
   resources :questions do
     member do
-      post :vote
+      post :vote, defaults: { :format => :js }
     end
     resources :answers do
       member do
-        post :vote
+        post :vote, defaults: { :format => :js }
         post :vote_best_answer
       end
     end

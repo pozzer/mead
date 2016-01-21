@@ -65,6 +65,10 @@ class User < ActiveRecord::Base
     profile.full_name
   end
 
+  def first_name
+    profile.first_name
+  end
+
   def favorite_question(question)
     favorite_questions.where(question: question).first
   end
