@@ -4,7 +4,7 @@
   .block-content#question
     .row
       .col-lg-1.text-center
-        = render partial: "shared/votes_column", locals: {count: @question.reputation_for(:votes).to_i, path: vote_question_path(@question)}
+        = render partial: "shared/votes_column", locals: {count: @question.votes_count, path: vote_question_path(@question)}
         = render partial: "shared/favorite_question", locals: {question: @question}
       .col-lg-11
         .col-lg-12

@@ -1,9 +1,9 @@
 .col-lg-12
-  .block
-    .block-header.bg-gray-lighter
-      %h3.block-title Minhas perguntas favoritas
-    .block-content.block-content-full
-      %ul.list.list-activity.push
-        - @favorite_questions.each do |favorite_question|
-          - question = favorite_question.question
-            = render partial: "questions/question_list", locals: { question: question }
+	.block
+		.block-header.bg-gray-lighter
+			%h3.block-title Minhas perguntas favoritas
+		.block-content.block-content-full
+			%ul.list.list-activity
+				- @favorite_questions.each do |favorite_question|
+					- question = favorite_question.question
+					= render partial: "questions/question_list", locals: { question: question }

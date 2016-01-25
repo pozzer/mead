@@ -33,4 +33,8 @@ class Question < ActiveRecord::Base
     favorite_questions.size
   end
 
+  def votes_count
+    reputation_for(:votes).to_i
+  end
+
 end
