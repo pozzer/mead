@@ -4,7 +4,7 @@ class FavoriteQuestionsController < AppController
   respond_to :js, only: [:set_favorite, :remove_favorite]
 
   def index
-    @favorite_questions = collection
+    @favorite_questions = FavoriteQuestion.where(user_id: params[:user_id])
     respond_with(@favorite_questions)
   end
 
@@ -30,7 +30,7 @@ class FavoriteQuestionsController < AppController
       @favorite_question = FavoriteQuestion.find(params[:id])
     end
 
-    def collection
-      FavoriteQuestion.where(user_id: params[:user_id])
-    end
+    #def collection
+    #  FavoriteQuestion.where(user_id: params[:user_id])
+    #end
 end

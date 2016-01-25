@@ -6,3 +6,7 @@ languages:
 exclude_paths:
 - "app/assets/*"
 - "vendor/*"
+- "public/*"
+- "lib/*"
+- "config/*"
+- "db/*"

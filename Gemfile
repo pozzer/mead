@@ -26,6 +26,7 @@ gem 'paperclip'
 gem 'less-rails', github: "metaskills/less-rails"
 gem 'therubyracer'
 gem 'breadcrumbs_on_rails', '2.3.1'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'

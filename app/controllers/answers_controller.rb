@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:vote, :vote_best_answer]
+  respond_to :js, only: [:vote]
 
   def create
     @answer = Answer.new(answer_params)
@@ -17,7 +18,6 @@ class AnswersController < ApplicationController
     value = params[:type] == "up" ? 1 : -1
     @answer = Answer.find(params[:id])
     @answer.add_or_update_evaluation(:votes, value, current_user)
-    redirect_to :back, notice: "Thank you for voting"
   end
 
   def vote_best_answer
