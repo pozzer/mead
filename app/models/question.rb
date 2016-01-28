@@ -1,5 +1,8 @@
 class Question < ActiveRecord::Base
-	has_many :answers
+	extend FriendlyId
+  friendly_id :title, use: :slugged
+
+  has_many :answers
 	has_many :favorite_questions
 	belongs_to :user
 
@@ -17,9 +20,9 @@ class Question < ActiveRecord::Base
   validates :title, presence: true
   validates :content, presence: true
 
-  def to_param
-    [id, title.parameterize].join("-")
-  end
+  #def to_param
+  #  [id, title.parameterize].join("-")
+  #end
 
   def have_best_answer?
     answers.the_best.any?

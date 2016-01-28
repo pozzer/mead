@@ -6,8 +6,8 @@
 %html.no-focus
   /
     <![endif]
+  = render "layouts/html_head"
   %body
-    = render "layouts/html_head"
     #page-container.sidebar-l.sidebar-o.side-scroll.header-navbar-fixed
       / Side Overlay
       = render "shared/application/aside"
@@ -27,4 +27,4 @@
       / Footer
       = render "shared/application/footer"
       / END Footer
-    = render "layouts/app_js_init"
+

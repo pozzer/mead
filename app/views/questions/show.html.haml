@@ -1,7 +1,8 @@
-.col-lg-10
+.col-lg-9
+  = render "nav"
   = render partial: "show"
-  .block
-    .block-header.bg-gray-lighter
+  .block.block-themed
+    .block-header{ class: (@question.have_best_answer? ? "bg-success" : "bg-info")}
       %h3.block-title= "#{@question.answers.size} Respostas"
     .block-content
       .row
@@ -14,12 +15,12 @@
                   = render partial: "shared/votes_column", locals: {count:  answer.reputation_for(:votes).to_i, path: vote_question_answer_path(id:answer.id, question_id:answer.question_id)}
                 .col-lg-11
                   .col-lg-12
-                    %p= answer.content
+                    %p= answer.content.html_safe
                   .col-lg-4.col-sm-5.col-xm-12.pull-right
                     = render partial: "shared/block_profile", locals: {title: "Respondeu a #{time_ago_in_words(answer.created_at)}", user: answer.user}
           %li.push-30.list_answer
             = simple_form_for([@question, @question.answers.new], wrapper: :vertical_form_devise) do |f|
-              = f.input :content
+              = f.input :content, :as => :ckeditor, :label=>false, :input_html => { :ckeditor => {:toolbar => 'mini'} }
               = f.input :question_id, :as => :hidden
-              = f.submit
-.col-lg-2
+              = f.submit "Responder", class: "btn btn-success"
+.col-lg-3

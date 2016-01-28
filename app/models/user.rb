@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
   has_reputation :best_answering_skill, source: { reputation: :best_votes, of: :answers }
   has_reputation :favorite_question_skill, source: { reputation: :favorite_question, of: :questions }
 
-
   has_reputation :karma,
       source: [{ reputation: :questioning_skill, weight: 0.8 },
                { reputation: :answering_skill, weight: 0.5 },

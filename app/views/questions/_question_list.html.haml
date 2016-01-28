@@ -1,23 +1,18 @@
 %li
   .row
     .col-lg-1.text-center
-      .row_item
+      .row.push-10-t
         .row
           = question.votes_count
         .row
           %b Votos
-      .row_item
+      .row.push-10-t
         .row
           %i.fa.fa-check.best-answer-icon-size{ class: (question.have_best_answer? ? "best-answer-icon-color" : "")}
         .row
           = question.answers.size
         .row
           %b Respostas
-      .row_item
-        .row
-          60
-        .row
-          %b Visitas
     .col-lg-11
       .col-lg-12
         %h4= link_to question.title, question
@@ -28,4 +23,4 @@
         %span.label.label-success Receita
         %span.label.label-success Mosto
       .col-lg-3.col-sm-5.col-xm-12
-        = render partial: "shared/block_profile", locals: {title: "Criada em #{question.created_at}", user: question.user}
+        = render partial: "shared/block_profile", locals: {title: "Perguntada a  #{time_ago_in_words(question.created_at)}", user: question.user}
