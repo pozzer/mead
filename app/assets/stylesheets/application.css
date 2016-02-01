@@ -14,6 +14,7 @@
  *= require oneui
  *= require themes/modern
  *= require themes/city
+ *= require js/plugins/select2/select2-bootstrap.css
  *= require_tree .
  *= require_self
  */

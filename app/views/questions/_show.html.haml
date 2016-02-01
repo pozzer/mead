@@ -10,9 +10,8 @@
         .col-lg-12
           .font-s13.text-muted
             = @question.content.to_s.html_safe
-        .col-lg-12.col-sm-7.col-xm-12
-          %span.label.label-success Hidromel
-          %span.label.label-success Receita
-          %span.label.label-success Mosto
+            .push-10
+              - @question.tags.each do |tag|
+                %span.label.label-success= tag
         .col-lg-4.col-sm-5.col-xm-12.pull-right
           = render partial: "shared/block_profile", locals: {title: "Perguntou a #{time_ago_in_words(@question.created_at)}", user: @question.user}

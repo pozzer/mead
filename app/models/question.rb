@@ -14,15 +14,10 @@ class Question < ActiveRecord::Base
       source: :user,
       aggregated_by: :sum
 
-  acts_as_taggable # Alias for acts_as_taggable_on :tags
-  acts_as_taggable_on :tags
+  acts_as_taggable
 
   validates :title, presence: true
   validates :content, presence: true
-
-  #def to_param
-  #  [id, title.parameterize].join("-")
-  #end
 
   def have_best_answer?
     answers.the_best.any?

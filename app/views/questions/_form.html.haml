@@ -10,4 +10,5 @@
       = simple_form_for(@question, wrapper: :vertical_form_devise) do |f|
         = f.input :title
         = f.input :content, :as => :ckeditor, :label=>false, :input_html => { :ckeditor => {:toolbar => 'mini'} }
+        = f.input :tag_list, input_html: {value: @question.tag_list.to_s}
         = f.submit "Publicar sua pergunta", class: 'btn'

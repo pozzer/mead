@@ -26,6 +26,8 @@
 //= require ckeditor/init
 //= require js/plugins/slick/slick.min
 //= require js/plugins/chartjs/Chart.min
+//= require js/plugins/select2/select2.full.min.js
+
 
 //= require_tree .
 
