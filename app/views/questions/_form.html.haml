@@ -10,5 +10,16 @@
       = simple_form_for(@question, wrapper: :vertical_form_devise) do |f|
         = f.input :title
         = f.input :content, :as => :ckeditor, :label=>false, :input_html => { :ckeditor => {:toolbar => 'mini'} }
-        = f.input :tag_list, input_html: {value: @question.tag_list.to_s}
+        = f.input :tag_list, as: :select, collection:ActsAsTaggableOn::Tagging.where(:context=>"tags").joins(:tag).select("distinct tags.id, tags.name").collect{ |x| [x.name, x.id] } ,wrapper: :vertical_form, input_html: { multiple: true }
+        /.form-material
+        /  %select#example2-select2-multiple.js-select2.form-control{"data-placeholder" => "Choose many..", :multiple => "multiple", :name => "example2-select2-multiple", :style => "width: 100%;"}
+        /    %option
+        /    %option{:value => "1"} HTML
+        /    %option{:value => "2"} CSS
+        /    %option{:value => "3"} JavaScript
+        /    %option{:value => "4"} PHP
+        /    %option{:value => "5"} MySQL
+        /    %option{:value => "6"} Ruby
+        /    %option{:value => "7"} AngularJS
+        /  %label{:for => "example2-select2-multiple"} Multiple Values
         = f.submit "Publicar sua pergunta", class: 'btn'

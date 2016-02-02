@@ -11,6 +11,7 @@
           .font-s13.text-muted
             = @question.content.to_s.html_safe
             .push-10
+              -binding.pry
               - @question.tags.each do |tag|
                 %span.label.label-success= tag
         .col-lg-4.col-sm-5.col-xm-12.pull-right
