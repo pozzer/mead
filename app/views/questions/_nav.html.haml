@@ -1,12 +1,3 @@
 .row
-  .col-lg-5.pull-right.push-30
-    %button.btn.btn-success.btn-sm.push-5-r{:type => "button"}
-      %i.fa.fa-plus
-      Add User
-    %button.btn.btn-success.btn-sm.push-5-r{:type => "button"}
-      %i.fa.fa-plus
-      Add User
-    %button.btn.btn-success.btn-sm.push-5-r{:type => "button"}
-      %i.fa.fa-plus
-      Add User
-    = link_to_with_icon([' Faça uma pergunta','fa fa-plus'], new_question_path, class: "btn btn-primary push-5-r btn-sm")
+  .col-md-12.push-20
+    = link_to_with_icon([' Faça uma pergunta','fa fa-plus'], new_question_path, class: "btn btn-primary push-5-r btn-sm pull-right")
