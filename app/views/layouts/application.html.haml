@@ -7,7 +7,7 @@
   /
     <![endif]
   = render "layouts/html_head"
-  %body
+  %body{"data-controller": controller.controller_name, "data-action": controller.action_name}
     #page-container.sidebar-l.sidebar-o.side-scroll.header-navbar-fixed
       / Side Overlay
       = render "shared/application/aside"
@@ -27,4 +27,5 @@
       / Footer
       = render "shared/application/footer"
       / END Footer
+  }
 
