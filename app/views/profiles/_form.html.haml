@@ -1,3 +1,161 @@
+.content.content-boxed
+  .block
+    .bg-image{:style => "background-image: url('assets/img/photos/photo3@2x.jpg');"}
+      .block-content.bg-primary-op.text-center.overflow-hidden
+        .push-30-t.push.animated.fadeInDown
+          %img.img-avatar.img-avatar96.img-avatar-thumb{:alt => "", :src => "assets/img/avatars/avatar10.jpg"}/
+        .push-30.animated.fadeInUp
+          %h2.h4.font-w600.text-white.push-5 Eric Lawson
+          %h3.h5.text-white-op Web Designer
+    .block-content.text-center
+      .row.items-push.text-uppercase
+        .col-xs-6.col-sm-3
+          .font-w700.text-gray-darker.animated.fadeIn Sales
+          %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 22000
+        .col-xs-6.col-sm-3
+          .font-w700.text-gray-darker.animated.fadeIn Products
+          %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 16
+        .col-xs-6.col-sm-3
+          .font-w700.text-gray-darker.animated.fadeIn Followers
+          %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 2600
+        .col-xs-6.col-sm-3
+          .font-w700.text-gray-darker.animated.fadeIn 3603 Ratings
+          .text-warning.push-10-t.animated.flipInX
+            %i.fa.fa-star
+            %i.fa.fa-star
+            %i.fa.fa-star
+            %i.fa.fa-star
+            %i.fa.fa-star
+  %form{:action => "pages_profile_edit.php", :method => "post", :onsubmit => "return false;"}
+    .block
+      %ul.nav.nav-tabs.nav-justified.push-20{"data-toggle" => "tabs"}
+        %li.active
+          %a{:href => "#tab-profile-personal"}
+            %i.fa.fa-fw.fa-pencil
+            Personal
+        %li
+          %a{:href => "#tab-profile-password"}
+            %i.fa.fa-fw.fa-asterisk
+            Password
+        %li
+          %a{:href => "#tab-profile-privacy"}
+            %i.fa.fa-fw.fa-lock
+            Privacy
+      .block-content.tab-content
+        #tab-profile-personal.tab-pane.fade.active.in
+          .row.items-push
+            .col-sm-6.col-sm-offset-3.form-horizontal
+              .form-group
+                .col-xs-6
+                  %label Username
+                  .form-control-static.font-w700 Admin
+              .form-group
+                .col-xs-12
+                  %label{:for => "profile-email"} Email Address
+                  %input#profile-email.form-control.input-lg{:name => "profile-email", :placeholder => "Enter your email..", :type => "email", :value => "admin@example.com"}/
+              .form-group
+                .col-xs-6
+                  %label{:for => "profile-firstname"} Firstname
+                  %input#profile-firstname.form-control.input-lg{:name => "profile-firstname", :placeholder => "Enter your firstname..", :type => "text", :value => "John"}/
+                .col-xs-6
+                  %label{:for => "profile-lastname"} Lastname
+                  %input#profile-lastname.form-control.input-lg{:name => "profile-lastname", :placeholder => "Enter your lastname..", :type => "text", :value => "Doe"}/
+              .form-group
+                .col-xs-12
+                  %label{:for => "profile-bio"} Bio
+                  %textarea#profile-bio.form-control.input-lg{:name => "profile-bio", :placeholder => "Enter a few details about yourself..", :rows => "15"} Hi there, welcome to my profile! I'm a web designer and I love creating stuff that solve problems and make your life easier. Feel free to follow me to know more about me and my projects. Thanks for stopping by, wish you a great day!
+              .form-group
+                .col-xs-12
+                  %label{:for => "profile-skills"} Skills
+                  %select#profile-skills.form-control{:multiple => "multiple", :name => "profile-skills", :size => "8"}
+                    %option{:selected => "selected", :value => "1"} HTML
+                    %option{:selected => "selected", :value => "2"} CSS
+                    %option{:selected => "selected", :value => "3"} JavaScript
+                    %option{:value => "4"} PHP
+                    %option{:value => "5"} Ruby
+                    %option{:selected => "selected", :value => "6"} Photoshop
+                    %option{:selected => "selected", :value => "6"} Sketch
+                    %option{:value => "7"} Illustrator
+              .form-group
+                .col-sm-6
+                  %label{:for => "profile-city"} Where do you live?
+                  %input#profile-city.form-control.input-lg{:name => "profile-city", :placeholder => "Enter your location..", :type => "text"}/
+                .col-sm-6
+                  %label{:for => "profile-age"} Age
+                  %input#profile-age.form-control.input-lg{:name => "profile-age", :placeholder => "Enter your age..", :type => "text"}/
+              .form-group
+                %label.col-xs-12 Gender
+                .col-xs-12
+                  %label.css-input.css-radio.css-radio-primary.push-10-r
+                    %input{:name => "profile-gender-group", :type => "radio"}/
+                    %span
+                    Female
+                  %label.css-input.css-radio.css-radio-primary
+                    %input{:checked => "checked", :name => "profile-gender-group", :type => "radio"}/
+                    %span
+                    Male
+        #tab-profile-password.tab-pane.fade
+          .row.items-push
+            .col-sm-6.col-sm-offset-3.form-horizontal
+              .form-group
+                .col-xs-12
+                  %label{:for => "profile-password"} Current Password
+                  %input#profile-password.form-control.input-lg{:name => "profile-password", :type => "password"}/
+              %hr/
+              .form-group
+                .col-xs-12
+                  %label{:for => "profile-password-new"} New Password
+                  %input#profile-password-new.form-control.input-lg{:name => "profile-password-new", :type => "password"}/
+              .form-group
+                .col-xs-12
+                  %label{:for => "profile-password-new-confirm"} Confirm New Password
+                  %input#profile-password-new-confirm.form-control.input-lg{:name => "profile-password-new-confirm", :type => "password"}/
+        #tab-profile-privacy.tab-pane.fade
+          .row.items-push
+            .col-sm-6.col-sm-offset-3.form-horizontal
+              .form-group
+                .col-xs-8
+                  .font-s13.font-w600 Online Status
+                  .font-s13.font-w400.text-muted Show your status to all
+                .col-xs-4.text-right
+                  %label.css-input.switch.switch-sm.switch-primary.push-10-t
+                    %input{:type => "checkbox"}/
+                    %span
+              %hr/
+              .form-group
+                .col-xs-8
+                  .font-s13.font-w600 Auto Updates
+                  .font-s13.font-w400.text-muted Keep up to date
+                .col-xs-4.text-right
+                  %label.css-input.switch.switch-sm.switch-primary.push-10-t
+                    %input{:type => "checkbox"}/
+                    %span
+              %hr/
+              .form-group
+                .col-xs-8
+                  .font-s13.font-w600 Notifications
+                  .font-s13.font-w400.text-muted Do you need them?
+                .col-xs-4.text-right
+                  %label.css-input.switch.switch-sm.switch-primary.push-10-t
+                    %input{:checked => "checked", :type => "checkbox"}/
+                    %span
+              %hr/
+              .form-group
+                .col-sm-8
+                  .font-s13.font-w600 API Access
+                  .font-s13.font-w400.text-muted Enable/Disable access
+                .col-sm-4.text-right
+                  %label.css-input.switch.switch-sm.switch-primary.push-10-t
+                    %input{:checked => "checked", :type => "checkbox"}/
+                    %span
+      .block-content.block-content-full.bg-gray-lighter.text-center
+        %button.btn.btn-sm.btn-primary{:type => "submit"}
+          %i.fa.fa-check.push-5-r
+          Save Changes
+        %button.btn.btn-sm.btn-warning{:type => "reset"}
+          %i.fa.fa-refresh.push-5-r
+          Reset
+
 = simple_form_for(@profile) do |f|
   = f.error_notification
 

@@ -11,10 +11,10 @@
  * file per style scope.
  *
  *
+ *= require js/plugins/select2/select2.min.css
  *= require oneui
  *= require themes/city
  *= require themes/modern
- *= require js/plugins/select2/select2.min.css
  *= require_tree .
  *= require_self
  */
