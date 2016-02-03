@@ -1,4 +1,6 @@
 class Profile < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :full_name, use: :slugged
 
 	belongs_to :user
 	belongs_to :city
@@ -11,10 +13,6 @@ class Profile < ActiveRecord::Base
 
   def full_name
     "#{first_name} #{last_name}"
-  end
-
-  def to_param
-    [id, full_name.parameterize].join("-")
   end
 
 end

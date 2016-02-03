@@ -1,254 +1,286 @@
-.push-50-t.push-15.clearfix
-  .push-15-r.pull-left.animated.fadeIn
-    %img.img-avatar.img-avatar-thumb{:alt => "", :src => "assets/img/avatars/avatar13.jpg"}/
-  %h1.h2.text-white.push-5-t.animated.zoomIn John Parker
-  %h2.h5.text-white-op.animated.zoomIn UI Designer
-.content.bg-white.border-b
-  .row.items-push.text-uppercase
-    .col-xs-6.col-sm-3
-      .font-w700.text-gray-darker.animated.fadeIn Sales
-      %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 17980
-    .col-xs-6.col-sm-3
-      .font-w700.text-gray-darker.animated.fadeIn Products
-      %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 27
-    .col-xs-6.col-sm-3
-      .font-w700.text-gray-darker.animated.fadeIn Followers
-      %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 1360
-    .col-xs-6.col-sm-3
-      .font-w700.text-gray-darker.animated.fadeIn 739 Ratings
-      .text-warning.push-10-t.animated.flipInX
-        %i.fa.fa-star
-        %i.fa.fa-star
-        %i.fa.fa-star
-        %i.fa.fa-star
-        %i.fa.fa-star-half-o
-        %span.text-muted (4.9)
-.content.content-boxed
-  .row
-    .col-sm-7.col-lg-8
-      .block
-        .block-header.bg-gray-lighter
-          %ul.block-options
-            %li
-              %button{"data-action" => "fullscreen_toggle", "data-toggle" => "block-option", :type => "button"}
-                %i.si.si-size-fullscreen
-            %li
-              %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-                %i.si.si-refresh
-          %h3.block-title
-            %i.fa.fa-newspaper-o
-            Updates
-        .block-content
-          %ul.list.list-timeline.pull-t
-            %li
-              .list-timeline-time 3 hrs ago
-              %i.fa.fa-facebook.list-timeline-icon.bg-default
-              .list-timeline-content
-                %p.font-w600 + 290 Page Likes
-                %p.font-s13 This is great, keep it up!
-            %li
-              .list-timeline-time 4 hrs ago
-              %i.fa.fa-briefcase.list-timeline-icon.bg-modern
-              .list-timeline-content
-                %p.font-w600 3 New Products were added!
-                .push-10-t
-                  %a.item.item-rounded.push-10-r.bg-info{"data-original-title" => "MyPanel", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
-                    %i.si.si-rocket.text-white-op
-                  %a.item.item-rounded.push-10-r.bg-amethyst{"data-original-title" => "Project Time", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
-                    %i.si.si-calendar.text-white-op
-                  %a.item.item-rounded.push-10-r.bg-city{"data-original-title" => "iDashboard", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
-                    %i.si.si-speedometer.text-white-op
-            %li
-              .list-timeline-time 12 hrs ago
-              %i.fa.fa-twitter.list-timeline-icon.bg-info
-              .list-timeline-content
-                %p.font-w600 + 1150 Followers
-                %p.font-s13 You’re getting more and more followers, keep it up!
-            %li
-              .list-timeline-time 1 day ago
-              %i.fa.fa-database.list-timeline-icon.bg-smooth
-              .list-timeline-content
-                %p.font-w600 Database backup completed!
-                %p.font-s13
-                  Download the
-                  = succeed "." do
-                    %a{:href => "javascript:void(0)"} latest backup
-            %li
-              .list-timeline-time 2 days ago
-              %i.fa.fa-user-plus.list-timeline-icon.bg-success
-              .list-timeline-content
-                %p.font-w600 + 5 Friend Requests
-                %ul.nav-users.push-10-t.push
-                  %li
-                    %a{:href => "base_pages_profile.php"}
-                      %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar3.jpg"}/
-                      %i.fa.fa-circle.text-success
-                      Evelyn Willis
-                      .font-w400.text-muted
-                        %small Web Designer
-                  %li
-                    %a{:href => "base_pages_profile.php"}
-                      %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar11.jpg"}/
-                      %i.fa.fa-circle.text-success
-                      Roger Hart
-                      .font-w400.text-muted
-                        %small Graphic Designer
-                  %li
-                    %a{:href => "base_pages_profile.php"}
-                      %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar8.jpg"}/
-                      %i.fa.fa-circle.text-warning
-                      Amy Hunter
-                      .font-w400.text-muted
-                        %small Photographer
-                  %li
-                    %a{:href => "base_pages_profile.php"}
-                      %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar10.jpg"}/
-                      %i.fa.fa-circle.text-warning
-                      Adam Hall
-                      .font-w400.text-muted
-                        %small Copywriter
-                  %li
-                    %a{:href => "base_pages_profile.php"}
-                      %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar14.jpg"}/
-                      %i.fa.fa-circle.text-danger
-                      Jeremy Fuller
-                      .font-w400.text-muted
-                        %small UI Designer
-            %li
-              .list-timeline-time 1 week ago
-              %i.fa.fa-cog.list-timeline-icon.bg-primary-dark
-              .list-timeline-content
-                %p.font-w600 System updated to v2.02
-                %p.font-s13
-                  Check the complete changelog at the
-                  = succeed "." do
-                    %a{:href => "javascript:void(0)"} activity page
-            %li
-              .list-timeline-time 2 weeks ago
-              %i.fa.fa-briefcase.list-timeline-icon.bg-modern
-              .list-timeline-content
-                %p.font-w600 1 New Product was added!
-                .push-10-t
-                  %a.item.item-rounded.push-10-r.bg-modern{"data-original-title" => "eSettings", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
-                    %i.si.si-settings.text-white-op
-            %li
-              .list-timeline-time 2 months ago
-              %i.fa.fa-cog.list-timeline-icon.bg-primary-dark
-              .list-timeline-content
-                %p.font-w600 System updated to v2.01
-                %p.font-s13
-                  Check the complete changelog at the
-                  = succeed "." do
-                    %a{:href => "javascript:void(0)"} activity page
-    .col-sm-5.col-lg-4
-      .block
-        .block-header.bg-gray-lighter
-          %ul.block-options
-            %li
-              %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-                %i.si.si-refresh
-          %h3.block-title
-            %i.fa.fa-fw.fa-briefcase
-            Products
-        .block-content
-          %ul.list.list-simple.list-li-clearfix
-            %li
-              %a.item.item-rounded.pull-left.push-10-r.bg-info{:href => "javascript:void(0)"}
-                %i.si.si-rocket.text-white-op
-              %h5.push-10-t MyPanel
-              .font-s13 Responsive App Template
-            %li
-              %a.item.item-rounded.pull-left.push-10-r.bg-amethyst{:href => "javascript:void(0)"}
-                %i.si.si-calendar.text-white-op
-              %h5.push-10-t Project Time
-              .font-s13 Web application
-            %li
-              %a.item.item-rounded.pull-left.push-10-r.bg-danger{:href => "javascript:void(0)"}
-                %i.si.si-speedometer.text-white-op
-              %h5.push-10-t iDashboard
-              .font-s13 Bootstrap Admin Template
-          .text-center.push
-            %small
-              %a{:href => "javascript:void(0)"} View More..
-      .block
-        .block-header.bg-gray-lighter
-          %ul.block-options
-            %li
-              %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-                %i.si.si-refresh
-          %h3.block-title
-            %i.fa.fa-fw.fa-pencil
-            Ratings
-        .block-content
-          %ul.list.list-simple
-            %li
-              .push-5.clearfix
-                .text-warning.pull-right
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                %a.font-w600{:href => "base_pages_profile.php"} Dennis Ross
-                %span.text-muted (5/5)
-              .font-s13 Flawless design execution! I'm really impressed with the product, it really helped me build my app so fast! Thank you!
-            %li
-              .push-5.clearfix
-                .text-warning.pull-right
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                %a.font-w600{:href => "base_pages_profile.php"} Julia Cole
-                %span.text-muted (5/5)
-              .font-s13 Great value for money and awesome support! Would buy again and again! Thanks!
-            %li
-              .push-5.clearfix
-                .text-warning.pull-right
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                %a.font-w600{:href => "base_pages_profile.php"} Emma Cooper
-                %span.text-muted (5/5)
-              .font-s13 Working great in all my devices, quality and quantity in a great package! Thank you!
-          .text-center.push
-            %small
-              %a{:href => "javascript:void(0)"} Read More..
-      .block
-        .block-header.bg-gray-lighter
-          %ul.block-options
-            %li
-              %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-                %i.si.si-refresh
-          %h3.block-title
-            %i.fa.fa-fw.fa-share-alt
-            Followers
-        .block-content
-          %ul.nav-users.push
-            %li
-              %a{:href => "base_pages_profile.php"}
-                %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar16.jpg"}/
-                %i.fa.fa-circle.text-success
-                Ethan Howard
-                .font-w400.text-muted
-                  %small Web Developer
-            %li
-              %a{:href => "base_pages_profile.php"}
-                %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar1.jpg"}/
-                %i.fa.fa-circle.text-success
-                Rebecca Reid
-                .font-w400.text-muted
-                  %small Web Designer
-            %li
-              %a{:href => "base_pages_profile.php"}
-                %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/
-                %i.fa.fa-circle.text-warning
-                Emma Cooper
-                .font-w400.text-muted
-                  %small Photographer
-          .text-center.push
-            %small
-              %a{:href => "javascript:void(0)"} Load More..
+= render "head_block_profile"
+.row
+  .col-sm-5.col-sm-push-7.col-lg-4.col-lg-push-8
+    .block
+      .block-content.block-content-full.text-center
+        %button.btn.btn-sm.btn-default
+          %i.fa.fa-fw.fa-plus.text-success
+          Follow
+        %button.btn.btn-sm.btn-default
+          %i.fa.fa-fw.fa-inbox.text-info
+          Send Message
+    .block
+      .block-content
+        %p Hi there, welcome to my profile!
+        %p I'm a web designer and I love creating stuff that solve problems and make your life easier. Feel free to follow me to know more about me and my projects. Thanks for stopping by, wish you a great day!
+    .block.block-opt-refresh-icon6
+      .block-header
+        %ul.block-options
+          %li
+            %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+              %i.si.si-refresh
+        %h3.block-title
+          %i.fa.fa-fw.fa-share-alt
+          Followers
+      .block-content
+        %ul.nav-users.push
+          %li
+            %a{:href => "base_pages_profile.php"}
+              %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar11.jpg"}/
+              %i.fa.fa-circle.text-success
+              Bruce Edwards
+              .font-w400.text-muted
+                %small Web Developer
+          %li
+            %a{:href => "base_pages_profile.php"}
+              %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/
+              %i.fa.fa-circle.text-warning
+              Megan Dean
+              .font-w400.text-muted
+                %small Web Designer
+          %li
+            %a{:href => "base_pages_profile.php"}
+              %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar2.jpg"}/
+              %i.fa.fa-circle.text-danger
+              Sara Holland
+              .font-w400.text-muted
+                %small Photographer
+        .text-center.push
+          %small
+            %a{:href => "javascript:void(0)"} Load More..
+    .block.block-opt-refresh-icon6
+      .block-header
+        %ul.block-options
+          %li
+            %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+              %i.si.si-refresh
+        %h3.block-title
+          %i.fa.fa-fw.fa-briefcase
+          Products
+      .block-content
+        %ul.list.list-simple.list-li-clearfix
+          %li
+            %a.item.item-rounded.pull-left.push-10-r.bg-info{:href => "javascript:void(0)"}
+              %i.si.si-rocket.text-white-op
+            %h5.push-10-t MyPanel
+            .font-s13 Responsive App Template
+          %li
+            %a.item.item-rounded.pull-left.push-10-r.bg-amethyst{:href => "javascript:void(0)"}
+              %i.si.si-calendar.text-white-op
+            %h5.push-10-t Project Time
+            .font-s13 Web application
+          %li
+            %a.item.item-rounded.pull-left.push-10-r.bg-danger{:href => "javascript:void(0)"}
+              %i.si.si-speedometer.text-white-op
+            %h5.push-10-t iDashboard
+            .font-s13 Bootstrap Admin Template
+        .text-center.push
+          %small
+            %a{:href => "javascript:void(0)"} View More..
+    .block.block-opt-refresh-icon6
+      .block-header
+        %ul.block-options
+          %li
+            %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+              %i.si.si-refresh
+        %h3.block-title
+          %i.fa.fa-fw.fa-star
+          Ratings
+      .block-content
+        %ul.list.list-simple
+          %li
+            .push-5.clearfix
+              .text-warning.pull-right
+                %i.fa.fa-star
+                %i.fa.fa-star
+                %i.fa.fa-star
+                %i.fa.fa-star
+                %i.fa.fa-star
+              %a.font-w600{:href => "base_pages_profile.php"} Judy Alvarez
+              %span.text-muted (5/5)
+            .font-s13 Flawless design execution! I'm really impressed with the product, it really helped me build my app so fast! Thank you!
+          %li
+            .push-5.clearfix
+              .text-warning.pull-right
+                %i.fa.fa-star
+                %i.fa.fa-star
+                %i.fa.fa-star
+                %i.fa.fa-star
+                %i.fa.fa-star
+              %a.font-w600{:href => "base_pages_profile.php"} John Parker
+              %span.text-muted (5/5)
+            .font-s13 Great value for money and awesome support! Would buy again and again! Thanks!
+          %li
+            .push-5.clearfix
+              .text-warning.pull-right
+                %i.fa.fa-star
+                %i.fa.fa-star
+                %i.fa.fa-star
+                %i.fa.fa-star
+                %i.fa.fa-star
+              %a.font-w600{:href => "base_pages_profile.php"} Craig Stone
+              %span.text-muted (5/5)
+            .font-s13 Working great in all my devices, quality and quantity in a great package! Thank you!
+        .text-center.push
+          %small
+            %a{:href => "javascript:void(0)"} Read More..
+  .col-sm-7.col-sm-pull-5.col-lg-8.col-lg-pull-4
+    .block.block-opt-refresh-icon6
+      .block-header
+        %ul.block-options
+          %li
+            %button{"data-action" => "fullscreen_toggle", "data-toggle" => "block-option", :type => "button"}
+              %i.si.si-size-fullscreen
+          %li
+            %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+              %i.si.si-refresh
+        %h3.block-title
+          %i.fa.fa-newspaper-o
+          Updates
+      .block-content
+        .block.block-transparent.pull-r-l
+          .block-header.bg-gray-lighter
+            %ul.block-options
+              %li
+                %span
+                  %em.text-muted 3 hrs ago
+              %li
+                %span
+                  %i.fa.fa-facebook.text-primary
+            %h3.block-title + 290 Page Likes
+          .block-content
+            %p.font-s13 This is great, keep it up!
+        .block.block-transparent.pull-r-l
+          .block-header.bg-gray-lighter
+            %ul.block-options
+              %li
+                %span
+                  %em.text-muted 4 hrs ago
+              %li
+                %span
+                  %i.fa.fa-briefcase.text-modern
+            %h3.block-title 3 New Products were added!
+          .block-content.block-content-full
+            %a.item.item-rounded.push-10-r.bg-info{"data-original-title" => "MyPanel", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
+              %i.si.si-rocket.text-white-op
+            %a.item.item-rounded.push-10-r.bg-amethyst{"data-original-title" => "Project Time", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
+              %i.si.si-calendar.text-white-op
+            %a.item.item-rounded.push-10-r.bg-city{"data-original-title" => "iDashboard", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
+              %i.si.si-speedometer.text-white-op
+        .block.block-transparent.pull-r-l
+          .block-header.bg-gray-lighter
+            %ul.block-options
+              %li
+                %span
+                  %em.text-muted 12 hrs ago
+              %li
+                %span
+                  %i.fa.fa-twitter.text-info
+            %h3.block-title + 1150 Followers
+          .block-content
+            %p.font-s13 You’re getting more and more followers, keep it up!
+        .block.block-transparent.pull-r-l
+          .block-header.bg-gray-lighter
+            %ul.block-options
+              %li
+                %span
+                  %em.text-muted 1 day ago
+              %li
+                %span
+                  %i.fa.fa-database.text-smooth
+            %h3.block-title Database backup completed!
+          .block-content
+            %p.font-s13
+              Download the
+              = succeed "." do
+                %a{:href => "javascript:void(0)"} latest backup
+        .block.block-transparent.pull-r-l
+          .block-header.bg-gray-lighter
+            %ul.block-options
+              %li
+                %span
+                  %em.text-muted 2 days ago
+              %li
+                %span
+                  %i.fa.fa-user-plus.text-success
+            %h3.block-title + 5 Friend Requests
+          .block-content
+            %ul.nav-users.push
+              %li
+                %a{:href => "base_pages_profile.php"}
+                  %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/
+                  %i.fa.fa-circle.text-success
+                  Denise Watson
+                  .font-w400.text-muted
+                    %small Web Designer
+              %li
+                %a{:href => "base_pages_profile.php"}
+                  %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar12.jpg"}/
+                  %i.fa.fa-circle.text-success
+                  Adam Hall
+                  .font-w400.text-muted
+                    %small Graphic Designer
+              %li
+                %a{:href => "base_pages_profile.php"}
+                  %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar7.jpg"}/
+                  %i.fa.fa-circle.text-warning
+                  Rebecca Gray
+                  .font-w400.text-muted
+                    %small Photographer
+              %li
+                %a{:href => "base_pages_profile.php"}
+                  %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar13.jpg"}/
+                  %i.fa.fa-circle.text-warning
+                  Jeremy Fuller
+                  .font-w400.text-muted
+                    %small Copywriter
+              %li
+                %a{:href => "base_pages_profile.php"}
+                  %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar11.jpg"}/
+                  %i.fa.fa-circle.text-danger
+                  Eric Lawson
+                  .font-w400.text-muted
+                    %small UI Designer
+        .block.block-transparent.pull-r-l
+          .block-header.bg-gray-lighter
+            %ul.block-options
+              %li
+                %span
+                  %em.text-muted 1 week ago
+              %li
+                %span
+                  %i.fa.fa-cog.text-primary-dark
+            %h3.block-title System updated to v2.02
+          .block-content
+            %p.font-s13
+              Check the complete changelog at the
+              = succeed "." do
+                %a{:href => "javascript:void(0)"} activity page
+        .block.block-transparent.pull-r-l
+          .block-header.bg-gray-lighter
+            %ul.block-options
+              %li
+                %span
+                  %em.text-muted 2 weeks ago
+              %li
+                %span
+                  %i.fa.fa-briefcase.text-modern
+            %h3.block-title 1 New Product was added!
+          .block-content.block-content-full
+            %a.item.item-rounded.push-10-r.bg-modern{"data-original-title" => "eSettings", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
+              %i.si.si-settings.text-white-op
+        .block.block-transparent.pull-r-l
+          .block-header.bg-gray-lighter
+            %ul.block-options
+              %li
+                %span
+                  %em.text-muted 2 months ago
+              %li
+                %span
+                  %i.fa.fa-cog.text-primary-dark
+            %h3.block-title System updated to v2.01
+          .block-content
+            %p.font-s13
+              Check the complete changelog at the
+              = succeed "." do
+                %a{:href => "javascript:void(0)"} activity page

@@ -1,0 +1,27 @@
+.block
+  .bg-image{:style => "background-image: url('assets/img/photos/photo6@2x.jpg');"}
+    .block-content.bg-primary-dark-op.text-center.overflow-hidden
+      .push-30-t.push.animated.fadeInDown
+        %img.img-avatar.img-avatar96.img-avatar-thumb{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/
+      .push-30.animated.fadeInUp
+        %h2.h4.font-w600.text-white.push-5= @profile.full_name
+        %h3.h5.text-gray Web Designer
+  .block-content.text-center
+    .row.items-push.text-uppercase
+      .col-xs-6.col-sm-3
+        .font-w700.text-gray-darker.animated.fadeIn Sales
+        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 22000
+      .col-xs-6.col-sm-3
+        .font-w700.text-gray-darker.animated.fadeIn Products
+        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 16
+      .col-xs-6.col-sm-3
+        .font-w700.text-gray-darker.animated.fadeIn Followers
+        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 2600
+      .col-xs-6.col-sm-3
+        .font-w700.text-gray-darker.animated.fadeIn 3603 Ratings
+        .text-warning.push-10-t.animated.flipInX
+          %i.fa.fa-star
+          %i.fa.fa-star
+          %i.fa.fa-star
+          %i.fa.fa-star
+          %i.fa.fa-star
