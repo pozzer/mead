@@ -21,7 +21,6 @@ class FavoriteQuestionsController < AppController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_question
       @question = Question.find(params[:question_id])
     end
@@ -29,8 +28,4 @@ class FavoriteQuestionsController < AppController
     def set_favorite_question
       @favorite_question = FavoriteQuestion.find(params[:id])
     end
-
-    #def collection
-    #  FavoriteQuestion.where(user_id: params[:user_id])
-    #end
 end
