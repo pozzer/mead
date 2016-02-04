@@ -5,6 +5,8 @@ class Profile < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :city
 	has_many :pictures, :as => :attachable, :dependent => :destroy
+  has_one :avatar, -> { where picture_type: 1 }, as: :attachable, class_name: "Picture", :dependent => :destroy
+  has_one :cover, -> { where picture_type: 2 }, as: :attachable, class_name: "Picture", :dependent => :destroy
 
 	acts_as_taggable # Alias for acts_as_taggable_on :tags
   acts_as_taggable_on :tags
@@ -15,8 +17,12 @@ class Profile < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def avatar
-    pictures.last.try(:avatar)
+  def avatar_url
+    avatar.picture.url if avatar
+  end
+
+  def cover_url
+    cover.picture.url if cover
   end
 
 end

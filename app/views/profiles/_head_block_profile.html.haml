@@ -1,25 +1,25 @@
 .block
-  .bg-image{:style => "background-image: url('assets/img/photos/photo6@2x.jpg');"}
+  .bg-image{:style => "background-image: url(#{ @profile.cover_url });"}
     .block-content.bg-primary-dark-op.text-center.overflow-hidden
       .push-30-t.push.animated.fadeInDown
         %img
-          = image_tag @profile.avatar.url, class: "img-avatar img-avatar96 img-avatar-thumb"
+          = image_tag @profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
       .push-30.animated.fadeInUp
         %h2.h4.font-w600.text-white.push-5= @profile.full_name
-        %h3.h5.text-gray Web Designer
+        %h3.h5.text-gray= @profile.organization_name
   .block-content.text-center
     .row.items-push.text-uppercase
       .col-xs-6.col-sm-3
-        .font-w700.text-gray-darker.animated.fadeIn Sales
-        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 22000
+        .font-w700.text-gray-darker.animated.fadeIn Level
+        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 2
       .col-xs-6.col-sm-3
-        .font-w700.text-gray-darker.animated.fadeIn Products
-        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 16
+        .font-w700.text-gray-darker.animated.fadeIn Experiencia
+        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= @profile.user.get_experience
       .col-xs-6.col-sm-3
-        .font-w700.text-gray-darker.animated.fadeIn Followers
-        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 2600
+        .font-w700.text-gray-darker.animated.fadeIn Membro desde
+        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= t @profile.created_at.to_date
       .col-xs-6.col-sm-3
-        .font-w700.text-gray-darker.animated.fadeIn 3603 Ratings
+        .font-w700.text-gray-darker.animated.fadeIn Reputação
         .text-warning.push-10-t.animated.flipInX
           %i.fa.fa-star
           %i.fa.fa-star

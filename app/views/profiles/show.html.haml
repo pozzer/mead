@@ -11,8 +11,7 @@
           Send Message
     .block
       .block-content
-        %p Hi there, welcome to my profile!
-        %p I'm a web designer and I love creating stuff that solve problems and make your life easier. Feel free to follow me to know more about me and my projects. Thanks for stopping by, wish you a great day!
+        %p= @profile.about
     .block.block-opt-refresh-icon6
       .block-header
         %ul.block-options
@@ -21,7 +20,7 @@
               %i.si.si-refresh
         %h3.block-title
           %i.fa.fa-fw.fa-share-alt
-          Followers
+          Informações
       .block-content
         %ul.nav-users.push
           %li
@@ -124,6 +123,38 @@
         .text-center.push
           %small
             %a{:href => "javascript:void(0)"} Read More..
+    .block.block-opt-refresh-icon6
+      .block-header
+        %ul.block-options
+          %li
+            %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+              %i.si.si-refresh
+        %h3.block-title
+          %i.fa.fa-fw.fa-star
+          Informações
+      .block-content
+        %ul.list.list-simple
+          %li
+            .push-5.clearfix
+              .pull-right
+                90
+              %a.font-w600{:href => "base_pages_profile.php"} Perguntas feitas
+          %li
+            .push-5.clearfix
+              .pull-right
+                5
+              %a.font-w600{:href => "base_pages_profile.php"} Perguntas respondidas
+          %li
+            .push-5.clearfix
+              .pull-right
+                10
+              %a.font-w600{:href => "base_pages_profile.php"} Melhores respostas
+          %li
+            .push-5.clearfix
+              .pull-right
+                20
+              %a.font-w600{:href => "base_pages_profile.php"} Trocas realizadas
+
   .col-sm-7.col-sm-pull-5.col-lg-8.col-lg-pull-4
     .block.block-opt-refresh-icon6
       .block-header

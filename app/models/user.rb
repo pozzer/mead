@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   has_reputation :best_answering_skill, source: { reputation: :best_votes, of: :answers }
   has_reputation :favorite_question_skill, source: { reputation: :favorite_question, of: :questions }
 
-  has_reputation :karma,
+  has_reputation :experience,
       source: [{ reputation: :questioning_skill, weight: 0.8 },
                { reputation: :answering_skill, weight: 0.5 },
                { reputation: :best_answering_skill, weight: 1 },
@@ -70,6 +70,10 @@ class User < ActiveRecord::Base
 
   def favorite_question(question)
     favorite_questions.where(question: question).first
+  end
+
+  def get_experience
+    reputation_for(:experience)
   end
 
   private

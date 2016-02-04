@@ -8,7 +8,6 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    binding.pry
     @profile.update_attributes(profile_params)
     respond_with(@profile)
   end
@@ -19,6 +18,7 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:profile).permit(pictures_attributes: :avatar)
+      params.require(:profile).permit(:first_name, :last_name, :birth_date, :city_id, :about, :organization_name,
+                                      pictures_attributes: [:picture, :picture_type])
     end
 end

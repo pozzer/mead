@@ -9,7 +9,7 @@
     .block-content.block-content-full.block-content-narrow
       = simple_form_for(@question, wrapper: :vertical_form_devise) do |f|
         = f.input :title
-        = f.input :tag_list, as: :select, collection:ActsAsTaggableOn::Tagging.where(:context=>"tags").joins(:tag).select("distinct tags.id, tags.name").collect{ |x| [x.name, x.name] } ,wrapper: :vertical_form, input_html: { multiple: true }
+        = f.input :tag_list, as: :select, collection: ActsAsTaggableOn::Tagging.where(:context=>"tags").joins(:tag).select("distinct tags.id, tags.name").collect{ |x| [x.name, x.name] }, wrapper: :vertical_form, input_html: { multiple: true }
         = f.input :content, :as => :ckeditor, :label=>false, :input_html => { :ckeditor => {:toolbar => 'mini'} }
 
         = f.submit "Publicar sua pergunta", class: 'btn'

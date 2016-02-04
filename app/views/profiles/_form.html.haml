@@ -1,4 +1,4 @@
-= simple_form_for(@profile) do |f|
+= simple_form_for(@profile, wrapper: :vertical_form_devise) do |f|
   = f.error_notification
   .block
     %ul.nav.nav-tabs.nav-justified.push-20{"data-toggle" => "tabs"}
@@ -18,57 +18,26 @@
       #tab-profile-personal.tab-pane.fade.active.in
         .row.items-push
           .col-sm-6.col-sm-offset-3.form-horizontal
-            = f.simple_fields_for :pictures, @profile.pictures.build   do |p|
-              = p.input :avatar, as: :file
-            .form-group
-              .col-xs-6
-                %label Username
-                .form-control-static.font-w700 Admin
-            .form-group
-              .col-xs-12
-                %label{:for => "profile-email"} Email Address
-                %input#profile-email.form-control.input-lg{:name => "profile-email", :placeholder => "Enter your email..", :type => "email", :value => "admin@example.com"}/
-            .form-group
-              .col-xs-6
-                %label{:for => "profile-firstname"} Firstname
-                %input#profile-firstname.form-control.input-lg{:name => "profile-firstname", :placeholder => "Enter your firstname..", :type => "text", :value => "John"}/
-              .col-xs-6
-                %label{:for => "profile-lastname"} Lastname
-                %input#profile-lastname.form-control.input-lg{:name => "profile-lastname", :placeholder => "Enter your lastname..", :type => "text", :value => "Doe"}/
-            .form-group
-              .col-xs-12
-                %label{:for => "profile-bio"} Bio
-                %textarea#profile-bio.form-control.input-lg{:name => "profile-bio", :placeholder => "Enter a few details about yourself..", :rows => "15"} Hi there, welcome to my profile! I'm a web designer and I love creating stuff that solve problems and make your life easier. Feel free to follow me to know more about me and my projects. Thanks for stopping by, wish you a great day!
-            .form-group
-              .col-xs-12
-                %label{:for => "profile-skills"} Skills
-                %select#profile-skills.form-control{:multiple => "multiple", :name => "profile-skills", :size => "8"}
-                  %option{:selected => "selected", :value => "1"} HTML
-                  %option{:selected => "selected", :value => "2"} CSS
-                  %option{:selected => "selected", :value => "3"} JavaScript
-                  %option{:value => "4"} PHP
-                  %option{:value => "5"} Ruby
-                  %option{:selected => "selected", :value => "6"} Photoshop
-                  %option{:selected => "selected", :value => "6"} Sketch
-                  %option{:value => "7"} Illustrator
-            .form-group
-              .col-sm-6
-                %label{:for => "profile-city"} Where do you live?
-                %input#profile-city.form-control.input-lg{:name => "profile-city", :placeholder => "Enter your location..", :type => "text"}/
-              .col-sm-6
-                %label{:for => "profile-age"} Age
-                %input#profile-age.form-control.input-lg{:name => "profile-age", :placeholder => "Enter your age..", :type => "text"}/
-            .form-group
-              %label.col-xs-12 Gender
-              .col-xs-12
-                %label.css-input.css-radio.css-radio-primary.push-10-r
-                  %input{:name => "profile-gender-group", :type => "radio"}/
-                  %span
-                  Female
-                %label.css-input.css-radio.css-radio-primary
-                  %input{:checked => "checked", :name => "profile-gender-group", :type => "radio"}/
-                  %span
-                  Male
+            .col-xs-6
+              = f.input :first_name
+            .col-xs-6
+              = f.input :last_name
+            .col-xs-12
+              = f.input :birth_date
+            .col-xs-12
+              = f.input :city_id, as: :select, collection: City.all, wrapper: :vertical_form
+            .col-xs-12
+              = f.input :about, as: :text
+            .col-xs-12
+              = f.input :organization_name
+            .col-xs-12
+              = f.simple_fields_for :pictures, @profile.pictures.new do |a|
+                = a.input :picture, as: :file
+                = a.input :picture_type, :as => :hidden, :input_html => { :value => "avatar" }
+            .col-xs-12
+              = f.simple_fields_for :pictures, @profile.pictures.new do |c|
+                = c.input :picture, as: :file
+                = c.input :picture_type, :as => :hidden, :input_html => { :value => "cover" }
       #tab-profile-password.tab-pane.fade
         .row.items-push
           .col-sm-6.col-sm-offset-3.form-horizontal
