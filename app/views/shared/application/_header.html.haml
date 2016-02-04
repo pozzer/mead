@@ -4,7 +4,7 @@
     %li
       .btn-group
         %button.btn.btn-default.btn-image.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
-          %img{:alt => "Avatar", :src => "assets/img/avatars/avatar14.jpg"}/
+          = image_tag current_user.profile.avatar.url
           %span.caret
         %ul.dropdown-menu.dropdown-menu-right
           %li.dropdown-header Profile

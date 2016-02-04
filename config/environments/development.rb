@@ -41,4 +41,6 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   ENV['FACEBOOK_APP_ID'] = '867384823307068';
   ENV['FACEBOOK_SECRET'] = '15dd57fbe3993109ebdcd5a5cc492e20';
+
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end

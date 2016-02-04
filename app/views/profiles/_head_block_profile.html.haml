@@ -2,7 +2,8 @@
   .bg-image{:style => "background-image: url('assets/img/photos/photo6@2x.jpg');"}
     .block-content.bg-primary-dark-op.text-center.overflow-hidden
       .push-30-t.push.animated.fadeInDown
-        %img.img-avatar.img-avatar96.img-avatar-thumb{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/
+        %img
+          = image_tag @profile.avatar.url, class: "img-avatar img-avatar96 img-avatar-thumb"
       .push-30.animated.fadeInUp
         %h2.h4.font-w600.text-white.push-5= @profile.full_name
         %h3.h5.text-gray Web Designer

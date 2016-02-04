@@ -18,6 +18,8 @@
       #tab-profile-personal.tab-pane.fade.active.in
         .row.items-push
           .col-sm-6.col-sm-offset-3.form-horizontal
+            = f.simple_fields_for :pictures, @profile.pictures.build   do |p|
+              = p.input :avatar, as: :file
             .form-group
               .col-xs-6
                 %label Username

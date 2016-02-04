@@ -22,7 +22,7 @@ gem 'acts-as-taggable-on'
 gem 'activerecord-reputation-system'
 gem 'friendly_id'
 gem 'ckeditor'
-gem 'paperclip'
+gem "paperclip", "~> 4.3"
 gem 'less-rails', github: "metaskills/less-rails"
 gem 'therubyracer'
 gem 'breadcrumbs_on_rails', '2.3.1'

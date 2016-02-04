@@ -9,4 +9,5 @@
       .text-muted
         Aesir
     .pull-left
-      %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/
+      = image_tag user.profile.avatar.try(:url), class: "img-avatar"
+

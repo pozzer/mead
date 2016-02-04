@@ -9,10 +9,14 @@ class Profile < ActiveRecord::Base
 	acts_as_taggable # Alias for acts_as_taggable_on :tags
   acts_as_taggable_on :tags
 
-  #validates_presence_of :first_name, :birth_date
+  accepts_nested_attributes_for :pictures, :allow_destroy => true
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def avatar
+    pictures.last.try(:avatar)
   end
 
 end
