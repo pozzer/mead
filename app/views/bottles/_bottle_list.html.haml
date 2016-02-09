@@ -1,0 +1,14 @@
+%li
+  .row
+    .col-lg-1.text-center
+      .pull-rigth
+        = image_tag bottle.image_url, class: "img-avatar"
+    .col-lg-11
+      .col-lg-12
+        %h4= link_to bottle.label, edit_user_bottle_path(current_user, bottle)
+        .font-s13.text-muted
+          =# truncate(question.content.html_safe, :length => 230, :omission => "" , :escape => false)
+      .col-lg-9.col-sm-7.col-xm-12
+        =# render partial: "shared/tag_list", locals: {tags: question.tags}
+      .col-lg-3.col-sm-5.col-xm-12
+        = render partial: "shared/block_profile", locals: {title: "Engarrafado a #{time_ago_in_words(bottle.filling_date)}", user: bottle.user}

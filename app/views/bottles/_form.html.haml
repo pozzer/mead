@@ -1,7 +1,33 @@
-= simple_form_for(@bottle) do |f|
+= simple_form_for [current_user, @bottle] do |f|
   = f.error_notification
-
-  .form-inputs
-
-  .form-actions
-    = f.button :submit
+  .block
+    .block-content
+      .row.items-push
+        .col-sm-6.col-sm-offset-3.form-horizontal
+          .col-xs-6
+            = f.input :label
+          .col-xs-6
+            = f.input :organization_name
+          .col-xs-6
+            = f.input :filling_date
+          .col-xs-6
+            = f.input :amount
+          .col-xs-12
+            = f.input :style
+          .col-xs-12
+            = f.input :about, as: :text
+          .col-xs-12
+            = f.input :measure
+          .col-xs-12
+            = f.input :abv
+          .col-xs-12
+            .form-group
+              .col-xs-7.col-sm-8
+                %label.css-input.switch.switch-sm.switch-success
+                  %input#register-terms{:name => "register-terms", :type => "checkbox"}/
+                  %span
+                  I agree with terms & conditions
+          .col-xs-12
+            = f.simple_fields_for :pictures, @bottle.pictures.new do |a|
+              = a.input :picture, as: :file
+              = a.input :picture_type, :as => :hidden, :input_html => { :value => "image" }

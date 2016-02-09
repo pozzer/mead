@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   resources :trades
-  resources :bottles
+
   resources :profiles
 
   resources :questions do
@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   devise_for :users,  :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
 
   resources :users do
+    resources :bottles do
+      get :index, :path => 'cellar'
+    end
     resources :favorite_questions do
       member do
         post :set_favorite, defaults: { :format => :js }

@@ -1,58 +1,29 @@
 class BottlesController < ApplicationController
   before_action :set_bottle, only: [:show, :edit, :update, :destroy]
 
-  # GET /bottles
-  # GET /bottles.json
   def index
-    @bottles = Bottle.all
+    @bottles = Bottle.where(user_id: params[:user_id])
   end
 
-  # GET /bottles/1
-  # GET /bottles/1.json
-  def show
-  end
-
-  # GET /bottles/new
   def new
     @bottle = Bottle.new
   end
 
-  # GET /bottles/1/edit
   def edit
   end
 
-  # POST /bottles
-  # POST /bottles.json
   def create
-    @bottle = Bottle.new(bottle_params)
-
-    respond_to do |format|
-      if @bottle.save
-        format.html { redirect_to @bottle, notice: 'Bottle was successfully created.' }
-        format.json { render :show, status: :created, location: @bottle }
-      else
-        format.html { render :new }
-        format.json { render json: @bottle.errors, status: :unprocessable_entity }
-      end
-    end
+    @bottle = Bottle.create(bottle_params)
+    @bottle.user = current_user
+    @bottle.save
+    respond_with(@bottle, :location => user_bottles_path(current_user))
   end
 
-  # PATCH/PUT /bottles/1
-  # PATCH/PUT /bottles/1.json
   def update
-    respond_to do |format|
-      if @bottle.update(bottle_params)
-        format.html { redirect_to @bottle, notice: 'Bottle was successfully updated.' }
-        format.json { render :show, status: :ok, location: @bottle }
-      else
-        format.html { render :edit }
-        format.json { render json: @bottle.errors, status: :unprocessable_entity }
-      end
-    end
+    @bottle.update_attributes(bottle_params)
+    respond_with(@bottle, :location => user_bottles_path(current_user))
   end
 
-  # DELETE /bottles/1
-  # DELETE /bottles/1.json
   def destroy
     @bottle.destroy
     respond_to do |format|
@@ -62,13 +33,12 @@ class BottlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_bottle
       @bottle = Bottle.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def bottle_params
-      params[:bottle]
+      params.require(:bottle).permit(:label, :organization_name, :filling_date, :amount, :style, :about, :measure, :abv,
+                                      pictures_attributes: [:picture, :picture_type])
     end
 end
