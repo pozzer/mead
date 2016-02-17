@@ -1,0 +1,23 @@
+.block
+  .bg-image{:style => "background-image: url(#{ @bottle.image_url });"}
+    .block-content.bg-primary-dark-op.text-center.overflow-hidden
+      .push-30-t.push.animated.fadeInDown
+        %img
+          = image_tag @bottle.image_url, class: "img-avatar img-avatar96 img-avatar-thumb"
+      .push-30.animated.fadeInUp
+        %h2.h4.font-w600.text-white.push-5= @bottle.label
+        %h3.h5.text-gray= @bottle.organization_name
+  .block-content.text-center
+    .row.items-push.text-uppercase
+      .col-xs-6.col-sm-3
+        .font-w700.text-gray-darker.animated.fadeIn Estilo
+        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= @bottle.style
+      .col-xs-6.col-sm-3
+        .font-w700.text-gray-darker.animated.fadeIn Quantidade
+        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= @bottle.amount
+      .col-xs-6.col-sm-3
+        .font-w700.text-gray-darker.animated.fadeIn Envase
+        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= t @bottle.filling_date
+      .col-xs-6.col-sm-3
+        .font-w700.text-gray-darker.animated.fadeIn Medida
+        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= @bottle.measure

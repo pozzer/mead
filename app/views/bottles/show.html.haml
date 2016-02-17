@@ -1,6 +1,56 @@
-%p#notice= notice
+= render "head_block"
+.row
+  .col-sm-5.col-sm-push-7.col-lg-4.col-lg-push-8
+    .block
+      .block-content.block-content-full.text-center
+        %button.btn.btn-sm.btn-default
+          %i.fa.fa-fw.fa-plus.text-success
+          Negociar!
+        %button.btn.btn-sm.btn-default
+          %i.fa.fa-fw.fa-inbox.text-info
+          Editar
+        %button.btn.btn-sm.btn-default
+          %i.fa.fa-fw.fa-inbox.text-info
+          Excluir
+    .block.block-opt-refresh-icon6
+      .block-header
+        %h3.block-title
+          %i.fa.fa-fw.fa-share-alt
+          Sobre
+      .block-content
+        %p= @bottle.about
+    .block.block-opt-refresh-icon6
+      .block-header
+        %h3.block-title
+          %i.fa.fa-fw.fa-user
+          Dono
+      .block-content
+        %ul.nav-users.push
+          %li
+            %a{:href => "base_pages_profile.php"}
+              %img.img-avatar{:alt => "", :src => "#{@bottle.user.profile.avatar_url}"}/
+              %i.fa.fa-circle.text-success
+              = @bottle.user.full_name
+              .font-w400.text-muted
+                %small= @bottle.user.profile.organization_name
+              .font-w400.text-muted
+                %small= @bottle.user.profile.city.name
+  .col-sm-7.col-sm-pull-5.col-lg-8.col-lg-pull-4
+    .block.block-opt-refresh-icon6
+      .block-header
+        %h3.block-title
+          %i.fa-fw.fa.fa-th
+          = "Outras garrafas na adega do #{@bottle.user.full_name}"
+      .block-content
+        %ul.list.list-simple.list-li-clearfix
+          - @bottle.user.bottles.each do |bottle|
+            %li
+              %a.item.item-rounded.pull-left.push-10-r.bg-info{:href => "javascript:void(0)"}
+                %i.si.si-rocket.text-white-op
+              %h5.push-10-t MyPanel
+              .font-s13 Responsive App Template
+        .text-center.push
+          %small
+            = link_to "Ver adega completa", user_bottles_path(@bottle.user)
 
 
-= link_to 'Edit', edit_bottle_path(@bottle)
-\|
-= link_to 'Back', bottles_path

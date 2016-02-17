@@ -12,6 +12,9 @@ class BottlesController < ApplicationController
   def edit
   end
 
+  def show
+  end
+
   def create
     @bottle = Bottle.create(bottle_params)
     @bottle.user = current_user

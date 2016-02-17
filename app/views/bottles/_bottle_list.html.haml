@@ -5,7 +5,7 @@
         = image_tag bottle.image_url, class: "img-avatar"
     .col-lg-11
       .col-lg-12
-        %h4= link_to bottle.label, edit_user_bottle_path(current_user, bottle)
+        %h4= link_to bottle.label, user_bottle_path(current_user, bottle)
         .font-s13.text-muted
           =# truncate(question.content.html_safe, :length => 230, :omission => "" , :escape => false)
       .col-lg-9.col-sm-7.col-xm-12

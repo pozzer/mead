@@ -1,6 +1,10 @@
 = simple_form_for [current_user, @bottle] do |f|
   = f.error_notification
   .block
+    .block-header.bg-gray-lighter
+      %h3.block-title
+        %i.fa.fa-plus
+        Nova Garrafa
     .block-content
       .row.items-push
         .col-sm-6.col-sm-offset-3.form-horizontal
@@ -26,8 +30,15 @@
                 %label.css-input.switch.switch-sm.switch-success
                   %input#register-terms{:name => "register-terms", :type => "checkbox"}/
                   %span
-                  I agree with terms & conditions
+                  Privada
           .col-xs-12
             = f.simple_fields_for :pictures, @bottle.pictures.new do |a|
               = a.input :picture, as: :file
               = a.input :picture_type, :as => :hidden, :input_html => { :value => "image" }
+    .block-content.block-content-full.bg-gray-lighter.text-center
+      %button.btn.btn-sm.btn-primary{:type => "submit"}
+        %i.fa.fa-check.push-5-r
+        Save Changes
+      %button.btn.btn-sm.btn-warning{:type => "reset"}
+        %i.fa.fa-refresh.push-5-r
+        Reset
