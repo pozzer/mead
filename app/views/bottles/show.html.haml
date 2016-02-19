@@ -3,15 +3,9 @@
   .col-sm-5.col-sm-push-7.col-lg-4.col-lg-push-8
     .block
       .block-content.block-content-full.text-center
-        %button.btn.btn-sm.btn-default
-          %i.fa.fa-fw.fa-plus.text-success
-          Negociar!
-        %button.btn.btn-sm.btn-default
-          %i.fa.fa-fw.fa-inbox.text-info
-          Editar
-        %button.btn.btn-sm.btn-default
-          %i.fa.fa-fw.fa-inbox.text-info
-          Excluir
+        = link_to_with_icon([" Negociar", "fa fa-exchange"], edit_user_bottle_path(@bottle.user, @bottle), class: "btn btn-sm btn-default")
+        = link_to_with_icon([" Editar", "fa fa-pencil"], edit_user_bottle_path(@bottle.user, @bottle), class: "btn btn-sm btn-default")
+        = link_to_with_icon([" Remover", "fa fa-trash-o"], edit_user_bottle_path(@bottle.user, @bottle), class: "btn btn-sm btn-default")
     .block.block-opt-refresh-icon6
       .block-header
         %h3.block-title
@@ -43,12 +37,12 @@
           = "Outras garrafas na adega do #{@bottle.user.full_name}"
       .block-content
         %ul.list.list-simple.list-li-clearfix
-          - @bottle.user.bottles.each do |bottle|
+          - @bottle.user.bottles.take(5).each do |bottle|
             %li
-              %a.item.item-rounded.pull-left.push-10-r.bg-info{:href => "javascript:void(0)"}
-                %i.si.si-rocket.text-white-op
-              %h5.push-10-t MyPanel
-              .font-s13 Responsive App Template
+              = link_to(user_bottle_path(bottle.user, bottle), class: "item item-rounded pull-left push-10-r") do
+                %img.img-avatar{:alt => "", :src => "#{bottle.image_url}"}
+              %h5.push-10-t= bottle.label
+              .font-s13= bottle.organization_name
         .text-center.push
           %small
             = link_to "Ver adega completa", user_bottles_path(@bottle.user)

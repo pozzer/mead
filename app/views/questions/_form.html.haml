@@ -2,14 +2,20 @@
 .col-lg-12
   = render "nav"
   .block
-    .block-header.bg-gray-lighter
-      %h3.block-title
-        %i.fa.fa-plus
-        Nova Pergunta
-    .block-content.block-content-full.block-content-narrow
-      = simple_form_for(@question, wrapper: :vertical_form_devise) do |f|
+    = simple_form_for(@question, wrapper: :vertical_form_devise) do |f|
+      .block-header.bg-gray-lighter
+        %h3.block-title
+          %i.fa.fa-plus
+          Nova Pergunta
+      .block-content.block-content-full.block-content-narrow
         = f.input :title
         = f.input :tag_list, as: :select, collection: ActsAsTaggableOn::Tagging.where(:context=>"tags").joins(:tag).select("distinct tags.id, tags.name").collect{ |x| [x.name, x.name] }, wrapper: :vertical_form, input_html: { multiple: true }
         = f.input :content, :as => :ckeditor, :label=>false, :input_html => { :ckeditor => {:toolbar => 'mini'} }
+      .block-content.block-content-full.bg-gray-lighter.text-center
+        %button.btn.btn-sm.btn-primary{:type => "submit"}
+          %i.fa.fa-check.push-5-r
+          Save Changes
+        %button.btn.btn-sm.btn-warning{:type => "reset"}
+          %i.fa.fa-refresh.push-5-r
+          Reset
 
-        = f.submit "Publicar sua pergunta", class: 'btn'

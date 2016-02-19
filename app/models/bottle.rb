@@ -9,8 +9,11 @@ class Bottle < ActiveRecord::Base
 
   accepts_nested_attributes_for :pictures, :allow_destroy => true
 
+  scope :random_order, -> {order('DBMS_RANDOM.VALUE')}
+
   def image_url
-    image.picture.url if image
+    return image.picture.url if image
+    "bottle.jpg"
   end
 
 
