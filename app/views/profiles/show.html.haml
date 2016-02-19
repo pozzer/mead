@@ -9,9 +9,7 @@
         %button.btn.btn-sm.btn-default
           %i.fa.fa-fw.fa-inbox.text-info
           Send Message
-    .block
-      .block-content
-        %p= @profile.about
+    = render partial: "shared/block_about", locals: { about: @profile.about }
     .block.block-opt-refresh-icon6
       .block-header
         %ul.block-options
@@ -156,6 +154,7 @@
               %a.font-w600{:href => "base_pages_profile.php"} Trocas realizadas
 
   .col-sm-7.col-sm-pull-5.col-lg-8.col-lg-pull-4
+    = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{@profile.full_name}", user: @profile.user }
     .block.block-opt-refresh-icon6
       .block-header
         %ul.block-options

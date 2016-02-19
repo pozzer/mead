@@ -6,13 +6,7 @@
         = link_to_with_icon([" Negociar", "fa fa-exchange"], edit_user_bottle_path(@bottle.user, @bottle), class: "btn btn-sm btn-default")
         = link_to_with_icon([" Editar", "fa fa-pencil"], edit_user_bottle_path(@bottle.user, @bottle), class: "btn btn-sm btn-default")
         = link_to_with_icon([" Remover", "fa fa-trash-o"], edit_user_bottle_path(@bottle.user, @bottle), class: "btn btn-sm btn-default")
-    .block.block-opt-refresh-icon6
-      .block-header
-        %h3.block-title
-          %i.fa.fa-fw.fa-share-alt
-          Sobre
-      .block-content
-        %p= @bottle.about
+    = render partial: "shared/block_about", locals: { about: @bottle.about }
     .block.block-opt-refresh-icon6
       .block-header
         %h3.block-title
@@ -21,8 +15,8 @@
       .block-content
         %ul.nav-users.push
           %li
-            %a{:href => "base_pages_profile.php"}
-              %img.img-avatar{:alt => "", :src => "#{@bottle.user.profile.avatar_url}"}/
+            = link_to(profile_path(@bottle.user.profile)) do
+              %img.img-avatar{:alt => "", :src => "#{@bottle.user.profile.avatar_url}"}
               %i.fa.fa-circle.text-success
               = @bottle.user.full_name
               .font-w400.text-muted
@@ -30,21 +24,5 @@
               .font-w400.text-muted
                 %small= @bottle.user.profile.city.name
   .col-sm-7.col-sm-pull-5.col-lg-8.col-lg-pull-4
-    .block.block-opt-refresh-icon6
-      .block-header
-        %h3.block-title
-          %i.fa-fw.fa.fa-th
-          = "Outras garrafas na adega do #{@bottle.user.full_name}"
-      .block-content
-        %ul.list.list-simple.list-li-clearfix
-          - @bottle.user.bottles.take(5).each do |bottle|
-            %li
-              = link_to(user_bottle_path(bottle.user, bottle), class: "item item-rounded pull-left push-10-r") do
-                %img.img-avatar{:alt => "", :src => "#{bottle.image_url}"}
-              %h5.push-10-t= bottle.label
-              .font-s13= bottle.organization_name
-        .text-center.push
-          %small
-            = link_to "Ver adega completa", user_bottles_path(@bottle.user)
-
+    = render partial: "block_user_bottles", locals:{ title: "Outras garrafas na adega do #{@bottle.user.full_name}", user: @bottle.user }
 
