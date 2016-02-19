@@ -1,0 +1,16 @@
+.block.block-opt-refresh-icon6
+  .block-header
+    %h3.block-title
+      %i.fa-fw.fa.fa-th
+      = title
+  .block-content
+    %ul.list.list-simple.list-li-clearfix
+      - user.bottles.take(5).each do |bottle|
+        %li
+          = link_to(user_bottle_path(bottle.user, bottle), class: "item item-rounded pull-left push-10-r") do
+            %img.img-avatar{:alt => "", :src => "#{bottle.image_url}"}
+          %h5.push-10-t= bottle.label
+          .font-s13= bottle.organization_name
+    .text-center.push
+      %small
+        = link_to "Ver adega completa", user_bottles_path(user)
