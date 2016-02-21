@@ -2,7 +2,7 @@
 [![Code Climate](https://codeclimate.com/github/pozzer/mead/badges/gpa.svg)](https://codeclimate.com/github/pozzer/mead)
 [![Test Coverage](https://codeclimate.com/github/pozzer/mead/badges/coverage.svg)](https://codeclimate.com/github/pozzer/mead/coverage)
 
-Esta é uma aplicação em Rails utilizado para...
+ Mead é um software cujo propósito é gerenciar adegas de bebidas artesanais, permitindo realizar o cadastro e a troca de garrafas com outros produtores, além de gerenciar perguntas e respostas referentes as dúvidas no processo de produção de bebidas. A linguagem de programação selecionada para o desenvolvimento do Mead é a linguagem orientada a objetos Ruby. O framework utilizado é Ruby on Rails, um framework livre que aumenta a velocidade da aplicação e facilidade o programação.
 
 ## Dependências
 
