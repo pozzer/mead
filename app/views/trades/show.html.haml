@@ -1,6 +1,211 @@
-%p#notice= notice
+.content.content-boxed
+  .row
+    .col-sm-6.col-md-3
+      %a.block.block-link-hover3.text-center{:href => "javascript:void(0)"}
+        .block-content.block-content-full
+          %span.item.item-circle.bg-success-light
+            %i.fa.fa-check.text-success
+        .block-content.block-content-full.block-content-mini.bg-gray-lighter.text-success.font-w600 ORD.00965
+    .col-sm-6.col-md-3
+      %a.block.block-link-hover3.text-center{:href => "javascript:void(0)"}
+        .block-content.block-content-full
+          %span.item.item-circle.bg-success-light
+            %i.fa.fa-check.text-success
+        .block-content.block-content-full.block-content-mini.bg-gray-lighter.text-success.font-w600 Payment
+    .col-sm-6.col-md-3
+      %a.block.block-link-hover3.text-center{:href => "javascript:void(0)"}
+        .block-content.block-content-full
+          %span.item.item-circle.bg-warning-light
+            %i.si.si-settings.fa-spin.text-warning
+        .block-content.block-content-full.block-content-mini.bg-gray-lighter.text-warning.font-w600 Packaging
+    .col-sm-6.col-md-3
+      %a.block.block-link-hover3.text-center{:href => "javascript:void(0)"}
+        .block-content.block-content-full
+          %span.item.item-circle.bg-gray-lighter
+            %i.fa.fa-times.text-muted
+        .block-content.block-content-full.block-content-mini.bg-gray-lighter.text-muted.font-w600 Delivery
+  .block
+    .block-header.bg-gray-lighter
+      %h3.block-title Products
+    .block-content
+      .table-responsive
+        %table.table.table-borderless.table-striped.table-vcenter
+          %thead
+            %tr
+              %th.text-center{:style => "width: 100px;"} ID
+              %th Product Name
+              %th.text-center Stock
+              %th.text-center QTY
+              %th.text-right{:style => "width: 10%;"} UNIT COST
+              %th.text-right{:style => "width: 10%;"} PRICE
+          %tbody
+            %tr
+              %td.text-center
+                %a{:href => "base_pages_ecom_product_edit.php"}
+                  %strong PID.965
+              %td
+                %a{:href => "base_pages_ecom_product_edit.php"} Fallout 4
+              %td.text-center 50
+              %td.text-center
+                %strong 1
+              %td.text-right $59,00
+              %td.text-right $59,00
+            %tr
+              %td.text-center
+                %a{:href => "base_pages_ecom_product_edit.php"}
+                  %strong PID.755
+              %td
+                %a{:href => "base_pages_ecom_product_edit.php"} Call of Duty: Black Ops III
+              %td.text-center 68
+              %td.text-center
+                %strong 1
+              %td.text-right $59,00
+              %td.text-right $59,00
+            %tr
+              %td.text-center
+                %a{:href => "base_pages_ecom_product_edit.php"}
+                  %strong PID.235
+              %td
+                %a{:href => "base_pages_ecom_product_edit.php"} Forza Motorsport 6
+              %td.text-center 23
+              %td.text-center
+                %strong 1
+              %td.text-right $59,00
+              %td.text-right $59,00
+            %tr
+              %td.text-right{:colspan => "5"}
+                %strong Total Price:
+              %td.text-right $177,00
+            %tr
+              %td.text-right{:colspan => "5"}
+                %strong Total Paid:
+              %td.text-right $177,00
+            %tr.success
+              %td.text-right.text-uppercase{:colspan => "5"}
+                %strong Total Due:
+              %td.text-right
+                %strong $0,00
+  .row
+    .col-lg-6
+      .block
+        .block-header.bg-gray-lighter
+          %h3.block-title Billing Address
+        .block-content.block-content-full
+          .h4.push-5 Scott Ruiz
+          %address
+            Sunset Str 598
+            %br/
+            Melbourne
+            %br/
+            Australia, 11-671
+            %br/
+            %br/
+            %i.fa.fa-phone
+            (999) 888-77777
+            %br/
+            %i.fa.fa-envelope-o
+            %a{:href => "javascript:void(0)"} company@example.com
+    .col-lg-6
+      .block
+        .block-header.bg-gray-lighter
+          %h3.block-title Shipping Address
+        .block-content.block-content-full
+          .h4.push-5 Rebecca Gray
+          %address
+            Sunrise Str 620
+            %br/
+            Melbourne
+            %br/
+            Australia, 11-587
+            %br/
+            %br/
+            %i.fa.fa-phone
+            (999) 888-55555
+            %br/
+            %i.fa.fa-envelope-o
+            %a{:href => "javascript:void(0)"} company@example.com
+  .row
+    .col-lg-6
+      = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{current_user.profile.full_name}", user: current_user.profile.user }
 
+    .col-lg-6
+      = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{current_user.profile.full_name}", user: current_user.profile.user }
 
-= link_to 'Edit', edit_trade_path(@trade)
-\|
+  .block
+    .block-header.bg-gray-lighter
+      %h3.block-title Log Messages
+    .block-content
+      .table-responsive
+        %table.table.table-borderless.table-striped.table-vcenter
+          %tbody
+            %tr
+              %td{:style => "width: 80px;"}
+                %span.label.label-primary Order
+              %td{:style => "width: 220px;"}
+                %span.font-w600 November 17, 2015 - 18:00
+              %td
+                %a{:href => "javascript:void(0)"} Support
+              %td.text-success Order Completed
+            %tr
+              %td
+                %span.label.label-primary Order
+              %td
+                %span.font-w600 November 17, 2015 - 17:36
+              %td
+                %a{:href => "javascript:void(0)"} Support
+              %td.text-info Preparing Order
+            %tr
+              %td
+                %span.label.label-success Payment
+              %td
+                %span.font-w600 November 16, 2015 - 18:10
+              %td
+                %a{:href => "javascript:void(0)"} John Doe
+              %td.text-success Payment Completed
+            %tr
+              %td
+                %span.label.label-danger Email
+              %td
+                %span.font-w600 November 16, 2015 - 10:35
+              %td
+                %a{:href => "javascript:void(0)"} Support
+              %td.text-danger Missing payment details. Email was sent and awaiting for payment before processing
+            %tr
+              %td
+                %span.label.label-primary Order
+              %td
+                %span.font-w600 November 15, 2015 - 14:59
+              %td
+                %a{:href => "javascript:void(0)"} Support
+              %td All products are available
+            %tr
+              %td
+                %span.label.label-primary Order
+              %td
+                %span.font-w600 November 15, 2015 - 14:29
+              %td
+                %a{:href => "javascript:void(0)"} John Doe
+              %td Order Submitted
+
+  .block
+    .bg-image{:style => "background-image: url(#{ current_user.profile.cover_url });"}
+      .block-content.block-content-full.bg-black-op.text-center
+        .push-10
+          = image_tag current_user.profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
+        %h3.h4
+          %span.text-white= current_user.full_name
+    .js-chat-talk.overflow-y-auto.block-content.block-content-full{"data-chat-id" => "3", :style => "height: 346px;"}
+      .font-s12.text-muted.text-center.push-20-t.push-15
+        %em Yesterday
+      .block.block-rounded.block-transparent.push-15.push-50-l
+        .block-content.block-content-full.block-content-mini.bg-gray-lighter Estou afim de trocar com você
+      .font-s12.text-muted.text-center.push-20-t.push-10
+        %em Today
+      .block.block-rounded.block-transparent.push-15.push-50-r
+        .block-content.block-content-full.block-content-mini.bg-gray-light Opa blz?
+      .block.block-rounded.block-transparent.push-15.animated.fadeInUp.push-50-r
+        .block-content.block-content-full.block-content-mini.bg-gray-light Vamos trocar sim
+    .js-chat-form.block-content.block-content-full.block-content-mini
+      %form{:action => "base_ui_chat.php", :method => "post"}
+        %input.js-chat-input.form-control{"data-target-chat-id" => "3", :placeholder => "Type a message and hit enter..", :type => "text"}/
 = link_to 'Back', trades_path

@@ -53,6 +53,7 @@
             = link_to (content_tag(:i, "", class: "i si si-rocket") + content_tag(:span, "Perguntas", class: "sidebar-mini-hide")).html_safe, questions_path
             = link_to (content_tag(:i, "", class: "i si si-rocket") + content_tag(:span, "Perguntas Favoritas", class: "sidebar-mini-hide")).html_safe, user_favorite_questions_path(current_user)
             = link_to (content_tag(:i, "", class: "i si si-rocket") + content_tag(:span, "Minha adega", class: "sidebar-mini-hide")).html_safe, user_bottles_path(current_user)
+            = link_to (content_tag(:i, "", class: "i si si-rocket") + content_tag(:span, "Minhas trocas", class: "sidebar-mini-hide")).html_safe, trades_path(current_user)
 
 
       / END Side Content

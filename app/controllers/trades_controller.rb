@@ -3,7 +3,7 @@ class TradesController < ApplicationController
   before_action :mount_trade_params, only: :create
 
   def index
-    @trades = Trade.all
+    @trades = current_user.trades_received + current_user.trade_requests
   end
 
   def show
@@ -17,7 +17,6 @@ class TradesController < ApplicationController
   end
 
   def create
-    binding.pry
     @trade = Trade.new(trade_params)
     @trade.save
     respond_with(@btrade, :location => trades_path(@trade))
