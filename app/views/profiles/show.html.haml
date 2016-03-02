@@ -82,7 +82,7 @@
               %i.si.si-refresh
         %h3.block-title
           %i.fa.fa-fw.fa-star
-          Ratings
+          Avaliações
       .block-content
         %ul.list.list-simple
           %li
@@ -120,7 +120,9 @@
             .font-s13 Working great in all my devices, quality and quantity in a great package! Thank you!
         .text-center.push
           %small
-            %a{:href => "javascript:void(0)"} Read More..
+            %a{:href => "javascript:void(0)"} Ler mais..
+        .push
+          = render partial: "shared/modal_ratings", locals: {btn_name: "Avaliar #{@profile.first_name}"}
     .block.block-opt-refresh-icon6
       .block-header
         %ul.block-options
