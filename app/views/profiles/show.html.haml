@@ -3,12 +3,7 @@
   .col-sm-5.col-sm-push-7.col-lg-4.col-lg-push-8
     .block
       .block-content.block-content-full.text-center
-        %button.btn.btn-sm.btn-default
-          %i.fa.fa-fw.fa-plus.text-success
-          Follow
-        %button.btn.btn-sm.btn-default
-          %i.fa.fa-fw.fa-inbox.text-info
-          Send Message
+        = link_to_with_icon([" Editar", "fa fa-pencil"], edit_profile_path(@profile), class: "btn btn-sm btn-default")
     = render partial: "shared/block_about", locals: { about: @profile.about }
     .block.block-opt-refresh-icon6
       .block-header
@@ -45,36 +40,36 @@
         .text-center.push
           %small
             %a{:href => "javascript:void(0)"} Load More..
-    .block.block-opt-refresh-icon6
-      .block-header
-        %ul.block-options
-          %li
-            %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-              %i.si.si-refresh
-        %h3.block-title
-          %i.fa.fa-fw.fa-briefcase
-          Products
-      .block-content
-        %ul.list.list-simple.list-li-clearfix
-          %li
-            %a.item.item-rounded.pull-left.push-10-r.bg-info{:href => "javascript:void(0)"}
-              %i.si.si-rocket.text-white-op
-            %h5.push-10-t MyPanel
-            .font-s13 Responsive App Template
-          %li
-            %a.item.item-rounded.pull-left.push-10-r.bg-amethyst{:href => "javascript:void(0)"}
-              %i.si.si-calendar.text-white-op
-            %h5.push-10-t Project Time
-            .font-s13 Web application
-          %li
-            %a.item.item-rounded.pull-left.push-10-r.bg-danger{:href => "javascript:void(0)"}
-              %i.si.si-speedometer.text-white-op
-            %h5.push-10-t iDashboard
-            .font-s13 Bootstrap Admin Template
-        .text-center.push
-          %small
-            %a{:href => "javascript:void(0)"} View More..
-    = render partial:"shared/block_rating", locals: {rateable: @profile, title: "Avaliar #{@profile.full_name}"}
+    /.block.block-opt-refresh-icon6
+    /  .block-header
+    /    %ul.block-options
+    /      %li
+    /        %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+    /          %i.si.si-refresh
+    /    %h3.block-title
+    /      %i.fa.fa-fw.fa-briefcase
+    /      Products
+    /  .block-content
+    /    %ul.list.list-simple.list-li-clearfix
+    /      %li
+    /        %a.item.item-rounded.pull-left.push-10-r.bg-info{:href => "javascript:void(0)"}
+    /          %i.si.si-rocket.text-white-op
+    /        %h5.push-10-t MyPanel
+    /        .font-s13 Responsive App Template
+    /      %li
+    /        %a.item.item-rounded.pull-left.push-10-r.bg-amethyst{:href => "javascript:void(0)"}
+    /          %i.si.si-calendar.text-white-op
+    /        %h5.push-10-t Project Time
+    /        .font-s13 Web application
+    /      %li
+    /        %a.item.item-rounded.pull-left.push-10-r.bg-danger{:href => "javascript:void(0)"}
+    /          %i.si.si-speedometer.text-white-op
+    /        %h5.push-10-t iDashboard
+    /        .font-s13 Bootstrap Admin Template
+    /    .text-center.push
+    /      %small
+    /        %a{:href => "javascript:void(0)"} View More..
+
     .block.block-opt-refresh-icon6
       .block-header
         %ul.block-options
@@ -109,162 +104,163 @@
 
   .col-sm-7.col-sm-pull-5.col-lg-8.col-lg-pull-4
     = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{@profile.full_name}", user: @profile.user }
-    .block.block-opt-refresh-icon6
-      .block-header
-        %ul.block-options
-          %li
-            %button{"data-action" => "fullscreen_toggle", "data-toggle" => "block-option", :type => "button"}
-              %i.si.si-size-fullscreen
-          %li
-            %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-              %i.si.si-refresh
-        %h3.block-title
-          %i.fa.fa-newspaper-o
-          Updates
-      .block-content
-        .block.block-transparent.pull-r-l
-          .block-header.bg-gray-lighter
-            %ul.block-options
-              %li
-                %span
-                  %em.text-muted 3 hrs ago
-              %li
-                %span
-                  %i.fa.fa-facebook.text-primary
-            %h3.block-title + 290 Page Likes
-          .block-content
-            %p.font-s13 This is great, keep it up!
-        .block.block-transparent.pull-r-l
-          .block-header.bg-gray-lighter
-            %ul.block-options
-              %li
-                %span
-                  %em.text-muted 4 hrs ago
-              %li
-                %span
-                  %i.fa.fa-briefcase.text-modern
-            %h3.block-title 3 New Products were added!
-          .block-content.block-content-full
-            %a.item.item-rounded.push-10-r.bg-info{"data-original-title" => "MyPanel", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
-              %i.si.si-rocket.text-white-op
-            %a.item.item-rounded.push-10-r.bg-amethyst{"data-original-title" => "Project Time", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
-              %i.si.si-calendar.text-white-op
-            %a.item.item-rounded.push-10-r.bg-city{"data-original-title" => "iDashboard", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
-              %i.si.si-speedometer.text-white-op
-        .block.block-transparent.pull-r-l
-          .block-header.bg-gray-lighter
-            %ul.block-options
-              %li
-                %span
-                  %em.text-muted 12 hrs ago
-              %li
-                %span
-                  %i.fa.fa-twitter.text-info
-            %h3.block-title + 1150 Followers
-          .block-content
-            %p.font-s13 You’re getting more and more followers, keep it up!
-        .block.block-transparent.pull-r-l
-          .block-header.bg-gray-lighter
-            %ul.block-options
-              %li
-                %span
-                  %em.text-muted 1 day ago
-              %li
-                %span
-                  %i.fa.fa-database.text-smooth
-            %h3.block-title Database backup completed!
-          .block-content
-            %p.font-s13
-              Download the
-              = succeed "." do
-                %a{:href => "javascript:void(0)"} latest backup
-        .block.block-transparent.pull-r-l
-          .block-header.bg-gray-lighter
-            %ul.block-options
-              %li
-                %span
-                  %em.text-muted 2 days ago
-              %li
-                %span
-                  %i.fa.fa-user-plus.text-success
-            %h3.block-title + 5 Friend Requests
-          .block-content
-            %ul.nav-users.push
-              %li
-                %a{:href => "base_pages_profile.php"}
-                  %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/
-                  %i.fa.fa-circle.text-success
-                  Denise Watson
-                  .font-w400.text-muted
-                    %small Web Designer
-              %li
-                %a{:href => "base_pages_profile.php"}
-                  %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar12.jpg"}/
-                  %i.fa.fa-circle.text-success
-                  Adam Hall
-                  .font-w400.text-muted
-                    %small Graphic Designer
-              %li
-                %a{:href => "base_pages_profile.php"}
-                  %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar7.jpg"}/
-                  %i.fa.fa-circle.text-warning
-                  Rebecca Gray
-                  .font-w400.text-muted
-                    %small Photographer
-              %li
-                %a{:href => "base_pages_profile.php"}
-                  %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar13.jpg"}/
-                  %i.fa.fa-circle.text-warning
-                  Jeremy Fuller
-                  .font-w400.text-muted
-                    %small Copywriter
-              %li
-                %a{:href => "base_pages_profile.php"}
-                  %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar11.jpg"}/
-                  %i.fa.fa-circle.text-danger
-                  Eric Lawson
-                  .font-w400.text-muted
-                    %small UI Designer
-        .block.block-transparent.pull-r-l
-          .block-header.bg-gray-lighter
-            %ul.block-options
-              %li
-                %span
-                  %em.text-muted 1 week ago
-              %li
-                %span
-                  %i.fa.fa-cog.text-primary-dark
-            %h3.block-title System updated to v2.02
-          .block-content
-            %p.font-s13
-              Check the complete changelog at the
-              = succeed "." do
-                %a{:href => "javascript:void(0)"} activity page
-        .block.block-transparent.pull-r-l
-          .block-header.bg-gray-lighter
-            %ul.block-options
-              %li
-                %span
-                  %em.text-muted 2 weeks ago
-              %li
-                %span
-                  %i.fa.fa-briefcase.text-modern
-            %h3.block-title 1 New Product was added!
-          .block-content.block-content-full
-            %a.item.item-rounded.push-10-r.bg-modern{"data-original-title" => "eSettings", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
-              %i.si.si-settings.text-white-op
-        .block.block-transparent.pull-r-l
-          .block-header.bg-gray-lighter
-            %ul.block-options
-              %li
-                %span
-                  %em.text-muted 2 months ago
-              %li
-                %span
-                  %i.fa.fa-cog.text-primary-dark
-            %h3.block-title System updated to v2.01
-          .block-content
-            %p.font-s13
-              Check the complete changelog at the
-              = succeed "." do
-                %a{:href => "javascript:void(0)"} activity page
+    = render partial:"shared/block_rating", locals: {rateable: @profile, title: "Avaliar #{@profile.full_name}"}
+    /.block.block-opt-refresh-icon6
+    /  .block-header
+    /    %ul.block-options
+    /      %li
+    /        %button{"data-action" => "fullscreen_toggle", "data-toggle" => "block-option", :type => "button"}
+    /          %i.si.si-size-fullscreen
+    /      %li
+    /        %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+    /          %i.si.si-refresh
+    /    %h3.block-title
+    /      %i.fa.fa-newspaper-o
+    /      Updates
+    /  .block-content
+    /    .block.block-transparent.pull-r-l
+    /      .block-header.bg-gray-lighter
+    /        %ul.block-options
+    /          %li
+    /            %span
+    /              %em.text-muted 3 hrs ago
+    /          %li
+    /            %span
+    /              %i.fa.fa-facebook.text-primary
+    /        %h3.block-title + 290 Page Likes
+    /      .block-content
+    /        %p.font-s13 This is great, keep it up!
+    /    .block.block-transparent.pull-r-l
+    /      .block-header.bg-gray-lighter
+    /        %ul.block-options
+    /          %li
+    /            %span
+    /              %em.text-muted 4 hrs ago
+    /          %li
+    /            %span
+    /              %i.fa.fa-briefcase.text-modern
+    /        %h3.block-title 3 New Products were added!
+    /      .block-content.block-content-full
+    /        %a.item.item-rounded.push-10-r.bg-info{"data-original-title" => "MyPanel", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
+    /          %i.si.si-rocket.text-white-op
+    /        %a.item.item-rounded.push-10-r.bg-amethyst{"data-original-title" => "Project Time", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
+    /          %i.si.si-calendar.text-white-op
+    /        %a.item.item-rounded.push-10-r.bg-city{"data-original-title" => "iDashboard", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
+    /          %i.si.si-speedometer.text-white-op
+    /    .block.block-transparent.pull-r-l
+    /      .block-header.bg-gray-lighter
+    /        %ul.block-options
+    /          %li
+    /            %span
+    /              %em.text-muted 12 hrs ago
+    /          %li
+    /            %span
+    /              %i.fa.fa-twitter.text-info
+    /        %h3.block-title + 1150 Followers
+    /      .block-content
+    /        %p.font-s13 You’re getting more and more followers, keep it up!
+    /    .block.block-transparent.pull-r-l
+    /      .block-header.bg-gray-lighter
+    /        %ul.block-options
+    /          %li
+    /            %span
+    /              %em.text-muted 1 day ago
+    /          %li
+    /            %span
+    /              %i.fa.fa-database.text-smooth
+    /        %h3.block-title Database backup completed!
+    /      .block-content
+    /        %p.font-s13
+    /          Download the
+    /          = succeed "." do
+    /            %a{:href => "javascript:void(0)"} latest backup
+    /    .block.block-transparent.pull-r-l
+    /      .block-header.bg-gray-lighter
+    /        %ul.block-options
+    /          %li
+    /            %span
+    /              %em.text-muted 2 days ago
+    /          %li
+    /            %span
+    /              %i.fa.fa-user-plus.text-success
+    /        %h3.block-title + 5 Friend Requests
+    /      .block-content
+    /        %ul.nav-users.push
+    /          %li
+    /            %a{:href => "base_pages_profile.php"}
+    /              %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/
+    /              %i.fa.fa-circle.text-success
+    /              Denise Watson
+    /              .font-w400.text-muted
+    /                %small Web Designer
+    /          %li
+    /            %a{:href => "base_pages_profile.php"}
+    /              %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar12.jpg"}/
+    /              %i.fa.fa-circle.text-success
+    /              Adam Hall
+    /              .font-w400.text-muted
+    /                %small Graphic Designer
+    /          %li
+    /            %a{:href => "base_pages_profile.php"}
+    /              %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar7.jpg"}/
+    /              %i.fa.fa-circle.text-warning
+    /              Rebecca Gray
+    /              .font-w400.text-muted
+    /                %small Photographer
+    /          %li
+    /            %a{:href => "base_pages_profile.php"}
+    /              %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar13.jpg"}/
+    /              %i.fa.fa-circle.text-warning
+    /              Jeremy Fuller
+    /              .font-w400.text-muted
+    /                %small Copywriter
+    /          %li
+    /            %a{:href => "base_pages_profile.php"}
+    /              %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar11.jpg"}/
+    /              %i.fa.fa-circle.text-danger
+    /              Eric Lawson
+    /              .font-w400.text-muted
+    /                %small UI Designer
+    /    .block.block-transparent.pull-r-l
+    /      .block-header.bg-gray-lighter
+    /        %ul.block-options
+    /          %li
+    /            %span
+    /              %em.text-muted 1 week ago
+    /          %li
+    /            %span
+    /              %i.fa.fa-cog.text-primary-dark
+    /        %h3.block-title System updated to v2.02
+    /      .block-content
+    /        %p.font-s13
+    /          Check the complete changelog at the
+    /          = succeed "." do
+    /            %a{:href => "javascript:void(0)"} activity page
+    /    .block.block-transparent.pull-r-l
+    /      .block-header.bg-gray-lighter
+    /        %ul.block-options
+    /          %li
+    /            %span
+    /              %em.text-muted 2 weeks ago
+    /          %li
+    /            %span
+    /              %i.fa.fa-briefcase.text-modern
+    /        %h3.block-title 1 New Product was added!
+    /      .block-content.block-content-full
+    /        %a.item.item-rounded.push-10-r.bg-modern{"data-original-title" => "eSettings", "data-toggle" => "tooltip", :href => "javascript:void(0)", :title => ""}
+    /          %i.si.si-settings.text-white-op
+    /    .block.block-transparent.pull-r-l
+    /      .block-header.bg-gray-lighter
+    /        %ul.block-options
+    /          %li
+    /            %span
+    /              %em.text-muted 2 months ago
+    /          %li
+    /            %span
+    /              %i.fa.fa-cog.text-primary-dark
+    /        %h3.block-title System updated to v2.01
+    /      .block-content
+    /        %p.font-s13
+    /          Check the complete changelog at the
+    /          = succeed "." do
+    /            %a{:href => "javascript:void(0)"} activity page
