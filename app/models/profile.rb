@@ -5,6 +5,7 @@ class Profile < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :city
 	has_many :pictures, :as => :attachable, :dependent => :destroy
+  has_many :ratings, :as => :rateable, :dependent => :destroy
   has_one :avatar, -> { where picture_type: 1 }, as: :attachable, class_name: "Picture", :dependent => :destroy
   has_one :cover, -> { where picture_type: 2 }, as: :attachable, class_name: "Picture", :dependent => :destroy
 
@@ -23,6 +24,10 @@ class Profile < ActiveRecord::Base
 
   def cover_url
     cover.picture.url if cover
+  end
+
+  def reputation
+    (ratings.map(&:score).sum/ratings.size).to_i if ratings
   end
 
 end
