@@ -74,55 +74,7 @@
         .text-center.push
           %small
             %a{:href => "javascript:void(0)"} View More..
-    .block.block-opt-refresh-icon6
-      .block-header
-        %ul.block-options
-          %li
-            %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-              %i.si.si-refresh
-        %h3.block-title
-          %i.fa.fa-fw.fa-star
-          Avaliações
-      .block-content
-        %ul.list.list-simple
-          %li
-            .push-5.clearfix
-              .text-warning.pull-right
-                %i.fa.fa-star
-                %i.fa.fa-star
-                %i.fa.fa-star
-                %i.fa.fa-star
-                %i.fa.fa-star
-              %a.font-w600{:href => "base_pages_profile.php"} Judy Alvarez
-              %span.text-muted (5/5)
-            .font-s13 Flawless design execution! I'm really impressed with the product, it really helped me build my app so fast! Thank you!
-          %li
-            .push-5.clearfix
-              .text-warning.pull-right
-                %i.fa.fa-star
-                %i.fa.fa-star
-                %i.fa.fa-star
-                %i.fa.fa-star
-                %i.fa.fa-star
-              %a.font-w600{:href => "base_pages_profile.php"} John Parker
-              %span.text-muted (5/5)
-            .font-s13 Great value for money and awesome support! Would buy again and again! Thanks!
-          %li
-            .push-5.clearfix
-              .text-warning.pull-right
-                %i.fa.fa-star
-                %i.fa.fa-star
-                %i.fa.fa-star
-                %i.fa.fa-star
-                %i.fa.fa-star
-              %a.font-w600{:href => "base_pages_profile.php"} Craig Stone
-              %span.text-muted (5/5)
-            .font-s13 Working great in all my devices, quality and quantity in a great package! Thank you!
-        .text-center.push
-          %small
-            %a{:href => "javascript:void(0)"} Ler mais..
-        .push
-          = render partial: "shared/modal_ratings", locals: {btn_name: "Avaliar #{@profile.first_name}"}
+    = render partial:"shared/block_rating", locals: {rateable: @profile, title: "Avaliar #{@profile.full_name}"}
     .block.block-opt-refresh-icon6
       .block-header
         %ul.block-options
