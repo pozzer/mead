@@ -21,8 +21,6 @@
       .col-xs-6.col-sm-3
         .font-w700.text-gray-darker.animated.fadeIn Reputação
         .text-warning.push-10-t.animated.flipInX
-          %i.fa.fa-star
-          %i.fa.fa-star
-          %i.fa.fa-star
-          %i.fa.fa-star
-          %i.fa.fa-star
+          - @profile.reputation.times do |x|
+            %i.fa.fa-star
+            
