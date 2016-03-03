@@ -50,6 +50,11 @@ $(function() {
 
 $(function() {
   $('.js-rating').raty({
-    size: 24
+    size       : 'fa-3x',
+    score      : 3,
+    target     : '#hint',
+    targetType : 'number',
+    targetKeep : true
+
   });
 });
