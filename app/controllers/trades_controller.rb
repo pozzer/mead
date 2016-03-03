@@ -19,12 +19,12 @@ class TradesController < ApplicationController
   def create
     @trade = Trade.new(trade_params)
     @trade.save
-    respond_with(@btrade, :location => trades_path(@trade))
+    respond_with(@trade)
   end
 
   def update
     @trade.update_attributes(bottle_params)
-    respond_with(@btrade, :location => trades_path(@trade))
+    respond_with(@trade)
   end
 
   def destroy
