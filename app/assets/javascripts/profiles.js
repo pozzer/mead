@@ -7,7 +7,6 @@ mead_project.profiles = {
 
         pub.init = function() {
 
-          $("#question_tag_list").select2();
         }
         return pub;
     }()

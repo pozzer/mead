@@ -7,30 +7,30 @@
           = image_tag current_user.profile.avatar_url
           %span.caret
         %ul.dropdown-menu.dropdown-menu-right
-          %li.dropdown-header Profile
+          %li.dropdown-header Perfil
+          /%li
+          /  %a{:href => "base_pages_inbox.html", :tabindex => "-1"}
+          /    %i.si.si-envelope-open.pull-right
+          /    = succeed "Inbox" do
+          /      %span.badge.badge-primary.pull-right 3
           %li
-            %a{:href => "base_pages_inbox.html", :tabindex => "-1"}
-              %i.si.si-envelope-open.pull-right
-              = succeed "Inbox" do
-                %span.badge.badge-primary.pull-right 3
-          %li
-            = link_to (content_tag(:i, "", class: "si si-user pull-right") + 'Profile').html_safe, profile_path(current_user.profile)
-          %li
-            %a{:href => "javascript:void(0)", :tabindex => "-1"}
-              %i.si.si-settings.pull-right>
-              Settings
+            = link_to (content_tag(:i, "", class: "si si-user pull-right") + 'Perfil').html_safe, profile_path(current_user.profile)
+          /%li
+          /  %a{:href => "javascript:void(0)", :tabindex => "-1"}
+          /    %i.si.si-settings.pull-right>
+          /    Settings
           %li.divider
           %li.dropdown-header Actions
           %li
             %a{:href => "base_pages_lock.html", :tabindex => "-1"}
               %i.si.si-lock.pull-right>
               Lock Account
-          %li
-            = link_to (content_tag(:i, "", class: "si si-logout pull-right") + 'Sign out').html_safe, destroy_user_session_path, method: :delete
-    %li
-      / Layout API, functionality initialized in App() -> uiLayoutApi()
-      %button.btn.btn-default{"data-action" => "side_overlay_toggle", "data-toggle" => "layout", :type => "button"}
-        %i.fa.fa-tasks
+          /%li
+          /  = link_to (content_tag(:i, "", class: "si si-logout pull-right") + 'Sign out').html_safe, destroy_user_session_path, method: :delete
+    /%li
+    /  / Layout API, functionality initialized in App() -> uiLayoutApi()
+    /  %button.btn.btn-default{"data-action" => "side_overlay_toggle", "data-toggle" => "layout", :type => "button"}
+    /    %i.fa.fa-tasks
   / END Header Navigation Right
   / Header Navigation Left
   %ul.nav-header.pull-left
@@ -42,10 +42,10 @@
       / Layout API, functionality initialized in App() -> uiLayoutApi()
       %button.btn.btn-default{"data-action" => "sidebar_mini_toggle", "data-toggle" => "layout", :type => "button"}
         %i.fa.fa-ellipsis-v
-    %li
-      / Opens the Apps modal found at the bottom of the page, before including JS code
-      %button.btn.btn-default.pull-right{"data-target" => "#apps-modal", "data-toggle" => "modal", :type => "button"}
-        %i.si.si-grid
+    /%li
+    /  / Opens the Apps modal found at the bottom of the page, before including JS code
+    /  %button.btn.btn-default.pull-right{"data-target" => "#apps-modal", "data-toggle" => "modal", :type => "button"}
+    /    %i.si.si-grid
     %li.visible-xs
       / Toggle class helper (for .js-header-search below), functionality initialized in App() -> uiToggleClass()
       %button.btn.btn-default{"data-class" => "header-search-xs-visible", "data-target" => ".js-header-search", "data-toggle" => "class-toggle", :type => "button"}
@@ -53,7 +53,7 @@
     %li.js-header-search.header-search
       %form.form-horizontal{:action => "base_pages_search.html", :method => "post"}
         .form-material.form-material-primary.input-group.remove-margin-t.remove-margin-b
-          %input#base-material-text.form-control{:name => "base-material-text", :placeholder => "Search..", :type => "text"}/
+          %input#base-material-text.form-control{:name => "base-material-text", :placeholder => "Pesquisar...", :type => "text"}/
           %span.input-group-addon
             %i.si.si-magnifier
   / END Header Navigation Left

@@ -1,0 +1,23 @@
+%button.btn.btn-block.btn-info.btn-default{"data-target" => "#modal-popout", "data-toggle" => "modal", :type => "button"}= btn_name
+#modal-popout.modal.fade{"aria-hidden" => "true", :role => "dialog", :style => "display: none;", :tabindex => "-1"}
+  = simple_form_for(rateable.ratings.new, wrapper: :vertical_form_devise) do |f|
+    .modal-dialog.modal-dialog-popout
+      .modal-content
+        .block.block-themed.block-transparent.remove-margin-b
+          .block-header.bg-primary-dark
+            %ul.block-options
+              %li
+                %button{"data-dismiss" => "modal", :type => "button"}
+                  %i.si.si-close
+            %h3.block-title= btn_name
+          .block-content
+            .js-rating.text-center
+            = f.input :score, :as => :hidden, :input_html => { :value => "3", id:"hint" }
+            = f.input :comment
+            = f.input :rateable_type, :as => :hidden, :input_html => { :value => rateable.class.to_s}
+            = f.input :rateable_id, :as => :hidden, :input_html => { :value => rateable.id}
+        .modal-footer
+          %button.btn.btn-sm.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+          %button.btn.btn-sm.btn-primary{:type => "submit"}
+            %i.fa.fa-check
+            Avaliar!

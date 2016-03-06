@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204123344) do
+ActiveRecord::Schema.define(version: 20160302234048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,10 @@ ActiveRecord::Schema.define(version: 20160204123344) do
     t.boolean  "best",        default: false, null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "artigos", force: :cascade do |t|
+    t.string "title"
   end
 
   create_table "authorizations", force: :cascade do |t|
@@ -150,12 +154,12 @@ ActiveRecord::Schema.define(version: 20160204123344) do
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
+    t.datetime "picture_update_at"
     t.integer  "attachable_id"
     t.string   "attachable_type"
-    t.integer  "picture_type"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "picture_type"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -180,6 +184,16 @@ ActiveRecord::Schema.define(version: 20160204123344) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "slug"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "score"
+    t.text     "comment"
+    t.integer  "rateable_id"
+    t.string   "rateable_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "rs_evaluations", force: :cascade do |t|

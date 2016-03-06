@@ -28,6 +28,7 @@
 //= require js/plugins/slick/slick.min
 //= require js/plugins/chartjs/Chart.min
 //= require js/plugins/select2/select2.full.min.js
+//= require js/plugins/rating/jquery.raty-fa.js
 
 
 //= require_tree .
@@ -45,4 +46,15 @@ $(function() {
     console.debug("\"mead_project." + mead_project.actual.controller + "." + mead_project.actual.action + ".init()\" not found.");
   }
 
+});
+
+$(function() {
+  $('.js-rating').raty({
+    size       : 'fa-3x',
+    score      : 3,
+    target     : '#hint',
+    targetType : 'number',
+    targetKeep : true
+
+  });
 });
