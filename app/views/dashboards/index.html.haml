@@ -1,0 +1,48 @@
+.content.content-narrow
+  %h2.content-heading Chart.js
+  .row
+    .col-lg-6
+      .block
+        .block-header
+          %ul.block-options
+            %li
+              %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+                %i.si.si-refresh
+          %h3.block-title Quantidade de trocas por dia
+        .block-content.block-content-full.text-center
+          %div{:style => "height: 330px;"}
+            %canvas.js-chartjs-lines{:height => "330", :style => "width: 711px; height: 330px;", :width => "711"}
+    .col-lg-6
+      .block
+        .block-header
+          %ul.block-options
+            %li
+              %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+                %i.si.si-refresh
+          %h3.block-title Quantidade de trocas realizada por dia
+        .block-content.block-content-full.text-center
+          %div{:style => "height: 330px;"}
+            %canvas.js-chartjs-bars{:height => "330", :style => "width: 711px; height: 330px;", :width => "711"}
+    .col-lg-6
+      .block
+        .block-header
+          %ul.block-options
+            %li
+              %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+                %i.si.si-refresh
+          %h3.block-title Perguntas
+        .block-content.block-content-full.text-center
+          %div{:style => "height: 330px;"}
+            %canvas.js-chartjs-pie{:height => "330", :style => "width: 711px; height: 330px;", :width => "711"}
+    .col-lg-6
+      .block
+        .block-header
+          %ul.block-options
+            %li
+              %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+                %i.si.si-refresh
+          %h3.block-title Trocas
+        .block-content.block-content-full.text-center
+          %div{:style => "height: 330px;"}
+            %canvas.js-chartjs-donut{:height => "330", :style => "width: 711px; height: 330px;", :width => "711"}
+  

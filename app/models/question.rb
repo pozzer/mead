@@ -19,6 +19,8 @@ class Question < ActiveRecord::Base
   validates :title, presence: true
   validates :content, presence: true
 
+  scope :without_best_answer, -> { where("questions.id not IN ( select answers.question_id from answers where answers.question_id = questions.id and answers.best = 't' )") }
+
   def have_best_answer?
     answers.the_best.any?
   end

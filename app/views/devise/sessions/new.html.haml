@@ -5,7 +5,7 @@
         .push-30-t.push-50.animated.fadeIn
           .text-center
             %i.fa.fa-2x.fa-circle-o-notch.text-primary
-            %p.text-muted.push-15-t A perfect match for your Mead
+            %p.text-muted.push-15-t Uma combinação perfeita para o sua bebida
           = simple_form_for(resource, as: resource_name, url: session_path(resource_name), wrapper: :vertical_form_devise, html: { class: "form-horizontal push-50-t push-50" }) do |f|
             = devise_error_messages!
             = f.input :email, type: "email"

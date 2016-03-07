@@ -17,9 +17,6 @@ pt-BR:
         one: Log
         other: Logs
     attributes:
-      # system:
-      # resource_class:
-      # resource_type:
       log:
         account: Conta
         system: Sistema

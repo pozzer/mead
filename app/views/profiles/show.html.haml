@@ -5,41 +5,41 @@
       .block-content.block-content-full.text-center
         = link_to_with_icon([" Editar", "fa fa-pencil"], edit_profile_path(@profile), class: "btn btn-sm btn-default")
     = render partial: "shared/block_about", locals: { about: @profile.about }
-    .block.block-opt-refresh-icon6
-      .block-header
-        %ul.block-options
-          %li
-            %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-              %i.si.si-refresh
-        %h3.block-title
-          %i.fa.fa-fw.fa-share-alt
-          Informações
-      .block-content
-        %ul.nav-users.push
-          %li
-            %a{:href => "base_pages_profile.php"}
-              %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar11.jpg"}/
-              %i.fa.fa-circle.text-success
-              Bruce Edwards
-              .font-w400.text-muted
-                %small Web Developer
-          %li
-            %a{:href => "base_pages_profile.php"}
-              %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/
-              %i.fa.fa-circle.text-warning
-              Megan Dean
-              .font-w400.text-muted
-                %small Web Designer
-          %li
-            %a{:href => "base_pages_profile.php"}
-              %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar2.jpg"}/
-              %i.fa.fa-circle.text-danger
-              Sara Holland
-              .font-w400.text-muted
-                %small Photographer
-        .text-center.push
-          %small
-            %a{:href => "javascript:void(0)"} Load More..
+    /.block.block-opt-refresh-icon6
+    /  .block-header
+    /    %ul.block-options
+    /      %li
+    /        %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+    /          %i.si.si-refresh
+    /    %h3.block-title
+    /      %i.fa.fa-fw.fa-share-alt
+    /      Informações
+    /  .block-content
+    /    %ul.nav-users.push
+    /      %li
+    /        %a{:href => "base_pages_profile.php"}
+    /          %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar11.jpg"}/
+    /          %i.fa.fa-circle.text-success
+    /          Bruce Edwards
+    /          .font-w400.text-muted
+    /            %small Web Developer
+    /      %li
+    /        %a{:href => "base_pages_profile.php"}
+    /          %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/
+    /          %i.fa.fa-circle.text-warning
+    /          Megan Dean
+    /          .font-w400.text-muted
+    /            %small Web Designer
+    /      %li
+    /        %a{:href => "base_pages_profile.php"}
+    /          %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar2.jpg"}/
+    /          %i.fa.fa-circle.text-danger
+    /          Sara Holland
+    /          .font-w400.text-muted
+    /            %small Photographer
+    /    .text-center.push
+    /      %small
+    /        %a{:href => "javascript:void(0)"} Load More..
     /.block.block-opt-refresh-icon6
     /  .block-header
     /    %ul.block-options

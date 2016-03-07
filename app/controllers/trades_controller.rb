@@ -1,4 +1,4 @@
-class TradesController < ApplicationController
+class TradesController < AppController
   before_action :set_trade, only: [:show, :edit, :update, :destroy]
   before_action :mount_trade_params, only: :create
 

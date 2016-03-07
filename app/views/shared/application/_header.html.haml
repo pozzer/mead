@@ -20,13 +20,13 @@
           /    %i.si.si-settings.pull-right>
           /    Settings
           %li.divider
-          %li.dropdown-header Actions
-          %li
-            %a{:href => "base_pages_lock.html", :tabindex => "-1"}
-              %i.si.si-lock.pull-right>
-              Lock Account
+          %li.dropdown-header Ações
           /%li
-          /  = link_to (content_tag(:i, "", class: "si si-logout pull-right") + 'Sign out').html_safe, destroy_user_session_path, method: :delete
+          /  %a{:href => "base_pages_lock.html", :tabindex => "-1"}
+          /    %i.si.si-lock.pull-right>
+          /    Lock Account
+          %li
+            = link_to (content_tag(:i, "", class: "si si-logout pull-right") + 'Sair').html_safe, destroy_user_session_path, method: :delete
     /%li
     /  / Layout API, functionality initialized in App() -> uiLayoutApi()
     /  %button.btn.btn-default{"data-action" => "side_overlay_toggle", "data-toggle" => "layout", :type => "button"}
@@ -51,9 +51,15 @@
       %button.btn.btn-default{"data-class" => "header-search-xs-visible", "data-target" => ".js-header-search", "data-toggle" => "class-toggle", :type => "button"}
         %i.fa.fa-search
     %li.js-header-search.header-search
-      %form.form-horizontal{:action => "base_pages_search.html", :method => "post"}
+      = form_tag(searchs_path, {:method=>:get, :class=>"form-horizontal"}) do
         .form-material.form-material-primary.input-group.remove-margin-t.remove-margin-b
           %input#base-material-text.form-control{:name => "base-material-text", :placeholder => "Pesquisar...", :type => "text"}/
           %span.input-group-addon
             %i.si.si-magnifier
+      
+      
+      
+      
+      
+      
   / END Header Navigation Left
