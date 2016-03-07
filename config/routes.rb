@@ -34,6 +34,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :dashboards, only: :index
+  resources :searchs, only: :index
+  resources :logins, only: :index
+  resources :registers, only: :index
   resources :homepages, only: :index
 
   root to: "homepages#index"

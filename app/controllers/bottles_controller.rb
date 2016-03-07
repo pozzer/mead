@@ -1,4 +1,4 @@
-class BottlesController < ApplicationController
+class BottlesController < AppController
   before_action :set_bottle, only: [:show, :edit, :update, :destroy]
 
   def index

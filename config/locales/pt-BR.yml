@@ -4,12 +4,21 @@ pt-BR:
       models:
         user:
     models:
-
-
-
-
-
-
+      question:
+        one: Pergunta
+        other: Perguntas
+      bottle:
+        one: Garrafa
+        other: Garrafas
+      trade:
+        one: Negociação
+        other: Negociações
+      favorite_question:
+        one: Pergunta Favorita
+        other: Perguntas Favoritas
+      profile:
+        one: Perfil
+        other: Perfis
     attributes:
       user:
         name: Nome
@@ -17,6 +26,16 @@ pt-BR:
         password: Senha
         password_confirmation: Confirme a senha
         remember_me: "Mantenha-me conectado"
+      question:
+        title: Titulo
+        tag_list: Tags
+      profile:
+        first_name: Primeiro nome
+        last_name: Segundo nome
+        birth_date: Data de Nascimento
+        about: Sobre
+        city: Cidade
+        organization_name: Nome da Organização
   date:
     abbr_day_names:
     - Dom

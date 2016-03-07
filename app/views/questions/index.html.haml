@@ -1,9 +1,72 @@
-.col-lg-12
-  = render "nav"
-  .block
-    .block-header.bg-gray-lighter
-      %h3.block-title Welcome to last Questions
-    .block-content.block-content-full
-      %ul.list.list-activity.push
-        - @questions.each do |question|
-          = render partial: "questions/question_list", locals:{ question: question }
+= render "nav"
+.block
+	%ul.nav.nav-tabs.nav-tabs-alt{"data-toggle" => "tabs"}
+		%li.active
+			%a{:href => "#btabs-alt-static-home"} Recentes
+		%li
+			%a{:href => "#btabs-alt-static-profile"} Sem respostas
+		%li
+			%a{:href => "#btabs-alt-static-votos"} Votos
+		%li.pull-right
+	.block-content.tab-content
+		#btabs-alt-static-home.tab-pane.active
+			.border-b.push-30
+				%h4.font-w300.push-15 Recentes
+			%ul.list.list-activity.push
+				- @questions.each do |question|
+					= render partial: "questions/question_list", locals:{ question: question }
+			.border-t
+				%ul.pagination
+					%li.disabled
+						%a{:href => "javascript:void(0)"} Prev
+					%li.active
+						%a{:href => "javascript:void(0)"} 1
+					%li
+						%a{:href => "javascript:void(0)"} 2
+					%li
+						%span ...
+					%li
+						%a{:href => "javascript:void(0)"} 10
+					%li
+						%a{:href => "javascript:void(0)"} Next
+		#btabs-alt-static-profile.tab-pane
+			.border-b.push-30
+				%h4.font-w300.push-15 Sem respostas
+			%ul.list.list-activity.push
+				- @questions.each do |question|
+					= render partial: "questions/question_list", locals:{ question: question }
+			.border-t
+				%ul.pagination
+					%li.disabled
+						%a{:href => "javascript:void(0)"} Prev
+					%li.active
+						%a{:href => "javascript:void(0)"} 1
+					%li
+						%a{:href => "javascript:void(0)"} 2
+					%li
+						%span ...
+					%li
+						%a{:href => "javascript:void(0)"} 10
+					%li
+						%a{:href => "javascript:void(0)"} NextS
+		#btabs-alt-static-votos.tab-pane
+			.border-b.push-30
+				%h4.font-w300.push-15 Votos
+			%ul.list.list-activity.push
+				- Question.without_best_answer.each do |question|
+					= render partial: "questions/question_list", locals:{ question: question }
+			.border-t
+				%ul.pagination
+					%li.disabled
+						%a{:href => "javascript:void(0)"} Prev
+					%li.active
+						%a{:href => "javascript:void(0)"} 1
+					%li
+						%a{:href => "javascript:void(0)"} 2
+					%li
+						%span ...
+					%li
+						%a{:href => "javascript:void(0)"} 10
+					%li
+						%a{:href => "javascript:void(0)"} Next
+

@@ -1,9 +1,9 @@
 = javascript_include_tag 'application', 'data-turbolinks-track' => true
 /
   Page JS Code
-%script{:src => "/assets/js/pages/base_pages_dashboard.js"}
 :javascript
   $(function () {
       // Init page helpers (Slick Slider plugin)
       App.initHelpers('slick');
+      App.initHelpers('easy-pie-chart');
   });

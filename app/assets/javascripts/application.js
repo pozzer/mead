@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
+//= require_self
 
 // OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js
 //= require js/core/bootstrap.min
@@ -29,7 +30,8 @@
 //= require js/plugins/chartjs/Chart.min
 //= require js/plugins/select2/select2.full.min.js
 //= require js/plugins/rating/jquery.raty-fa.js
-
+//= require js/plugins/easy-pie-chart/jquery.easypiechart.min.js
+//= require js/plugins/chartjs/Chart.min.js
 
 //= require_tree .
 
@@ -57,4 +59,7 @@ $(function() {
     targetKeep : true
 
   });
+  console.log("advisable")
+  
 });
+

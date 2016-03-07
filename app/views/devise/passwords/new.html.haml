@@ -1,10 +1,31 @@
-%h2 Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .actions
-    = f.submit "Send me reset password instructions"
-= render "devise/shared/links"
+.bg-white.pulldown
+  .content.content-boxed.overflow-hidden
+    .row
+      .col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.col-lg-4.col-lg-offset-4
+        .push-30-t.push-20.animated.fadeIn
+          .text-center
+            %i.fa.fa-2x.fa-circle-o-notch.text-primary
+            %p.text-muted.push-15-t Não se preocupe, nós vamos enviar um link de redefinição para você.
+          %form.js-validation-reminder.form-horizontal.push-30-t{:action => "base_pages_reminder_v2.php", :method => "post", :novalidate => "novalidate"}
+            .form-group
+              .col-xs-12
+                .form-material.form-material-primary.floating
+                  %input#reminder-email.form-control{:name => "reminder-email", :type => "email"}/
+                  %label{:for => "reminder-email"} Informe seu Email
+            .form-group
+              .col-xs-12.col-sm-6.col-sm-offset-3
+                %button.btn.btn-sm.btn-block.btn-primary{:type => "submit"} Resetar Senha
+          .text-center.push-50-t
+            = render "devise/shared/links"
+
+
+/%h2 Forgot your password?
+/=# form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+/  =# devise_error_messages!
+/  .field
+/    =# f.label :email
+/    %br/
+/    =# f.email_field :email, autofocus: true
+/  .actions
+/    =# f.submit "Send me reset password instructions"
+
