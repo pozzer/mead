@@ -41,6 +41,11 @@ module Breadcrumbs
     end
 
     def path_to_index
-      send(self.controller_name+"_path")
+      case self.controller_name
+      when "bottles"
+        user_bottles_path
+      else
+        send(self.controller_name+"_path")
+      end
     end
 end

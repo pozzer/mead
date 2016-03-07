@@ -19,6 +19,9 @@ pt-BR:
       profile:
         one: Perfil
         other: Perfis
+      search:
+        one: Busca
+        other: Buscas
     attributes:
       user:
         name: Nome
@@ -36,6 +39,21 @@ pt-BR:
         about: Sobre
         city: Cidade
         organization_name: Nome da Organização
+      bottle:
+        label: Rótulo
+        organization_name: Nome da Organização
+        filling_date: Dara de envase
+        amount: Quantidade
+        style: Estilo
+        about: Sobre
+        measure: Medida da garrafa
+        Abv: Abv
+      picture:
+        picture: Imagem
+  #messages:
+  #  trade: "Tire suas duvidas, pergunte para os outros usuarios."
+  #  bottle: "Tire suas duvidas, pergunte para os outros usuarios."
+
   date:
     abbr_day_names:
     - Dom
@@ -244,3 +262,5 @@ pt-BR:
       long: ! '%d de %B de %Y, %H:%M'
       short: ! '%d de %B, %H:%M'
     pm: ''
+  controllers:
+
