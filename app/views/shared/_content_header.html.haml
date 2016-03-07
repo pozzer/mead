@@ -2,8 +2,8 @@
   .row.items-push
     .col-sm-7
       %h1.page-heading
-        Perguntas
-        %small Tire suas duvidas, pergunte para os outros usuarios.
+        = t(controller_name[0..-2], scope:[:activerecord, :models], count: 2)
+        /%small Tire suas duvidas, pergunte para os outros usuarios.
     .col-sm-5.text-right.hidden-xs
       = render 'shared/breadcrumb'
 
