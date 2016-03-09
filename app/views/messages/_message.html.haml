@@ -1,0 +1,8 @@
+%li{:class => self_or_other(message)}
+  .avatar
+    %img{:src => "http://placehold.it/50x50"}/
+  .chatboxmessagecontent
+    %p= message.body
+    %time{:datetime => message.created_at, :title => message.created_at.strftime("%d %b  %Y at %I:%M%p")}
+      = message_interlocutor(message).name
+      • #{message.created_at.strftime("%H:%M %p")}
