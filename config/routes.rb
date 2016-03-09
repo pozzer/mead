@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+
+  resources :conversations do
+    resources :messages
+  end
+  
   mount Ckeditor::Engine => '/ckeditor'
 
   resources :ratings
