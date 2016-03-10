@@ -22,6 +22,7 @@ module MeadProject
     config.i18n.available_locales = :'pt-BR'
     config.i18n.default_locale = :'pt-BR'
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
 
     config.less.compress = true
     # Do not swallow errors in after_commit/after_rollback callbacks.
