@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.3.0'
+
 gem 'rails', '4.2.3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -28,6 +30,8 @@ gem 'less-rails', github: "metaskills/less-rails"
 gem 'therubyracer'
 gem 'breadcrumbs_on_rails', '2.3.1'
 gem 'kaminari'
+
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'byebug'
