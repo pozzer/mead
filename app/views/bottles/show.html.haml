@@ -28,7 +28,7 @@
               .font-w400.text-muted
                 %small= @bottle.user.profile.organization_name
               .font-w400.text-muted
-                %small= @bottle.user.profile.city.name
+                %small= @bottle.user.profile.city_name
   .col-sm-7.col-sm-pull-5.col-lg-8.col-lg-pull-4
     = render partial: "block_user_bottles", locals:{ title: "Outras garrafas na adega do #{@bottle.user.full_name}", user: @bottle.user }
     = render partial:"shared/block_rating", locals: {rateable: @bottle, title: "Avaliar #{@bottle.label}"}

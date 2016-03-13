@@ -30,4 +30,8 @@ class Profile < ActiveRecord::Base
     ratings.any? ? (ratings.map(&:score).sum/ratings.size).to_i : 0
   end
 
+  def city_name
+    city ? city.name : "Não informado"
+  end
+
 end

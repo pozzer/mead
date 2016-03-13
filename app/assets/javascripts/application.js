@@ -60,6 +60,11 @@ $(function() {
 
   });
   console.log("advisable")
-  
+
 });
 
+$(document).on('page:change', function(event) {
+  $('li.open').removeClass("open");
+  var active = $('a.active');
+  active.parents("li").addClass("open");
+});
