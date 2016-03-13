@@ -1,14 +1,49 @@
 .side-content
-  %ul.nav-main
-    %li.nav-main-heading
-      %span.sidebar-mini-hide Apps
-    %li
-      = link_to (content_tag(:i, "", class: "i si si-rocket") + content_tag(:span, "Perfil", class: "sidebar-mini-hide")).html_safe, profile_path(current_user.profile)
-      = link_to (content_tag(:i, "", class: "i si si-rocket") + content_tag(:span, "Edit Perfil", class: "sidebar-mini-hide")).html_safe, edit_profile_path(current_user.profile)
-      = link_to (content_tag(:i, "", class: "i si si-rocket") + content_tag(:span, "Perguntas", class: "sidebar-mini-hide")).html_safe, questions_path
-      = link_to (content_tag(:i, "", class: "i si si-rocket") + content_tag(:span, "Perguntas Favoritas", class: "sidebar-mini-hide")).html_safe, user_favorite_questions_path(current_user)
-      = link_to (content_tag(:i, "", class: "i si si-rocket") + content_tag(:span, "Minha adega", class: "sidebar-mini-hide")).html_safe, user_bottles_path(current_user)
-      = link_to (content_tag(:i, "", class: "i si si-rocket") + content_tag(:span, "Minhas trocas", class: "sidebar-mini-hide")).html_safe, trades_path(current_user)
+	%ul.nav-main
+		%li
+			= link_to (content_tag(:i, "", class: "si si-home") + content_tag(:span, "Home", class: "sidebar-mini-hide #{submenu_active?('HomepagesController#index')}")).html_safe, homepages_path
+		- unless signed_in? then
+			%li
+				= link_to (content_tag(:i, "", class: "si si-key") + content_tag(:span, "Logar", class: "sidebar-mini-hide")).html_safe, new_user_session_path
+		- else
+			%li.nav-main-heading
+				%span.sidebar-mini-hide Aplicação
+			%li
+				%a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
+					%i.si.si-layers
+					%span.sidebar-mini-hide Perfil
+				%ul
+					%li
+						= link_to "Ver Perfil", profile_path(current_user.profile), class: "#{submenu_active?('ProfilesController#show')} "
+					%li
+						= link_to "Editar Perfil", edit_profile_path(current_user.profile), class: "#{submenu_active?('ProfilesController#edit')} "
+			%li
+				%a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
+					%i.si.si-layers
+					%span.sidebar-mini-hide Perguntas
+				%ul
+					%li
+						= link_to "Perguntas", questions_path, class: "#{submenu_active?('QuestionsController#index')} "
+					%li
+						= link_to "Minhas Perguntas Favoritas", user_favorite_questions_path(current_user), class: "#{submenu_active?('FavoriteQuestionsController#index')}"
+					%li
+						= link_to "Faça uma pergunta", new_question_path, class: "#{submenu_active?('QuestionsController#new')} "
+			%li
+				%a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
+					%i.si.si-layers
+					%span.sidebar-mini-hide Adega
+				%ul
+					%li
+						= link_to "Minha adega", user_bottles_path(current_user), class: "#{submenu_active?('BottlesController#index')}"
+					%li
+						= link_to "Nova Garrafa ", new_user_bottle_path(current_user), class: "#{submenu_active?('BottlesController#new')}"
+			%li
+				%a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
+					%i.si.si-layers
+					%span.sidebar-mini-hide Trocas
+				%ul
+					%li
+						= link_to "Minhas trocas", trades_path(current_user), class: "#{submenu_active?('TradesController#index')}"
 /.side-content
 /        %ul.nav-main
 /          %li

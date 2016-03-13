@@ -28,4 +28,5 @@
       / Footer
       = render "shared/application/footer"
       / END Footer
-  =# render "layouts/app_js_init"
+    %audio#chatAudio
+      %source{:src => "/sounds/notification.mp3", :type => "audio/mpeg"}

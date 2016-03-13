@@ -27,10 +27,10 @@
           /    Lock Account
           %li
             = link_to (content_tag(:i, "", class: "si si-logout pull-right") + 'Sair').html_safe, destroy_user_session_path, method: :delete
-    /%li
-    /  / Layout API, functionality initialized in App() -> uiLayoutApi()
-    /  %button.btn.btn-default{"data-action" => "side_overlay_toggle", "data-toggle" => "layout", :type => "button"}
-    /    %i.fa.fa-tasks
+    %li
+      / Layout API, functionality initialized in App() -> uiLayoutApi()
+      %button.btn.btn-default{"data-action" => "side_overlay_toggle", "data-toggle" => "layout", :type => "button"}
+        %i.fa.fa-tasks
   / END Header Navigation Right
   / Header Navigation Left
   %ul.nav-header.pull-left
@@ -56,10 +56,10 @@
           %input#base-material-text.form-control{:name => "base-material-text", :placeholder => "Pesquisar...", :type => "text"}/
           %span.input-group-addon
             %i.si.si-magnifier
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
   / END Header Navigation Left

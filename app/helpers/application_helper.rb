@@ -25,4 +25,9 @@ module ApplicationHelper
     self.controller_name.humanize
   end
 
+  def submenu_active?(controller_name)
+    return "active" if "#{controller.class.to_s}##{action_name}" == controller_name
+    ""
+  end
+
 end

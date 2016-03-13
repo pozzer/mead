@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :favorite_questions
   has_many :evaluations, class_name: "RSEvaluation", as: :source
 
+  has_many :conversations, :foreign_key => :sender_id
+
   accepts_nested_attributes_for :profile
 
   after_initialize :initialize_profile
@@ -64,6 +66,7 @@ class User < ActiveRecord::Base
   def full_name
     profile.full_name
   end
+  alias_method :name, :full_name
 
   def first_name
     profile.first_name

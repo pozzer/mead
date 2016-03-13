@@ -34,79 +34,16 @@
                   %i.fa.fa-circle.text-smooth.pull-right
                   %span.font-w600 Smooth
           %a.h5.text-white{:href => "frontend_home.php"}
-            %i.fa.fa-circle-o-notch.text-primary
-            %span.h4.font-w600.sidebar-mini-hide ne
+            %i.text-primary
+              M
+            %span.h4.font-w600.sidebar-mini-hide ead
         .side-content
           %ul.nav-main
             %li
               = link_to (content_tag(:i, "", class: "si si-home") + content_tag(:span, "Home", class: "sidebar-mini-hide")).html_safe, homepages_path
-            %li
-              = link_to (content_tag(:i, "", class: "si si-key") + content_tag(:span, "Logar", class: "sidebar-mini-hide")).html_safe, new_user_session_path
-              %ul
-                %li
-                  %a{:href => "frontend_home.php"} Default Navigation
-                %li
-                  %a{:href => "frontend_home_header_nav.php"} Header Navigation
-            %li
-              %a{:href => "frontend_features.php"}
-                %i.si.si-energy
-                %span.sidebar-mini-hide Features
-            %li
-              %a{:href => "frontend_pricing.php"}
-                %i.si.si-wallet
-                %span.sidebar-mini-hide Pricing
-            %li
-              %a{:href => "frontend_contact.php"}
-                %i.si.si-envelope-open
-                %span.sidebar-mini-hide Contact
-            %li.open
-              %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
-                %i.si.si-book-open
-                %span.sidebar-mini-hide Pages
-              %ul
-                %li
-                  %a{:href => "frontend_team.php"} Team
-                %li
-                  %a{:href => "frontend_support.php"} Support
-                %li
-                  %a{:href => "frontend_search.php"} Search
-                %li
-                  %a.active{:href => "frontend_about.php"} About
-                %li
-                  %a{:href => "frontend_login.php"} Log In
-                %li
-                  %a{:href => "frontend_signup.php"} Sign Up
-            %li
-              %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
-                %i.si.si-pencil
-                %span.sidebar-mini-hide Blog
-              %ul
-                %li
-                  %a{:href => "frontend_blog_classic.php"} Classic
-                %li
-                  %a{:href => "frontend_blog_list.php"} List
-                %li
-                  %a{:href => "frontend_blog_grid.php"} Grid
-                %li
-                  %a{:href => "frontend_blog_story.php"} Story
-                %li
-                  %a{:href => "frontend_blog_story_cover.php"} Story Cover
-            %li
-              %a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
-                %i.si.si-graduation
-                %span.sidebar-mini-hide e-Learning
-              %ul
-                %li
-                  %a{:href => "frontend_elearning_courses.php"} Courses
-                %li
-                  %a{:href => "frontend_elearning_course.php"} Course
-                %li
-                  %a{:href => "frontend_elearning_lesson.php"} Lesson
-            %li.nav-main-heading
-              %span.sidebar-mini-hide Apps
-            %li
-              %a{:href => "index.php"}
-                %i.si.si-speedometer
-                %span.sidebar-mini-hide Backend
+            - unless signed_in? then
+              %li
+                = link_to (content_tag(:i, "", class: "si si-key") + content_tag(:span, "Logar", class: "sidebar-mini-hide")).html_safe, new_user_session_path
+
     .slimScrollBar{:style => "width: 5px; position: absolute; top: 0px; opacity: 0.35; display: none; border-radius: 7px; z-index: 99; right: 2px; height: 992px; background: rgb(255, 255, 255);"}
     .slimScrollRail{:style => "width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 1; z-index: 90; right: 2px; background: rgb(51, 51, 51);"}
