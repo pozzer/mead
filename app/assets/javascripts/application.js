@@ -11,10 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require chat
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 //= require_self
+//= require private_pub
 
 // OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js
 //= require js/core/bootstrap.min

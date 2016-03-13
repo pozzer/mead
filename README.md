@@ -27,7 +27,9 @@ Se tudo estiver certo, você pode agora rodar o projeto!
 ## Rodando o projeto
 
 1. `$ rails s` - Executa o servidor
-2. Abra [http://localhost:3000](http://localhost:3000)
+2. rackup private_pub.ru -s thin -E production
+3. Abra [http://localhost:3000](http://localhost:3000)
+
 
 #### Rodando as specs e verificando o coverage Running specs and checking coverage
 
