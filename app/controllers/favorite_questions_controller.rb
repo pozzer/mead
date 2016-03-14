@@ -9,10 +9,10 @@ class FavoriteQuestionsController < AppController
   end
 
   def set_favorite
-    @favorite = current_user.favorite_question(@question).blank?
-    @favorite_question = FavoriteQuestion.create({user: current_user, question: @question}) if @favorite
-    @question.add_or_update_evaluation(:favorite_question, 1, current_user)
-    respond_with(@favorite_question)
+    #@favorite = current_user.favorite_question(@question).blank?
+    #@favorite_question = FavoriteQuestion.create({user: current_user, question: @question}) if @favorite
+    #@question.add_or_update_evaluation(:favorite_question, 1, current_user)
+    #respond_with(@favorite_question)
   end
 
   def remove_favorite

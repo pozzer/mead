@@ -11,11 +11,11 @@
         = f.input :title
         = f.input :tag_list, as: :select, collection: ActsAsTaggableOn::Tagging.where(:context=>"tags").joins(:tag).select("distinct tags.id, tags.name").collect{ |x| [x.name, x.name] }, wrapper: :vertical_form, input_html: { multiple: true }
         = f.input :content, :as => :ckeditor, :label=>false, :input_html => { :ckeditor => {:toolbar => 'mini'} }
-      .block-content.block-content-full.bg-gray-lighter.text-center
-        %button.btn.btn-sm.btn-primary{:type => "submit"}
-          %i.fa.fa-check.push-5-r
-          Save Changes
-        %button.btn.btn-sm.btn-warning{:type => "reset"}
-          %i.fa.fa-refresh.push-5-r
-          Reset
+      /.block-content.block-content-full.bg-gray-lighter.text-center
+      /  %button.btn.btn-sm.btn-primary{:type => "submit"}
+      /    %i.fa.fa-check.push-5-r
+      /    Save Changes
+      /  %button.btn.btn-sm.btn-warning{:type => "reset"}
+      /    %i.fa.fa-refresh.push-5-r
+      /    Reset
 
