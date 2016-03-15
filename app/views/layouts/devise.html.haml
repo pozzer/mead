@@ -6,9 +6,13 @@
 %html.no-focus
   /
     <![endif]
-  %body
-    = render "layouts/html_head"
-    %main
-      %canvas#bubble-canvas{:height => "471", :style => "position: fixed; top: 0px; left: 0px;", :width => "1920"}
-      = yield
-    = render "layouts/app_js_init"
+  = render "layouts/html_head"
+  %body{"data-controller": controller.controller_name, "data-action": controller.action_name}
+    /%main
+    /%canvas#bubble-canvas{:height => "471", :style => "position: fixed; top: 0px; left: 0px;", :width => "1920"}
+    = yield
+    .pulldown.push-30-t.text-center.animated.fadeInUp
+      %small.text-muted
+        %span.js-year-copy 2015-16
+        © Mead 1.0 Beta
+    =# render "layouts/app_js_init"
