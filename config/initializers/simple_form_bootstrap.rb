@@ -26,13 +26,14 @@ SimpleForm.setup do |config|
     b.optional :min_max
     b.optional :readonly
     b.wrapper tag: 'div', class: 'col-xs-12' do |ba|
-      b.wrapper tag: 'div', class: 'form-material form-material-primary floating' do |bb|
+      ba.wrapper tag: 'div', class: 'form-material form-material-primary floating' do |bb|
         bb.use :input, class: 'form-control'
         bb.use :label
       end
+      ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
+      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
     end
-    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+    
   end
 
   config.wrappers :vertical_file_input, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
@@ -110,8 +111,8 @@ SimpleForm.setup do |config|
         end
         lb.use :label_text
       end
-      b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-      b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+      wr.use :error, wrap_with: { tag: 'span', class: 'help-block' }
+      wr.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
     end
   end
 
