@@ -7,22 +7,24 @@
             %i.fa.fa-2x.fa-circle-o-notch.text-primary
             %h1.h3.push-10-t Create Account
           = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :vertical_form_devise, html: { class: "form-horizontal push-50-t push-50" }) do |f|
-            = devise_error_messages!
             = f.simple_fields_for :profile  do |p|
               = p.input :first_name
               = p.input :birth_date, as: :string
             = f.input :email, type: "email"
             = f.input :password, type: "password"
             = f.input :password_confirmation, type: "password"
+            
+            
+            /.col-xs-4.col-sm-3
+            /  .font-s13.text-right.push-5-t
+            /    %a{"data-target" => "#modal-terms", "data-toggle" => "modal", :href => "#"} Ver termos
+            
             .form-group
               .col-xs-7.col-sm-8
-                %label.css-input.switch.switch-sm.switch-success
-                  %input#register-terms{:name => "user[terms]", :type => "checkbox"}/
-                  %span
-                  Eu aceitos os termos e condições
+                = f.input :terms, as: :boolean, wrapper: :horizontal_boolean_devise
               .col-xs-5.col-sm-4
                 .font-s13.text-right.push-5-t
-                  %a{"data-target" => "#modal-terms", "data-toggle" => "modal", :href => "#"} Ver termos
+                  %a{"data-target" => "#modal-terms", "data-toggle" => "modal", :href => "#"} Ver Termos
             .form-group
               .col-xs-12.col-sm-6.col-sm-offset-3
                 = f.submit class: 'btn btn-sm btn-block btn-success'
