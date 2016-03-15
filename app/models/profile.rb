@@ -13,6 +13,9 @@ class Profile < ActiveRecord::Base
   acts_as_taggable_on :tags
 
   accepts_nested_attributes_for :pictures, :allow_destroy => true
+  validates :first_name, presence: true
+  validates :birth_date, presence: true
+  validates :birth_date, major_age: true
 
   def full_name
     "#{first_name} #{last_name}"

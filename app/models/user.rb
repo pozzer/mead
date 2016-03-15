@@ -32,13 +32,18 @@ class User < ActiveRecord::Base
                { reputation: :favorite_question_skill, weight: 1 }]
 
 
-  validates_presence_of :email, :password
+
 
   devise :database_authenticatable, :registerable,
       :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
     # :confirmable, :lockable, :timeoutable and :omniauthable
 
   default_scope -> { includes(:profile) }
+
+  validates_presence_of :email, :password
+  validates_acceptance_of :terms
+
+  attr_accessor :terms
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first || User.where(:email=> auth.info.email).first

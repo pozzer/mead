@@ -17,13 +17,14 @@
             .form-group
               .col-xs-7.col-sm-8
                 %label.css-input.switch.switch-sm.switch-success
-                  %input#register-terms{:name => "register-terms", :type => "checkbox"}/
+                  %input#register-terms{:name => "user[terms]", :type => "checkbox"}/
                   %span
                   Eu aceitos os termos e condições
               .col-xs-5.col-sm-4
                 .font-s13.text-right.push-5-t
                   %a{"data-target" => "#modal-terms", "data-toggle" => "modal", :href => "#"} Ver termos
-            /.form-group
-            /  .col-xs-12.col-sm-6.col-sm-offset-3
-            /    = f.submit class: 'btn btn-sm btn-block btn-success'
+            .form-group
+              .col-xs-12.col-sm-6.col-sm-offset-3
+                = f.submit class: 'btn btn-sm btn-block btn-success'
           = render "devise/shared/links", locals: {}
+= render "modal_terms"

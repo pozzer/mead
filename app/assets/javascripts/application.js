@@ -34,6 +34,8 @@
 //= require js/plugins/rating/jquery.raty-fa.js
 //= require js/plugins/easy-pie-chart/jquery.easypiechart.min.js
 //= require js/plugins/chartjs/Chart.min.js
+//= require js/plugins/masked-inputs/jquery.maskedinput.min.js
+
 
 //= require_tree .
 
