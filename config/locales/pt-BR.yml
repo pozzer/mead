@@ -28,7 +28,8 @@ pt-BR:
         email: E-mail
         password: Senha
         password_confirmation: Confirme a senha
-        remember_me: "Mantenha-me conectado"
+        remember_me: Mantenha-me conectado
+        terms: Eu aceitos os termos e condições
       question:
         title: Titulo
         tag_list: Tags

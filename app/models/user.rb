@@ -41,9 +41,10 @@ class User < ActiveRecord::Base
   default_scope -> { includes(:profile) }
 
   validates_presence_of :email, :password
-  validates_acceptance_of :terms
-
-  attr_accessor :terms
+  validates_acceptance_of :terms, :allow_nil => false, :on => :create
+  #validates_acceptance_of :terms, on: :create, :message => "must be abided"
+  
+  attr_accessor :terms 
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first || User.where(:email=> auth.info.email).first
