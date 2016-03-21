@@ -22,7 +22,6 @@ module DeviseHelper
     html = <<-HTML
       <div class="alert alert-danger alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4 class="font-w300 push-15">Opps!</h4>
         <p>#{messages}</p>
       </div>
     HTML

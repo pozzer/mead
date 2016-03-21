@@ -7,7 +7,7 @@
       %button.btn.btn-default.pull-right{"data-action" => "side_overlay_close", "data-toggle" => "layout", :type => "button"}
         %i.fa.fa-times
       %span
-        %img.img-avatar{:alt => "", :src => "#{current_user.profile.avatar_url}"}/
+        = image_tag current_user.profile.avatar_url, class: "img-avatar"
         %span.font-w600.push-10-l= current_user.full_name 
     / END Side Header
     / Side Content
@@ -73,7 +73,7 @@
             - User.all.each do |user|
               %li
                 %a{:href => "#", class: "start-conversation", :"data-sid" => current_user.id, :"data-rip" => user.id, :"data-toggle"=>"layout", :"data-action" => "side_overlay_close", :title=>"Mandar Mensagem para #{user.first_name}"}
-                  %img.img-avatar{:alt => "", :src => "#{user.profile.avatar_url}"}/
+                  = image_tag user.profile.avatar_url, class: "img-avatar"
                   %i.fa.fa-circle.text-success
                   = user.full_name
                   .font-w400.text-muted

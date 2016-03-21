@@ -34,8 +34,8 @@ class User < ActiveRecord::Base
 
 
 
-  devise :database_authenticatable, :registerable,
-      :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+  devise :database_authenticatable, :registerable, :lockable,
+      :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook] 
     # :confirmable, :lockable, :timeoutable and :omniauthable
 
   default_scope -> { includes(:profile) }

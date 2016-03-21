@@ -22,7 +22,11 @@ class Profile < ActiveRecord::Base
   end
 
   def avatar_url
-    avatar.picture.url if avatar
+    if avatar
+      avatar.picture.url 
+    else
+      "missing.png"
+    end
   end
 
   def cover_url
