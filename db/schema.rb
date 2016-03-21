@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309225949) do
+ActiveRecord::Schema.define(version: 20160321154927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "postal_code"
+    t.string   "state"
+    t.string   "city"
+    t.string   "street"
+    t.string   "district"
+    t.string   "number"
+    t.text     "additional"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -24,10 +36,6 @@ ActiveRecord::Schema.define(version: 20160309225949) do
     t.boolean  "best",        default: false, null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-  end
-
-  create_table "artigos", force: :cascade do |t|
-    t.string "title"
   end
 
   create_table "authorizations", force: :cascade do |t|
@@ -175,12 +183,12 @@ ActiveRecord::Schema.define(version: 20160309225949) do
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
-    t.datetime "picture_update_at"
+    t.datetime "picture_updated_at"
     t.integer  "attachable_id"
     t.string   "attachable_type"
+    t.integer  "picture_type"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.integer  "picture_type"
   end
 
   create_table "profiles", force: :cascade do |t|
