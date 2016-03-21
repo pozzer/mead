@@ -6,12 +6,8 @@
           .text-center
             %i.fa.fa-2x.fa-circle-o-notch.text-primary
             %p.text-muted.push-15-t Não se preocupe, nós vamos enviar um link de redefinição para você.
-          %form.js-validation-reminder.form-horizontal.push-30-t{:action => "base_pages_reminder_v2.php", :method => "post", :novalidate => "novalidate"}
-            .form-group
-              .col-xs-12
-                .form-material.form-material-primary.floating
-                  %input#reminder-email.form-control{:name => "reminder-email", :type => "email"}/
-                  %label{:for => "reminder-email"} Informe seu Email
+          = simple_form_for(resource, as: resource_name, url: password_path(resource_name), wrapper: :vertical_form_devise, html: { class: "form-horizontal push-50-t push-50" }) do |f|
+            = f.input :email, type: "email", label: 'Informe seu E-mail'
             .form-group
               .col-xs-12.col-sm-6.col-sm-offset-3
                 %button.btn.btn-sm.btn-block.btn-primary{:type => "submit"} Resetar Senha
