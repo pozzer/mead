@@ -9,11 +9,12 @@ pt-BR:
       inactive: 'Sua conta ainda não foi ativada.'
       invalid: 'E-mail ou senha inválidos.'
       invalid_token: 'O token de autenticação não é válido.'
-      locked: 'Sua conta está bloqueada.'
+      locked: 'Login bloqueado por um minuto.'
       not_found_in_database: 'E-mail ou senha inválidos.'
       timeout: 'Sua sessão expirou, por favor, efetue login novamente para continuar.'
       unauthenticated: 'Para continuar, efetue login ou registre-se.'
       unconfirmed: 'Antes de continuar, confirme a sua conta.'
+      last_attempt: 'Na próxima tentativa inválida, o login será bloqueado por um minuto.'
     mailer:
       confirmation_instructions:
         subject: 'Instruções de confirmação'

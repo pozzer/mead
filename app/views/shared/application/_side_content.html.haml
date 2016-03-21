@@ -1,7 +1,6 @@
 .side-content
 	%ul.nav-main
-		%li
-			= link_to (content_tag(:i, "", class: "si si-home") + content_tag(:span, "Home", class: "sidebar-mini-hide #{submenu_active?('HomepagesController#index')}")).html_safe, homepages_path
+		=# link_to (content_tag(:i, "", class: "si si-home") + content_tag(:span, "Home", class: "sidebar-mini-hide #{submenu_active?('HomepagesController#index')}"/)).html_safe, homepages_path
 		- unless signed_in? then
 			%li
 				= link_to (content_tag(:i, "", class: "si si-key") + content_tag(:span, "Logar", class: "sidebar-mini-hide")).html_safe, new_user_session_path

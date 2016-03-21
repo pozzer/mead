@@ -45,7 +45,10 @@ Rails.application.routes.draw do
   resources :registers, only: :index
   resources :homepages, only: :index
 
-  root to: "homepages#index"
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
+  
 
 
   # The priority is based upon order of creation: first created -> highest priority.
