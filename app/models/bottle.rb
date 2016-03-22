@@ -1,5 +1,5 @@
 class Bottle < ActiveRecord::Base
-	
+
   has_many :pictures, :as => :attachable, :dependent => :destroy
   has_many :ratings, :as => :rateable, :dependent => :destroy
 	has_one :image, -> { where picture_type: 0 }, as: :attachable, class_name: "Picture", :dependent => :destroy
@@ -16,6 +16,10 @@ class Bottle < ActiveRecord::Base
   def image_url
     return image.picture.url if image
     "bottle.jpg"
+  end
+
+  def to_s
+    label
   end
 
 

@@ -32,8 +32,9 @@ gem 'breadcrumbs_on_rails', '2.3.1'
 gem 'kaminari'
 gem 'private_pub'
 gem 'thin'
-
 gem 'rails_12factor'
+
+gem 'activeadmin', github: 'activeadmin'
 
 group :development, :test do
   gem 'byebug'

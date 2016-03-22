@@ -18,6 +18,7 @@
  *= require themes/modern
  *= require_tree .
  *= require_self
+ *= stub active_admin
  */
 
 .row_item {
