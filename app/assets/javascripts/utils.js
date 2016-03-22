@@ -38,3 +38,7 @@ $(document).on('page:change', function(event) {
   active.parents("li").addClass("open");
 });
 
+$(document).ready(function () {
+  $("#alert-flash").fadeOut(3000);
+});
+

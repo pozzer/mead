@@ -14,7 +14,7 @@ pt-BR:
       timeout: 'Sua sessão expirou, por favor, efetue login novamente para continuar.'
       unauthenticated: 'Para continuar, efetue login ou registre-se.'
       unconfirmed: 'Antes de continuar, confirme a sua conta.'
-      last_attempt: 'Na próxima tentativa inválida, o login será bloqueado por um minuto.'
+      last_attempt: 'Na próxima tentativa inválida, o login será bloqueado.'
     mailer:
       confirmation_instructions:
         subject: 'Instruções de confirmação'
@@ -46,7 +46,6 @@ pt-BR:
       send_instructions: 'Dentro de minutos, você receberá um email com instruções para o desbloqueio da sua conta.'
       send_paranoid_instructions: 'Se sua conta existir, você receberá um e-mail com instruções para desbloqueá-la em alguns minutos.'
       unlocked: 'Sua conta foi desbloqueada com sucesso. Efetue login para continuar.'
-
   errors:
     messages:
       already_confirmed: "já foi confirmado"

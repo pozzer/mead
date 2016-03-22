@@ -30,6 +30,7 @@ pt-BR:
         password_confirmation: Confirme a senha
         remember_me: Mantenha-me conectado
         terms: Eu aceitos os termos e condições
+        reset_password_token: Trocar senha 
       question:
         title: Titulo
         tag_list: Tags
