@@ -15,6 +15,7 @@ class Profile < ActiveRecord::Base
 
   accepts_nested_attributes_for :pictures, :allow_destroy => true, :reject_if => proc { |attributes| attributes['picture'].blank? }
   accepts_nested_attributes_for :address, :allow_destroy => true
+  accepts_nested_attributes_for :user
 
   validates :first_name, presence: true
   validates :birth_date, presence: true, major_age: true
@@ -44,7 +45,7 @@ class Profile < ActiveRecord::Base
     if cover
       covers.last.picture.url
     else
-      "missing.png"
+      "missing_cover.png"
     end
   end
 

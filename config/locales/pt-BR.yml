@@ -22,6 +22,9 @@ pt-BR:
       search:
         one: Busca
         other: Buscas
+      addresss:
+        one: Endereço
+        other: Endereços
     attributes:
       user:
         name: Nome
@@ -30,7 +33,7 @@ pt-BR:
         password_confirmation: Confirme a senha
         remember_me: Mantenha-me conectado
         terms: Eu aceitos os termos e condições
-        reset_password_token: Trocar senha 
+        reset_password_token: Trocar senha
       question:
         title: Titulo
         tag_list: Tags
@@ -52,6 +55,14 @@ pt-BR:
         Abv: Abv
       picture:
         picture: Imagem
+      address:
+        postal_code: CEP
+        district: Bairro
+        street: Rua
+        number: Número
+        state: Estado
+        city: Cidade
+        additional: Complemento
   #messages:
   #  trade: "Tire suas duvidas, pergunte para os outros usuarios."
   #  bottle: "Tire suas duvidas, pergunte para os outros usuarios."

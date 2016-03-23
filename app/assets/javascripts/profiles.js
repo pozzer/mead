@@ -6,7 +6,7 @@ mead_project.profiles = {
         var pub = {};
 
         pub.init = function() {
-
+          $("#profile_address_attributes_postal_code").mask("99999-999")
         }
         return pub;
     }()

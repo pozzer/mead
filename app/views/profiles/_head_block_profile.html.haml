@@ -1,5 +1,5 @@
 .block
-  .bg-image{:style => "background-image: url(#{ @profile.cover_url });"}
+  .bg-image{:style => "background-image: url( #{asset_path @profile.cover_url});"}
     .block-content.bg-primary-dark-op.text-center.overflow-hidden
       .push-30-t.push.animated.fadeInDown
         %img
@@ -17,10 +17,10 @@
         %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= @profile.user.get_experience
       .col-xs-6.col-sm-3
         .font-w700.text-gray-darker.animated.fadeIn Membro desde
-        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= t @profile.created_at.to_date
+        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= l @profile.created_at.to_date
       .col-xs-6.col-sm-3
         .font-w700.text-gray-darker.animated.fadeIn Reputação
         .text-warning.push-10-t.animated.flipInX
           - @profile.reputation.times do |x|
             %i.fa.fa-star
-            
+

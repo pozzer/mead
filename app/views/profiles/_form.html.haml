@@ -7,9 +7,8 @@
           %i.fa.fa-fw.fa-pencil
           Pessoal
       %li
-        %a{:href => "#tab-profile-privacy"}
+        %a{:href => "#tab-profile-privacy", style: f.object.address.errors.any? ? "color:#c54736;" : "" }
           %i.fa.fa-fw.fa-map-marker
-          = f.object.address.errors.any? ? "asd" : "111"
           Endereço
       %li
         %a{:href => "#tab-profile-password"}
@@ -44,15 +43,15 @@
                       = a.input :picture_type, :as => :hidden, :input_html => { :value => "cover" }
                     %a.hidden.btn.btn-xs.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} remover
             .col-xs-12.col-md-6
-              = f.input :first_name
+              = f.input :first_name, :readonly => true
             .col-xs-12.col-md-6
               = f.input :last_name
             .col-xs-12
-              = f.input :birth_date
-            .col-xs-12
-              = f.input :about, as: :text
+              = f.input :birth_date, as: :string, :readonly => true, :input_html => { :value => l(f.object.birth_date) }
             .col-xs-12
               = f.input :organization_name
+            .col-xs-12
+              = f.input :about, as: :text
       #tab-profile-privacy.tab-pane.fade
         .row.items-push
           .col-sm-6.col-sm-offset-3.form-horizontal
@@ -60,42 +59,50 @@
               .col-xs-6
                 = a.input :postal_code
               .col-xs-6
+                = a.input :district
+              .col-xs-8
                 = a.input :street
+              .col-xs-4
+                = a.input :number
               .col-xs-6
                 = a.input :state
               .col-xs-6
                 = a.input :city
-              .col-xs-6
-                = a.input :district
-              .col-xs-6
-                = a.input :number
               .col-xs-12
                 = a.input :additional
       #tab-profile-password.tab-pane.fade
         .row.items-push
           .col-sm-6.col-sm-offset-3.form-horizontal
-            %form.form-horizontal.push-10-t.push-10{:action => "base_forms_premade.php", :method => "post", :onsubmit => "return false;"}
-              .form-group
-                .col-xs-12
-                  .form-material.input-group.floating
-                    %input#register6-password.form-control{:name => "register6-password", :type => "password"}/
-                    %label{:for => "register6-password"} Senha Atual
-                    %span.input-group-addon
-                      %i.fa.fa-asterisk
-              .form-group
-                .col-xs-12
-                  .form-material.input-group.floating
-                    %input#register6-password2.form-control{:name => "register6-password2", :type => "password"}/
-                    %label{:for => "register6-password2"} Nova Senha
-                    %span.input-group-addon
-                      %i.fa.fa-asterisk
-              .form-group
-                .col-xs-12
-                  .form-material.input-group.floating
-                    %input#register6-password2.form-control{:name => "register6-password2", :type => "password"}/
-                    %label{:for => "register6-password2"} Confirmar Nova Senha
-                    %span.input-group-addon
-                      %i.fa.fa-asterisk
+            = f.simple_fields_for :user do |a|
+              .col-xs-12
+                = a.input :current_password
+              .col-xs-12
+                = a.input :password
+              .col-xs-12
+                = a.input :password_confirmation
+
+            /%form.form-horizontal.push-10-t.push-10{:action => "base_forms_premade.php", :method => "post", :onsubmit => "return false;"}
+            /  .form-group
+            /    .col-xs-12
+            /      .form-material.input-group.floating
+            /        %input#register6-password.form-control{:name => "register6-password", :type => "password"}/
+            /        %label{:for => "register6-password"} Senha Atual
+            /        %span.input-group-addon
+            /          %i.fa.fa-asterisk
+            /  .form-group
+            /    .col-xs-12
+            /      .form-material.input-group.floating
+            /        %input#register6-password2.form-control{:name => "register6-password2", :type => "password"}/
+            /        %label{:for => "register6-password2"} Nova Senha
+            /        %span.input-group-addon
+            /          %i.fa.fa-asterisk
+            /  .form-group
+            /    .col-xs-12
+            /      .form-material.input-group.floating
+            /        %input#register6-password2.form-control{:name => "register6-password2", :type => "password"}/
+            /        %label{:for => "register6-password2"} Confirmar Nova Senha
+            /        %span.input-group-addon
+            /          %i.fa.fa-asterisk
     .block-content.block-content-full.bg-gray-lighter.text-center
       %button.btn.btn-sm.btn-primary{:type => "submit"}
         %i.fa.fa-check.push-5-r

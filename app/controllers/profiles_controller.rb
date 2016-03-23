@@ -19,8 +19,7 @@ class ProfilesController < AppController
     end
 
     def profile_params
-      binding.pry
-      params.require(:profile).permit(:first_name, :last_name, :birth_date, :city_id, :about, :organization_name,
+      params.require(:profile).permit(:last_name, :city_id, :about, :organization_name,
                                       pictures_attributes: [:picture, :picture_type],
                                       address_attributes: [:postal_code, :street, :state, :city, :district, :number, :additional])
     end
