@@ -34,6 +34,7 @@ gem 'private_pub'
 gem 'thin'
 
 gem 'rails_12factor'
+gem 'open_uri_redirections'
 
 group :development, :test do
   gem 'byebug'

@@ -49,12 +49,19 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first || User.where(:email=> auth.info.email).first
     unless user
-      user = User.create(provider:auth.provider,
+        user = User.new(provider:auth.provider,
                          uid:auth.uid,
                          email:auth.info.email,
-                         password:Devise.friendly_token[0,20])
-      user.profile.attributes={first_name: auth.extra.raw_info.first_name, last_name: auth.extra.raw_info.last_name}
+                         password:Devise.friendly_token[0,20],
+                         terms:"1")
+      user.profile.attributes={birth_date: Date.strptime(auth.extra.raw_info.birthday, "%m/%d/%Y"), first_name: auth.extra.raw_info.first_name, last_name: auth.extra.raw_info.last_name}
       user.save
+      if auth.info.image.present?
+        avatar_url = User.process_uri(auth.info.image)
+        avatar = user.profile.pictures.new
+        avatar.attributes={picture_type:1, picture: open(avatar_url)} 
+        avatar.save
+       end
     else
       user.update_attributes({:provider => auth.provider, :uid => auth.uid}) if user.provider.blank? or user.uid.blank?
     end
@@ -86,9 +93,18 @@ class User < ActiveRecord::Base
     reputation_for(:experience)
   end
 
+  def self.process_uri(uri)
+    require 'open-uri'
+    require 'open_uri_redirections'
+    open(uri, :allow_redirections => :safe) do |r|
+      r.base_uri.to_s
+    end
+  end
+
   private
     def initialize_profile
       self.profile = self.build_profile if self.profile.nil?
     end
 
+    
 end
