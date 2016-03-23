@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
 
   devise :database_authenticatable, :registerable, :lockable,
-      :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook] 
+      :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
     # :confirmable, :lockable, :timeoutable and :omniauthable
 
   default_scope -> { includes(:profile) }
@@ -43,8 +43,8 @@ class User < ActiveRecord::Base
   validates_presence_of :email, :password
   validates_acceptance_of :terms, :allow_nil => false, :on => :create
   #validates_acceptance_of :terms, on: :create, :message => "must be abided"
-  
-  attr_accessor :terms 
+
+  attr_accessor :terms
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first || User.where(:email=> auth.info.email).first

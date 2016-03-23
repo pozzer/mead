@@ -8,13 +8,17 @@ class Profile < ActiveRecord::Base
   has_many :ratings, :as => :rateable, :dependent => :destroy
   has_many :avatars, -> { where picture_type: 1 }, as: :attachable, class_name: "Picture", :dependent => :destroy
   has_many :covers, -> { where picture_type: 2 }, as: :attachable, class_name: "Picture", :dependent => :destroy
+  has_one :address, dependent: :destroy
 
 	acts_as_taggable # Alias for acts_as_taggable_on :tags
   acts_as_taggable_on :tags
 
   accepts_nested_attributes_for :pictures, :allow_destroy => true, :reject_if => proc { |attributes| attributes['picture'].blank? }
+  accepts_nested_attributes_for :address, :allow_destroy => true
+
   validates :first_name, presence: true
   validates :birth_date, presence: true, major_age: true
+
 
   def full_name
     "#{first_name} #{last_name}"
@@ -26,7 +30,7 @@ class Profile < ActiveRecord::Base
 
   def avatar_url
     if avatar
-      avatars.last.picture.url
+      avatar.picture.url
     else
       "missing.png"
     end

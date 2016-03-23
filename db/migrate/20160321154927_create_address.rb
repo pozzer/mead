@@ -8,7 +8,9 @@ class CreateAddress < ActiveRecord::Migration
       t.string :district
       t.string :number
       t.text :additional
+      t.references :profile, index: true, foreign_key: true
       t.timestamps null: false
+
     end
   end
 end

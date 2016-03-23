@@ -24,9 +24,12 @@ ActiveRecord::Schema.define(version: 20160321154927) do
     t.string   "district"
     t.string   "number"
     t.text     "additional"
+    t.integer  "profile_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "addresses", ["profile_id"], name: "index_addresses_on_profile_id", using: :btree
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -339,6 +342,7 @@ ActiveRecord::Schema.define(version: 20160321154927) do
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "addresses", "profiles"
   add_foreign_key "doc_empl", "doc", column: "doc_k", primary_key: "doc_pk", name: "doc_empl_doc_k_fkey"
   add_foreign_key "doc_empl", "empl", column: "empl_k", primary_key: "empl_pk", name: "doc_empl_empl_k_fkey"
   add_foreign_key "empl_addr", "empl", column: "empl_k", primary_key: "empl_pk", name: "empl_addr_empl_k_fkey"
