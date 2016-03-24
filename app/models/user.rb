@@ -58,10 +58,8 @@ class User < ActiveRecord::Base
       user.save
       if auth.info.image.present?
         avatar_url = User.process_uri(auth.info.image)
-        avatar = user.profile.pictures.new
-        avatar.attributes={picture_type:1, picture: open(avatar_url)} 
-        avatar.save
-       end
+        Picture.create(attachable: user.profile, picture_type: 'avatar', picture: open(avatar_url))
+      end
     else
       user.update_attributes({:provider => auth.provider, :uid => auth.uid}) if user.provider.blank? or user.uid.blank?
     end
