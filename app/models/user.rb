@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
                          email:auth.info.email,
                          password:Devise.friendly_token[0,20],
                          terms:"1")
-      user.profile.attributes={birth_date: Date.strptime(auth.extra.raw_info.birthday, "%m/%d/%Y"), first_name: auth.extra.raw_info.first_name, last_name: auth.extra.raw_info.last_name}
+      user.profile.attributes={birth_date: Date.today-20.year , first_name: auth.extra.raw_info.first_name, last_name: auth.extra.raw_info.last_name}
       user.save
       if auth.info.image.present?
         avatar_url = User.process_uri(auth.info.image)

@@ -57,4 +57,8 @@ class Profile < ActiveRecord::Base
     city ? city.name : "Não informado"
   end
 
+  def self.columns_search
+    ["first_name","last_name","about","organization_name"]
+  end
+
 end

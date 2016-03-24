@@ -34,7 +34,7 @@ gem 'private_pub'
 gem 'thin'
 gem 'rails_12factor'
 gem 'open_uri_redirections'
-
+gem 'correios-cep'
 gem 'activeadmin', github: 'activeadmin'
 
 group :development, :test do
