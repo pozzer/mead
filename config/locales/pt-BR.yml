@@ -66,10 +66,9 @@ pt-BR:
         number: Número
         state: Estado
         city: Cidade
+        state_id: Estado
+        city_id: Cidade
         additional: Complemento
-  #messages:
-  #  trade: "Tire suas duvidas, pergunte para os outros usuarios."
-  #  bottle: "Tire suas duvidas, pergunte para os outros usuarios."
 
   date:
     abbr_day_names:

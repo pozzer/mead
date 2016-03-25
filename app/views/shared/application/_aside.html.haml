@@ -70,7 +70,7 @@
         .block-content.block-content-full
           / Users Navigation
           %ul.nav-users
-            - User.all.each do |user|
+            - current_user.friends.each do |user|
               %li
                 %a{:href => "#", class: "start-conversation", :"data-sid" => current_user.id, :"data-rip" => user.id, :"data-toggle"=>"layout", :"data-action" => "side_overlay_close", :title=>"Mandar Mensagem para #{user.first_name}"}
                   = image_tag user.profile.avatar_url, class: "img-avatar"

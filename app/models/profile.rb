@@ -20,6 +20,7 @@ class Profile < ActiveRecord::Base
   validates :first_name, presence: true
   validates :birth_date, presence: true, major_age: true
 
+  scope :joins_search, -> { joins(:address => [:state, :city]) }
 
   def full_name
     "#{first_name} #{last_name}"
@@ -53,12 +54,20 @@ class Profile < ActiveRecord::Base
     ratings.any? ? (ratings.map(&:score).sum/ratings.size).to_i : 0
   end
 
-  def city_name
-    city ? city.name : "Não informado"
+  def city_and_symbol
+    unless address.nil?
+      return [address.city.name, address.state.symbol]
+    else
+      return ["Não informado", "-"]
+    end 
   end
 
+
   def self.columns_search
-    ["first_name","last_name","about","organization_name"]
+    ["profiles.first_name", "profiles.last_name", "profiles.about", "profiles.organization_name",
+     "addresses.street", "addresses.district",
+     "states.name",
+     "cities.name"]
   end
 
 end

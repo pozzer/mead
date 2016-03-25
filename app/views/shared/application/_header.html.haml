@@ -15,7 +15,9 @@
           /    = succeed "Inbox" do
           /      %span.badge.badge-primary.pull-right 3
           %li
-            = link_to (content_tag(:i, "", class: "si si-user pull-right") + 'Perfil').html_safe, profile_path(current_user.profile)
+            = link_to (content_tag(:i, "", class: "si si-user pull-right") + 'Meu Perfil').html_safe, profile_path(current_user.profile)
+          %li
+            = link_to (content_tag(:i, "", class: "si si-pencil pull-right") + 'Editar Perfil'), edit_profile_path(current_user.profile)
           /%li
           /  %a{:href => "javascript:void(0)", :tabindex => "-1"}
           /    %i.si.si-settings.pull-right>
@@ -23,7 +25,7 @@
           %li.divider
           %li.dropdown-header Ações
           %li
-            = link_to (content_tag(:i, "", class: "si si-logout pull-right") + 'Alterar senha').html_safe, edit_registration_path(current_user)
+            = link_to (content_tag(:i, "", class: "si si si-pencil pull-right") + 'Alterar senha').html_safe, edit_registration_path(current_user)
           %li
             = link_to (content_tag(:i, "", class: "si si-logout pull-right") + 'Sair').html_safe, destroy_user_session_path, method: :delete
     %li

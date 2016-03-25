@@ -1,9 +1,9 @@
 class SearchsController < ApplicationController
 
 	def index
-		@questions = Question.all
-		@profiles = Profile.all
-		@bottles = Bottle.all
+		@profiles = MonsterSearch.new(Profile, params[:search]).search
+		@questions = []
+		@bottles = []
 	end
 
 end
