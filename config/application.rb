@@ -29,27 +29,4 @@ module MeadProject
     config.active_record.raise_in_transactional_callbacks = true
   end
 
-  def search_postal_code
-    begin
-      address = get_address
-      render :json => address.to_json
-    rescue SocketError,RuntimeError, Timeout::Error
-      address = {'bairro' => '','cep' => '','cidade' => '','logradouro' => '','tipo_logradouro' => '','uf' => ''}
-      render :json => address.to_json
-    end
-  end
-  
-  def get_address
-    address = {}
-    address_correios = Correios::CEP::AddressFinder.get(params[:cep])
-    return raise RuntimeError if address_correios.nil? or address_correios.blank?
-    address[:cidade_nome] = address_correios[:city]
-    #address[:cidade] = City.find_or_create_by_nome(address_correios[:city], address_correios[:state]).id
-    address[:uf] = address_correios[:state]
-    address[:cep] = address_correios[:zipcode]
-    address[:logradouro] = address_correios[:address]
-    address[:bairro] = address_correios[:neighborhood]
-
-    endereco
-  end
 end

@@ -19,9 +19,9 @@ class ProfilesController < AppController
     end
 
     def profile_params
-      params.require(:profile).permit(:last_name, :city_id, :about, :organization_name,
+      params.require(:profile).permit(:last_name, :about, :organization_name,
                                       pictures_attributes: [:picture, :picture_type],
-                                      address_attributes: [:postal_code, :street, :state, :city, :district, :number, :additional])
+                                      address_attributes: [:postal_code, :street, :state_id, :city_id, :district, :number, :additional])
     end
 end
 

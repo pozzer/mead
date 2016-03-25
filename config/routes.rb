@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
   
-  get '/application/search_postal_code/:postal_code' => 'application#search_postal_code'  
+  get '/adresses/search_postal_code/:postal_code' => 'adresses#search_postal_code'  
 
 
   # The priority is based upon order of creation: first created -> highest priority.

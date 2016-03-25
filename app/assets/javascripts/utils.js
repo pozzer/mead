@@ -30,6 +30,7 @@ $(function() {
     targetKeep : true
 
   });
+
 });
 
 $(document).on('page:change', function(event) {
@@ -40,5 +41,6 @@ $(document).on('page:change', function(event) {
 
 $(document).ready(function () {
   $("#alert-flash").fadeOut(3000);
+  
 });
 

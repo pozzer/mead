@@ -8,6 +8,7 @@ mead_project.profiles = {
         pub.init = function() {
           $("#profile_address_attributes_postal_code").mask("99999-999");
           $("#profile_birth_date").mask("99/99/9999");
+          
 	        }
         return pub;
     }()
