@@ -29,13 +29,13 @@ module MeadProject
     config.active_record.raise_in_transactional_callbacks = true
   end
 
-  def busca_por_cep
+  def search_postal_code
     begin
-      endereco = get_address
-      render :json => endereco.to_json
+      address = get_address
+      render :json => address.to_json
     rescue SocketError,RuntimeError, Timeout::Error
-      endereco = {'bairro' => '','cep' => '','cidade' => '','logradouro' => '','tipo_logradouro' => '','uf' => ''}
-      render :json => endereco.to_json
+      address = {'bairro' => '','cep' => '','cidade' => '','logradouro' => '','tipo_logradouro' => '','uf' => ''}
+      render :json => address.to_json
     end
   end
   
