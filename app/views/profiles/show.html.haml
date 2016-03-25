@@ -1,12 +1,7 @@
 = render "head_block_profile"
 .row
   .col-sm-5.col-sm-push-7.col-lg-4.col-lg-push-8
-    - if @profile.user != current_user
-      %a.block.block-link-hover2{:href => friendships_path(:friend_id => @profile.user), :"data-method"=>"post"}
-        .block-content.block-content-full.bg-flat.clearfix
-          %i.si.si-user-follow.fa-2x.text-white.pull-right
-          %span.h4.text-white-op= "Adicionar #{@profile.first_name} como amigo"
-      
+    = render partial: "block_friendship"
     = render partial: "shared/block_about", locals: { about: @profile.about }
     /.block.block-opt-refresh-icon6
     /  .block-header
