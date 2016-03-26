@@ -9,7 +9,7 @@
       .block-content.block-content-narrow
         = f.input :title
         = f.input :tag_list, as: :select, collection: ActsAsTaggableOn::Tagging.where(:context=>"tags").joins(:tag).select("distinct tags.id, tags.name").collect{ |x| [x.name, x.name]}, input_html: { multiple: true, class: "js-select2" }
-        = f.input :content, as: :summernote, wrapper: :default, :input_html =>{ class: "js-summernote"}
+        = f.input :content, as: :text, wrapper: :default, input_html: { class: "js-summernote" }
       .block-content.block-content-full.bg-gray-lighter.text-center
         %button.btn.btn-sm.btn-primary{:type => "submit"}
           %i.fa.fa-check.push-5-r

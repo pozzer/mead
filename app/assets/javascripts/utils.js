@@ -47,3 +47,13 @@ $(document).ready(function () {
   
 });
 
+
+//$(function() {
+//  $("li.page").on("click", function() {
+//    //$("#profile-content").html("");
+//    hrf = $(this).find('a').href 
+//    console.log(hrf);
+//    //$.getScript($(this).find('a').href );
+//    return false;
+//  });
+//});

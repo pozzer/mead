@@ -50,3 +50,7 @@
 abbr[title] {
 	border-bottom: none !important;
 }
+
+.not-active {
+  pointer-events: none;
+}

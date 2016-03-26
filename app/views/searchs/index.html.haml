@@ -16,42 +16,14 @@
         %ul.list.list-activity.push
           - @questions.each do |question|
             = render partial: "questions/question_list", locals:{ question: question }
-        .border-t
-          %ul.pagination
-            %li.disabled
-              %a{:href => "javascript:void(0)"} Prev
-            %li.active
-              %a{:href => "javascript:void(0)"} 1
-            %li
-              %a{:href => "javascript:void(0)"} 2
-            %li
-              %span ...
-            %li
-              %a{:href => "javascript:void(0)"} 10
-            %li
-              %a{:href => "javascript:void(0)"} Next
+      
       #search-users.tab-pane.fade.fade-up
         .border-b.push-30
           %h2.push-10
             = @profiles.count
             %span.h5.font-w400.text-muted Usuários Encontrados
-        .row
-          -@profiles.each do |profile|
-            = render partial: "block_profile_search", locals: { profile: profile}
-        .border-t
-          %ul.pagination
-            %li.disabled
-              %a{:href => "javascript:void(0)"} Prev
-            %li.active
-              %a{:href => "javascript:void(0)"} 1
-            %li
-              %a{:href => "javascript:void(0)"} 2
-            %li
-              %span ...
-            %li
-              %a{:href => "javascript:void(0)"} 10
-            %li
-              %a{:href => "javascript:void(0)"} Next
+          = render partial: "block_profile_search", locals: { profiles: @profiles}
+      
       #search-classic.tab-pane.fade.fade-up
         .border-b.push-30
           %h2.push-10
@@ -78,17 +50,3 @@
                         .push-5
                           %i.si.si-notebook.fa-2x
                         .h5.font-w300.text-muted= "#{bottle.amount} Garrafas"
-        .border-t
-          %ul.pagination
-            %li.disabled
-              %a{:href => "javascript:void(0)"} Prev
-            %li.active
-              %a{:href => "javascript:void(0)"} 1
-            %li
-              %a{:href => "javascript:void(0)"} 2
-            %li
-              %span ...
-            %li
-              %a{:href => "javascript:void(0)"} 10
-            %li
-              %a{:href => "javascript:void(0)"} Next

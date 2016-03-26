@@ -24,6 +24,8 @@ class Profile < ActiveRecord::Base
                              LEFT JOIN cities ON addresses.city_id = cities.id
                              LEFT JOIN states ON addresses.state_id = states.id") }
 
+  paginates_per 3 
+
   def full_name
     "#{first_name} #{last_name}"
   end
