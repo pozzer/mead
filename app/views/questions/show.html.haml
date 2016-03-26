@@ -19,6 +19,6 @@
                   = render partial: "shared/block_profile", locals: {title: "Respondeu a #{time_ago_in_words(answer.created_at)}", user: answer.user}
         %li.push-30.list_answer
           = simple_form_for([@question, @question.answers.new], wrapper: :vertical_form_devise) do |f|
-            = f.input :content, :as => :ckeditor, :label=>false, :input_html => { :ckeditor => {:toolbar => 'mini'} }
+            = f.input :content, as: :summernote, wrapper: :default, :input_html =>{ class: "js-summernote"}
             = f.input :question_id, :as => :hidden
             = f.submit "Responder", class: "btn btn-success"

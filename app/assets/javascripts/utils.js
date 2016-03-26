@@ -30,7 +30,10 @@ $(function() {
     targetKeep : true
 
   });
-
+  App.initHelper('summernote')
+  //$('[data-provider="summernote"]').each(function(){
+  //  $(this).summernote({
+  //})
 });
 
 $(document).on('page:change', function(event) {

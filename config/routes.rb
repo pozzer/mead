@@ -8,8 +8,6 @@ Rails.application.routes.draw do
     resources :messages
   end
   
-  mount Ckeditor::Engine => '/ckeditor'
-
   resources :ratings
 
   resources :trades
