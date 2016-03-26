@@ -20,7 +20,9 @@ class Profile < ActiveRecord::Base
   validates :first_name, presence: true
   validates :birth_date, presence: true, major_age: true
 
-  scope :joins_search, -> { joins(:address => [:state, :city]) }
+  scope :joins_search, -> { "LEFT JOIN addresss ON addresses.profile_id = profiles.id 
+                             LEFT JOIN cities ON addresses.city_id = cities.id
+                             LEFT JOIN addresss ON addresses.states_id = state.id" }
 
   def full_name
     "#{first_name} #{last_name}"
