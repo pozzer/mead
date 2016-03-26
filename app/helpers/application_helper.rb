@@ -30,4 +30,8 @@ module ApplicationHelper
     ""
   end
 
+  def get_color_online(user)
+    user.online? ? "text-success" : "text-danger"
+  end  
+
 end
