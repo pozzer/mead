@@ -1,4 +1,6 @@
-$redis_onlines = Redis.new
+uri = URI.parse(ENV["REDISTOGO_URL"] || "redis://localhost:6379/" )
+$redis_onlines = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+
 # it's the simplest way, but i'd recommend:
 # $redis_onlines = Redis.new path: "/tmp/redis.sock", db: 15, driver: :hiredis
 # => hiredis driver more fast
