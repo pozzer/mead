@@ -8,18 +8,18 @@ development:
   host: localhost
   database: mead_project_development
   username: postgres
-  password: ENV["SECRET_KEY_BASE"]
+  password: 5438795 
 
 test:
   <<: *default
   database: mead_project_test
   host: localhost
   username: postgres
-  password: ENV["SECRET_KEY_BASE"]
+  password: 5438795
 
 production:
   <<: *default
   database: mead_project_production
   host: localhost
   username: postgres
-  password: ENV["SECRET_KEY_BASE"]
+  password: 5438795
