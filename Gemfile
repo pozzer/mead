@@ -36,7 +36,6 @@ gem 'open_uri_redirections'
 gem 'correios-cep'
 gem 'activeadmin', github: 'activeadmin'
 gem 'redis'
-gem 'hiredis'
 
 group :development, :test do
   gem 'byebug'
