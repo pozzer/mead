@@ -13,6 +13,8 @@ Para rodar este projeto você precisa ter:
   * OSX - [Postgress.app](http://postgresapp.com/)
   * Linux - `$ sudo apt-get install postgresql`
   * Windows - [PostgreSQL for Windows](http://www.postgresql.org/download/windows/)
+* Redis
+*  Linux - http://redis.io/download
 
 ## Setup do projeto
 
@@ -26,9 +28,10 @@ Se tudo estiver certo, você pode agora rodar o projeto!
 
 ## Rodando o projeto
 
-1. `$ rails s` - Executa o servidor
-2. rackup private_pub.ru -s thin -E production
-3. Abra [http://localhost:3000](http://localhost:3000)
+1. `$ redis-server` - Executa o servidor do redis
+2. `$ rackup private_pub.ru -s thin -E production` - Executa o servidor do public_pub
+3. `$ rails s` - Executa o servidor do rails
+4. Abra [http://localhost:3000](http://localhost:3000)
 
 
 #### Rodando as specs e verificando o coverage Running specs and checking coverage
