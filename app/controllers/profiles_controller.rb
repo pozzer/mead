@@ -1,6 +1,12 @@
 class ProfilesController < AppController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
+  def index
+    respond_to do |format|
+      format.html { redirect_to profile_path(current_user.profile) }
+    end
+  end
+
   def show
   end
 
