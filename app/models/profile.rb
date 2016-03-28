@@ -20,11 +20,11 @@ class Profile < ActiveRecord::Base
   validates :first_name, presence: true
   validates :birth_date, presence: true, major_age: true
 
-  scope :joins_search, -> { joins("LEFT JOIN addresses ON addresses.profile_id = profiles.id 
+  scope :joins_search, -> { joins("LEFT JOIN addresses ON addresses.profile_id = profiles.id
                              LEFT JOIN cities ON addresses.city_id = cities.id
                              LEFT JOIN states ON addresses.state_id = states.id") }
 
-  paginates_per 3 
+  paginates_per 3
 
   def full_name
     "#{first_name} #{last_name}"
@@ -63,7 +63,7 @@ class Profile < ActiveRecord::Base
       return [address.city.name, address.state.symbol]
     else
       return ["Não informado", "-"]
-    end 
+    end
   end
 
 

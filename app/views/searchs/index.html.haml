@@ -4,7 +4,7 @@
       %li.active
         %a{:href => "#search-projects"} Perguntas
       %li
-        %a{:href => "#search-users"}= "Usuários (#{@profiles.count})"
+        %a{:href => "#search-users"}= "Usuários (#{@profiles.total_count })"
       %li
         %a{:href => "#search-classic"} Garrafas
     .block-content.tab-content.bg-white
@@ -16,14 +16,12 @@
         %ul.list.list-activity.push
           - @questions.each do |question|
             = render partial: "questions/question_list", locals:{ question: question }
-      
+
       #search-users.tab-pane.fade.fade-up
         .border-b.push-30
-          %h2.push-10
-            = @profiles.count
-            %span.h5.font-w400.text-muted Usuários Encontrados
+
           = render partial: "block_profile_search", locals: { profiles: @profiles}
-      
+
       #search-classic.tab-pane.fade.fade-up
         .border-b.push-30
           %h2.push-10
