@@ -1,4 +1,4 @@
-= simple_form_for(@profile, wrapper: :vertical_form_devise) do |f|
+= simple_form_for(@profile, wrapper: :vertical_form_devise, html: { class: "js-validation-material" } ) do |f|
   = f.error_notification
   .block
     %ul.nav.nav-tabs.nav-justified.push-20{"data-toggle" => "tabs"}
@@ -61,13 +61,13 @@
               .col-xs-4
                 = a.input :number
               .col-xs-6
-                = a.input :state_id, as: :select, collection: State.all.collect {|x| [x.name, x.id, :"data-symbol"=>x.symbol]}
+                = a.input :state_id, as: :select, collection: State.all.collect {|x| [x.name, x.id, :"data-symbol"=>x.symbol]}, :include_blank => false, :input_html => { "data-city_id": "" }
               .col-xs-6
-                = a.input :city_id, as: :select, collection: City.all.collect {|x| [x.name, x.id, :"data-symbol"=>x.state.symbol]}
+                = a.input :city_id, as: :select, collection: options_for_cities(a.object), :include_blank => false
               .col-xs-12
                 = a.input :additional
     .block-content.block-content-full.bg-gray-lighter.text-center
-      %button.btn.btn-sm.btn-primary{:type => "submit"}
+      %button.btn.btn-sm.btn-primary.form-submit{:type => "submit"}
         %i.fa.fa-check.push-5-r
         Salvar as alterações
       %button.btn.btn-sm.btn-warning{:type => "reset"}

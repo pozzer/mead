@@ -16,29 +16,39 @@ window.mead_project.search_postal_code = function() {
     }
   }
 
-  priv.disableCities = function(){
-    if ( $("#profile_address_attributes_state_id").val == '' ) {
-      $("#profile_address_attributes_city_id option").hide();
-    } else {
-      var symbol = $("#profile_address_attributes_state_id option:selected").data("symbol")
-      $("#profile_address_attributes_city_id option").hide();
-      $("#profile_address_attributes_city_id option[data-symbol=" + symbol + "]").show();
+  priv.search_city_by_symbol = function(symbol) {
+    $.getJSON("/adresses/get_cities_by_symbol/" + symbol,
+      function ( data ) {
+        priv.fillCities(data);
+      }
+    );
+  }
+
+  priv.fillCities = function(data) {
+    $("#profile_address_attributes_city_id").html(data);
+    var city_id = $("#profile_address_attributes_state_id").data("city_id");
+    console.log(city_id == "");
+    if (city_id === undefined || city_id == "" ){
+      $("#profile_address_attributes_city_id").val($("#profile_address_attributes_city_id option:first").val());
+    }else {
+      $("#profile_address_attributes_city_id").val(city_id).change();  
     }
   }
 
   priv.fill = function(data) {
     $("#profile_address_attributes_state_id").val(data.uf).change();
+    $("#profile_address_attributes_state_id").attr("data-city_id", data.cidade);
     $("#profile_address_attributes_district").val(data.bairro).change();
     $("#profile_address_attributes_street").val(data.logradouro).change();
-    $("#profile_address_attributes_city_id").val(data.cidade).change();
   }
 
   priv.getCitiesFromState = function(){
-    priv.disableCities()
+    var symbol = $(this).find(":selected").data("symbol");
+    priv.search_city_by_symbol(symbol)
   }
 
   pub.init = function() {
-    priv.disableCities()
+    //priv.disableCities()
     $("#profile_address_attributes_postal_code").on('change', priv.search_postal_code);
     $("#profile_address_attributes_state_id").on('change', priv.getCitiesFromState);
 

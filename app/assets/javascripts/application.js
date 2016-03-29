@@ -26,6 +26,7 @@
 //= require js/plugins/fileinput/jasny-bootstrap.min.js
 //= require js/plugins/summernote/summernote.min.js
 //= require js/plugins/summernote/pt-BR.js
+//= require js/plugins/jquery-validation/jquery.validate.min.js
 
 //= require_tree .
 

@@ -5,7 +5,7 @@ class AdressesController < ApplicationController
       address = get_address
       render :json => address.to_json
     rescue SocketError,RuntimeError, Timeout::Error
-      address = {'bairro' => '','cep' => '','cidade' => '','logradouro' => '','tipo_logradouro' => '','uf' => ''}
+      address = {'bairro' => '','cep' => '','cidade' => '','logradouro' => '','tipo_logradouro' => '','uf' => '1'}
       render :json => address.to_json
     end
   end
@@ -22,6 +22,11 @@ class AdressesController < ApplicationController
     address[:bairro] = address_correios[:neighborhood]
 
     address
+  end
+
+  def get_cities_by_symbol
+    cities =  City.from_state_state_symbol(params[:symbol])
+    render :json => cities.collect{|x| "<option value='#{x.id}'>#{x.name}</option>"}.to_json
   end
 
 end

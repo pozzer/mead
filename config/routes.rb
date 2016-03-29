@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   end
   
   get '/adresses/search_postal_code/:postal_code' => 'adresses#search_postal_code'  
+  get '/adresses/get_cities_by_symbol/:symbol' => 'adresses#get_cities_by_symbol'  
 
 
   # The priority is based upon order of creation: first created -> highest priority.
