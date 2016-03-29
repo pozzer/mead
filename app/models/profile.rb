@@ -68,7 +68,7 @@ class Profile < ActiveRecord::Base
 
 
   def self.columns_search
-    ["profiles.first_name", "profiles.last_name", "profiles.about", "profiles.organization_name",
+    ["profiles.first_name || ' ' || profiles.last_name", "profiles.about", "profiles.organization_name",
      "addresses.street", "addresses.district",
      "states.name",
      "cities.name"]

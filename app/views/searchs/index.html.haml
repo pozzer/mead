@@ -2,49 +2,19 @@
   .block
     %ul.nav.nav-tabs.nav-tabs-alt{"data-toggle" => "tabs"}
       %li.active
-        %a{:href => "#search-projects"} Perguntas
+        %a{:href => "#search-question"}= "Perguntas (#{@questions.total_count })"
       %li
-        %a{:href => "#search-users"}= "Usuários (#{@profiles.total_count })"
+        %a{:href => "#search-profile"}= "Usuários (#{@profiles.total_count })"
       %li
-        %a{:href => "#search-classic"} Garrafas
+        %a{:href => "#search-bottle"}= "Garrafas (#{@bottles.total_count })"
     .block-content.tab-content.bg-white
-      #search-projects.tab-pane.fade.fade-up.active.in
+      #search-question.tab-pane.fade.fade-up.active.in
         .border-b.push-30
-          %h2.push-10
-            = @questions.size
-            %span.h5.font-w400.text-muted Perguntas Encontradas
-        %ul.list.list-activity.push
-          - @questions.each do |question|
-            = render partial: "questions/question_list", locals:{ question: question }
-
-      #search-users.tab-pane.fade.fade-up
+          = render partial: "block_question_search", locals: { profiles: @questions}
+      #search-profile.tab-pane.fade.fade-up
         .border-b.push-30
-
           = render partial: "block_profile_search", locals: { profiles: @profiles}
-
-      #search-classic.tab-pane.fade.fade-up
+      #search-bottle.tab-pane.fade.fade-up
         .border-b.push-30
-          %h2.push-10
-            = @bottles.count
-            %span.h5.font-w400.text-muted Garrafas Encontradas
-          .row
-            - @bottles.each do |bottle|
-              .col-sm-6.col-lg-3
-                %a.block-bordered.block.block-link-hover3{:href => "#{user_bottle_path(bottle.user, bottle) }"}
-                  .block-content.block-content-full.text-center
-                    %div
-                      = image_tag bottle.image_url, class: "img-avatar img-avatar96 img-avatar-thumb"
-                    .h5.push-15-t.push-5= bottle.label
-                    .h5.font-w300.text-muted= bottle.organization_name
-                  .block-content.block-content-mini.block-content-full.bg-gray-lighter
-                    .text-center.text-muted= bottle.style
-                  .block-content
-                    .row.items-push.text-center
-                      .col-xs-6
-                        .push-5
-                          %i.si.si-star.fa-2x
-                        .h5.font-w300.text-muted 5 Estrelas
-                      .col-xs-6
-                        .push-5
-                          %i.si.si-notebook.fa-2x
-                        .h5.font-w300.text-muted= "#{bottle.amount} Garrafas"
+          = render partial: "block_bottle_search", locals: { bottles: @bottles}
+          

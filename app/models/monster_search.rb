@@ -5,7 +5,8 @@ class MonsterSearch
   def initialize(model, params)
     @table = model
     @rows = []
-    @array_search = params.split()
+    @orders = []
+    @array_search = params.split().insert(0,params)
     @columns = model.columns_search
   end
 
@@ -16,6 +17,7 @@ class MonsterSearch
   private
     def or_each
       @array_search.each do |val|
+
         @columns.each do |column|
           @rows << "#{column} ilike '%#{val}%'"
         end
@@ -26,10 +28,10 @@ class MonsterSearch
     def order_each
       @array_search.each do |val|
         @columns.each do |column|
-          @rows << "#{column} ilike '%#{val}%' desc"
+          @orders << "#{column} ilike '%#{val}%' desc"
         end
       end
-      @rows.join(", ")
+      @orders.join(", ")
     end
 
     def array_search
