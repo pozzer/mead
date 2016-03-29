@@ -3,11 +3,9 @@ class QuestionsController < AppController
   respond_to :js, only: [:vote]
 
   def index
-    @questions = Question.all
-    respond_with @questions
-  end
-
-  def show
+    @newests = Question.newer.page(params[:newest_page])
+    @unanswereds = Question.top_rated.without_best_answer.page(params[:unanswered_page])
+    @votes = Question.top_rated.page(params[:vote_page])
   end
 
   def new

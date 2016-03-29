@@ -1,0 +1,7 @@
+#vote-content
+  %h4.push-10.font-w400
+    = page_entries_info @votes, :entry_name => 'Perguntas sem respostas'
+  .row
+    - @votes.each do |question|
+      = render partial: "item_question", locals:{ question: question }
+  = paginate @votes, param_name: :vote_page, remote: true
