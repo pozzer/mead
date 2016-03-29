@@ -2,6 +2,25 @@
   .block-header.bg-info
     %h3.block-title= @question.title
   .block-content#question
+
+    %table.table.table-striped.table-borderless
+      %tbody
+        %tr
+          %td.hidden-xs
+          %td.font-s13.text-muted
+            %a{:href => "base_pages_profile.php"}= @question.user.full_name
+            = "Perguntou a #{time_ago_in_words(@question.created_at)}"
+        %tr
+          %td.text-center.hidden-xs{:style => "width: 140px;"}
+            .push-10
+              %a{:href => "base_pages_profile.php"}
+                %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar7.jpg"}/
+            %small 2 Posts
+          %td
+            = @question.content.to_s.html_safe
+            %hr/
+            %p.font-s13.text-muted There is only one way to avoid criticism: do nothing, say nothing, and be nothing.
+
     .row
       .col-lg-1.text-center
         = render partial: "shared/votes_column", locals: {count: @question.votes_count, path: vote_question_path(@question)}

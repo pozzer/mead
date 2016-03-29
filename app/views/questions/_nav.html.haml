@@ -1,3 +1,6 @@
-.row
-  .col-md-12.push-20
-    = link_to_with_icon([' Faça uma pergunta','fa fa-plus'], new_question_path, class: "btn btn-primary push-5-r btn-sm pull-right")
+%a.block.block-link-hover2{:href => "#{new_question_path}"}
+  .block-content.block-content-full.bg-primary.clearfix
+    /%i.si.si-speech.fa-2x.text-white.pull-right
+    %i.fa.fa-plus.fa-2x.text-white.pull-right
+    %span.h4.text-white-op Faça uma nova
+    %span.h4.font-w700.text-white Pergunta
