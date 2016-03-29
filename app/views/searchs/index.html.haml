@@ -1,5 +1,5 @@
 .content
-  .block
+  #tabs-container.block
     %ul.nav.nav-tabs.nav-tabs-alt{"data-toggle" => "tabs"}
       %li.active
         %a{:href => "#search-question"}= "Perguntas (#{@questions.total_count })"
@@ -17,4 +17,4 @@
       #search-bottle.tab-pane.fade.fade-up
         .border-b.push-30
           = render partial: "block_bottle_search", locals: { bottles: @bottles}
-          
+

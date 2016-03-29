@@ -21,9 +21,11 @@ class Question < ActiveRecord::Base
 
   scope :without_best_answer, -> { where("questions.id not IN ( select answers.question_id from answers where answers.question_id = questions.id and answers.best = 't' )") }
 
-  scope :joins_search, -> { joins("INNER JOIN users ON users.id = questions.user_id 
-                                   INNER JOIN profiles ON users.id = profiles.user_id  
+  scope :joins_search, -> { joins("INNER JOIN users ON users.id = questions.user_id
+                                   INNER JOIN profiles ON users.id = profiles.user_id
                                    LEFT JOIN answers ON answers.question_id = questions.id") }
+
+  paginates_per 10
 
   def have_best_answer?
     answers.the_best.any?
@@ -42,7 +44,7 @@ class Question < ActiveRecord::Base
   end
 
   def self.columns_search
-    ["questions.title", "answers.content", "questions.content", 
+    ["questions.title", "answers.content", "questions.content",
     "profiles.first_name || ' ' || profiles.last_name"]
   end
 

@@ -23,10 +23,10 @@ class QuestionsController < AppController
   end
 
   def vote
-    #value = params[:type] == "up" ? 1 : -1
-    #@question = Question.friendly.find(params[:id])
-    #@question.add_or_update_evaluation(:votes, value, current_user)
-    #respond_with(@question)
+    value = params[:type] == "up" ? 1 : -1
+    @question = Question.friendly.find(params[:id])
+    @question.add_or_update_evaluation(:votes, value, current_user)
+    respond_with(@question)
   end
 
   private

@@ -9,7 +9,7 @@
             %tbody
               %tr
                 %td.border-r{:style => "width: 10%;", class: (question.have_best_answer? ? "bg-success" : "gray-lighter")}
-                  .push-10.push-10-t{class: (question.have_best_answer? ? "text-white" : "")} 
+                  .push-10.push-10-t{class: (question.have_best_answer? ? "text-white" : "")}
                     %i.fa.fa-check.fa-2x
                     .font-w600.push-15-t= "#{question.answers.size} Respostas"
                 %td.bg-gray-lighter.border-r{:style => "width: 10%;"}
@@ -17,56 +17,45 @@
                     %i.si.si-like.fa-2x
                     .font-w600.push-15-t= "#{question.votes_count} Votos"
                 %td{:style => "width: 50%;"}
-                  %table.block-table.text-center
+                  %table.block-table.text-left
                     %tr
                       %td
-                        = question.title
+                        %h4.font-w600.push-5
+                          = question.title
                     %tr
                       %td
-                        PERGUNTADA A 3 DIAS
+                        = render partial: "shared/tag_list", locals: {tags: question.tags}
                 %td.border-l{:style => "width: 30%;"}
                   %a.clearfix.block-link-hover3{:href => "#{profile_path(question.user.profile) }"}
                     .pull-right.hidden-md
-                      %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/
+                      = image_tag( question.user.profile.avatar_url, class: "img-avatar" )
                     .pull-left.push-10-t
                       .font-w600.push-5= question.user.full_name
                       .text-muted= question.user.profile.organization_name
+
       .col-xs-12.col-sm-12.hidden-md.hidden-lg
         %a.block-bordered.block.block-link-hover3{:href => "#{question_path(question) }"}
-          .block-header{class: (question.have_best_answer? ? "text-white bg-success" : "")} 
-            %ul.block-options
-              %li
-                %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-                  %i.si.si-refresh
-            %h3.block-title Weekly Tickets
-          .block-content.block-content-full.text-center.bg-gray-lighter
-            %span.js-widget-line2
-              %canvas{:height => "120", :style => "display: inline-block; width: 200px; height: 120px; vertical-align: top;", :width => "200"}
-          .block-content
+          .block-header{class: (question.have_best_answer? ? "text-white bg-success" : "")}
+            %h3.block-title
+              %i.si.si-user
+              = " #{question.user.full_name}"
+          .block-content.block-content-full
+            %table.block-table.text-left
+              %tr
+                %td
+                  %h4.font-w600.push-5
+                    = question.title
+              %tr
+                %td
+                  = render partial: "shared/tag_list", locals: {tags: question.tags}
+          .block-content.border-t
             .row.items-push.text-center
-              .col-xs-6
+              .col-xs-6.border-r
                 .push-5
                   %i.si.si-like.fa-2x
-                .h5.font-w300.text-muted 0 Votos
+                .h5.font-w300.text-muted= "#{question.votes_count} Votos"
               .col-xs-6
                 .push-5
-                  %i.si.si-check.fa-2x
-                  .h5.font-w300.text-muted 0 Respostas
-        /    %div
-        /      = image_tag bottle.image_url, class: "img-avatar img-avatar96 img-avatar-thumb"
-        /    .h5.push-15-t.push-5= bottle.label
-        /    .h5.font-w300.text-muted= bottle.organization_name
-        /  .block-content.block-content-mini.block-content-full.bg-gray-lighter
-        /    .text-center.text-muted= bottle.style
-        /  .block-content
-        /    .row.items-push.text-center
-        /      .col-xs-6
-        /        .push-5
-        /          %i.si.si-star.fa-2x
-        /        .h5.font-w300.text-muted 5 Estrelas
-        /      .col-xs-6
-        /        .push-5
-        /          %i.si.si-notebook.fa-2x
-        /        .h5.font-w300.text-muted= "#{bottle.amount} Garrafas"
-
-  = paginate @bottles, param_name: :question_page, remote: true            
+                  %i.fa.fa-check.fa-2x
+                  .h5.font-w300.text-muted= "#{question.answers.size} Respostas"
+  = paginate @questions, param_name: :question_page, remote: true
