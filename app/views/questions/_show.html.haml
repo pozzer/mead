@@ -2,33 +2,23 @@
   .block-header.bg-info
     %h3.block-title= @question.title
   .block-content#question
-
     %table.table.table-striped.table-borderless
       %tbody
         %tr
           %td.hidden-xs
           %td.font-s13.text-muted
-            %a{:href => "base_pages_profile.php"}= @question.user.full_name
+            = link_to @question.user.full_name, profile_path(@question.user.profile)
             = "Perguntou a #{time_ago_in_words(@question.created_at)}"
         %tr
           %td.text-center.hidden-xs{:style => "width: 140px;"}
             .push-10
               %a{:href => "base_pages_profile.php"}
-                %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar7.jpg"}/
+                = image_tag @question.user.profile.avatar_url, class: "img-avatar"
             %small 2 Posts
+            = render partial: "shared/votes_column", locals: {count: @question.votes_count, path: vote_question_path(@question)}
+            = render partial: "shared/favorite_question", locals: {question: @question}
           %td
             = @question.content.to_s.html_safe
+            = render partial: "shared/tag_list", locals: {tags: @question.tags}
             %hr/
-            %p.font-s13.text-muted There is only one way to avoid criticism: do nothing, say nothing, and be nothing.
-
-    .row
-      .col-lg-1.text-center
-        = render partial: "shared/votes_column", locals: {count: @question.votes_count, path: vote_question_path(@question)}
-        = render partial: "shared/favorite_question", locals: {question: @question}
-      .col-lg-11
-        .col-lg-12
-          .font-s13.text-muted
-            = @question.content.to_s.html_safe
-          = render partial: "shared/tag_list", locals: {tags: @question.tags}
-        .col-lg-4.col-sm-5.col-xm-12.pull-right
-          = render partial: "shared/block_profile", locals: {title: "Perguntou a #{time_ago_in_words(@question.created_at)}", user: @question.user}
+            %p.font-s13.text-muted= @question.user.profile.about
