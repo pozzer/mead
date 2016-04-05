@@ -81,8 +81,8 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
     :storage => :s3,
-    :s3_host_name => 'mead-productions.s3-website-us-east-1.amazonaws.com',
-    :bucket => 'mead-production'
+    #:s3_host_name => 'REMOVE_THIS_LINE_IF_UNNECESSARY',
+    :bucket => 'mead-productions'
   }
 
 end
