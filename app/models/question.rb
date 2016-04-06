@@ -29,7 +29,7 @@ class Question < ActiveRecord::Base
 
   scope :top_rated, -> { find_with_reputation(:votes, :all).order("votes DESC") }
 
-  paginates_per 10
+  paginates_per 20
 
   def have_best_answer?
     answers.the_best.any?
