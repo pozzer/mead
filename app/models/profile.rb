@@ -36,7 +36,7 @@ class Profile < ActiveRecord::Base
 
   def avatar_url
     if avatar
-      avatar.picture.url
+      avatar.picture.url(:avatar)
     else
       "missing.png"
     end
@@ -48,7 +48,7 @@ class Profile < ActiveRecord::Base
 
   def cover_url
     if cover
-      covers.last.picture.url
+      covers.last.picture.url(:medium)
     else
       "missing_cover.png"
     end

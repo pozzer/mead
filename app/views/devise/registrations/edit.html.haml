@@ -7,11 +7,11 @@
       .row.items-push
         .col-sm-6.col-sm-offset-3.form-horizontal
           .col-xs-12
-            = f.input :password, input_html: { :autocomplete => "off" } 
+            = f.input :current_password, input_html: { :autocomplete => "off" }
           .col-xs-12
-            = f.input :password_confirmation, input_html: { :autocomplete => "off" } 
+            = f.input :password, label:"Nova senha", input_html: { :autocomplete => "off" }
           .col-xs-12
-            = f.input :current_password, input_html: { :autocomplete => "off" } 
+            = f.input :password_confirmation, label:"Confirme a nova senha", input_html: { :autocomplete => "off" }
     .block-content.block-content-full.bg-gray-lighter.text-center
       %button.btn.btn-sm.btn-primary{:type => "submit"}
         %i.fa.fa-check.push-5-r

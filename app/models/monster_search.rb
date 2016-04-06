@@ -11,7 +11,9 @@ class MonsterSearch
   end
 
   def search
-    @table.joins_search.where( or_each ).order( order_each )
+    query = @table.joins_search.where( or_each ).order( order_each )
+    query.tagged_with(@array_search, :any=>true)
+    query
   end
 
   private
