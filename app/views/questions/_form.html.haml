@@ -12,7 +12,7 @@
             = f.input :title
             = f.input :tag_list, as: :select, collection: ActsAsTaggableOn::Tagging.where(:context=>"tags").joins(:tag).select("distinct tags.id, tags.name").collect{ |x| [x.name, x.name]}, input_html: { multiple: true, class: "js-select2" }
           .col-sm-4
-            #help-block-content.alert.alert-info.alert-dismissable{style:"display:none;"}
+            #help-block-content.alert.alert-info.alert-dismissable
               %h4.font-w300.push-15.info-title Pergunta
               .info-content
                 %p
@@ -23,22 +23,6 @@
                     %i respondidas
                 %p Dê detalhes. Diga o que você já tentou.
 
-            #help-block-title.alert.alert-info.alert-dismissable{style:"display:none;"}
-              %h4.font-w300.push-15.info-title Como perguntar
-              .info-content
-                %p
-                  Você procurou uma resposta antes de fazer sua pergunta?
-                %p
-                  Preferimos perguntas que podem ser
-                  = succeed "," do
-                    %i respondidas
-                %p Dê detalhes. Diga o que você já tentou;
-
-            #help-block-tag.alert.alert-info.alert-dismissable{style:"display:none;"}
-              %h4.font-w300.push-15.info-title Tags
-              .info-content
-                %p
-                  sd asd
         .row
           .col-sm-12
             = f.input :content, label:false, as: :text, wrapper: :default, input_html: { class: "js-summernote" }
