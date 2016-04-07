@@ -26,7 +26,7 @@ class Question < ActiveRecord::Base
   scope :joins_search, -> { top_rated.joins("INNER JOIN users ON users.id = questions.user_id
                                    INNER JOIN profiles ON users.id = profiles.user_id
                                    LEFT JOIN answers ON answers.question_id = questions.id") }
-
+  scope :joins_for_union,-> { top_rated }
   scope :top_rated, -> { find_with_reputation(:votes, :all).order("votes DESC") }
 
   paginates_per 20

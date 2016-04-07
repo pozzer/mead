@@ -11,15 +11,12 @@ class MonsterSearch
   end
 
   def search
-    query = @table.joins_search.where( or_each ).order( order_each )
-    query.tagged_with(@array_search, :any=>true)
-    query
+    [@table.joins_search.where( or_each ).order( order_each ), @table.joins_search.tagged_with(@array_search)].inject(:union)
   end
 
   private
     def or_each
       @array_search.each do |val|
-
         @columns.each do |column|
           @rows << "#{column} ilike '%#{val}%'"
         end

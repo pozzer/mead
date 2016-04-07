@@ -2,9 +2,11 @@ class FavoriteQuestionsController < AppController
   before_action :set_question, only: [:set_favorite, :remove_favorite]
   before_action :set_favorite_question, only: [:remove_favorite]
   respond_to :js, only: [:set_favorite, :remove_favorite]
+  respond_to :html, :js, only: [:index]
 
   def index
-    @favorite_questions = FavoriteQuestion.where(user_id: params[:user_id])
+    @favorite_questions = FavoriteQuestion.where(user: current_user).page(params[:favorite_page])
+
     respond_with(@favorite_questions)
   end
 

@@ -6,7 +6,7 @@ class Bottle < ActiveRecord::Base
   has_many :bottle_trades
 	belongs_to :user
 
-	acts_as_taggable # Alias for acts_as_taggable_on :tags
+	acts_as_taggable
   acts_as_taggable_on :tags
 
   accepts_nested_attributes_for :pictures, :allow_destroy => true

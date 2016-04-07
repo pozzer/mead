@@ -49,6 +49,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_record_union (1.1.1)
+      activerecord (>= 4.0)
     activejob (4.2.3)
       activesupport (= 4.2.3)
       globalid (>= 0.3.0)
@@ -381,6 +383,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_record_union
   activeadmin!
   activerecord-reputation-system
   acts-as-taggable-on

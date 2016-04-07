@@ -37,9 +37,6 @@ class User < ActiveRecord::Base
                { reputation: :best_answering_skill, weight: 1 },
                { reputation: :favorite_question_skill, weight: 1 }]
 
-
-
-
   devise :database_authenticatable, :registerable, :lockable,
       :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
     # :confirmable, :lockable, :timeoutable and :omniauthable

@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   resources :friendships
   
   devise_for :admin_users, ActiveAdmin::Devise.config
+  
   ActiveAdmin.routes(self)
-  resources :conversations do
-    resources :messages
-  end
+  
+
   
   resources :ratings
 
@@ -50,6 +50,10 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
   
+  resources :conversations do
+    resources :messages
+  end
+
   get '/adresses/search_postal_code/:postal_code' => 'adresses#search_postal_code'  
   get '/adresses/get_cities_by_symbol/:symbol' => 'adresses#get_cities_by_symbol'  
 

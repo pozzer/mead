@@ -20,9 +20,10 @@ class Profile < ActiveRecord::Base
   validates :first_name, presence: true
   validates :birth_date, presence: true, major_age: true
 
-  scope :joins_search, -> { joins("LEFT JOIN addresses ON addresses.profile_id = profiles.id
+  scope :joins_search, -> { joins(:user).joins("LEFT JOIN addresses ON addresses.profile_id = profiles.id
                              LEFT JOIN cities ON addresses.city_id = cities.id
                              LEFT JOIN states ON addresses.state_id = states.id") }
+  scope :top_rated, -> { find_with_reputation(:ratings, :all).order("votes DESC") }
 
   paginates_per 12
 

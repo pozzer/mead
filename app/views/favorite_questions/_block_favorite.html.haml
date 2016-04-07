@@ -1,0 +1,7 @@
+#favorite-content
+  %h4.push-10.font-w400
+    = page_entries_info @favorite_questions, :entry_name => 'Perguntas'
+  .row
+    - @favorite_questions.each do |favorite|
+      = render partial: "questions/item_question", locals:{ question: favorite.question }
+  = paginate @favorite_questions, param_name: :favorite_page, remote: true
