@@ -5,6 +5,7 @@ languages:
    PHP: false
 exclude_paths:
 - "app/assets/*"
+- "specs/*"
 - "vendor/*"
 - "public/*"
 - "lib/*"
