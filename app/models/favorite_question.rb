@@ -4,5 +4,5 @@ class FavoriteQuestion < ActiveRecord::Base
 
 	default_scope -> { includes(:question) }
 
-	paginates_per 20
+	paginates_per 1
 end
