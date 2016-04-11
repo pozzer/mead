@@ -1,0 +1,21 @@
+#profile-content
+  %h4.push-10.font-w400
+    = page_entries_info @profiles, :entry_name => 'Usuários'
+  .row
+    - profiles.each do |profile|
+      .col-sm-6.col-lg-4
+        %a.block-bordered.block.block-link-hover2{:href => "#{profile_path(profile)}"}
+          .block-header
+            %h3.block-title= profile.full_name
+          .block-content.block-content-full.text-center.bg-image{:style => "background-image: url(#{asset_path profile.cover_url});"}
+            %img
+              = image_tag profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
+          .block-content.text-center
+            .row.items-push
+              .col-xs-6
+                .h3.push-5= profile.user.bottles.size
+                .h5.font-w300.text-muted Garrafas
+              .col-xs-6
+                .h3.push-5=  profile.city_and_symbol.last
+                .h5.font-w300.text-muted= profile.city_and_symbol.first
+  = paginate @profiles, param_name: :profile_page, remote: true

@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ 
  *= require js/plugins/fileinput/jasny-bootstrap.min.css
  *= require js/plugins/select2/select2.min.css
  *= require oneui
@@ -18,6 +19,8 @@
  *= require themes/modern
  *= require_tree .
  *= require_self
+ *= stub active_admin
+ *= require js/plugins/summernote/summernote.min.css
  */
 
 .row_item {
@@ -46,4 +49,8 @@
 
 abbr[title] {
 	border-bottom: none !important;
+}
+
+.not-active {
+  pointer-events: none;
 }

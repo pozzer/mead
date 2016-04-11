@@ -1,0 +1,7 @@
+#newest-content
+  %h4.push-10.font-w400
+    = page_entries_info @newests, :entry_name => 'Novas Perguntas'
+  .row
+    - @newests.each do |question|
+      = render partial: "item_question", locals:{ question: question }
+  = paginate @newests, param_name: :newest_page, remote: true

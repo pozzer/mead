@@ -1,31 +1,22 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "off"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :vertical_form_devise, html: {method: :put, class: "form-horizontal push-50-t push-50" }) do |f|
+  .block
+    .block-header.bg-gray-lighter
+      %h3.block-title
+        Alterar Senha
+    .block-content
+      .row.items-push
+        .col-sm-6.col-sm-offset-3.form-horizontal
+          .col-xs-12
+            = f.input :current_password, input_html: { :autocomplete => "off" }
+          .col-xs-12
+            = f.input :password, label:"Nova senha", input_html: { :autocomplete => "off" }
+          .col-xs-12
+            = f.input :password_confirmation, label:"Confirme a nova senha", input_html: { :autocomplete => "off" }
+    .block-content.block-content-full.bg-gray-lighter.text-center
+      %button.btn.btn-sm.btn-primary{:type => "submit"}
+        %i.fa.fa-check.push-5-r
+        Alterar senha
+      %button.btn.btn-sm.btn-warning{:type => "reset"}
+        %i.fa.fa-refresh.push-5-r
+        Resetar
+  /Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}

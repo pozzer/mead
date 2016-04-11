@@ -30,6 +30,10 @@ $(function() {
     targetKeep : true
 
   });
+  App.initHelper('summernote')
+  //$('[data-provider="summernote"]').each(function(){
+  //  $(this).summernote({
+  //})
 });
 
 $(document).on('page:change', function(event) {
@@ -40,5 +44,16 @@ $(document).on('page:change', function(event) {
 
 $(document).ready(function () {
   $("#alert-flash").fadeOut(3000);
+  
 });
 
+
+//$(function() {
+//  $("li.page").on("click", function() {
+//    //$("#profile-content").html("");
+//    hrf = $(this).find('a').href 
+//    console.log(hrf);
+//    //$.getScript($(this).find('a').href );
+//    return false;
+//  });
+//});

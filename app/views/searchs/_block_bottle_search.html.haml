@@ -1,0 +1,26 @@
+#bottle-content
+  %h4.push-10.font-w400
+    = page_entries_info @bottles, :entry_name => 'Garrafas'
+  .row
+    - @bottles.each do |bottle|
+      .col-sm-6.col-lg-3
+        %a.block-bordered.block.block-link-hover3{:href => "#{user_bottle_path(bottle.user, bottle) }"}
+          .block-content.block-content-full.text-center
+            %div
+              = image_tag bottle.image_url, class: "img-avatar img-avatar96 img-avatar-thumb"
+            .h5.push-15-t.push-5= bottle.label
+            .h5.font-w300.text-muted= bottle.organization_name
+          .block-content.block-content-mini.block-content-full.bg-gray-lighter
+            .text-center.text-muted= bottle.style
+          .block-content
+            .row.items-push.text-center
+              .col-xs-6
+                .push-5
+                  %i.si.si-star.fa-2x
+                .h5.font-w300.text-muted 5 Estrelas
+              .col-xs-6
+                .push-5
+                  %i.si.si-notebook.fa-2x
+                .h5.font-w300.text-muted= "#{bottle.amount} Garrafas"
+
+  = paginate @bottles, param_name: :bottle_page, remote: true            

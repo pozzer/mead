@@ -9,7 +9,7 @@ pt-BR:
       inactive: 'Sua conta ainda não foi ativada.'
       invalid: 'E-mail ou senha inválidos.'
       invalid_token: 'O token de autenticação não é válido.'
-      locked: 'Login bloqueado por um minuto.'
+      locked: 'Login bloqueado por alguns minutos.'
       not_found_in_database: 'E-mail ou senha inválidos.'
       timeout: 'Sua sessão expirou, por favor, efetue login novamente para continuar.'
       unauthenticated: 'Para continuar, efetue login ou registre-se.'

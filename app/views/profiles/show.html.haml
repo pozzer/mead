@@ -1,9 +1,7 @@
 = render "head_block_profile"
 .row
   .col-sm-5.col-sm-push-7.col-lg-4.col-lg-push-8
-    .block
-      .block-content.block-content-full.text-center
-        = link_to_with_icon([" Editar", "fa fa-pencil"], edit_profile_path(@profile), class: "btn btn-sm btn-default")
+    = render partial: "block_friendship"
     = render partial: "shared/block_about", locals: { about: @profile.about }
     /.block.block-opt-refresh-icon6
     /  .block-header

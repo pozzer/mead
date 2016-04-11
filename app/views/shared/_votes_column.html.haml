@@ -1,8 +1,8 @@
-.row.push-10
-  .row
-    = link_to_with_icon(["","fa fa-chevron-up"], path+"?type=up", method: "post", class: "icons-size", data:{remote: true})
 .row
-  %label.icons-size.count_votes= count
-.row.push-10
   .row
-    = link_to_with_icon(["","fa fa-chevron-down"], path+"?type=down", method: "post", class: "icons-size", data:{remote: true})
+    = link_to_with_icon(["","fa fa-chevron-up"], path+"?type=up", method: "post", class: "fa-2x", data:{remote: true})
+.row
+  %label.fa-2x.count_votes= count
+.row
+  .row
+    = link_to_with_icon(["","fa fa-chevron-down"], path+"?type=down", method: "post", class: "fa-2x", data:{remote: true})

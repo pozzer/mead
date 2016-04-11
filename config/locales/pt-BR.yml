@@ -25,12 +25,16 @@ pt-BR:
       addresss:
         one: Endereço
         other: Endereços
+      registration:
+        one: "Cadastro"
+        other: "Alteração de senha"
     attributes:
       user:
         name: Nome
         email: E-mail
         password: Senha
         password_confirmation: Confirme a senha
+        current_password: Senha atual
         remember_me: Mantenha-me conectado
         terms: Eu aceitos os termos e condições
         reset_password_token: Trocar senha
@@ -62,10 +66,9 @@ pt-BR:
         number: Número
         state: Estado
         city: Cidade
+        state_id: Estado
+        city_id: Cidade
         additional: Complemento
-  #messages:
-  #  trade: "Tire suas duvidas, pergunte para os outros usuarios."
-  #  bottle: "Tire suas duvidas, pergunte para os outros usuarios."
 
   date:
     abbr_day_names:

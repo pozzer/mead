@@ -1,0 +1,7 @@
+#question-content
+  %h4.push-10.font-w400
+    = page_entries_info @questions, :entry_name => 'Perguntas'
+  .row
+    - @questions.each do |question|
+      = render partial: "questions/item_question", locals: { question: question}
+  = paginate @questions, param_name: :question_page, remote: true

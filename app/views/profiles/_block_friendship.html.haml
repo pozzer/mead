@@ -1,0 +1,11 @@
+- if @profile.user != current_user
+  - if current_user.friends.include?(@profile.user)
+    %a.block.block-link-hover2{:href => friendship_path(:id => @profile.user), :"data-method"=>"delete"}
+      .block-content.block-content-full.bg-danger.clearfix
+        %i.si.si-user-unfollow.fa-2x.text-white.pull-right
+        %span.h4.text-white-op= "Terminar a amidade com #{@profile.first_name}"
+  - else
+    %a.block.block-link-hover2{:href => friendships_path(:friend_id => @profile.user), :"data-method"=>"post"}
+      .block-content.block-content-full.bg-flat.clearfix
+        %i.si.si-user-follow.fa-2x.text-white.pull-right
+        %span.h4.text-white-op= "Adicionar #{@profile.first_name} como amigo"

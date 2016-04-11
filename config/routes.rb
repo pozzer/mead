@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-
-  resources :conversations do
-    resources :messages
-  end
+  resources :friendships
   
-  mount Ckeditor::Engine => '/ckeditor'
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  
+  ActiveAdmin.routes(self)
+  
 
+  
   resources :ratings
 
   resources :trades
@@ -49,6 +50,12 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
   
+  resources :conversations do
+    resources :messages
+  end
+
+  get '/adresses/search_postal_code/:postal_code' => 'adresses#search_postal_code'  
+  get '/adresses/get_cities_by_symbol/:symbol' => 'adresses#get_cities_by_symbol'  
 
 
   # The priority is based upon order of creation: first created -> highest priority.

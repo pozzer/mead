@@ -3,11 +3,9 @@ class QuestionsController < AppController
   respond_to :js, only: [:vote]
 
   def index
-    @questions = Question.all
-    respond_with @questions
-  end
-
-  def show
+    @newests = Question.newer.page(params[:newest_page])
+    @unanswereds = Question.top_rated.without_best_answer.page(params[:unanswered_page])
+    @votes = Question.top_rated.page(params[:vote_page])
   end
 
   def new
@@ -23,10 +21,10 @@ class QuestionsController < AppController
   end
 
   def vote
-    #value = params[:type] == "up" ? 1 : -1
-    #@question = Question.friendly.find(params[:id])
-    #@question.add_or_update_evaluation(:votes, value, current_user)
-    #respond_with(@question)
+    value = params[:type] == "up" ? 1 : -1
+    @question = Question.friendly.find(params[:id])
+    @question.add_or_update_evaluation(:votes, value, current_user)
+    respond_with(@question)
   end
 
   private

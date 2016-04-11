@@ -1,6 +1,6 @@
 %li{:class => self_or_other(message)}
   .avatar
-    %img.img-circle{:src => "#{message.user.profile.avatar_url}"}/
+    = image_tag message.user.profile.avatar_url, class: "img-circle" 
   .chatboxmessagecontent
     %p= message.body
     %time{:datetime => message.created_at, :title => message.created_at.strftime("%d %b  %Y at %I:%M%p")}

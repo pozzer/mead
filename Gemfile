@@ -24,7 +24,6 @@ gem 'i18n'
 gem 'acts-as-taggable-on'
 gem 'activerecord-reputation-system'
 gem 'friendly_id'
-gem 'ckeditor'
 gem "paperclip", "~> 4.3"
 gem 'less-rails', github: "metaskills/less-rails"
 gem 'therubyracer'
@@ -32,8 +31,13 @@ gem 'breadcrumbs_on_rails', '2.3.1'
 gem 'kaminari'
 gem 'private_pub'
 gem 'thin'
-
 gem 'rails_12factor'
+gem 'open_uri_redirections'
+gem 'correios-cep'
+gem 'activeadmin', github: 'activeadmin'
+gem 'redis'
+gem 'aws-sdk-v1'
+gem 'active_record_union'
 
 group :development, :test do
   gem 'byebug'

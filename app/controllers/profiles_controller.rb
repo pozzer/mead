@@ -1,6 +1,12 @@
 class ProfilesController < AppController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
+  def index
+    respond_to do |format|
+      format.html { redirect_to profile_path(current_user.profile) }
+    end
+  end
+
   def show
   end
 
@@ -19,9 +25,9 @@ class ProfilesController < AppController
     end
 
     def profile_params
-      params.require(:profile).permit(:last_name, :city_id, :about, :organization_name,
+      params.require(:profile).permit(:last_name, :about, :organization_name,
                                       pictures_attributes: [:picture, :picture_type],
-                                      address_attributes: [:postal_code, :street, :state, :city, :district, :number, :additional])
+                                      address_attributes: [:postal_code, :street, :state_id, :city_id, :district, :number, :additional])
     end
 end
 

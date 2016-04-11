@@ -1,1 +1,1 @@
-$("#question .count_votes").text("<%=@question.reputation_for(:votes).to_i%>")
+$("#Question_<%=@question.id%> .count_votes").text("<%=@question.reputation_for(:votes).to_i%>")

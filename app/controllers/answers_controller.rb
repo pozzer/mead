@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     @answer.user = current_user
     respond_to do |format|
-      if @answer.valid
+      if @answer.save
         format.html { redirect_to question_path(@answer.question, anchor: @answer.id), notice: 'Answer was successfully created.' }
       else
         format.html { redirect_to @answer.question, notice: 'Não foi hoje' }
@@ -15,16 +15,16 @@ class AnswersController < ApplicationController
   end
 
   def vote
-    #value = params[:type] == "up" ? 1 : -1
-    #@answer = Answer.find(params[:id])
-    #@answer.add_or_update_evaluation(:votes, value, current_user)
+    value = params[:type] == "up" ? 1 : -1
+    @answer = Answer.find(params[:id])
+    @answer.add_or_update_evaluation(:votes, value, current_user)
   end
 
   def vote_best_answer
-    #@answer = Answer.find(params[:id])
-    #@answer.voted_the_best
-    #@answer.add_or_update_evaluation(:best_votes, 1, current_user)
-    #redirect_to :back, notice: "Thank you for voting"
+    @answer = Answer.find(params[:id])
+    @answer.voted_the_best
+    @answer.add_or_update_evaluation(:best_votes, 1, current_user)
+    redirect_to :back, notice: "Thank you for voting"
   end
 
   private

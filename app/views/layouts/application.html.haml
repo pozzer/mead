@@ -7,7 +7,7 @@
   /
     <![endif]
   = render "layouts/html_head"
-  %body{"data-controller": controller.controller_name, "data-action": controller.action_name}
+  %body{"data-controller": controller.controller_name, "data-action": controller.action_name, "data-url": request.base_url }
     #page-container.sidebar-l.sidebar-o.side-scroll.header-navbar-fixed
       / Side Overlay
       = render "shared/application/aside"

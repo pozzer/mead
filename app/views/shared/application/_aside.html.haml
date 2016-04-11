@@ -66,15 +66,15 @@
           %ul.block-options
             %li
               %button{"data-action" => "content_toggle", "data-toggle" => "block-option", :type => "button"}
-          %h3.block-title Amigos Online
+          %h3.block-title Lista de Amigos
         .block-content.block-content-full
           / Users Navigation
           %ul.nav-users
-            - User.all.each do |user|
+            - current_user.friends.each do |user|
               %li
                 %a{:href => "#", class: "start-conversation", :"data-sid" => current_user.id, :"data-rip" => user.id, :"data-toggle"=>"layout", :"data-action" => "side_overlay_close", :title=>"Mandar Mensagem para #{user.first_name}"}
-                  = image_tag user.profile.avatar_url, class: "img-avatar"
-                  %i.fa.fa-circle.text-success
+                  = image_tag user.profile.avatar_url, class: "img-avatar"                  
+                  %i.fa.fa-circle{ :class => "#{get_color_online(user)}"}
                   = user.full_name
                   .font-w400.text-muted
                     %small= user.profile.organization_name
