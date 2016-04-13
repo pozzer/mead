@@ -1,4 +1,4 @@
-= simple_form_for [current_user, @bottle] do |f|
+= simple_form_for([current_user, @bottle], wrapper: :vertical_form_devise) do |f|
   = f.error_notification
   .block
     .block-header.bg-gray-lighter
@@ -8,12 +8,24 @@
     .block-content
       .row.items-push
         .col-sm-6.col-sm-offset-3.form-horizontal
+          .col-xs-12
+            = f.simple_fields_for :pictures, @bottle.pictures.new do |a|
+              .col-xs-12.fileinput.fileinput-new{"data-provides" => "fileinput", :style=>"text-align:center;"}
+                .text-center
+                  %label Imagem da Garrafa
+                .push.animated.fadeInDown.img-avatar.fileinput-preview.thumbnail{"data-trigger" => "fileinput", :style => "width: 100px; height: 100px; border:none;"}
+                  = image_tag @bottle.image_url, class: "img-avatar img-avatar96 img-avatar-thumb"
+                %div
+                  %span.btn.btn-default.btn-file.hidden
+                    = a.input :picture, as: :file
+                    = a.input :picture_type, :as => :hidden, :input_html => { :value => "imae" }
+                  %a.hidden.btn.btn-xs.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} remover
           .col-xs-6
             = f.input :label
           .col-xs-6
             = f.input :organization_name
           .col-xs-6
-            = f.input :filling_date
+            = f.input :filling_date, as: :string
           .col-xs-6
             = f.input :amount
           .col-xs-12
@@ -23,22 +35,18 @@
           .col-xs-12
             = f.input :measure
           .col-xs-12
-            = f.input :abv
+            = f.input :abv , wrapper: :vertical_form_devise do
+              = f.input_field :abv, class: "form-control"
+              %span.input-group-addon %
           .col-xs-12
             .form-group
               .col-xs-7.col-sm-8
-                %label.css-input.switch.switch-sm.switch-success
-                  %input#register-terms{:name => "register-terms", :type => "checkbox"}/
-                  %span
-                  Privada
-          .col-xs-12
-            = f.simple_fields_for :pictures, @bottle.pictures.new do |a|
-              = a.input :picture, as: :file
-              = a.input :picture_type, :as => :hidden, :input_html => { :value => "image" }
-    /.block-content.block-content-full.bg-gray-lighter.text-center
-    /  %button.btn.btn-sm.btn-primary{:type => "submit"}
-    /    %i.fa.fa-check.push-5-r
-    /    Save Changes
-    /  %button.btn.btn-sm.btn-warning{:type => "reset"}
-    /    %i.fa.fa-refresh.push-5-r
-    /    Reset
+                = f.input :private, as: :boolean, wrapper: :horizontal_boolean_devise
+    .block-content.block-content-full.bg-gray-lighter.text-center
+      %button.btn.btn-sm.btn-primary.form-submit{:type => "submit"}
+        %i.fa.fa-check.push-5-r
+        Salvar as alterações
+      %button.btn.btn-sm.btn-warning{:type => "reset"}
+        %i.fa.fa-refresh.push-5-r
+        Resetar
+
