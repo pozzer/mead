@@ -1,0 +1,7 @@
+#bottle-content
+  %h4.push-10.font-w400
+    = page_entries_info @bottles, :entry_name => 'Garrafas'
+  .row
+    - @bottles.each do |bottle|
+      = render partial: "bottles/item_bottle", locals:{ bottle: bottle }
+  = paginate @bottles, param_name: :bottle_page, remote: true

@@ -7,9 +7,11 @@ class Bottle < ActiveRecord::Base
 	belongs_to :user
 
 	acts_as_taggable
-  acts_as_taggable_on :tags
+  acts_as_taggable_on :style, :type
 
   accepts_nested_attributes_for :pictures, :allow_destroy => true, :reject_if => proc { |attributes| attributes['picture'].blank? }
+
+  validates :label, :organization_name, :amount, :measure, :abv, :style_list, :type_list, presence: true
 
   scope :publics, -> { where(private: false) }
   scope :random_order, -> { order('DBMS_RANDOM.VALUE')}
@@ -17,17 +19,14 @@ class Bottle < ActiveRecord::Base
   scope :joins_search, -> { publics.joins("INNER JOIN users ON users.id = bottles.user_id
                                            INNER JOIN profiles ON users.id = profiles.user_id") }
 
+  paginates_per 4
 
   def image
     images.last
   end
 
   def image_url
-    if image
-      image.picture.url(:avatar)
-    else
-      "bottle.jpg"
-    end
+    image ? image.picture.url(:avatar) : "bottle.jpg"
   end
 
   def to_s
@@ -39,5 +38,16 @@ class Bottle < ActiveRecord::Base
     "profiles.first_name || ' ' || profiles.last_name"]
   end
 
+  def style_s
+    style_list.first
+  end
+  
+  def type_s
+    type_list.first
+  end
+
+  def reputation
+    ratings.any? ? (ratings.map(&:score).sum/ratings.size).to_i : 0
+  end
 
 end

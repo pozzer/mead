@@ -1,0 +1,2 @@
+["Tradicional","Sack Hidromel","Melomel","Cyser","Pyment","Hippocras","Metheglin","Braggot","Rhodomel","Morat","Capsicumel","Pilsen","Schwarzbier","Bock","Weissbier","Stout","Dubbel","Faro","Geuze","Kriek","Faro","Geuze","Kriek","Outro"]
+["Hidromel","Cerveja", "Vinho", "Sidra","Outro"]

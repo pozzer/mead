@@ -42,12 +42,17 @@ $(document).on('page:change', function(event) {
   active.parents("li").addClass("open");
 });
 
+
 $(document).ready(function () {
   $("#alert-flash").fadeOut(3000);
-  
 });
 
-
+$(document).ready(function () {
+  $(".data").mask("99/99/9999");
+  $(".integer").mask("9?9");
+  $(".js-select2").select2();
+  
+});
 //$(function() {
 //  $("li.page").on("click", function() {
 //    //$("#profile-content").html("");

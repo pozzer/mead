@@ -47,9 +47,9 @@ class Profile < ActiveRecord::Base
     covers.last
   end
 
-  def cover_url
+  def cover_url(type = :medium)
     if cover
-      covers.last.picture.url(:medium)
+      covers.last.picture.url(type)
     else
       "missing_cover.png"
     end

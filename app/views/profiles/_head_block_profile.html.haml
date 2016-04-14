@@ -1,11 +1,11 @@
 .block
-  .bg-image{:style => "background-image: url( #{asset_path @profile.cover_url});"}
-    .block-content.bg-primary-dark-op.text-center.overflow-hidden
+  .bg-image{:style => "background-image: url( #{asset_path @profile.cover_url(:cover_hd)});"}
+    .block-content.text-center.overflow-hidden
       .push-30-t.push.animated.fadeInDown
         %img
           = image_tag @profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
       .push-30.animated.fadeInUp
-        %h2.h4.font-w600.text-white.push-5= @profile.full_name
+        %h2.h4.font-w600.text-white.border-text.push-5= @profile.full_name
         %h3.h5.text-gray= @profile.organization_name
   .block-content.text-center
     .row.items-push.text-uppercase

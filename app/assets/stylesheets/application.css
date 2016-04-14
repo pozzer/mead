@@ -54,3 +54,6 @@ abbr[title] {
 .not-active {
   pointer-events: none;
 }
+.border-text{
+	text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
+}

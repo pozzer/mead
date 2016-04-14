@@ -47,16 +47,19 @@ pt-BR:
         birth_date: Data de Nascimento
         about: Sobre
         city: Cidade
-        organization_name: Nome da Organização
+        organization_name: Nome da organização
       bottle:
         label: Rótulo
-        organization_name: Nome da Organização
-        filling_date: Dara de envase
+        organization_name: Nome da marca
+        filling_date: Data de envase
         amount: Quantidade
         style: Estilo
         about: Sobre
-        measure: Medida da garrafa
-        Abv: Abv
+        measure: Volume da garrafa
+        abv: Graduação alcoólica
+        private: Privada
+        style_list: Estilo
+        type_list: Tipo
       picture:
         picture: Imagem
       address:

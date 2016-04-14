@@ -1,8 +1,15 @@
 class BottlesController < AppController
   before_action :set_bottle, only: [:show, :edit, :update, :destroy]
-
+  respond_to :js, only: [:index]
+  respond_to :html
+  
   def index
-    @bottles = Bottle.where(user_id: params[:user_id])
+    if params[:user_id] == current_user.id.to_s
+      @bottles = Bottle.where(user_id: params[:user_id]).page(params[:bottle_page])
+    else
+      @bottles = Bottle.publics.where(user_id: params[:user_id]).page(params[:bottle_page])
+    end
+    respond_with(@bottles)
   end
 
   def new
@@ -16,23 +23,20 @@ class BottlesController < AppController
   end
 
   def create
-    @bottle = Bottle.create(bottle_params)
+    @bottle = Bottle.new(bottle_params)
     @bottle.user = current_user
     @bottle.save
-    respond_with(@bottle, :location => user_bottles_path(current_user))
+    respond_with(@bottle, :location => user_bottle_path(@bottle.user, @bottle))
   end
 
   def update
     @bottle.update_attributes(bottle_params)
-    respond_with(@bottle, :location => user_bottles_path(current_user))
+    respond_with(@bottle, :location => user_bottle_path(@bottle.user, @bottle))
   end
 
   def destroy
     @bottle.destroy
-    respond_to do |format|
-      format.html { redirect_to bottles_url, notice: 'Bottle was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    respond_with(@bottle, :location => user_bottles_path(@bottle.user))
   end
 
   private
@@ -41,7 +45,8 @@ class BottlesController < AppController
     end
 
     def bottle_params
-      params.require(:bottle).permit(:label, :organization_name, :filling_date, :amount, :style, :about, :measure, :abv,
+        params.require(:bottle).permit(:label, :organization_name, :filling_date, :amount, :style, :about, :measure, :abv, :private,
+                                      :style_list, :type_list,
                                       pictures_attributes: [:picture, :picture_type])
     end
 end
