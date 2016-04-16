@@ -49,7 +49,7 @@ class Question < ActiveRecord::Base
 
   def self.columns_search
     ["questions.title", "answers.content", "questions.content",
-    "profiles.first_name || ' ' || profiles.last_name"]
+    "coalesce(profiles.first_name, '') || ' ' || coalesce(profiles.last_name, '')"]
   end
 
 

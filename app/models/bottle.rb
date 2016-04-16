@@ -35,7 +35,7 @@ class Bottle < ActiveRecord::Base
 
   def self.columns_search
     ["bottles.label", "bottles.style", "bottles.organization_name",
-    "profiles.first_name || ' ' || profiles.last_name"]
+    "coalesce(profiles.first_name, '') || ' ' || coalesce(profiles.last_name, '')"]
   end
 
   def style_s
