@@ -2,11 +2,14 @@
   %td.hidden-xs
   %td.font-s13.text-muted
     = link_to object.user.full_name, profile_path(object.user.profile)
-    = "Perguntou a #{time_ago_in_words(object.created_at)}"
+    - if question
+      = "Perguntou a #{time_ago_in_words(object.created_at)}"
+    - else
+      = "Respondeu a #{time_ago_in_words(object.created_at)}"
 %tr{id: "#{object.class.name}_#{object.id}" }
   %td.text-center.hidden-xs{:style => "width: 140px;"}
     .push-10
-      %a{:href => "base_pages_profile.php"}
+      %a{:href => profile_path(object.user.profile)}
         = image_tag object.user.profile.avatar_url, class: "img-avatar"
     - if question
       = render partial: "shared/votes_column", locals: {count: object.votes_count, path: vote_question_path(object)}

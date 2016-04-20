@@ -1,5 +1,6 @@
 class QuestionsController < AppController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :can_edit?, only: [:edit]
   respond_to :js, only: [:vote]
 
   def index
@@ -27,6 +28,11 @@ class QuestionsController < AppController
     respond_with(@question)
   end
 
+  def update
+    @question.update_attributes(question_params)
+    respond_with(@question)
+  end
+
   private
     def set_question
       @question = Question.friendly.find(params[:id])
@@ -35,4 +41,11 @@ class QuestionsController < AppController
     def question_params
       params.require(:question).permit([:title, :content, { tag_list: [] }])
     end
+
+    def can_edit?
+      unless @question.can_edit?(current_user.id)
+        redirect_to question_path(@question), :flash => { :error => "Você não pode editar essa pergunta." }
+      end
+    end
+
 end

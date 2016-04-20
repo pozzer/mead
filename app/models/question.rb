@@ -52,5 +52,13 @@ class Question < ActiveRecord::Base
     "coalesce(profiles.first_name, '') || ' ' || coalesce(profiles.last_name, '')"]
   end
 
+  def creator?(user_id)
+    user_id == self.user_id
+  end
+  
+  def can_edit?(user_id)
+    ((Time.now - created_at ) < 5.minutes) and creator?(user_id)
+  end
+
 
 end

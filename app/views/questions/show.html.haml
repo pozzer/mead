@@ -1,6 +1,10 @@
 = render "nav"
 .block.block-themed
   .block-header.bg-info
+    - if @question.can_edit?(current_user.id)
+      %ul.block-options
+        %li
+          = link_to_with_icon([" Editar","si si-pencil"], edit_question_path(@question))
     %h3.block-title= @question.title
   .block-content#question
     %table.table.table-striped.table-borderless
