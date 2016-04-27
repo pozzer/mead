@@ -50,4 +50,16 @@ class Bottle < ActiveRecord::Base
     ratings.any? ? (ratings.map(&:score).sum/ratings.size).to_i : 0
   end
 
+  def creator?(user_id)
+    user_id == self.user_id
+  end
+
+  def can_edit?(user_id)
+    creator?(user_id)
+  end
+
+  def can_see?(user_id)
+    !self.private or creator?(user_id)
+  end
+
 end

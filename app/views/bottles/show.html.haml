@@ -10,9 +10,7 @@
               .block-content.block-content-full.bg-city
                 %i.fa.fa-exchange.fa-4x.text-white
                 .font-w600.text-white-op.push-15-t Negociar!
-                =# link_to_with_icon([" Negociar", "fa fa-exchange"], new_trade_path(bottle_id: @bottle.id), class: "btn btn-sm btn-default")
-        = link_to_with_icon([" Editar", "fa fa-pencil"], edit_user_bottle_path(@bottle.user, @bottle), class: "btn btn-sm btn-default")
-        =# link_to_with_icon([" Remover", "fa fa-trash-o"], edit_user_bottle_path(@bottle.user, @bottle), class: "btn btn-sm btn-default")
+        = link_to_with_icon([" Editar", "fa fa-pencil"], edit_user_bottle_path(@bottle.user, @bottle), class: "btn btn-sm btn-default") if @bottle.can_edit?(current_user.id)
     = render partial: "shared/block_about", locals: { about: @bottle.about }
     .block.block-opt-refresh-icon6
       .block-header

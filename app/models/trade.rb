@@ -4,10 +4,12 @@ class Trade < ActiveRecord::Base
   belongs_to :negotiator, class_name: "User"
 	belongs_to :negotiant, class_name: "User"
 
-  validates_presence_of :negotiator, :negotiant
+  validates_presence_of :negotiator, :negotiant, :status
 
   accepts_nested_attributes_for :bottle_trades, :allow_destroy => true
 
-  enum status: {general: 0, post_received: 1, put_received: 2, post_sended: 3, put_sended: 4}
+  enum status: {started: 0, accepted: 1, in_progress: 2, awaiting_finalization: 3, finished: 4}
+
+
 
 end

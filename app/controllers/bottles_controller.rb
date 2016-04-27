@@ -1,5 +1,7 @@
 class BottlesController < AppController
   before_action :set_bottle, only: [:show, :edit, :update, :destroy]
+  before_action :can_see?, only: [:show, :edit, :update]
+  before_action :can_edit?, only: [:edit, :update]
   respond_to :js, only: [:index]
   respond_to :html
   
@@ -49,4 +51,18 @@ class BottlesController < AppController
                                       :style_list, :type_list,
                                       pictures_attributes: [:picture, :picture_type])
     end
+
+    def can_see?
+      unless @bottle.can_see?(current_user.id)
+        redirect_to user_bottles_path(current_user), :flash => { :error => "Garrafa não encontrada." }
+      end
+    end
+    
+    def can_edit?
+      unless @bottle.can_edit?(current_user.id)
+        redirect_to user_bottle_path(@bottle.user, @bottle), :flash => { :error => "Você não pode editar essa Garrafa." }
+      end
+    end
+
+    
 end

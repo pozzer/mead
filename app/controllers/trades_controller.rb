@@ -3,6 +3,9 @@ class TradesController < AppController
   before_action :mount_trade_params, only: :create
 
   def index
+    @trades_in_progress = current_user.trades_received + current_user.trade_requests
+    @trades_canceled = current_user.trades_received + current_user.trade_requests
+    @trades_finalized = current_user.trades_received + current_user.trade_requests
     @trades = current_user.trades_received + current_user.trade_requests
   end
 
@@ -42,7 +45,7 @@ class TradesController < AppController
 
     def mount_trade_params
       get_bottle
-      params[:trade] = {negotiant_id: @bottle.user_id, negotiator_id: current_user.id}
+      params[:trade] = {negotiant_id: @bottle.user_id, negotiator_id: current_user.id, status: 0}
     end
 
     def trade_params
