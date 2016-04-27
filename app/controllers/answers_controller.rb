@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: [:vote, :vote_best_answer]
+  before_action :set_answer, only: [:vote, :vote_best_answer, :update]
+  before_action :can_edit?, only: [:update]
   respond_to :js, only: [:vote]
 
   def create
@@ -12,6 +13,11 @@ class AnswersController < ApplicationController
         format.html { redirect_to @answer.question, notice: 'Não foi hoje' }
       end
     end
+  end
+
+  def update
+    @answer.update_attributes(answer_params)
+    redirect_to question_path(@answer.question)
   end
 
   def vote
@@ -27,13 +33,20 @@ class AnswersController < ApplicationController
     redirect_to :back, notice: "Thank you for voting"
   end
 
+
   private
 
     def set_answer
       @answer = Answer.find(params[:id])
     end
-    # Never trust parameters from the scary internet, only allow the white list through.
+
     def answer_params
       params.require(:answer).permit(:content, :question_id)
+    end
+
+    def can_edit?
+      unless @answer.can_edit?(current_user.id)
+        redirect_to question_path(@answer.question), :flash => { :error => "Você não pode editar essa resposta." }
+      end
     end
 end

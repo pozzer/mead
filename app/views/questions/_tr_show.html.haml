@@ -6,6 +6,8 @@
       = "Perguntou a #{time_ago_in_words(object.created_at)}"
     - else
       = "Respondeu a #{time_ago_in_words(object.created_at)}"
+      - if object.can_edit?(current_user.id)
+        = link_to_with_icon([" Editar", "fa fa-pencil"], "#", class:"edit-answer", "data-id":"form-#{object.id}")
 %tr{id: "#{object.class.name}_#{object.id}" }
   %td.text-center.hidden-xs{:style => "width: 140px;"}
     .push-10
@@ -18,9 +20,21 @@
       = render partial: "shared/vote_best", locals: { question_user_id: @question.user_id, :answer => object}
       = render partial: "shared/votes_column", locals: {count:  object.reputation_for(:votes).to_i, path: vote_question_answer_path(id:object.id, question_id:object.question_id)}
   %td
-    = object.content.to_s.html_safe
+    .content
+      = object.content.to_s.html_safe
     - if question
       = render partial: "shared/tag_list", locals: {tags: object.tags}
+    - else 
+      - if object.can_edit?(current_user.id)
+        = simple_form_for([@question, object], wrapper: :vertical_form_devise, html: { id: "form-#{object.id}", style: "display:none;"} ) do |f|
+          .form-group
+            = f.input :content, label: false, as: :text, wrapper: :default, :input_html =>{ class: "js-summernote"}
+            = f.input :question_id, :as => :hidden
+            = f.input :id, :as => :hidden
+          .form-group
+            .col-xs-12
+            = f.submit "Atualizar", class: "btn btn-success"
+
     %hr/
     %p.font-s13.text-muted= object.user.profile.about
 

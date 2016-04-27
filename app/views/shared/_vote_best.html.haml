@@ -1,11 +1,11 @@
 - if answer.best?
   .row_item
     .row
-      %i.fa.fa-check.best-answer-icon-size{ class:(answer.best? ? "best-answer-icon-color" : "") }
+      %i.fa.fa-check.best-answer-icon-size{ class:(answer.best? ? "best-answer-icon-color" : ""), "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "O proprietário da pergunta aceitou isso como a melhor resposta."}
 - elsif this_is_creator?(question_user_id) and !@question.have_best_answer?
   .row_item
     .row
-      = link_to_with_icon(["","fa fa-check"], vote_best_answer_question_answer_path(id:answer.id, question_id:answer.question_id), method: "post", class: "best-answer-icon-size")
+      = link_to_with_icon(["","fa fa-check"], vote_best_answer_question_answer_path(id:answer.id, question_id:answer.question_id), method: "post", class: "best-answer-icon-size", "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Aceitar isso como a melhor resposta?")
 
 
 

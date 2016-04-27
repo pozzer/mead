@@ -1,4 +1,5 @@
-$("#favorite_row_star a").attr("href","<%= set_favorite_user_favorite_question_path(question_id: @question.id, user_id: current_user.id) %>")
-$("#favorite_row_star i").removeClass("fa-star star_active").addClass("fa-star-o")
-$("#favorite_row_count").text("<%=@question.favorite_count%>")
+$("#favorite_row_star a").attr("href","<%= set_favorite_user_favorite_question_path(question_id: @question.id, user_id: current_user.id) %>");
+$("#favorite_row_star i").removeClass("fa-star star_active").addClass("fa-star-o");
+$("#favorite_row_count").text("<%=@question.favorite_count%>");
+$("#favorite_row_star a").attr("title", "Adicionar essa pergunta como favorita.").tooltip('fixTitle').tooltip('show');
 

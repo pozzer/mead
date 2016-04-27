@@ -2,7 +2,7 @@
   #favorite_row_star.row
     -favorite_question = current_user.favorite_question(question)
     - if favorite_question
-      = link_to_with_icon(["","fa fa-star"], remove_favorite_user_favorite_question_path(question_id: question.id, id: favorite_question.id, user_id: current_user.id), method: "post", remote: true, class: "best-answer-icon-size star_active" )
+      = link_to_with_icon(["","fa fa-star"], remove_favorite_user_favorite_question_path(question_id: question.id, id: favorite_question.id, user_id: current_user.id), method: "post", remote: true, class: "best-answer-icon-size star_active", "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Remover essa pergunta como favorita." )
     - else
-      = link_to_with_icon(["","fa fa-star-o"], set_favorite_user_favorite_question_path(user_id: current_user.id, question_id: question.id ), method: "post", remote: true, class: "best-answer-icon-size")
+      = link_to_with_icon(["","fa fa-star-o"], set_favorite_user_favorite_question_path(user_id: current_user.id, question_id: question.id ), method: "post", remote: true, class: "best-answer-icon-size", "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Adicionar essa pergunta como favorita." )
   #favorite_row_count.row= question.favorite_count
