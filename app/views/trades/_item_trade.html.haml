@@ -6,7 +6,7 @@
 				= image_tag user.profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
 			.h5.push-15-t.push-5= user.full_name
 			.h5.font-w300.text-muted= user.profile.organization_name
-		.block-content.block-content-mini.block-content-full{ class: get_bg_color_for_status(trade.status.to_i)} 
+		.block-content.block-content-mini.block-content-full{ class: get_bg_color_for_status(trade.status)} 
 			.text-white.text-center.text-muted= "Negociação ##{trade.id}"
 			.text-white.text-center.text-muted= trade.status_to_s
 		.block-content

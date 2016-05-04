@@ -2,9 +2,9 @@ module TradesHelper
 
 	def get_bg_color_for_status(status)
 		case status
-		when 4
+		when "finished"
 		  "bg-success"
-		when 9
+		when "canceled"
 		  "bg-danger"
 		else
 		  "bg-info"
