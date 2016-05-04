@@ -1,0 +1,19 @@
+-user = trade.other_user(current_user)
+.col-sm-6.col-lg-4
+	%a.block-bordered.block.block-link-hover3{:href => "#{trade_path(trade)}"}
+		.block-content.block-content-full.text-center
+			%div
+				= image_tag user.profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
+			.h5.push-15-t.push-5= user.full_name
+			.h5.font-w300.text-muted= user.profile.organization_name
+		.block-content.block-content-mini.block-content-full{ class: get_bg_color_for_status(trade.status.to_i)} 
+			.text-white.text-center.text-muted= "Negociação ##{trade.id}"
+			.text-white.text-center.text-muted= trade.status_to_s
+		.block-content
+			.row.items-push.text-center
+				.col-xs-6
+					.h3.push-5 Iniciada
+					.h5.font-w300.text-muted= l trade.created_at.to_date 
+				.col-xs-6
+					.h3.push-5 Finalizada
+					.h5.font-w300.text-muted= l trade.finished_at.to_date if trade.finished_at

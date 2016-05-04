@@ -1,128 +1,19 @@
 .content
-	.block
-		%ul.nav.nav-tabs.nav-tabs-alt{"data-toggle" => "tabs"}
-			%li.active
-				%a{:href => "#search-projects"} Em Andamento
-			%li
-				%a{:href => "#search-users"} Finalizadas
-			%li
-				%a{:href => "#search-classic"} Canceladas
-		.block-content.tab-content.bg-white
-			#search-projects.tab-pane.fade.fade-up.active.in
-				.border-b.push-30
-					%h2.push-10
-						= @trades.count
-						%span.h5.font-w400.text-muted Negociações encontradas
-				.row
-					-@trades.each do |trade|
-						.col-sm-6.col-lg-4
-							%a.block-bordered.block.block-link-hover3{:href => "#{trade_path(trade)}"}
-								.block-content.block-content-full.text-center
-									%div
-										= image_tag trade.negotiator.profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
-									.h5.push-15-t.push-5= trade.negotiator.full_name
-									.h5.font-w300.text-muted= trade.negotiator.profile.organization_name
-								.block-content.block-content-mini.block-content-full.bg-info
-									.text-white.text-center.text-muted= "Negociação ##{trade.id}"
-									.text-white.text-center.text-muted= "Em Andamento"
-								.block-content
-									.row.items-push.text-center
-										.col-xs-6
-											.h3.push-5 Iniciada
-											.h5.font-w300.text-muted 25/10/2015
-										.col-xs-6
-											.h3.push-5 Finalizada
-											.h5.font-w300.text-muted 25/10/2015
-				.border-t
-					%ul.pagination
-						%li.disabled
-							%a{:href => "javascript:void(0)"} Prev
-						%li.active
-							%a{:href => "javascript:void(0)"} 1
-						%li
-							%a{:href => "javascript:void(0)"} 2
-						%li
-							%span ...
-						%li
-							%a{:href => "javascript:void(0)"} 10
-						%li
-							%a{:href => "javascript:void(0)"} Next				
-			#search-users.tab-pane.fade.fade-up
-				.border-b.push-30
-					%h2.push-10
-						= @trades.count
-						%span.h5.font-w400.text-muted Negociações encontradas
-				.row
-					-@trades.each do |trade|
-						.col-sm-6.col-lg-4
-							%a.block-bordered.block.block-link-hover3{:href => "#{trade_path(trade)}"}
-								.block-content.block-content-full.text-center
-									%div
-										= image_tag trade.negotiator.profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
-									.h5.push-15-t.push-5= trade.negotiator.full_name
-									.h5.font-w300.text-muted= trade.negotiator.profile.organization_name
-								.block-content.block-content-mini.block-content-full.bg-success
-									.text-white.text-center.text-muted= "Negociação ##{trade.id}"
-									.text-white.text-center.text-muted= "Finalizada"
-								.block-content
-									.row.items-push.text-center
-										.col-xs-6
-											.h3.push-5 Iniciada
-											.h5.font-w300.text-muted 25/10/2015
-										.col-xs-6
-											.h3.push-5 Finalizada
-											.h5.font-w300.text-muted 25/10/2015 
-				.border-t
-					%ul.pagination
-						%li.disabled
-							%a{:href => "javascript:void(0)"} Prev
-						%li.active
-							%a{:href => "javascript:void(0)"} 1
-						%li
-							%a{:href => "javascript:void(0)"} 2
-						%li
-							%span ...
-						%li
-							%a{:href => "javascript:void(0)"} 10
-						%li
-							%a{:href => "javascript:void(0)"} Next
-			#search-classic.tab-pane.fade.fade-up
-				.border-b.push-30
-					%h2.push-10
-						= @trades.count
-						%span.h5.font-w400.text-muted Negociações encontradas
-				.row
-					-@trades.each do |trade|
-						.col-sm-6.col-lg-4
-							%a.block-bordered.block.block-link-hover3{:href => "#{trade_path(trade)}"}
-								.block-content.block-content-full.text-center
-									%div
-										= image_tag trade.negotiator.profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
-									.h5.push-15-t.push-5= trade.negotiator.full_name
-									.h5.font-w300.text-muted= trade.negotiator.profile.organization_name
-								.block-content.block-content-mini.block-content-full.bg-danger
-									.text-white.text-center.text-muted= "Negociação ##{trade.id}"
-									.text-white.text-center.text-muted= "Cancelada"
-								.block-content
-									.row.items-push.text-center
-										.col-xs-6
-											.h3.push-5 Iniciada
-											.h5.font-w300.text-muted 25/10/2015
-										.col-xs-6
-											.h3.push-5 Finalizada
-											.h5.font-w300.text-muted 25/10/2015 
-
-				.border-t
-					%ul.pagination
-						%li.disabled
-							%a{:href => "javascript:void(0)"} Prev
-						%li.active
-							%a{:href => "javascript:void(0)"} 1
-						%li
-							%a{:href => "javascript:void(0)"} 2
-						%li
-							%span ...
-						%li
-							%a{:href => "javascript:void(0)"} 10
-						%li
-							%a{:href => "javascript:void(0)"} Next
+  .block
+    %ul.nav.nav-tabs.nav-tabs-alt{"data-toggle" => "tabs"}
+      %li.active
+        %a{:href => "#trades-progress"} Em Andamento
+      %li
+        %a{:href => "#trades-finalized"} Finalizadas
+      %li
+        %a{:href => "#trades-canceled"} Canceladas
+    .block-content.tab-content.bg-white
+      #trades-progress.tab-pane.fade.fade-up.active.in
+        .border-b.push-30
+          = render partial: "block_trade", locals: {id: "trades_in_progress", entry_name: "Trocas em andamento" ,trades: @trades_in_progress }
+      #trades-finalized.tab-pane.fade.fade-up
+        .border-b.push-30
+          = render partial: "block_trade", locals: {id: "trades_finalized", entry_name: "Trocas finalizadas" ,trades: @trades_finalized }
+      #trades-canceled.tab-pane.fade.fade-up
+        .border-b.push-30
+          = render partial: "block_trade", locals: {id: "trades_canceled", entry_name: "Trocas canceladas" ,trades: @trades_canceled }

@@ -24,7 +24,7 @@
           %span.item.item-circle.bg-gray-lighter
             %i.fa.fa-times.text-muted
         .block-content.block-content-full.block-content-mini.bg-gray-lighter.text-muted.font-w600 Finalizada
-  %form.form-horizontal.push-10-t.push-10{:action => "base_forms_premade.php", :method => "post", :onsubmit => "return false;"}
+  = simple_form_for(@trade, wrapper: :vertical_form_devise) do |f|
     .row
       .col-sm-12.col-md-6
         .block
@@ -36,81 +36,57 @@
                 %thead
                   %tr
                     %th Nome da Garrafa
-                    %th.text-center QTY
+                    %th.text-center Qtd.
                 %tbody
-                  - Bottle.all.each do |bottle|
+                  - @trade.suggest_bottles(current_user).each do |trade_bottle|
                     %tr
                       %td
-                        = link_to bottle.label, user_bottle_path(bottle.user, bottle)
+                        = link_to trade_bottle.bottle.label, user_bottle_path(trade_bottle.owner, trade_bottle.bottle)
                       %td.text-center
-                        .form-material.floating.open
-                          %select#contact3-subject.form-control{:name => "contact3-subject", :size => "1"}
-                            %option{:value => "1"} 1
-                            %option{:value => "2"} 3
-                            %option{:value => "3"} 4
-                            %option{:value => "4"} 5
+                        = trade_bottle.amount
                               
                   
       .col-sm-12.col-md-6
         .block
           .block-header.bg-gray-lighter
-            %h3.block-title Minha proposta
+            %h3.block-title= "Proposta do #{@trade.other_user(current_user).first_name}"
           .block-content
             .table-responsive
               %table.table.table-borderless.table-striped.table-vcenter
                 %thead
                   %tr
                     %th Nome da Garrafa
-                    %th.text-center QTY
+                    %th.text-center Qtd.
                 %tbody
-                  - Bottle.all.each do |bottle|
+                  - @trade.suggest_bottles(@trade.other_user(current_user)).each do |trade_bottle|
                     %tr
                       %td
-                        = link_to bottle.label, user_bottle_path(bottle.user, bottle)
+                        = link_to trade_bottle.bottle.label, user_bottle_path(trade_bottle.owner, trade_bottle.bottle)
                       %td.text-center
-                        .form-control-static
-                          5
+                        = trade_bottle.amount
   .row
     .col-lg-6
-      = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{current_user.profile.full_name}", user: current_user.profile.user }
+      = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{current_user.profile.full_name}", user: current_user.profile.user, bottles: current_user.bottles.publics.with_stock }
     .col-lg-6
-      = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do Pedro", user: current_user.profile.user } 
+      = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do Pedro", user: current_user.profile.user, bottles: @trade.other_user(current_user).bottles.publics.with_stock } 
   .row
-    .col-sm-12.col-md-4
-      %a.block.block-link-hover2{:href => "javascript:void(0)"}
+    .col-sm-12.col-md-6
+      %a.block.block-link-hover2{:href => trade_cancel_path(trade_id:@trade.id), "data-method": "post"}
         .block-content.block-content-full.bg-danger.clearfix
           %i.si.si-dislike.fa-2x.text-white.pull-right
-          %span.h4.font-w700.text-white Cancelar Negociação
-    .col-sm-12.col-md-4
-      %a.block.block-link-hover2{:href => "javascript:void(0)"}
-        .block-content.block-content-full.bg-primary.clearfix
-          %i.si.si-reload.fa-2x.text-white.pull-right
-          %span.h4.font-w700.text-white Atualizar proposta      
-    .col-sm-12.col-md-4
-      %a.block.block-link-hover2{:href => "javascript:void(0)"}
+          %span.h4.font-w700.text-white Cancelar negociação
+    
+    .col-sm-12.col-md-6
+      %a.block.block-link-hover2{:href => get_path_accept(@trade), "data-method": "post"}
         .block-content.block-content-full.bg-success.clearfix
           %i.si.si-like.fa-2x.text-white.pull-right
-          %span.h4.font-w700.text-white Finalizar Negociação
+          %span.h4.font-w700.text-white= get_title_accept(@trade.status.to_i)
   .row
     .col-lg-6
-      .block
-        .block-header.bg-gray-lighter
-          %h3.block-title Endereço de entrega
-        .block-content.block-content-full
-          .h4.push-5 Feliphe Pozzer
-          %address
-            Sargento Venino Vargas
-            %br/
-            Caxias do sul - RS
-            %br/
-            Brasil, 95095-075
-            %br/
-            %br/
-            %i.fa.fa-phone
-            (54) 91524658
-            %br/
-            %i.fa.fa-envelope-o
-            %a{:href => "javascript:void(0)"} feliphepozzer@example.com
+      = render partial: "trades/block_address", locals: {profile: current_user.profile}
+    .col-lg-6
+      = render partial: "trades/block_address", locals: {profile: @trade.other_user(current_user).profile}
+      
     .col-lg-6
       .block
         .block-header.bg-gray-lighter
@@ -130,7 +106,6 @@
             %br/
             %i.fa.fa-envelope-o
             %a{:href => "javascript:void(0)"} pedropozzer@example.com
-  
 
   .block
     .block-header.bg-gray-lighter

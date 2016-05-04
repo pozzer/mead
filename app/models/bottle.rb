@@ -19,7 +19,9 @@ class Bottle < ActiveRecord::Base
   scope :joins_search, -> { publics.joins("INNER JOIN users ON users.id = bottles.user_id
                                            INNER JOIN profiles ON users.id = profiles.user_id") }
 
-  paginates_per 4
+  scope :with_stock, -> {where("amount > 0")}
+
+  paginates_per 20
 
   def image
     images.last

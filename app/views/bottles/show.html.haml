@@ -11,7 +11,6 @@
                 %i.fa.fa-exchange.fa-4x.text-white
                 .font-w600.text-white-op.push-15-t Negociar!
         = link_to_with_icon([" Editar", "fa fa-pencil"], edit_user_bottle_path(@bottle.user, @bottle), class: "btn btn-sm btn-default") if @bottle.can_edit?(current_user.id)
-    = render partial: "shared/block_about", locals: { about: @bottle.about }
     .block.block-opt-refresh-icon6
       .block-header
         %h3.block-title
@@ -26,8 +25,7 @@
               = @bottle.user.full_name
               .font-w400.text-muted
                 %small= @bottle.user.profile.organization_name
-              .font-w400.text-muted
-                %small=# @bottle.user.profile
+    = render partial: "block_user_bottles", locals:{ title: "Outras garrafas na adega do #{@bottle.user.full_name}", user: @bottle.user, bottles: @bottle.user.bottles.publics }
   .col-sm-7.col-sm-pull-5.col-lg-8.col-lg-pull-4
-    = render partial: "block_user_bottles", locals:{ title: "Outras garrafas na adega do #{@bottle.user.full_name}", user: @bottle.user }
+    = render partial: "shared/block_about", locals: { about: @bottle.about }
     = render partial:"shared/block_rating", locals: {rateable: @bottle, title: "Avaliar #{@bottle.label}"}

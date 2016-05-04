@@ -106,6 +106,10 @@ class User < ActiveRecord::Base
     $redis_onlines.exists( "user:#{self.id}" )
   end
 
+  def started_trade?(trade)
+    trade.negotiator == self
+  end
+
   private
     def initialize_profile
       self.profile = self.build_profile if self.profile.nil?

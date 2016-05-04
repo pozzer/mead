@@ -1,0 +1,7 @@
+%div{id: id}
+  %h4.push-10.font-w400
+    = page_entries_info trades, :entry_name => entry_name
+  .row
+    - trades.each do |trade|
+      = render partial:"trades/item_trade", locals: { trade: trade }
+  = paginate trades, param_name: id, remote: true            

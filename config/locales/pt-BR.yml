@@ -72,6 +72,14 @@ pt-BR:
         state_id: Estado
         city_id: Cidade
         additional: Complemento
+      trade:
+        status: 
+          started: Inicializada
+          accepted: Aceita
+          in_progress: Em andamento
+          awaiting_finalization: Aguardando Finalização
+          finished: Finalizada
+          canceled: Cancelada
 
   date:
     abbr_day_names:

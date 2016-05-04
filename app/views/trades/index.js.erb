@@ -1,0 +1,8 @@
+
+$("#trades-progress").html('<%= j(render partial: "trades/block_trade", locals: {id: "trades_in_progress", entry_name: "Trocas em andamento" ,trades: @trades_in_progress } ) %>');
+$("#trades-finalized").html('<%= j(render partial: "block_trade", locals: {id: "trades_finalized", entry_name: "Trocas finalizadas" ,trades: @trades_finalized } ) %>');
+$("#trades-canceled").html('<%= j(render partial: "block_trade", locals: {id: "trades_canceled", entry_name: "Trocas canceladas" ,trades: @trades_canceled } ) %>');
+$('html, body').animate({ scrollTop: $('#bottle-content').offset().top }, 'slow');
+
+
+

@@ -5,7 +5,7 @@
       = title
   .block-content
     %ul.list.list-simple.list-li-clearfix
-      - user.bottles.take(5).each do |bottle|
+      - bottles.each do |bottle|
         %li
           = link_to(user_bottle_path(bottle.user, bottle), class: "item item-rounded pull-left push-10-r") do
             = image_tag bottle.image_url, class:"img-avatar"

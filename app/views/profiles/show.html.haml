@@ -101,7 +101,7 @@
               %a.font-w600{:href => "base_pages_profile.php"} Trocas realizadas
 
   .col-sm-7.col-sm-pull-5.col-lg-8.col-lg-pull-4
-    = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{@profile.full_name}", user: @profile.user }
+    = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{@profile.full_name}", user: @profile.user, bottles: @profile.user.bottles.publics }
     = render partial:"shared/block_rating", locals: {rateable: @profile, title: "Avaliar #{@profile.full_name}"}
     /.block.block-opt-refresh-icon6
     /  .block-header

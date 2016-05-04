@@ -1,0 +1,16 @@
+.block
+  .block-header.bg-gray-lighter
+    %h3.block-title Endereço de entrega
+  .block-content.block-content-full
+    .h4.push-5= profile.full_name
+    %address
+      = "#{profile.address.street}, #{profile.address.number}"
+      %br/
+      = "#{profile.address.district}, #{profile.address.city.name} - #{profile.address.state.symbol}"
+      %br/
+      = "CEP #{profile.address.postal_code}" 
+      %br/
+      %br/
+      %i.fa.fa-envelope-o
+        = profile.user.email
+

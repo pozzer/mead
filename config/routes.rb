@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   
   ActiveAdmin.routes(self)
   
-
-  
   resources :ratings
 
-  resources :trades
+  resources :trades do 
+    post :accept, defaults: { :format => :js }
+    post :cancel, defaults: { :format => :js }
+  end
 
   resources :profiles
 
