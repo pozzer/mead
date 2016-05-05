@@ -73,13 +73,15 @@ pt-BR:
         city_id: Cidade
         additional: Complemento
       trade:
-        status: 
+        status:
           started: Inicializada
           accepted: Aceita
           in_progress: Em andamento
           awaiting_finalization: Aguardando Finalização
+          waiting_to_be_sent: "Aguardando envio"
           finished: Finalizada
           canceled: Cancelada
+
 
   date:
     abbr_day_names:

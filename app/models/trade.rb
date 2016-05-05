@@ -8,7 +8,7 @@ class Trade < ActiveRecord::Base
 
   accepts_nested_attributes_for :bottle_trades, :allow_destroy => true
 
-  enum status: {started: 0, accepted: 1, in_progress: 2, awaiting_finalization: 3, finished: 4, canceled: 9}
+  enum status: {started: 0, accepted: 1, in_progress: 2, awaiting_finalization: 3, waiting_to_be_sent: 4, finished: 5, canceled: 9}
 
   scope :involving, -> (user) do
     where("(trades.negotiator_id =? OR trades.negotiant_id =?)", user.id, user.id)
@@ -26,7 +26,7 @@ class Trade < ActiveRecord::Base
 
   paginates_per 1
 
-  def suggest_bottles(user) 
+  def suggest_bottles(user)
     self.bottle_trades.where("bottle_trades.owner_id =?", user.id)
   end
 
@@ -63,7 +63,7 @@ class Trade < ActiveRecord::Base
   end
 
   def self.status_opened
-    [0, 1, 2, 3]
+    [0, 1, 2, 3, 4]
   end
 
   def status_to_s

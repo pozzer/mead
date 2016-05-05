@@ -1,29 +1,10 @@
 .content.content-boxed
   .row
-    .col-sm-6.col-md-3
-      .block.block-link-hover3.text-center
-        .block-content.block-content-full
-          %span.item.item-circle.bg-success-light
-            %i.fa.fa-check.text-success
-        .block-content.block-content-full.block-content-mini.bg-gray-lighter.text-success.font-w600 Iniciada
-    .col-sm-6.col-md-3
-      .block.block-link-hover3.text-center
-        .block-content.block-content-full
-          %span.item.item-circle.bg-success-light
-            %i.fa.fa-check.text-success
-        .block-content.block-content-full.block-content-mini.bg-gray-lighter.text-success.font-w600 Aceita
-    .col-sm-6.col-md-3
-      .block.block-link-hover3.text-center
-        .block-content.block-content-full
-          %span.item.item-circle.bg-warning-light
-            %i.si.si-settings.fa-spin.text-warning
-        .block-content.block-content-full.block-content-mini.bg-gray-lighter.text-warning.font-w600 Em negociação
-    .col-sm-6.col-md-3
-      .block.block-link-hover3.text-center
-        .block-content.block-content-full
-          %span.item.item-circle.bg-gray-lighter
-            %i.fa.fa-times.text-muted
-        .block-content.block-content-full.block-content-mini.bg-gray-lighter.text-muted.font-w600 Finalizada
+    = first_block(@trade)
+    = second_block(@trade)
+    = third_block(@trade)
+    = last_block(@trade)
+
   = simple_form_for(@trade, wrapper: :vertical_form_devise) do |f|
     .row
       .col-sm-12.col-md-6
@@ -44,8 +25,6 @@
                         = link_to trade_bottle.bottle.label, user_bottle_path(trade_bottle.owner, trade_bottle.bottle)
                       %td.text-center
                         = trade_bottle.amount
-                              
-                  
       .col-sm-12.col-md-6
         .block
           .block-header.bg-gray-lighter
@@ -64,49 +43,19 @@
                         = link_to trade_bottle.bottle.label, user_bottle_path(trade_bottle.owner, trade_bottle.bottle)
                       %td.text-center
                         = trade_bottle.amount
-  .row
-    .col-lg-6
-      = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{current_user.profile.full_name}", user: current_user.profile.user, bottles: current_user.bottles.publics.with_stock }
-    .col-lg-6
-      = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do Pedro", user: current_user.profile.user, bottles: @trade.other_user(current_user).bottles.publics.with_stock } 
-  .row
-    .col-sm-12.col-md-6
-      %a.block.block-link-hover2{:href => trade_cancel_path(trade_id:@trade.id), "data-method": "post"}
-        .block-content.block-content-full.bg-danger.clearfix
-          %i.si.si-dislike.fa-2x.text-white.pull-right
-          %span.h4.font-w700.text-white Cancelar negociação
-    
-    .col-sm-12.col-md-6
-      %a.block.block-link-hover2{:href => get_path_accept(@trade), "data-method": "post"}
-        .block-content.block-content-full.bg-success.clearfix
-          %i.si.si-like.fa-2x.text-white.pull-right
-          %span.h4.font-w700.text-white= get_title_accept(@trade.status.to_i)
-  .row
-    .col-lg-6
-      = render partial: "trades/block_address", locals: {profile: current_user.profile}
-    .col-lg-6
-      = render partial: "trades/block_address", locals: {profile: @trade.other_user(current_user).profile}
-      
-    .col-lg-6
-      .block
-        .block-header.bg-gray-lighter
-          %h3.block-title Endereço de entrega
-        .block-content.block-content-full
-          .h4.push-5 Pedro Pozzer
-          %address
-            Sunrise Str 620
-            %br/
-            Melbourne
-            %br/
-            Australia, 11-587
-            %br/
-            %br/
-            %i.fa.fa-phone
-            (999) 888-55555
-            %br/
-            %i.fa.fa-envelope-o
-            %a{:href => "javascript:void(0)"} pedropozzer@example.com
-
+    .row
+      .col-lg-6
+        = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{current_user.profile.full_name}", user: current_user.profile.user, bottles: current_user.bottles.publics.with_stock }
+      .col-lg-6
+        = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do Pedro", user: current_user.profile.user, bottles: @trade.other_user(current_user).bottles.publics.with_stock }
+    .row
+      = render partial: "trades/block_actions"
+    - if @trade.status == "waiting_to_be_sent"
+      .row
+        .col-lg-6
+          = render partial: "trades/block_address", locals: {profile: current_user.profile}
+        .col-lg-6
+          = render partial: "trades/block_address", locals: {profile: @trade.other_user(current_user).profile}
   .block
     .block-header.bg-gray-lighter
       %h3.block-title Mensagens de log
@@ -140,12 +89,12 @@
               %td Solicitou uma negociação
 
   .block
-    .bg-image{:style => "background-image: url(#{ current_user.profile.cover_url });"}
+    .bg-image{:style => "background-image: url(#{ @trade.other_user(current_user).profile.cover_url });"}
       .block-content.block-content-full.bg-black-op.text-center
         .push-10
-          = image_tag current_user.profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
+          = image_tag @trade.other_user(current_user).profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
         %h3.h4
-          %span.text-white= current_user.full_name
+          %span.text-white= @trade.other_user(current_user).full_name
     .js-chat-talk.overflow-y-auto.block-content.block-content-full{"data-chat-id" => "3", :style => "height: 346px;"}
       .font-s12.text-muted.text-center.push-20-t.push-15
         %em Yesterday
@@ -160,4 +109,3 @@
     .js-chat-form.block-content.block-content-full.block-content-mini
       %form{:action => "base_ui_chat.php", :method => "post"}
         %input.js-chat-input.form-control{"data-target-chat-id" => "3", :placeholder => "Type a message and hit enter..", :type => "text"}/
-= link_to 'Back', trades_path

@@ -1,5 +1,5 @@
 class TradesController < AppController
-  before_action :set_trade, only: [:show, :edit, :update, :destroy, :cancel]
+  before_action :set_trade, only: [:show, :edit, :update, :destroy, :cancel, :accept]
   before_action :check_trade_involving, only: :create
   respond_to :js, only: [:index]
 
@@ -22,7 +22,7 @@ class TradesController < AppController
   def create
     get_bottle
     mount_trade_params
-    unless @trade 
+    unless @trade
       @trade = Trade.new(trade_params)
       @trade.save
     end
@@ -70,7 +70,7 @@ class TradesController < AppController
       @bottle ||= Bottle.find(params["bottle_id"].first)
     end
 
-    def check_trade_involving 
+    def check_trade_involving
       get_bottle
       @trade = Trade.our_trades(current_user, @bottle.user).open.first
     end
