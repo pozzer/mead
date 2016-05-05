@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :pictures
   has_many :favorite_questions
   has_many :evaluations, class_name: "RSEvaluation", as: :source
-
+  has_many :logs
   has_many :conversations, :foreign_key => :sender_id
 
   has_many :friendships
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
-        
+
   accepts_nested_attributes_for :profile
 
   after_initialize :initialize_profile
@@ -115,5 +115,5 @@ class User < ActiveRecord::Base
       self.profile = self.build_profile if self.profile.nil?
     end
 
-    
+
 end

@@ -56,38 +56,7 @@
           = render partial: "trades/block_address", locals: {profile: current_user.profile}
         .col-lg-6
           = render partial: "trades/block_address", locals: {profile: @trade.other_user(current_user).profile}
-  .block
-    .block-header.bg-gray-lighter
-      %h3.block-title Mensagens de log
-    .block-content
-      .table-responsive
-        %table.table.table-borderless.table-striped.table-vcenter
-          %tbody
-            %tr
-              %td
-                %span.label.label-danger Proposta
-              %td
-                %span.font-w600 16 de Novembro de 2015 - 15:29
-              %td
-                %a{:href => "javascript:void(0)"} Feliphe Pozzer
-              %td.text-danger Atualizou a proposta
-            %tr
-              %td
-                %span.label.label-primary Aceito
-              %td
-                %span.font-w600 15 de Novembro de 2015 - 15:29
-              %td
-                %a{:href => "javascript:void(0)"} Pedro Pozzer
-              %td Aceitou a negociação
-            %tr
-              %td
-                %span.label.label-primary Inicio
-              %td
-                %span.font-w600 15 de Novembro de 2015 - 14:29
-              %td
-                %a{:href => "javascript:void(0)"} Feliphe Pozzer
-              %td Solicitou uma negociação
-
+    = render partial: "trades/block_logs", locals: {trade: @trade}
   .block
     .bg-image{:style => "background-image: url(#{ @trade.other_user(current_user).profile.cover_url });"}
       .block-content.block-content-full.bg-black-op.text-center

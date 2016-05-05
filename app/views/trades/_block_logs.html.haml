@@ -1,0 +1,16 @@
+.block
+  .block-header.bg-gray-lighter
+    %h3.block-title Mensagens de log
+  .block-content
+    .table-responsive
+      %table.table.table-borderless.table-striped.table-vcenter
+        %tbody
+          - trade.logs.each do |log|
+            %tr
+              %td
+                %span.label{class:"label-#{log.status}"}= log.log_type
+              %td
+                %span.font-w600= l log.created_at
+              %td
+                = log.user.full_name
+              %td.text-danger= log.message

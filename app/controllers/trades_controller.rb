@@ -12,19 +12,13 @@ class TradesController < AppController
   def show
   end
 
-  def new
-    @trade = Trade.new
-  end
-
-  def edit
-  end
-
   def create
     get_bottle
     mount_trade_params
     unless @trade
       @trade = Trade.new(trade_params)
       @trade.save
+      Log.create({user: current_user, trade: @trade, status: 1, log_type: 1, message: "Solicitou a negociação"})
     end
     add_or_create_bottle_trade
     respond_with(@trade)
@@ -45,11 +39,13 @@ class TradesController < AppController
 
   def cancel
     @success = @trade.cancel! if @trade.can_cancel?(current_user)
+    Log.create({user: current_user, trade: @trade, status: 3, log_type: 5, message: "Cancelou a negociação"}) if @success
     redirect_to :back, :flash => (@success) ?  { :notice => "Troca cancelada com sucesso!" } : { :error => "Você não pode cancelar essa troca." }
   end
 
   def accept
     @success = @trade.accept! if @trade.can_accept?(current_user)
+    Log.create({user: current_user, trade: @trade, status: 2, log_type: 5, message: "Aceitou a negociação"}) if @success
     redirect_to :back, :flash => (@success) ?  { :notice => "Troca aceita com sucesso!" } : { :error => "Você não pode aceitar essa troca." }
   end
 

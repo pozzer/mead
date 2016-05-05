@@ -1,6 +1,7 @@
 class Trade < ActiveRecord::Base
 	has_many :messages, class_name: "MessageTrade"
 	has_many :bottle_trades
+  has_many :logs
   belongs_to :negotiator, class_name: "User"
 	belongs_to :negotiant, class_name: "User"
 

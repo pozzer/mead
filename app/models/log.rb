@@ -1,0 +1,11 @@
+class Log < ActiveRecord::Base
+  belongs_to :trade
+  belongs_to :user
+
+  enum status: {success: 1, warning: 2, danger: 3}
+  enum log_type: {started: 1, accepted: 2, awaiting_finalization: 3, finished: 4, canceled: 5, proposal: 6}
+
+  default_scope -> { order("created_at DESC") }
+
+  validates :log_type, :status, :user_id, :trade_id, presence: true
+end
