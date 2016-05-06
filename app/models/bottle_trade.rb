@@ -3,12 +3,12 @@ class BottleTrade < ActiveRecord::Base
 	belongs_to :trade
 	belongs_to :bottle
 
-	def can_add?
-		trade.belongs?(owner) and bottle.amount > 0 and bottle.user = owner
+  def can_add?
+		trade.belongs?(owner) and bottle.amount > 0 and bottle.user = owner and trade.open?
 	end
 
 	def can_remove?(user)
-		trade.belongs?(user) and bottle.user = user
+		trade.belongs?(user) and bottle.user = user and trade.open?
 	end
 	def self.add_or_create(trade, owner, bottle)
     bottle_trade = BottleTrade.where(trade: trade, owner: owner, bottle: bottle).first
@@ -16,7 +16,7 @@ class BottleTrade < ActiveRecord::Base
     if bottle_trade.can_add?
 	    bottle_trade.amount = bottle_trade.amount + 1
 	    bottle.amount = bottle.amount - 1
-    	bottle.save if bottle_trade.save 
+    	bottle.save if bottle_trade.save
     end
     !bottle_trade.new_record?
   end
@@ -31,7 +31,7 @@ class BottleTrade < ActiveRecord::Base
 	    else
 	    	self.save
 	    end
-	    return bott.save 
+	    return bott.save
     end
     return false
   end

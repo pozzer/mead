@@ -72,6 +72,10 @@ class Trade < ActiveRecord::Base
     [0, 1, 2, 3, 4]
   end
 
+  def open?
+    Trade.status_opened.include?(self.status)
+  end
+
   def status_to_s
     I18n.t :"activerecord.attributes.trade.status.#{status}"
   end

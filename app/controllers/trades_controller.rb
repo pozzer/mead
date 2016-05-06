@@ -20,7 +20,7 @@ class TradesController < AppController
       @trade.save
       Log.create({user: current_user, trade: @trade, status: 1, log_type: 1, message: "Solicitou a negociação"})
     end
-    add_or_create_bottle_trade
+    BottleTrade.add_or_create(@trade, @bottle.user, @bottle)
     respond_with(@trade)
   end
 
@@ -71,11 +71,11 @@ class TradesController < AppController
       @trade = Trade.our_trades(current_user, @bottle.user).open.first
     end
 
-    def add_or_create_bottle_trade
-      @bottle_trade = BottleTrade.where(trade_id: @trade.id, owner_id: current_user.id, bottle_id: @bottle.id).first
-      @bottle_trade ||= BottleTrade.new({trade_id: @trade.id, owner_id: current_user.id, bottle_id: @bottle.id, amount: 0})
-      @bottle_trade.amount = @bottle_trade.amount + 1
-      @bottle_trade.save
-      @bottle_trade
-    end
+    #def add_or_create_bottle_trade
+    #  @bottle_trade = BottleTrade.where(trade_id: @trade.id, owner_id:  @bottlecurrent_user.id, bottle_id: @bottle.id).first
+    #  @bottle_trade ||= BottleTrade.new({trade_id: @trade.id, owner_id:  @bottlecurrent_user.id, bottle_id: @bottle.id, amount: 0})
+    #  @bottle_trade.amount = @bottle_trade.amount + 1
+    #  @bottle_trade.save
+    #  @bottle_trade
+    #end
 end
