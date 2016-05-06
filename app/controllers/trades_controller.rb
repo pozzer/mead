@@ -45,7 +45,7 @@ class TradesController < AppController
 
   def accept
     @success = @trade.accept! if @trade.can_accept?(current_user)
-    Log.create({user: current_user, trade: @trade, status: 2, log_type: 5, message: "Aceitou a negociação"}) if @success
+    Log.create({user: current_user, trade: @trade, status: 1, log_type: 2, message: "Aceitou a negociação"}) if @success
     redirect_to :back, :flash => (@success) ?  { :notice => "Troca aceita com sucesso!" } : { :error => "Você não pode aceitar essa troca." }
   end
 
@@ -72,8 +72,8 @@ class TradesController < AppController
     end
 
     def add_or_create_bottle_trade
-      @bottle_trade = BottleTrade.where(trade_id: @trade.id, owner_id: @current_user.id, bottle_id: @bottle.id).first
-      @bottle_trade ||= BottleTrade.new({trade_id: @trade.id, owner_id: @current_user.id, bottle_id: @bottle.id, amount: 0})
+      @bottle_trade = BottleTrade.where(trade_id: @trade.id, owner_id: current_user.id, bottle_id: @bottle.id).first
+      @bottle_trade ||= BottleTrade.new({trade_id: @trade.id, owner_id: current_user.id, bottle_id: @bottle.id, amount: 0})
       @bottle_trade.amount = @bottle_trade.amount + 1
       @bottle_trade.save
       @bottle_trade

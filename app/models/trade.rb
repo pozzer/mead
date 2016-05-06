@@ -37,6 +37,11 @@ class Trade < ActiveRecord::Base
 
   def cancel!
     self.update_attributes({status: 9, finished_at: Time.now})
+    bottle_trades.each do |bottle_trade|
+      bottle = bottle_trade.bottle
+      bottle.amount = bottle.amount + bottle_trade.amount
+      bottle.save
+    end
   end
 
   def accept!

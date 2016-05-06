@@ -13,4 +13,4 @@
                 %span.font-w600= l log.created_at
               %td
                 = log.user.full_name
-              %td.text-danger= log.message
+              %td{class:"text-#{log.status}"}= log.message

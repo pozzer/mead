@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   resources :trades do 
     post :accept, defaults: { :format => :js }
     post :cancel, defaults: { :format => :js }
+    resources :message_trades
+    resources :bottle_trades do
+      member do
+        post :add
+        post :remove
+      end
+    end
   end
 
   resources :profiles

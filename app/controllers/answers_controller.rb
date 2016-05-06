@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_answer, only: [:vote, :vote_best_answer, :update]
   before_action :can_edit?, only: [:update]
   respond_to :js, only: [:vote]
@@ -8,7 +9,7 @@ class AnswersController < ApplicationController
     @answer.user = current_user
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to question_path(@answer.question, anchor: @answer.id), notice: 'Answer was successfully created.' }
+        format.html { redirect_to question_path(@answer.question, anchor: @answer.id), notice: 'Resposta criada com sucesso!.' }
       else
         format.html { redirect_to @answer.question, notice: 'Não foi hoje' }
       end

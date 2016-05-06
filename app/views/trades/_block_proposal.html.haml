@@ -1,0 +1,25 @@
+.col-sm-12.col-md-6
+  .block
+    .block-header.bg-gray-lighter
+      %h3.block-title 
+        - if user == current_user
+          Minha proposta
+        -else
+          = "Proposta do #{user.full_name}"
+    .block-content
+      .table-responsive
+        %table.table.table-borderless.table-striped.table-vcenter
+          %thead
+            %tr
+              %th Nome da Garrafa
+              %th.text-center Qtd.
+              %th.text-center Remover
+          %tbody
+            - @trade.suggest_bottles(user).each do |trade_bottle|
+              %tr
+                %td
+                  = link_to trade_bottle.bottle.to_s, user_bottle_path(trade_bottle.owner, trade_bottle.bottle)
+                %td.text-center
+                  = trade_bottle.amount
+                %td.text-center
+                  = link_to("Remover", remove_trade_bottle_trade_path(id:trade_bottle.id, trade_id:@trade.id), method: "post", "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Remover essa garrafa")

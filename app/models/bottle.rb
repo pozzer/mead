@@ -32,7 +32,7 @@ class Bottle < ActiveRecord::Base
   end
 
   def to_s
-    label
+    "#{type_s} #{label}"
   end
 
   def self.columns_search

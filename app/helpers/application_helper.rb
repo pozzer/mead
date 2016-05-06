@@ -34,4 +34,15 @@ module ApplicationHelper
     user.online? ? "text-success" : "text-danger"
   end  
 
+  def get_day_week(date)
+    if date.to_date == Date.today
+      "Hoje"
+    elsif date.to_date == Date.yesterday
+      "Ontem"
+    else
+      l date.to_date
+    end
+        
+  end
+
 end

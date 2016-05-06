@@ -74,6 +74,10 @@ ActiveRecord::Schema.define(version: 20160505154044) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "artigos", force: :cascade do |t|
+    t.string "title"
+  end
+
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
@@ -236,12 +240,12 @@ ActiveRecord::Schema.define(version: 20160505154044) do
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
+    t.datetime "picture_update_at"
     t.integer  "attachable_id"
     t.string   "attachable_type"
-    t.integer  "picture_type"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "picture_type"
   end
 
   create_table "profiles", force: :cascade do |t|

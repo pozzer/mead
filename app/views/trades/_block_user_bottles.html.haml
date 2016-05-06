@@ -1,0 +1,22 @@
+.block.block-opt-refresh-icon6
+  .block-header
+    %h3.block-title
+      %i.fa-fw.fa.fa-th
+      = title
+  .block-content
+    %ul.list.list-simple.list-li-clearfix
+      - bottles.each do |bottle|
+        %li
+          .col-sm-10
+            = link_to(user_bottle_path(bottle.user, bottle), class: "item item-rounded pull-left push-10-r") do
+              = image_tag bottle.image_url, class:"img-avatar"
+            %h5.push-10-t= "#{bottle.type_s} #{bottle.label}"
+            .font-s13= bottle.organization_name
+          .col-sm-2
+            .text-right.push
+              = link_to(add_trade_bottle_trade_path(bottle_id:bottle.id, trade_id:trade.id), method: "post", class: " pull-right push-10-r", "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Adicionar essa garrafa") do
+                %span.bg-success-light.item.item-circle
+                  %i.fa.fa-plus.text-success
+    .text-center.push
+      %small
+        = link_to "Ver adega completa", user_bottles_path(user)
