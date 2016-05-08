@@ -1,5 +1,6 @@
 class TradesController < AppController
-  before_action :set_trade, only: [:show, :edit, :update, :destroy, :cancel, :accept]
+  before_action :set_trade, only: [:show, :edit, :update, :destroy, :cancel, :accept, :close_proposal, :cancel_proposal, :accept_proposal]
+  before_action :check_address, only: [:close_proposal, :accept_proposal]
   before_action :check_trade_involving, only: :create
   respond_to :js, only: [:index]
 
@@ -48,6 +49,24 @@ class TradesController < AppController
     Log.create({user: current_user, trade: @trade, status: 1, log_type: 2, message: "Aceitou a negociação"}) if @success
     redirect_to :back, :flash => (@success) ?  { :notice => "Troca aceita com sucesso!" } : { :error => "Você não pode aceitar essa troca." }
   end
+  
+  def close_proposal
+    @success = @trade.close_proposal! if @trade.can_close_proposal?(current_user)
+    Log.create({user: current_user, trade: @trade, status: 1, log_type: 7, message: "Fechou a proposta"}) if @success
+    redirect_to :back, :flash => (@success) ?  { :notice => "Proposta fechada com sucesso!" } : { :error => "Você não pode fechar essa proposta." }
+  end
+
+  def accept_proposal
+    @success = @trade.accept_proposal! if @trade.can_accept_proposal?(current_user)
+    Log.create({user: current_user, trade: @trade, status: 1, log_type: 8, message: "Aceitou a proposta"}) if @success
+    redirect_to :back, :flash => (@success) ?  { :notice => "Proposta cancelada com sucesso!" } : { :error => "Você não pode cancelar essa proposta." }
+  end
+
+  def cancel_proposal
+    @success = @trade.cancel_proposal! if @trade.can_cancel_proposal?(current_user)
+    Log.create({user: current_user, trade: @trade, status: 3, log_type: 9, message: "Cancelou a proposta"}) if @success
+    redirect_to :back, :flash => (@success) ?  { :notice => "Proposta aceita com sucesso!" } : { :error => "Você não pode aceitar essa proposta." }
+  end
 
   private
     def set_trade
@@ -71,11 +90,9 @@ class TradesController < AppController
       @trade = Trade.our_trades(current_user, @bottle.user).open.first
     end
 
-    #def add_or_create_bottle_trade
-    #  @bottle_trade = BottleTrade.where(trade_id: @trade.id, owner_id:  @bottlecurrent_user.id, bottle_id: @bottle.id).first
-    #  @bottle_trade ||= BottleTrade.new({trade_id: @trade.id, owner_id:  @bottlecurrent_user.id, bottle_id: @bottle.id, amount: 0})
-    #  @bottle_trade.amount = @bottle_trade.amount + 1
-    #  @bottle_trade.save
-    #  @bottle_trade
-    #end
+    def check_address
+      if current_user.profile.address.blank?
+        redirect_to edit_profile_path(current_user.profile), :flash => { :error => "Por favor preencha seu endereço!" }
+      end
+    end
 end

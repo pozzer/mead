@@ -19,7 +19,7 @@ class Trade < ActiveRecord::Base
     where("(trades.negotiator_id =? OR trades.negotiant_id =?) AND (trades.negotiator_id =? OR trades.negotiant_id =?)", current_user.id, current_user.id, bottle_user.id, bottle_user.id)
   end
 
-  scope :open, -> { where(status: Trade.status_opened ) }
+  scope :open, -> { where(status: Trade.status_opened_to_i ) }
 
   scope :suggest_bottles, -> (user) do
     joins(:bottle_trades).where("trades.owner_id =?", user.id)
@@ -44,16 +44,40 @@ class Trade < ActiveRecord::Base
     end
   end
 
+  def cancel_proposal!
+    self.update_attribute(:status, 2)
+  end
+
+  def can_cancel_proposal?(user)
+    belongs?(user) and !user_close_proposal?(user) and status == "awaiting_finalization"
+  end
+
+  def accept_proposal!
+    self.update_attribute(:status, 4)
+  end
+
+  def can_accept_proposal?(user)
+    can_cancel_proposal?(user)
+  end
+
+  def close_proposal!
+    self.update_attribute(:status, 3)
+  end
+  
+  def can_close_proposal?(current_user)
+    belongs?(current_user) and status == "in_progress"
+  end
+
   def accept!
-    self.update_attribute(:status, 1)
+    self.update_attribute(:status, 2)
   end
 
   def can_cancel?(user)
-    belongs?(user) and Trade.status_opened.include?(status.to_i)
+    belongs?(user) and Trade.status_opened.include?(status)
   end
 
   def can_accept?(user)
-    belongs?(user) and user_requested?(user) and status.to_i == 0
+    belongs?(user) and user_requested?(user) and status == "started"
   end
 
   def belongs?(user)
@@ -69,6 +93,10 @@ class Trade < ActiveRecord::Base
   end
 
   def self.status_opened
+    ["started", "accepted", "in_progress", "awaiting_finalization", "waiting_to_be_sent"]
+  end
+
+  def self.status_opened_to_i
     [0, 1, 2, 3, 4]
   end
 
@@ -88,8 +116,12 @@ class Trade < ActiveRecord::Base
     negotiant == user
   end
 
-  def user_started
-    negotiator_id?
+  def user_close_proposal
+    logs.close_proposal.last.try(:user)
+  end
+
+  def user_close_proposal?(user)
+    user_close_proposal == user
   end
 
 end

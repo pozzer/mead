@@ -4,17 +4,17 @@
     = second_block(@trade)
     = third_block(@trade)
     = last_block(@trade)
-  .row
+  .row#proposal
     = render partial: "trades/block_proposal", locals:{ user: current_user}
     = render partial: "trades/block_proposal", locals:{ user: @trade.other_user(current_user)}
-  .row#proposal
+  .row
     .col-lg-6
       = render partial: "trades/block_user_bottles", locals:{ title: "Garrafas na minha adega", user: current_user.profile.user, bottles: current_user.bottles.publics.with_stock, trade: @trade}
     .col-lg-6
       = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do Pedro", user: current_user.profile.user, bottles: @trade.other_user(current_user).bottles.publics.with_stock }
   .row
     = render partial: "trades/block_actions"
-  - if @trade.status == "waiting_to_be_sent"
+  - if @trade.status == "waiting_to_be_sent" || @trade.status == "finished"
     .row
       .col-lg-6
         = render partial: "trades/block_address", locals: {profile: current_user.profile}

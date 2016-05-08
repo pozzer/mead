@@ -15,6 +15,23 @@ module TradesHelper
 		case status
 		when "started"
 			"Aceitar negociação"
+		when "in_progress"
+			"Finalizar proposta"
+		when "awaiting_finalization"
+			"Aceitar proposta"
+		when "received"
+			"Garrafa(s) Recebida"
+		else
+			"Finalizar negociação"
+		end
+	end
+
+	def get_title_cancel(status)
+		case status
+		when "started"
+			"Aceitar negociação"
+		when "awaiting_finalization"
+			"Cancelar proposta"
 		else
 			"Finalizar negociação"
 		end
@@ -24,6 +41,21 @@ module TradesHelper
 		case trade.status
 		when "started"
 			trade_accept_path(trade_id:trade.id)
+		when "in_progress"
+			trade_close_proposal_path(trade_id:trade.id)
+		when "awaiting_finalization"
+			trade_accept_proposal_path(trade_id:trade.id)
+		else
+			"#finalziar"
+		end
+	end
+
+	def get_path_cancel(trade)
+		case trade.status
+		when "started"
+			trade_accept_path(trade_id:trade.id)
+		when "awaiting_finalization"
+			trade_cancel_proposal_path(trade_id:trade.id)
 		else
 			"#finalziar"
 		end
@@ -71,6 +103,10 @@ module TradesHelper
 		else
 			add_status_block("Finalizada", "fa fa-times", "text-muted", "bg-gray-lighter")
 		end
+	end
+
+	def can_remove_bottle?(user)
+		user == current_user
 	end
 
 

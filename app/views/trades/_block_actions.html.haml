@@ -1,9 +1,15 @@
-- if @trade.status != "canceled"
+- if @trade.status == "waiting_to_be_sent"
+  .col-sm-12.col-md-12
+    %a.block.block-link-hover2{:href => get_path_accept(@trade), "data-method": "post"}
+      .block-content.block-content-full.bg-success.clearfix
+        %i.si.si-like.fa-2x.text-white.pull-right
+        %span.h4.font-w700.text-white= get_title_accept(@trade.status)
+- elsif @trade.status != "canceled" and !(@trade.user_close_proposal?(current_user) and @trade.status == "awaiting_finalization")
   .col-sm-12.col-md-6
-    %a.block.block-link-hover2{:href => trade_cancel_path(trade_id:@trade.id), "data-method": "post"}
+    %a.block.block-link-hover2{:href => get_path_cancel(@trade), "data-method": "post"}
       .block-content.block-content-full.bg-danger.clearfix
         %i.si.si-dislike.fa-2x.text-white.pull-right
-        %span.h4.font-w700.text-white Cancelar negociação
+        %span.h4.font-w700.text-white= get_title_cancel(@trade.status)
 
   .col-sm-12.col-md-6
     %a.block.block-link-hover2{:href => get_path_accept(@trade), "data-method": "post"}

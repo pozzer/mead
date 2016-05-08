@@ -13,7 +13,8 @@
             %tr
               %th Nome da Garrafa
               %th.text-center Qtd.
-              %th.text-center Remover
+              - if can_remove_bottle?(user)
+                %th.text-center Remover
           %tbody
             - @trade.suggest_bottles(user).each do |trade_bottle|
               %tr
@@ -21,5 +22,6 @@
                   = link_to trade_bottle.bottle.to_s, user_bottle_path(trade_bottle.owner, trade_bottle.bottle)
                 %td.text-center
                   = trade_bottle.amount
-                %td.text-center
-                  = link_to("Remover", remove_trade_bottle_trade_path(id:trade_bottle.id, trade_id:@trade.id), method: "post", "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Remover essa garrafa")
+                - if can_remove_bottle?(user)
+                  %td.text-center
+                    = link_to("Remover", remove_trade_bottle_trade_path(id:trade_bottle.id, trade_id:@trade.id), method: "post", "data-toggle": "tooltip", "data-placement": "tooltip", "data-original-title": "Remover essa garrafa")

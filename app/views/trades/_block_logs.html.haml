@@ -8,7 +8,7 @@
           - trade.logs.each do |log|
             %tr
               %td
-                %span.label{class:"label-#{log.status}"}= log.log_type
+                %span.label{class:"label-#{log.status}"}= log.log_type_to_s
               %td
                 %span.font-w600= l log.created_at
               %td
