@@ -1,5 +1,5 @@
 class TradesController < AppController
-  before_action :set_trade, only: [:show, :edit, :update, :destroy, :cancel, :accept, :close_proposal, :cancel_proposal, :accept_proposal]
+  before_action :set_trade, only: [:show, :edit, :update, :destroy, :cancel, :accept, :close_proposal, :cancel_proposal, :accept_proposal, :received]
   before_action :check_address, only: [:close_proposal, :accept_proposal]
   before_action :check_trade_involving, only: :create
   respond_to :js, only: [:index]
@@ -66,6 +66,11 @@ class TradesController < AppController
     @success = @trade.cancel_proposal! if @trade.can_cancel_proposal?(current_user)
     Log.create({user: current_user, trade: @trade, status: 3, log_type: 9, message: "Cancelou a proposta"}) if @success
     redirect_to :back, :flash => (@success) ?  { :notice => "Proposta aceita com sucesso!" } : { :error => "Você não pode aceitar essa proposta." }
+  end
+
+  def received
+    @success = @trade.received!(current_user)
+    redirect_to :back, :flash => (@success) ?  { :notice => "Entrega recebida com sucesso!" } : { :error => "Você não alterar essa troca." }
   end
 
   private

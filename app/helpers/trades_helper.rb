@@ -19,7 +19,7 @@ module TradesHelper
 			"Finalizar proposta"
 		when "awaiting_finalization"
 			"Aceitar proposta"
-		when "received"
+		when "waiting_to_be_sent"
 			"Garrafa(s) Recebida"
 		else
 			"Finalizar negociação"
@@ -45,6 +45,8 @@ module TradesHelper
 			trade_close_proposal_path(trade_id:trade.id)
 		when "awaiting_finalization"
 			trade_accept_proposal_path(trade_id:trade.id)
+		when "waiting_to_be_sent"
+			trade_received_path(trade_id:trade.id)
 		else
 			"#finalziar"
 		end

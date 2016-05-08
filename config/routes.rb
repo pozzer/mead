@@ -9,8 +9,12 @@ Rails.application.routes.draw do
   resources :ratings
 
   resources :trades do 
-    post :accept, defaults: { :format => :js }
-    post :cancel, defaults: { :format => :js }
+    post :accept
+    post :cancel
+    post :cancel_proposal
+    post :close_proposal
+    post :accept_proposal
+    post :received
     resources :message_trades
     resources :bottle_trades do
       member do

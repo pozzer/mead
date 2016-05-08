@@ -77,11 +77,22 @@ pt-BR:
           started: Inicializada
           accepted: Aceita
           in_progress: Em andamento
-          awaiting_finalization: Aguardando Finalização
+          awaiting_finalization: Aguardando proposta
           waiting_to_be_sent: "Aguardando envio"
           finished: Finalizada
           canceled: Cancelada
-
+      log:
+        log_type:
+          started: Inicializada
+          accepted: Aceita
+          awaiting_finalization: Aguardando
+          finished: Finalizada
+          canceled: Cancelada
+          proposal: Proposta
+          close_proposal: Proposta Fechada
+          accept_proposal: Proposta Aceita
+          cancel_proposal: Proposta Cancelada
+          received: Recebida
 
   date:
     abbr_day_names:

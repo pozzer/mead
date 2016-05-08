@@ -1,9 +1,9 @@
 class Trade < ActiveRecord::Base
-	has_many :messages, class_name: "MessageTrade"
-	has_many :bottle_trades
+  has_many :messages, class_name: "MessageTrade"
+  has_many :bottle_trades
   has_many :logs
   belongs_to :negotiator, class_name: "User"
-	belongs_to :negotiant, class_name: "User"
+  belongs_to :negotiant, class_name: "User"
 
   validates_presence_of :negotiator, :negotiant, :status
 
@@ -32,7 +32,7 @@ class Trade < ActiveRecord::Base
   end
 
   def other_user(user)
-  	negotiator == user ? negotiant : negotiator
+    negotiator == user ? negotiant : negotiator
   end
 
   def cancel!
@@ -92,6 +92,28 @@ class Trade < ActiveRecord::Base
     belongs?(user)
   end
 
+  def can_received?(user)
+    belongs?(user) and status == "waiting_to_be_sent"
+  end
+
+  def received!(user)
+    if can_received?(user)
+      case receiveds.size
+      when 0
+        Log.create({user: user, trade: self, status: 1, log_type: 10, message: "Recebeu a(s) Garrafa(s)"})
+        return true
+      when 1
+        unless user_received_proposal?(user)
+          self.update_attribute(:status, 5)
+          Log.create({user: user, trade: self, status: 1, log_type: 10, message: "Recebeu a(s) Garrafa(s)"})  
+          Log.create({user: user, trade: self, status: 1, log_type: 4, message: "Finalizou a entrega)"})  
+          return true
+        end 
+      end
+    end
+    return false
+  end
+
   def self.status_opened
     ["started", "accepted", "in_progress", "awaiting_finalization", "waiting_to_be_sent"]
   end
@@ -122,6 +144,14 @@ class Trade < ActiveRecord::Base
 
   def user_close_proposal?(user)
     user_close_proposal == user
+  end
+
+  def receiveds
+    logs.received
+  end
+
+  def user_received_proposal?(user)
+    receiveds.map(&:user).includes?(user)
   end
 
 end
