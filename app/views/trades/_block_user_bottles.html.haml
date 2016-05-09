@@ -14,9 +14,10 @@
             .font-s13= bottle.organization_name
           .col-sm-2
             .text-right.push
-              = link_to(add_trade_bottle_trade_path(bottle_id:bottle.id, trade_id:trade.id), method: "post", class: " pull-right push-10-r", "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Adicionar essa garrafa") do
-                %span.bg-success-light.item.item-circle
-                  %i.fa.fa-plus.text-success
+              - if can_remove_bottle?(user, @trade.status)
+                = link_to(add_trade_bottle_trade_path(bottle_id:bottle.id, trade_id:trade.id), method: "post", class: " pull-right push-10-r", "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Adicionar essa garrafa") do
+                  %span.bg-success-light.item.item-circle
+                    %i.fa.fa-plus.text-success
     .text-center.push
       %small
         = link_to "Ver adega completa", user_bottles_path(user)

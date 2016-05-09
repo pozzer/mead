@@ -82,7 +82,7 @@ pt-BR:
           finished: Finalizada
           canceled: Cancelada
       log:
-        log_type:
+        log_types:
           started: Inicializada
           accepted: Aceita
           awaiting_finalization: Aguardando

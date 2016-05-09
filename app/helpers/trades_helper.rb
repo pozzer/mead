@@ -29,7 +29,7 @@ module TradesHelper
 	def get_title_cancel(status)
 		case status
 		when "started"
-			"Aceitar negociação"
+			"Cancelar negociação"
 		when "awaiting_finalization"
 			"Cancelar proposta"
 		else
@@ -55,7 +55,7 @@ module TradesHelper
 	def get_path_cancel(trade)
 		case trade.status
 		when "started"
-			trade_accept_path(trade_id:trade.id)
+			trade_cancel_path(trade_id:trade.id)
 		when "awaiting_finalization"
 			trade_cancel_proposal_path(trade_id:trade.id)
 		else
@@ -91,6 +91,8 @@ module TradesHelper
 		case trade.status
 		when "started", "canceled"
 			add_status_block("Em negociação", "fa fa-times", "text-muted", "bg-gray-lighter")
+		when "finished"
+			add_status_block("Em negociação")
 		else
 			add_status_block("Em negociação", "si si-settings fa-spin", "text-warning", "bg-warning-light")
 		end
@@ -107,8 +109,8 @@ module TradesHelper
 		end
 	end
 
-	def can_remove_bottle?(user)
-		user == current_user
+	def can_remove_bottle?(user, status)
+		user == current_user and ["started", "accepted", "in_progress"].include?(status)
 	end
 
 

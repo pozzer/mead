@@ -63,7 +63,7 @@ class Trade < ActiveRecord::Base
   def close_proposal!
     self.update_attribute(:status, 3)
   end
-  
+
   def can_close_proposal?(current_user)
     belongs?(current_user) and status == "in_progress"
   end
@@ -105,10 +105,10 @@ class Trade < ActiveRecord::Base
       when 1
         unless user_received_proposal?(user)
           self.update_attribute(:status, 5)
-          Log.create({user: user, trade: self, status: 1, log_type: 10, message: "Recebeu a(s) Garrafa(s)"})  
-          Log.create({user: user, trade: self, status: 1, log_type: 4, message: "Finalizou a entrega)"})  
+          Log.create({user: user, trade: self, status: 1, log_type: 10, message: "Recebeu a(s) Garrafa(s)"})
+          Log.create({user: user, trade: self, status: 1, log_type: 4, message: "Finalizou a entrega)"})
           return true
-        end 
+        end
       end
     end
     return false
@@ -151,7 +151,7 @@ class Trade < ActiveRecord::Base
   end
 
   def user_received_proposal?(user)
-    receiveds.map(&:user).includes?(user)
+    receiveds.map(&:user).include?(user)
   end
 
 end

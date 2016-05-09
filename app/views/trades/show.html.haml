@@ -13,6 +13,7 @@
     .col-lg-6
       = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do Pedro", user: current_user.profile.user, bottles: @trade.other_user(current_user).bottles.publics.with_stock }
   .row
+  - unless @trade.user_received_proposal?(current_user)
     = render partial: "trades/block_actions"
   - if @trade.status == "waiting_to_be_sent" || @trade.status == "finished"
     .row
@@ -34,7 +35,7 @@
           %em= get_day_week(day)
         - messages.each do |message|
           .block.block-rounded.block-transparent.push-15{class: (message.user == current_user) ? "push-50-r" : "push-50-l"}
-            .block-content.block-content-full.block-content-mini.bg-gray-lighter= message.content
+            .block-content.block-content-full.block-content-mini.bg-gray= message.content
     .block-content.block-content-full.block-content-mini
       = simple_form_for([@trade, @trade.messages.new]) do |f|
         .form-group

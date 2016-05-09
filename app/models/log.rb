@@ -10,7 +10,7 @@ class Log < ActiveRecord::Base
   validates :log_type, :status, :user_id, :trade_id, presence: true
 
   def log_type_to_s
-    I18n.t :"activerecord.attributes.log.log_type.#{log_type}"
+    I18n.t :"activerecord.attributes.log.log_types.#{log_type}"
   end
 
 end
