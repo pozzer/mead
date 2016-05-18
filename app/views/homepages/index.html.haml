@@ -1,4 +1,4 @@
-.bg-image{:style => "background-image: url(#{asset_path 'promo-1.png'});"}
+.bg-image{:style => "background-image: url(#{asset_path 'bottles.jpg'});"}
   .bg-primary-dark-op
     %section.content.content-full.content-boxed.overflow-hidden
       .push-100-t.push-50.text-center
@@ -16,7 +16,7 @@
           %span.item.item-2x.item-circle.border
             %i.si.si-bubbles
         %h3.h5.font-w600.text-uppercase.text-center.push-10 O fim de suas dúvidas
-        %p Tire suas duvidas a quando e como você quiser, qualquer pessoa pode fazer uma pergunta, qualquer um pode responder, as melhores respostas recebem votos positivos e sobem para os primeiros lugares
+        %p Tire suas dúvidas a quando e como você quiser, qualquer pessoa pode fazer uma pergunta, qualquer um pode responder, as melhores respostas recebem votos positivos e sobem para os primeiros lugares!
       .col-sm-4
         .text-center.push
           %span.item.item-2x.item-circle.border
@@ -45,7 +45,7 @@
       .col-sm-4
         .text-center.push
           %span.item.item-2x.item-circle.border
-            %i.si.si-diamond
+            %i.si.si-diamond.text-danger
         %h3.h5.font-w600.text-uppercase.text-center.push-10 Tecnologia
         %p Desenvolvemos nossa própria tecnologia com as mais modernas linguagens e usando projetos open source.
 
@@ -62,7 +62,7 @@
       .col-sm-4
         .h1.push-5{"data-after" => "+", "data-to" => "890", "data-toggle" => "countTo"}= "#{Question.with_best_answer.size*7}+"
         .font-w600.text-uppercase.text-muted Perguntas respondidas
-.bg-image{:style => "background-image: url('assets/img/photos/photo3@2x.jpg');"}
+.bg-image{:style => "background-image: url(#{asset_path 'cellar.jpg'});"}
   .bg-primary-dark-op
     %section.content.content-full.content-boxed
       .row.items-push-2x.push-50-t.text-center
@@ -94,10 +94,10 @@
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
-          .h4.text-white-op.push-5 Me ajuda todos os dias, @mead é incrivel!
+          .h4.text-white-op.push-5 "Me ajuda todos os dias, @mead é incrivel!""
           .h6.text-gray - Guilherme Kuhn
 .bg-gray-lighter
   %section.content.content-full.content-boxed
     .push-20-t.push-20.text-center
-      %h3.h4.push-20.animated.fadeIn{"data-toggle" => "appear"} Faça parte da nova geração de produtoes de bebidas artesanais do Brasil
+      %h3.h4.push-20.animated.fadeIn{"data-toggle" => "appear"} Faça parte da nova geração de produtores de bebidas artesanais do Brasil!
       %a.btn.btn-rounded.btn-noborder.btn-lg.btn-success.animated.bounceIn{"data-class" => "animated bounceIn", "data-toggle" => "appear", :href => "#{new_user_session_path}"} Comece agora mesmo!
