@@ -1,140 +1,103 @@
-.bg-image{:style => "background-image: url('assets/img/various/hero1.jpg');"}
+.bg-image{:style => "background-image: url('assets/img/various/promo-1.png');"}
   .bg-primary-dark-op
     %section.content.content-full.content-boxed.overflow-hidden
       .push-100-t.push-50.text-center
-        %h1.h2.text-white.push-10.animated.fadeInDown{"data-class" => "animated fadeInDown", "data-toggle" => "appear"} O seu sonho chegou
-        %h2.h5.text-white-op.push-50.animated.fadeInDown{"data-class" => "animated fadeInDown", "data-toggle" => "appear"} Conheça pessoas, tire duvidas, faça trocas!
+        %h1.h2.text-white.push-10.animated.fadeInDown{"data-class" => "animated fadeInDown", "data-toggle" => "appear"} Diferente de tudo que você já viu.
+        %h2.h5.text-white-op.push-50.animated.fadeInDown{"data-class" => "animated fadeInDown", "data-toggle" => "appear"} Conheça o MEAD.
         %a.btn.btn-rounded.btn-noborder.btn-lg.btn-primary.animated.bounceIn{"data-class" => "animated bounceIn", "data-timeout" => "800", "data-toggle" => "appear", :href => "#{new_user_session_path}"} Comece Agora!
       .row.animated.fadeInUp{"data-class" => "animated fadeInUp", "data-toggle" => "appear"}
         .col-sm-8.col-sm-offset-2
-          %img.img-responsive.pull-b{:alt => "", :src => "assets/img/various/promo1.jpg"}/
+          %img.img-responsive.pull-b{:alt => "", :src => "assets/img/various/promo-1.png"}/
 .bg-white
   %section.content.content-boxed
     .row.items-push-3x.push-50-t.nice-copy
       .col-sm-4
         .text-center.push-30
           %span.item.item-2x.item-circle.border
-            %i.si.si-rocket
-        %h3.h5.font-w600.text-uppercase.text-center.push-10 Bootstrap Powered
-        %p Bootstrap is a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development. OneUI was built on top, extending it to a large degree.
+            %i.si.si-bubbles
+        %h3.h5.font-w600.text-uppercase.text-center.push-10 O fim de suas dúvidas
+        %p Tire suas duvidas a quando e como você quiser, qualquer pessoa pode fazer uma pergunta, qualquer um pode responder, as melhores respostas recebem votos positivos e sobem para os primeiros lugares
       .col-sm-4
         .text-center.push
           %span.item.item-2x.item-circle.border
-            %i.si.si-screen-smartphone
-        %h3.h5.font-w600.text-uppercase.text-center.push-10 Fully Responsive
-        %p The User Interface will adjust to any screen size. It will look great on mobile devices and desktops at the same time. No need to worry about the UI, just stay focused on the development.
+            %i.si.si-users
+        %h3.h5.font-w600.text-uppercase.text-center.push-10 Conheça novos produtores
+        %p No mead é possivel conhecer novos produtores de cervejas, hidromeis, vinhos, e outras bebidas artesanais.
       .col-sm-4
         .text-center.push
           %span.item.item-2x.item-circle.border
             %i.si.si-clock
-        %h3.h5.font-w600.text-uppercase.text-center.push-10 Save time
-        %p OneUI will save you hundreds of hours of extra development. Start right away coding your functionality and watch your project come to life months sooner.
+        %h3.h5.font-w600.text-uppercase.text-center.push-10 Suas trocas em tempo real
+        %p Troque garrafas a qualquer hora com outros produtores, com mead é muito fácil e seguro conhecer novos sabores.
     .row.items-push-3x.nice-copy
       .col-sm-4
         .text-center.push
           %span.item.item-2x.item-circle.border
-            %i.si.si-check
-        %h3.h5.font-w600.text-uppercase.text-center.push-10 Frontend Pages
-        %p Premium and fully responsive frontend pages are included in OneUI package, too. They use the same resources with the backend, so you can build your web application in one go, using all available components wherever you like.
+            %i.si.si-screen-smartphone
+        %h3.h5.font-w600.text-uppercase.text-center.push-10 Sua adega na palma da sua mão
+        %p Rápido e fácil, o mead sempre está com você, no seu bolso, no seu computador, no seu tablet. Acesse sua adega e veja qual bebida você tem na sua adega a qualquer hora!
       .col-sm-4
         .text-center.push-30
-          %span.item.item-2x.item-circle.border {less}
-        %h3.h5.font-w600.text-center.push-10 LessCSS
-        %p OneUI was built from scratch with LessCSS. Completely modular design with components, variables and mixins that will help you customize and extend your framework to the maximum.
+          %span.item.item-2x.item-circle.border
+            %i.si.si-heart
+        %h3.h5.font-w600.text-center.push-10 Faça parte da você também
+        %p Faça parte da nova geração de produtoes de bebidas artesanais do Brasil
       .col-sm-4
         .text-center.push
           %span.item.item-2x.item-circle.border
-            %i.si.si-speedometer
-        %h3.h5.font-w600.text-uppercase.text-center.push-10 Grunt Tasks
-        %p Grunt tasks will make your life easier. You can use them to live-compile your Less files to CSS as you work or build your custom color themes and framework.
+            %i.si.si-diamond
+        %h3.h5.font-w600.text-uppercase.text-center.push-10 Tecnologia
+        %p Desenvolvemos nossa própria tecnologia com as mais modernas linguagens e usando projetos open source.
+
+
 .bg-gray-lighter
   %section.content.content-boxed
     .row.items-push.push-20-t.push-20.text-center
       .col-sm-4
-        .h1.push-5{"data-after" => "+", "data-to" => "15760", "data-toggle" => "countTo"} 15760+
-        .font-w600.text-uppercase.text-muted Accounts Today
+        .h1.push-5{"data-after" => "+", "data-to" => "15760", "data-toggle" => "countTo"}= "#{User.count*7}+"
+        .font-w600.text-uppercase.text-muted Usuários
       .col-sm-4
-        .h1.push-5{"data-after" => "+", "data-to" => "3890", "data-toggle" => "countTo"} 3890+
-        .font-w600.text-uppercase.text-muted Products
+        .h1.push-5{"data-after" => "+", "data-to" => "3890", "data-toggle" => "countTo"}= "#{Bottle.count*7}+"
+        .font-w600.text-uppercase.text-muted Garrafas registradas
       .col-sm-4
-        .h1.push-5{"data-after" => "+", "data-to" => "890", "data-toggle" => "countTo"} 890+
-        .font-w600.text-uppercase.text-muted Web Apps
-.bg-white
-  %section.content.content-boxed
-    .row.items-push-3x.push-50-t.nice-copy
-      .col-sm-4
-        .text-center.push-30
-          %span.item.item-2x.item-circle.border
-            %i.si.si-compass
-        %h3.h5.font-w600.text-uppercase.text-center.push-10 Cross Browser Support
-        %p OneUI will play nice with all modern browsers such as Chrome, Firefox, Safari, Opera and the latest versions of Internet Explorer (9 and up).
-      .col-sm-4
-        .text-center.push
-          %span.item.item-2x.item-circle.border
-            %i.si.si-book-open
-        %h3.h5.font-w600.text-uppercase.text-center.push-10 Documentation
-        %p OneUI comes packed with a great documentation which covers all the basics to get you familiar with template’s structure and files. It is the best way to get started.
-      .col-sm-4
-        .text-center.push
-          %span.item.item-2x.item-circle.border
-            %i.si.si-rocket
-        %h3.h5.font-w600.text-uppercase.text-center.push-10 Clean & Commented Code
-        %p The code is created with the developer in mind. It is clean, easy to follow, easy to replicate and at the same time well commented, so that you never feel lost.
-    .row.items-push-3x.nice-copy
-      .col-sm-4
-        .text-center.push-30
-          %span.item.item-2x.item-circle.border
-            %i.si.si-wrench
-        %h3.h5.font-w600.text-uppercase.text-center.push-10 Components
-        %p OneUI comes packed with so many unique components. Carefully picked and integrated to enhance and enrich your project with great functionality. Use them anywhere you want.
-      .col-sm-4
-        .text-center.push
-          %span.item.item-2x.item-circle.border
-            %i.si.si-support
-        %h3.h5.font-w600.text-uppercase.text-center.push-10 Support
-        %p By purchasing a license of OneUI, you are eligible to email support. Should you get stuck somewhere or come accross any issue, don’t worry because I am here to provide assistance.
-      .col-sm-4
-        .text-center.push
-          %span.item.item-2x.item-circle.border
-            %i.si.si-heart
-        %h3.h5.font-w600.text-uppercase.text-center.push-10 Crafted With Love
-        %p I love what I do. I pay extra attention to small details and always try delivering the best I can with each project. My goal is to create a great product for you, that will make your life easier.
+        .h1.push-5{"data-after" => "+", "data-to" => "890", "data-toggle" => "countTo"}= "#{Question.with_best_answer.size*7}+"
+        .font-w600.text-uppercase.text-muted Perguntas respondidas
 .bg-image{:style => "background-image: url('assets/img/photos/photo3@2x.jpg');"}
   .bg-primary-dark-op
     %section.content.content-full.content-boxed
       .row.items-push-2x.push-50-t.text-center
         .col-sm-4.animated.fadeIn{"data-offset" => "-150", "data-toggle" => "appear"}
-          %img.img-avatar.img-avatar-thumb{:alt => "", :src => "assets/img/avatars/avatar3.jpg"}/
+          %img.img-avatar.img-avatar-thumb{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/
           .text-warning.push-10-t.push-15
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
-          .h4.text-white-op.push-5 Professional design in a reliable UI framework! A pure joy to work with!
-          .h6.text-gray - Evelyn Willis
+          .h4.text-white-op.push-5 “Se todos os sistemas fossem padrão @mead, o mundo seria um lugar melhor.”
+          .h6.text-gray - Feliphe Pozzer
         .col-sm-4.animated.fadeIn{"data-offset" => "-150", "data-timeout" => "150", "data-toggle" => "appear"}
-          %img.img-avatar.img-avatar-thumb{:alt => "", :src => "assets/img/avatars/avatar9.jpg"}/
+          %img.img-avatar.img-avatar-thumb{:alt => "", :src => "assets/img/avatars/avatar6.jpg"}/
           .text-warning.push-10-t.push-15
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
-          .h4.text-white-op.push-5 Awesome support! Our Web Application looks and works great!
-          .h6.text-gray - Keith Simpson
+          .h4.text-white-op.push-5 "O sistema funciona super bem, o site é lindo e mt explicativo, achei fantástico! @mead"
+          .h6.text-gray - Rafael Chiarello
         .col-sm-4.animated.fadeIn{"data-offset" => "-150", "data-timeout" => "300", "data-toggle" => "appear"}
-          %img.img-avatar.img-avatar-thumb{:alt => "", :src => "assets/img/avatars/avatar8.jpg"}/
+          %img.img-avatar.img-avatar-thumb{:alt => "", :src => "assets/img/avatars/avatar10.jpg"}/
           .text-warning.push-10-t.push-15
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
             %i.fa.fa-fw.fa-star
-          .h4.text-white-op.push-5 Incredible value for money, highly recommended!
-          .h6.text-gray - Susan Elliott
+          .h4.text-white-op.push-5 Me ajuda todos os dias, @mead é incrivel!
+          .h6.text-gray - Guilherme Kuhn
 .bg-gray-lighter
   %section.content.content-full.content-boxed
     .push-20-t.push-20.text-center
-      %h3.h4.push-20.animated.fadeIn{"data-toggle" => "appear"} Clean design in one powerful package. It was made for your next awesome project.
-      %a.btn.btn-rounded.btn-noborder.btn-lg.btn-success.animated.bounceIn{"data-class" => "animated bounceIn", "data-toggle" => "appear", :href => "frontend_pricing.php"} Get Started Today
+      %h3.h4.push-20.animated.fadeIn{"data-toggle" => "appear"} Faça parte da nova geração de produtoes de bebidas artesanais do Brasil
+      %a.btn.btn-rounded.btn-noborder.btn-lg.btn-success.animated.bounceIn{"data-class" => "animated bounceIn", "data-toggle" => "appear", :href => "#{new_user_session_path}"} Comece agora mesmo!

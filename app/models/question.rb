@@ -20,6 +20,7 @@ class Question < ActiveRecord::Base
   validates :content, presence: true
 
   scope :without_best_answer, -> { where("questions.id not IN ( select answers.question_id from answers where answers.question_id = questions.id and answers.best = 't' )") }
+  scope :with_best_answer, -> { where("questions.id IN ( select answers.question_id from answers where answers.question_id = questions.id and answers.best = 't' )") }
 
   scope :newer, -> { order("questions.created_at DESC")}
 

@@ -1,3 +1,480 @@
+.content.bg-white.border-b
+  .row.items-push.text-uppercase
+    .col-xs-6.col-sm-3
+      .font-w700.text-gray-darker.animated.fadeIn Product Sales
+      .text-muted.animated.fadeIn
+        %small
+          %i.si.si-calendar
+          Today
+      %a.h2.font-w300.text-primary.animated.flipInX{:href => "base_comp_charts.php"} 300
+    .col-xs-6.col-sm-3
+      .font-w700.text-gray-darker.animated.fadeIn Product Sales
+      .text-muted.animated.fadeIn
+        %small
+          %i.si.si-calendar
+          This Month
+      %a.h2.font-w300.text-primary.animated.flipInX{:href => "base_comp_charts.php"} 8,790
+    .col-xs-6.col-sm-3
+      .font-w700.text-gray-darker.animated.fadeIn Total Earnings
+      .text-muted.animated.fadeIn
+        %small
+          %i.si.si-calendar
+          All Time
+      %a.h2.font-w300.text-primary.animated.flipInX{:href => "base_comp_charts.php"} $ 93,880
+    .col-xs-6.col-sm-3
+      .font-w700.text-gray-darker.animated.fadeIn Average Sale
+      .text-muted.animated.fadeIn
+        %small
+          %i.si.si-calendar
+          All Time
+      %a.h2.font-w300.text-primary.animated.flipInX{:href => "base_comp_charts.php"} $ 270
+.content
+  .row
+    .col-lg-8
+      .block
+        .block-header
+          %ul.block-options
+            %li
+              %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+                %i.si.si-refresh
+          %h3.block-title Weekly Overview
+        .block-content.block-content-full.bg-gray-lighter.text-center
+          %div{:style => "height: 374px;"}
+            %canvas.js-dash-chartjs-lines{:height => "374", :style => "width: 1027px; height: 374px;", :width => "1027"}
+        .block-content.text-center
+          .row.items-push.text-center
+            .col-xs-6.col-lg-3
+              .push-10
+                %i.si.si-graph.fa-2x
+              .h5.font-w300.text-muted + 205 Sales
+            .col-xs-6.col-lg-3
+              .push-10
+                %i.si.si-users.fa-2x
+              .h5.font-w300.text-muted + 25% Clients
+            .col-xs-6.col-lg-3.visible-lg
+              .push-10
+                %i.si.si-star.fa-2x
+              .h5.font-w300.text-muted + 10 Ratings
+            .col-xs-6.col-lg-3.visible-lg
+              .push-10
+                %i.si.si-share.fa-2x
+              .h5.font-w300.text-muted + 35 Followers
+    .col-lg-4
+      .block
+        .block-header
+          %ul.block-options
+            %li
+              %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+                %i.si.si-refresh
+          %h3.block-title Latest Sales
+        .block-content.bg-gray-lighter
+          .row.items-push
+            .col-xs-4
+              .text-muted
+                %small
+                  %i.si.si-calendar
+                  24 hrs
+              .font-w600 18 Sales
+            .col-xs-4
+              .text-muted
+                %small
+                  %i.si.si-calendar
+                  7 days
+              .font-w600 78 Sales
+            .col-xs-4.h1.font-w300.text-right $769
+        .block-content
+          .pull-t.pull-r-l
+            .js-slider.remove-margin-b.slick-initialized.slick-slider{"data-slider-autoplay" => "true", "data-slider-autoplay-speed" => "2500"}
+              .slick-list.draggable{"aria-live" => "polite"}
+                .slick-track{:role => "listbox", :style => "opacity: 1; width: 2072px; left: -1206.94px;"}
+                  .slick-slide.slick-cloned{"aria-hidden" => "true", "data-slick-index" => "-1", :style => "width: 518px;", :tabindex => "-1"}
+                    %table.table.remove-margin-b.font-s13
+                      %tbody
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} Admin Template
+                          %td.hidden-xs.text-muted.text-right{:style => "width: 70px;"} 16:10
+                          %td.font-w600.text-success.text-right{:style => "width: 70px;"} + $21
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 16:06
+                          %td.font-w600.text-success.text-right + $48
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 15:21
+                          %td.font-w600.text-success.text-right + $52
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} Admin Template
+                          %td.hidden-xs.text-muted.text-right 12:10
+                          %td.font-w600.text-success.text-right + $23
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} Admin Template
+                          %td.hidden-xs.text-muted.text-right 12:09
+                          %td.font-w600.text-success.text-right + $23
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} HTML Template
+                          %td.hidden-xs.text-muted.text-right 11:39
+                          %td.font-w600.text-success.text-right + $16
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} Admin Template
+                          %td.hidden-xs.text-muted.text-right 11:33
+                          %td.font-w600.text-success.text-right + $23
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} Admin Template
+                          %td.hidden-xs.text-muted.text-right 11:18
+                          %td.font-w600.text-success.text-right + $23
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 09:49
+                          %td.font-w600.text-success.text-right + $50
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} HTML Template
+                          %td.hidden-xs.text-muted.text-right 09:35
+                          %td.font-w600.text-success.text-right + $16
+                  .slick-slide.slick-current.slick-active{"aria-describedby" => "slick-slide00", "aria-hidden" => "false", "data-slick-index" => "0", :role => "option", :style => "width: 518px;", :tabindex => "-1"}
+                    %table.table.remove-margin-b.font-s13
+                      %tbody
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} Admin Template
+                          %td.hidden-xs.text-muted.text-right{:style => "width: 70px;"} 23:01
+                          %td.font-w600.text-success.text-right{:style => "width: 70px;"} + $21
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 22:15
+                          %td.font-w600.text-success.text-right + $52
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} HTML Template
+                          %td.hidden-xs.text-muted.text-right 22:01
+                          %td.font-w600.text-success.text-right + $16
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} Admin Template
+                          %td.hidden-xs.text-muted.text-right 21:45
+                          %td.font-w600.text-success.text-right + $23
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 21:15
+                          %td.font-w600.text-success.text-right + $48
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} Admin Template
+                          %td.hidden-xs.text-muted.text-right 20:11
+                          %td.font-w600.text-success.text-right + $23
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 20:01
+                          %td.font-w600.text-success.text-right + $50
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} HTML Template
+                          %td.hidden-xs.text-muted.text-right 19:35
+                          %td.font-w600.text-success.text-right + $16
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 19:17
+                          %td.font-w600.text-success.text-right + $60
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 17:49
+                          %td.font-w600.text-success.text-right + $59
+                  .slick-slide{"aria-describedby" => "slick-slide01", "aria-hidden" => "true", "data-slick-index" => "1", :role => "option", :style => "width: 518px;", :tabindex => "-1"}
+                    %table.table.remove-margin-b.font-s13
+                      %tbody
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "0"} Admin Template
+                          %td.hidden-xs.text-muted.text-right{:style => "width: 70px;"} 16:10
+                          %td.font-w600.text-success.text-right{:style => "width: 70px;"} + $21
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "0"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 16:06
+                          %td.font-w600.text-success.text-right + $48
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "0"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 15:21
+                          %td.font-w600.text-success.text-right + $52
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "0"} Admin Template
+                          %td.hidden-xs.text-muted.text-right 12:10
+                          %td.font-w600.text-success.text-right + $23
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "0"} Admin Template
+                          %td.hidden-xs.text-muted.text-right 12:09
+                          %td.font-w600.text-success.text-right + $23
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "0"} HTML Template
+                          %td.hidden-xs.text-muted.text-right 11:39
+                          %td.font-w600.text-success.text-right + $16
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "0"} Admin Template
+                          %td.hidden-xs.text-muted.text-right 11:33
+                          %td.font-w600.text-success.text-right + $23
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "0"} Admin Template
+                          %td.hidden-xs.text-muted.text-right 11:18
+                          %td.font-w600.text-success.text-right + $23
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "0"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 09:49
+                          %td.font-w600.text-success.text-right + $50
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "0"} HTML Template
+                          %td.hidden-xs.text-muted.text-right 09:35
+                          %td.font-w600.text-success.text-right + $16
+                  .slick-slide.slick-cloned{"aria-hidden" => "true", "data-slick-index" => "2", :style => "width: 518px;", :tabindex => "-1"}
+                    %table.table.remove-margin-b.font-s13
+                      %tbody
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} Admin Template
+                          %td.hidden-xs.text-muted.text-right{:style => "width: 70px;"} 23:01
+                          %td.font-w600.text-success.text-right{:style => "width: 70px;"} + $21
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 22:15
+                          %td.font-w600.text-success.text-right + $52
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} HTML Template
+                          %td.hidden-xs.text-muted.text-right 22:01
+                          %td.font-w600.text-success.text-right + $16
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} Admin Template
+                          %td.hidden-xs.text-muted.text-right 21:45
+                          %td.font-w600.text-success.text-right + $23
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 21:15
+                          %td.font-w600.text-success.text-right + $48
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} Admin Template
+                          %td.hidden-xs.text-muted.text-right 20:11
+                          %td.font-w600.text-success.text-right + $23
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 20:01
+                          %td.font-w600.text-success.text-right + $50
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} HTML Template
+                          %td.hidden-xs.text-muted.text-right 19:35
+                          %td.font-w600.text-success.text-right + $16
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 19:17
+                          %td.font-w600.text-success.text-right + $60
+                        %tr
+                          %td.font-w600
+                            %a{:href => "javascript:void(0)", :tabindex => "-1"} WP Theme
+                          %td.hidden-xs.text-muted.text-right 17:49
+                          %td.font-w600.text-success.text-right + $59
+    .row
+      .col-lg-8
+        .block
+          .block-header
+            %ul.block-options
+              %li
+                %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
+                  %i.si.si-refresh
+            %h3.block-title Updates
+          .block-content.bg-gray-lighter
+            .js-slider.remove-margin-b.slick-initialized.slick-slider{"data-slider-autoplay" => "true", "data-slider-autoplay-speed" => "4000"}
+              .slick-list.draggable{"aria-live" => "polite"}
+                .slick-track{:role => "listbox", :style => "opacity: 1; width: 7189px; left: -2054px;"}
+                  .slick-slide.slick-cloned{"aria-hidden" => "true", "data-slick-index" => "-1", :style => "width: 1027px;", :tabindex => "-1"}
+                    %blockquote
+                      %p There is only one way to avoid criticism: do nothing, say nothing, and be nothing.
+                      %footer Aristotle
+                  .slick-slide{"aria-describedby" => "slick-slide10", "aria-hidden" => "true", "data-slick-index" => "0", :role => "option", :style => "width: 1027px;", :tabindex => "-1"}
+                    %blockquote
+                      %p Be yourself; everyone else is already taken.
+                      %footer Oscar Wilde
+                  .slick-slide.slick-current.slick-active{"aria-describedby" => "slick-slide11", "aria-hidden" => "false", "data-slick-index" => "1", :role => "option", :style => "width: 1027px;", :tabindex => "-1"}
+                    %blockquote
+                      %p Don't cry because it's over, smile because it happened.
+                      %footer Dr. Seuss
+                  .slick-slide{"aria-describedby" => "slick-slide12", "aria-hidden" => "true", "data-slick-index" => "2", :role => "option", :style => "width: 1027px;", :tabindex => "-1"}
+                    %blockquote
+                      %p Strive not to be a success, but rather to be of value.
+                      %footer Albert Einstein
+                  .slick-slide{"aria-describedby" => "slick-slide13", "aria-hidden" => "true", "data-slick-index" => "3", :role => "option", :style => "width: 1027px;", :tabindex => "-1"}
+                    %blockquote
+                      %p Every child is an artist. The problem is how to remain an artist once he grows up.
+                      %footer Pablo Picasso
+                  .slick-slide{"aria-describedby" => "slick-slide14", "aria-hidden" => "true", "data-slick-index" => "4", :role => "option", :style => "width: 1027px;", :tabindex => "-1"}
+                    %blockquote
+                      %p There is only one way to avoid criticism: do nothing, say nothing, and be nothing.
+                      %footer Aristotle
+                  .slick-slide.slick-cloned{"aria-hidden" => "true", "data-slick-index" => "5", :style => "width: 1027px;", :tabindex => "-1"}
+                    %blockquote
+                      %p Be yourself; everyone else is already taken.
+                      %footer Oscar Wilde
+          .block-content
+            %ul.list.list-timeline.pull-t
+              %li
+                .list-timeline-time 12 hrs ago
+                %i.fa.fa-twitter.list-timeline-icon.bg-info
+                .list-timeline-content
+                  %p.font-w600 + 1150 Followers
+                  %p.font-s13 You’re getting more and more followers, keep it up!
+              %li
+                .list-timeline-time 4 hrs ago
+                %i.fa.fa-briefcase.list-timeline-icon.bg-city
+                .list-timeline-content
+                  %p.font-w600 + 3 New Products were added!
+                  %p.font-s13 Congratulations!
+              %li
+                .list-timeline-time 1 day ago
+                %i.fa.fa-check.list-timeline-icon.bg-success
+                .list-timeline-content
+                  %p.font-w600 Database backup completed!
+                  %p.font-s13
+                    Download the
+                    = succeed "." do
+                      %a{:href => "javascript:void(0)"} latest backup
+              %li
+                .list-timeline-time 3 hrs ago
+                %i.fa.fa-facebook.list-timeline-icon.bg-default
+                .list-timeline-content
+                  %p.font-w600 + 290 Page Likes
+                  %p.font-s13 This is great, keep it up!
+              %li
+                .list-timeline-time 2 days ago
+                %i.fa.fa-user-plus.list-timeline-icon.bg-modern
+                .list-timeline-content
+                  %p.font-w600 + 3 Friend Requests
+                  %ul.nav-users.push-10-t.push
+                    %li
+                      %a{:href => "base_pages_profile.php"}
+                        %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar11.jpg"}/
+                        %i.fa.fa-circle.text-success
+                        Vincent Sims
+                        .font-w400.text-muted
+                          %small Graphic Designer
+                    %li
+                      %a{:href => "base_pages_profile.php"}
+                        %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar3.jpg"}/
+                        %i.fa.fa-circle.text-warning
+                        Amber Walker
+                        .font-w400.text-muted
+                          %small Photographer
+                    %li
+                      %a{:href => "base_pages_profile.php"}
+                        %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar11.jpg"}/
+                        %i.fa.fa-circle.text-danger
+                        Adam Hall
+                        .font-w400.text-muted
+                          %small UI Designer
+              %li.push-5
+                .list-timeline-time 1 week ago
+                %i.fa.fa-cog.list-timeline-icon.bg-primary-dark
+                .list-timeline-content
+                  %p.font-w600 System updated to v2.02
+                  %p.font-s13
+                    Check the complete changelog at the
+                    = succeed "." do
+                      %a{:href => "javascript:void(0)"} activity page
+      .col-lg-4
+        .content-grid
+          .row
+            .col-xs-12
+              %a.block.block-link-hover2{:href => "base_pages_profile.php"}
+                .block-header
+                  %h3.block-title.text-center Author of the Month
+                .block-content.block-content-full.text-center.bg-image{:style => "background-image: url('assets/img/photos/photo2.jpg');"}
+                  %div
+                    %img.img-avatar.img-avatar96.img-avatar-thumb{:alt => "", :src => "assets/img/avatars/avatar1.jpg"}/
+                  .h5.text-white.push-15-t.push-5 Linda Moore
+                  .h5.text-white-op Web Developer
+                .block-content
+                  .row.items-push.text-center
+                    .col-xs-6
+                      .push-5
+                        %i.si.si-briefcase.fa-2x
+                      .h5.font-w300.text-muted 9 Projects
+                    .col-xs-6
+                      .push-5
+                        %i.si.si-camera.fa-2x
+                      .h5.font-w300.text-muted 74 Photos
+              %a.block.block-link-hover3{:href => "javascript:void(0)"}
+              %table.block-table.text-center
+                %tbody
+                  %tr
+                    %td{:style => "width: 50%;"}
+                      .push-30.push-30-t
+                        %i.si.si-graph.fa-3x.text-primary
+                    %td.bg-gray-lighter{:style => "width: 50%;"}
+                      .h1.font-w700
+                        %span.h2.text-muted +
+                        78
+                      .h5.text-muted.text-uppercase.push-5-t Sales
+              %a.block.block-link-hover3{:href => "javascript:void(0)"}
+              %table.block-table.text-center
+                %tbody
+                  %tr
+                    %td{:style => "width: 50%;"}
+                      .push-30.push-30-t
+                        %i.si.si-social-dribbble.fa-3x.text-smooth
+                    %td.bg-gray-lighter{:style => "width: 50%;"}
+                      .h1.font-w700
+                        %span.h2.text-muted +
+                        69
+                      .h5.text-muted.text-uppercase.push-5-t Likes
+              %a.block.block-link-hover3{:href => "javascript:void(0)"}
+              %table.block-table.text-center
+                %tbody
+                  %tr
+                    %td{:style => "width: 50%;"}
+                      .push-30.push-30-t
+                        %i.si.si-social-youtube.fa-3x.text-city
+                    %td.bg-gray-lighter{:style => "width: 50%;"}
+                      .h1.font-w700
+                        %span.h2.text-muted +
+                        88
+                      .h5.text-muted.text-uppercase.push-5-t Subs
+              %a.block.block-link-hover3{:href => "javascript:void(0)"}
+              %table.block-table.text-center
+                %tbody
+                  %tr
+                    %td{:style => "width: 50%;"}
+                      .push-30.push-30-t
+                        %i.si.si-users.fa-3x.text-primary-dark
+                    %td.bg-gray-lighter{:style => "width: 50%;"}
+                      .h1.font-w700
+                        %span.h2.text-muted +
+                        96
+                      .h5.text-muted.text-uppercase.push-5-t Followers
 .content.content-narrow
   %h2.content-heading Chart.js
   .row

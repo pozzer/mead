@@ -59,7 +59,7 @@ Rails.application.routes.draw do
   resources :homepages, only: :index
 
   devise_scope :user do
-    root to: "devise/sessions#new"
+    #root to: "devise/sessions#new"
   end
   
   resources :conversations do
@@ -68,6 +68,8 @@ Rails.application.routes.draw do
 
   get '/adresses/search_postal_code/:postal_code' => 'adresses#search_postal_code'  
   get '/adresses/get_cities_by_symbol/:symbol' => 'adresses#get_cities_by_symbol'  
+
+  root to: 'homepages#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

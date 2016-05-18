@@ -6,7 +6,7 @@ mead_project.dashboards = {
         var pub = {};
 
         pub.init = function() {
-         var $chartLinesCon  = jQuery('.js-chartjs-lines')[0].getContext('2d');
+        var $chartLinesCon  = jQuery('.js-chartjs-lines')[0].getContext('2d');
         var $chartBarsCon   = jQuery('.js-chartjs-bars')[0].getContext('2d');
         var $chartPieCon    = jQuery('.js-chartjs-pie')[0].getContext('2d');
         var $chartDonutCon  = jQuery('.js-chartjs-donut')[0].getContext('2d');
