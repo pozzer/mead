@@ -5,7 +5,7 @@
         %h3.block-title Ultimas atualizações de seus amigos
       .block-content
         %ul.list.list-timeline.pull-t
-          - @time_line_pobre[0..20].each do |item| 
+          - @time_line_pobre[0..15].each do |item| 
             -if item.class.name == "Question"
               %li
                 .list-timeline-time= time_ago_in_words(item.created_at).gsub("aproximadamente","Aprox.")
