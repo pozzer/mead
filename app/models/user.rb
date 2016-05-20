@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   has_one :profile
   has_many :trades_received, foreign_key: "negotiator_id", class_name: "Trade"
-  has_many :trade_requests, foreign_key: "negotiant_id", class_name: "Trade"
+  has_many :trades_requests, foreign_key: "negotiant_id", class_name: "Trade"
   has_many :questions
   has_many :answers
   has_many :bottles

@@ -25,7 +25,7 @@ class Trade < ActiveRecord::Base
     joins(:bottle_trades).where("trades.owner_id =?", user.id)
   end
 
-  paginates_per 1
+  paginates_per 15
 
   def suggest_bottles(user)
     self.bottle_trades.where("bottle_trades.owner_id =?", user.id)
