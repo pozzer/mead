@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    profile_path(current_user.profile)
+    dashboards_path
   end
 
 	def all_signed_in_in_touch

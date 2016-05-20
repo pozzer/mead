@@ -3,7 +3,10 @@ class DashboardsController < ApplicationController
 	def index
 		@top_user = Answer.select("answers.user_id, count(answers)").the_best.group(:user_id).order("count(answers) DESC").first.user
 		begin
-			@time_line_pobre = [current_user.friends.map(&:questions).flatten!, current_user.friends.map(&:answers).flatten!].flatten!.sort_by{|e| e[:created_at]}.reverse!
+			@time_line_pobre = [current_user.friends.map(&:questions).flatten!, 
+													current_user.friends.map(&:answers).flatten!,
+													current_user.friends.map(&:bottles).map(&:publics).flatten!
+													].flatten!.sort_by{|e| e[:created_at]}.reverse!.uniq
 		rescue
 			@time_line_pobre = []
 		end

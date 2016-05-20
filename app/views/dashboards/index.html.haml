@@ -5,7 +5,7 @@
         %h3.block-title Ultimas atualizações de seus amigos
       .block-content
         %ul.list.list-timeline.pull-t
-          - @time_line_pobre.each do |item| 
+          - @time_line_pobre[0..20].each do |item| 
             -if item.class.name == "Question"
               %li
                 .list-timeline-time= time_ago_in_words(item.created_at).gsub("aproximadamente","Aprox.")
@@ -16,17 +16,26 @@
                     Fez uma 
                     = succeed "." do
                       %a{:href => "#{question_path(item)}"} Pergunta
-            - else 
+            - elsif item.class.name == "Answer"
               %li
                 .list-timeline-time= time_ago_in_words(item.created_at).gsub("aproximadamente","Aprox.")
-                %i.fa.fa-check.list-timeline-icon.bg-info
+                %i.fa.fa-check.list-timeline-icon.bg-success
                 .list-timeline-content
                   %p.font-w600= item.user.full_name
                   %p.font-s13 
                     Respondeu uma  
                     = succeed "." do
                       %a{:href => "#{question_path(item.question)}"} Pergunta
-            
+            - else 
+              %li
+                .list-timeline-time= time_ago_in_words(item.created_at).gsub("aproximadamente","Aprox.")
+                %i.fa.fa-beer.list-timeline-icon.bg-warning
+                .list-timeline-content
+                  %p.font-w600= item.user.full_name
+                  %p.font-s13 
+                    Cadastrou uma nova  
+                    = succeed "." do
+                      %a{:href => "#{user_bottle_path(item.user,item)}"} Garrafa
           /%ligit push heroku master
           /  .list-timeline-time 4 hrs ago
           /  %i.fa.fa-briefcase.list-timeline-icon.bg-city
