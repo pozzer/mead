@@ -31,25 +31,3 @@
                 .col-xs-12
                 = f.submit "Responder", class: "btn btn-success"
 
-/.block.block-themed
-/  .block-header{ class: (@question.have_best_answer? ? "bg-success" : "bg-info")}
-/    %h3.block-title= "#{@question.answers.size} Respostas"
-/  .block-content
-/    .row
-/      %ul.list.list-activity.push
-/        - @question.answers_list.each do |answer|
-/          %li.push-30.list_answer{id: "answer_#{answer.id}" }
-/            .row
-/              .col-lg-1.text-center
-/                = render partial: "shared/vote_best", locals: { question_user_id: @question.user_id, :answer => answer}
-/                = render partial: "shared/votes_column", locals: {count:  answer.reputation_for(:votes).to_i, path: vote_question_answer_path(id:answer.id, question_id:answer.question_id)}
-/              .col-lg-11
-/                .col-lg-12
-/                  %p= answer.content.html_safe
-/                .col-lg-4.col-sm-5.col-xm-12.pull-right
-/                  = render partial: "shared/block_profile", locals: {title: "Respondeu a #{time_ago_in_words(answer.created_at)}", user: answer.user}
-/        %li.push-30.list_answer
-/          = simple_form_for([@question, @question.answers.new], wrapper: :vertical_form_devise) do |f|
-/            = f.input :content, as: :text, wrapper: :default, :input_html =>{ class: "js-summernote"}
-/            = f.input :question_id, :as => :hidden
-/            = f.submit "Responder", class: "btn btn-success"

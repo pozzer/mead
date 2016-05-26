@@ -1,9 +1,5 @@
 .block.block-opt-refresh-icon6
   .block-header
-    %ul.block-options
-      %li
-        %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-          %i.si.si-refresh
     %h3.block-title
       %i.fa.fa-fw.fa-star
       Avaliações
@@ -18,8 +14,6 @@
             = link_to(rate.user.full_name, profile_path(rate.user.profile), class:"font-w600")
             %span.text-muted (#{rate.score}/5)
           .font-s13= rate.comment
-    .text-center.push
-      %small
-        %a{:href => "javascript:void(0)"} Ler mais..
     .push
-      = render partial: "shared/modal_ratings", locals: {btn_name: title, rateable: rateable}
+      - if current_user != rateable.user
+        = render partial: "shared/modal_ratings", locals: {btn_name: title, rateable: rateable}

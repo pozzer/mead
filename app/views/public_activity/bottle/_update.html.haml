@@ -1,0 +1,17 @@
+-unless activity.trackable.private
+  %li
+    .list-timeline-time= get_time_ago(activity.created_at)
+    %i.fa.fa-repeat.list-timeline-icon.bg-success
+    .list-timeline-content
+      %p
+        %b= link_to activity.owner.full_name, profile_path(activity.owner.profile)
+        Atualizou a
+        %b= link_to "garrafa", user_bottle_path(activity.owner, activity.trackable)
+      %ul.nav-users.push-10-t.push
+        %li
+          %a{:href => user_bottle_path(activity.owner, activity.trackable)}
+            = image_tag activity.trackable.image_url, class:"img-avatar"
+            %h5.push-10-t= "#{activity.trackable.type_s} #{activity.trackable.label}"
+            .font-w400.text-muted
+              %small= activity.trackable.organization_name
+

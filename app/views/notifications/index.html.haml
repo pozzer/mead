@@ -1,0 +1,11 @@
+.block.block-themed
+  .block-header.bg-primary
+    %ul.block-options
+      %li
+
+        %a{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button", :href => notifications_path}
+          %i.si.si-refresh
+    %h3.block-title Feed de noticias
+  .block-content
+    %ul.list.list-timeline.pull-t#notifications
+      = render_activities(@activities)

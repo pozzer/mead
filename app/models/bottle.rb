@@ -1,5 +1,6 @@
 class Bottle < ActiveRecord::Base
-
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user }
   has_many :pictures, :as => :attachable, :dependent => :destroy
   has_many :ratings, :as => :rateable, :dependent => :destroy
 	has_many :images, -> { where picture_type: 0 }, as: :attachable, class_name: "Picture", :dependent => :destroy
@@ -43,7 +44,7 @@ class Bottle < ActiveRecord::Base
   def style_s
     style_list.first
   end
-  
+
   def type_s
     type_list.first
   end

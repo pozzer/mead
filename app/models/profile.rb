@@ -23,7 +23,7 @@ class Profile < ActiveRecord::Base
   scope :joins_search, -> { joins(:user).joins("LEFT JOIN addresses ON addresses.profile_id = profiles.id
                              LEFT JOIN cities ON addresses.city_id = cities.id
                              LEFT JOIN states ON addresses.state_id = states.id") }
-  scope :top_rated, -> { find_with_reputation(:ratings, :all).order("votes DESC") }
+
 
   paginates_per 12
 

@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :notifications, only: :index
+
   resources :friendships
-  
+
   devise_for :admin_users, ActiveAdmin::Devise.config
-  
+
   ActiveAdmin.routes(self)
-  
+
   resources :ratings
 
-  resources :trades do 
+  resources :trades do
     post :accept
     post :cancel
     post :cancel_proposal
@@ -61,13 +63,13 @@ Rails.application.routes.draw do
   devise_scope :user do
     #root to: "devise/sessions#new"
   end
-  
+
   resources :conversations do
     resources :messages
   end
 
-  get '/adresses/search_postal_code/:postal_code' => 'adresses#search_postal_code'  
-  get '/adresses/get_cities_by_symbol/:symbol' => 'adresses#get_cities_by_symbol'  
+  get '/adresses/search_postal_code/:postal_code' => 'adresses#search_postal_code'
+  get '/adresses/get_cities_by_symbol/:symbol' => 'adresses#get_cities_by_symbol'
 
   root to: 'homepages#index'
 
