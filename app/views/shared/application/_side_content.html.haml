@@ -47,9 +47,10 @@
 				%a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
 					%i.si.si-layers
 					%span.sidebar-mini-hide Trocas
+					= "(#{current_user.trades_received.open.size })"
 				%ul
 					%li
-						= link_to "Minhas trocas", trades_path, class: "#{submenu_active?('TradesController#index')}"
+						= link_to "Minhas trocas ", trades_path, class: "#{submenu_active?('TradesController#index')}"
 /.side-content
 /        %ul.nav-main
 /          %li

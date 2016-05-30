@@ -1,6 +1,6 @@
 if (window.mead_project === undefined) window.mead_project = {};
 
-mead_project.dashboards = {
+mead_project.bottles = {
     common: function() {
       var priv = {};
       var pub = {};
@@ -11,5 +11,6 @@ mead_project.dashboards = {
 
     }()
 };
-mead_project.dashboards.index = mead_project.dashboards.common;
+mead_project.bottles.index = mead_project.bottles.update =
+    mead_project.bottles.create = mead_project.bottles.new = mead_project.bottles.edit = mead_project.bottles.common;
 

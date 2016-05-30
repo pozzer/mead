@@ -1,6 +1,6 @@
 if (window.mead_project === undefined) window.mead_project = {};
 
-mead_project.dashboards = {
+mead_project.trades = {
     common: function() {
       var priv = {};
       var pub = {};
@@ -11,5 +11,6 @@ mead_project.dashboards = {
 
     }()
 };
-mead_project.dashboards.index = mead_project.dashboards.common;
+mead_project.trades.index = mead_project.trades.update =
+    mead_project.trades.create = mead_project.trades.new = mead_project.trades.edit = mead_project.trades.common;
 
