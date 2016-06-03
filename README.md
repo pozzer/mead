@@ -39,3 +39,4 @@ Se tudo estiver certo, você pode agora rodar o projeto!
 `$ rake spec` para rodar as specs.
 
 `$ coverage=on rake spec` para gerar o relatório de cobertura de testes
+heroku git:remote --app nameless-sea-78060

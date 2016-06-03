@@ -38,6 +38,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'redis'
 gem 'aws-sdk-v1'
 gem 'active_record_union'
+gem 'stopwords-filter', require: 'stopwords'
 
 group :development, :test do
   gem 'byebug'

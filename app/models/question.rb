@@ -30,6 +30,9 @@ class Question < ActiveRecord::Base
   scope :joins_for_union,-> { top_rated }
   scope :top_rated, -> { find_with_reputation(:votes, :all).order("votes DESC") }
 
+  after_create :create_concepts 
+
+
   paginates_per 20
 
   def have_best_answer?
@@ -59,6 +62,14 @@ class Question < ActiveRecord::Base
   
   def can_edit?(user_id)
     ((Time.now - created_at ) < 5.minutes) and creator?(user_id)
+  end
+
+  def create_concepts
+    filter = Stopwords::Snowball::Filter.new "pt"
+    concepts = filter.filter self.title.downcase.split
+    koncepts = []
+    concepts.each {|concept| koncepts << Concept.find_or_create(concept)}
+    ConceptQuestion.create_tree(koncepts, self)
   end
 
 

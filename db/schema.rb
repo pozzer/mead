@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505154044) do
+ActiveRecord::Schema.define(version: 20160602232437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,6 +144,19 @@ ActiveRecord::Schema.define(version: 20160505154044) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "concept_questions", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "concept_id"
+    t.integer "parent_concept"
+  end
+
+  add_index "concept_questions", ["concept_id"], name: "index_concept_questions_on_concept_id", using: :btree
+  add_index "concept_questions", ["parent_concept"], name: "index_concept_questions_on_parent_concept", using: :btree
+  add_index "concept_questions", ["question_id"], name: "index_concept_questions_on_question_id", using: :btree
+
+  create_table "concepts", force: :cascade do |t|
+  end
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -399,6 +412,8 @@ ActiveRecord::Schema.define(version: 20160505154044) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   add_foreign_key "addresses", "profiles"
+  add_foreign_key "concept_questions", "concepts"
+  add_foreign_key "concept_questions", "questions"
   add_foreign_key "doc_empl", "doc", column: "doc_k", primary_key: "doc_pk", name: "doc_empl_doc_k_fkey"
   add_foreign_key "doc_empl", "empl", column: "empl_k", primary_key: "empl_pk", name: "doc_empl_empl_k_fkey"
   add_foreign_key "empl_addr", "empl", column: "empl_k", primary_key: "empl_pk", name: "empl_addr_empl_k_fkey"
