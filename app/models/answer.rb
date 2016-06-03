@@ -1,4 +1,6 @@
 class Answer < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user }
 	belongs_to :user
 	belongs_to :question
 
@@ -20,7 +22,7 @@ class Answer < ActiveRecord::Base
   def creator?(user_id)
     user_id == self.user_id
   end
-  
+
   def can_edit?(user_id)
     ((Time.now - created_at ) < 5.minutes) and creator?(user_id)
   end

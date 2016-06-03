@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 
   has_one :profile
-  has_many :trades_received, foreign_key: "negotiator_id", class_name: "Trade"
-  has_many :trades_requests, foreign_key: "negotiant_id", class_name: "Trade"
+  has_many :trades_requests, foreign_key: "negotiator_id", class_name: "Trade"
+  has_many :trades_received, foreign_key: "negotiant_id", class_name: "Trade"
   has_many :questions
   has_many :answers
   has_many :bottles
@@ -32,10 +32,10 @@ class User < ActiveRecord::Base
   has_reputation :favorite_question_skill, source: { reputation: :favorite_question, of: :questions }
 
   has_reputation :experience,
-      source: [{ reputation: :questioning_skill, weight: 0.8 },
-               { reputation: :answering_skill, weight: 0.5 },
-               { reputation: :best_answering_skill, weight: 1 },
-               { reputation: :favorite_question_skill, weight: 1 }]
+      source: [{ reputation: :questioning_skill, weight: 1.5 },
+               { reputation: :answering_skill, weight: 1 },
+               { reputation: :best_answering_skill, weight: 10 },
+               { reputation: :favorite_question_skill, weight: 3 }]
 
   devise :database_authenticatable, :registerable, :lockable,
       :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
@@ -108,6 +108,14 @@ class User < ActiveRecord::Base
 
   def started_trade?(trade)
     trade.negotiator == self
+  end
+
+  def level
+    (reputation_for(:experience)/20).to_i
+  end
+
+  def percentage_level
+    ((reputation_for(:experience)%20) * 2)
   end
 
   private

@@ -11,9 +11,9 @@
     .row.items-push.text-uppercase
       .col-xs-6.col-sm-3
         .font-w700.text-gray-darker.animated.fadeIn Level
-        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"} 2
+        %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= @profile.user.level
       .col-xs-6.col-sm-3
-        .font-w700.text-gray-darker.animated.fadeIn Experiencia
+        .font-w700.text-gray-darker.animated.fadeIn Experiência
         %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= @profile.user.get_experience
       .col-xs-6.col-sm-3
         .font-w700.text-gray-darker.animated.fadeIn Membro desde
@@ -23,4 +23,6 @@
         .text-warning.push-10-t.animated.flipInX
           - @profile.reputation.times do |x|
             %i.fa.fa-star
+  .progress.active{ }
+    .progress-bar.progress-bar-info.progress-bar-striped{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{@profile.user.percentage_level}%" ,"data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Barra de experiência."}="#{@profile.user.percentage_level.round(2)}%"
 

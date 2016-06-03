@@ -13,6 +13,6 @@ mead_project.profiles = {
 
     }()
 };
-mead_project.profiles.index = mead_project.profiles.search = mead_project.profiles.update =
+mead_project.profiles.index = mead_project.profiles.show = mead_project.profiles.update =
     mead_project.profiles.create = mead_project.profiles.new = mead_project.profiles.edit = mead_project.profiles.common;
 

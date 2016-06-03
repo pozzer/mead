@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   respond_to :html
   before_action :set_online
   protect_from_forgery with: :exception
+  include PublicActivity::StoreController
+  include ActionView::Helpers::TextHelper
+  hide_action :current_user
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(resource_or_scope)
     root_path

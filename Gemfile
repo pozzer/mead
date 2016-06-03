@@ -39,6 +39,7 @@ gem 'redis'
 gem 'aws-sdk-v1'
 gem 'active_record_union'
 gem 'stopwords-filter', require: 'stopwords'
+gem 'public_activity'
 
 group :development, :test do
   gem 'byebug'

@@ -1,172 +1,84 @@
 .row
-  .col-lg-8
-    .block
-      .block-header
-        %h3.block-title Ultimas atualizações de seus amigos
+  .col-lg-6
+    .block.block-themed
+      .block-header.bg-primary
+        %h3.block-title Ultimos feeds de noticias
       .block-content
-        %ul.list.list-timeline.pull-t
-          - @time_line_pobre[0..15].each do |item| 
-            -if item.class.name == "Question"
-              %li
-                .list-timeline-time= time_ago_in_words(item.created_at).gsub("aproximadamente","Aprox.")
-                %i.fa.fa-comment-o.list-timeline-icon.bg-info
-                .list-timeline-content
-                  %p.font-w600= item.user.full_name
-                  %p.font-s13 
-                    Fez uma 
-                    = succeed "." do
-                      %a{:href => "#{question_path(item)}"} Pergunta
-            - elsif item.class.name == "Answer"
-              %li
-                .list-timeline-time= time_ago_in_words(item.created_at).gsub("aproximadamente","Aprox.")
-                %i.fa.fa-check.list-timeline-icon.bg-success
-                .list-timeline-content
-                  %p.font-w600= item.user.full_name
-                  %p.font-s13 
-                    Respondeu uma  
-                    = succeed "." do
-                      %a{:href => "#{question_path(item.question)}"} Pergunta
-            - else 
-              %li
-                .list-timeline-time= time_ago_in_words(item.created_at).gsub("aproximadamente","Aprox.")
-                %i.fa.fa-beer.list-timeline-icon.bg-warning
-                .list-timeline-content
-                  %p.font-w600= item.user.full_name
-                  %p.font-s13 
-                    Cadastrou uma nova  
-                    = succeed "." do
-                      %a{:href => "#{user_bottle_path(item.user,item)}"} Garrafa
-          /%ligit push heroku master
-          /  .list-timeline-time 4 hrs ago
-          /  %i.fa.fa-briefcase.list-timeline-icon.bg-city
-          /  .list-timeline-content
-          /    %p.font-w600 + 3 New Products were added!
-          /    %p.font-s13 Congratulations!
-          /%li
-          /  .list-timeline-time 1 day ago
-          /  %i.fa.fa-check.list-timeline-icon.bg-success
-          /  .list-timeline-content
-          /    %p.font-w600 Database backup completed!
-          /    %p.font-s13
-          /      Download the
-          /      = succeed "." do
-          /        %a{:href => "javascript:void(0)"} latest backup
-          /%li
-          /  .list-timeline-time 3 hrs ago
-          /  %i.fa.fa-facebook.list-timeline-icon.bg-default
-          /  .list-timeline-content
-          /    %p.font-w600 + 290 Page Likes
-          /    %p.font-s13 This is great, keep it up!
-          /%li
-          /  .list-timeline-time 2 days ago
-          /  %i.fa.fa-user-plus.list-timeline-icon.bg-modern
-          /  .list-timeline-content
-          /    %p.font-w600 + 3 Friend Requests
-          /    %ul.nav-users.push-10-t.push
-          /      %li
-          /        %a{:href => "base_pages_profile.php"}
-          /          %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar11.jpg"}/
-          /          %i.fa.fa-circle.text-success
-          /          Vincent Sims
-          /          .font-w400.text-muted
-          /            %small Graphic Designer
-          /      %li
-          /        %a{:href => "base_pages_profile.php"}
-          /          %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar3.jpg"}/
-          /          %i.fa.fa-circle.text-warning
-          /          Amber Walker
-          /          .font-w400.text-muted
-          /            %small Photographer
-          /      %li
-          /        %a{:href => "base_pages_profile.php"}
-          /          %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar11.jpg"}/
-          /          %i.fa.fa-circle.text-danger
-          /          Adam Hall
-          /          .font-w400.text-muted
-          /            %small UI Designer
-          /%li.push-5
-          /  .list-timeline-time 1 week ago
-          /  %i.fa.fa-cog.list-timeline-icon.bg-primary-dark
-          /  .list-timeline-content
-          /    %p.font-w600 System updated to v2.02
-          /    %p.font-s13
-          /      Check the complete changelog at the
-          /      = succeed "." do
-          /        %a{:href => "javascript:void(0)"} activity page
-  .col-lg-4
-    .content-grid
-      .row
-        .col-xs-12
-          = render partial: "searchs/block_profile_list", locals: {profile: @top_user.profile, title: "Usuário destaque: "}
-          %a.block.block-link-hover3{:href => "javascript:void(0)"}
-            %table.block-table.text-center
-              %tbody
-                %tr
-                  %td{:style => "width: 50%;"}
-                    .push-30.push-30-t
-                      %i.fa.fa-check.fa-3x.text-success
-                  %td.bg-gray-lighter{:style => "width: 50%;"}
-                    .h1.font-w700
-                      %span.h2.text-muted= @top_user.answers.the_best.size
-                    .h5.text-muted.text-uppercase.push-5-t Melhores Respostas
-          %a.block.block-link-hover3{:href => "javascript:void(0)"}
-            %table.block-table.text-center
-              %tbody
-                %tr
-                  %td{:style => "width: 50%;"}
-                    .push-30.push-30-t
-                      %i.fa.fa-comment-o.fa-3x.text-smooth
-                  %td.bg-gray-lighter{:style => "width: 50%;"}
-                    .h1.font-w700
-                      %span.h2.text-muted= @top_user.questions.size
-                    .h5.text-muted.text-uppercase.push-5-t Perguntas  
-          %a.block.block-link-hover3{:href => "javascript:void(0)"}
-            %table.block-table.text-center
-              %tbody
-                %tr
-                  %td{:style => "width: 50%;"}
-                    .push-30.push-30-t
-                      %i.fa.fa-beer.fa-3x.text-warning
-                  %td.bg-gray-lighter{:style => "width: 50%;"}
-                    .h1.font-w700
-                      %span.h2.text-muted= @top_user.bottles.publics.size
-                    .h5.text-muted.text-uppercase.push-5-t Garrafas
-          %a.block.block-link-hover3{:href => "javascript:void(0)"}
-            %table.block-table.text-center
-              %tbody
-                %tr
-                  %td{:style => "width: 50%;"}
-                    .push-30.push-30-t
-                      %i.fa.fa-exchange.fa-3x.text-city
-                  %td.bg-gray-lighter{:style => "width: 50%;"}
-                    .h1.font-w700
-                      %span.h2.text-muted= (@top_user.trades_received.size + @top_user.trades_requests.size)
-                    .h5.text-muted.text-uppercase.push-5-t Trocas
-.row
+        %ul.list.list-timeline.pull-t#notifications
+          = render_activities(@activities)
+        %p.text-center
+          = link_to("Ver completo", notifications_path)
   .col-lg-6
-    .block
-      .block-header
-        %ul.block-options
-          %li
-            %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-              %i.si.si-refresh
-        %h3.block-title Perguntas
-      .block-content.block-content-full.text-center
-        %div{:style => "height: 330px;"}
-          %canvas.js-chartjs-pie-questions{:height => "330", :style => "width: 711px; height: 330px;", :width => "711"}
-  .col-lg-6
-    .block
-      .block-header
-        %ul.block-options
-          %li
-            %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-              %i.si.si-refresh
-        %h3.block-title Trocas
-      .block-content.block-content-full.text-center
-        %div{:style => "height: 330px;"}
-          %canvas.js-chartjs-pie-trades{:height => "330", :style => "width: 711px; height: 330px;", :width => "711"}
+    .block.block-themed
+      .block-header.bg-primary
+        %h3.block-title Top usuários
+      .block-content
+        %table.table.table-striped.table-vcenter
+          %thead
+            %tr
+              %th.text-center
+                %i.si.si-user
+              %th
+                Nome
+              %th.text-center{ "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Level."}
+                Lvl.
+              %th.text-center{ "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Experiência."}
+                Exp.
+              %th.text-center{ "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Perguntas feitas."}
+                %i.si.si-question
+              %th.text-center{ "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Perguntas respondidas"}
+                %i.si.si-fire
+              %th.text-center{ "data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Garrafas na adega."}
+                %i.fa.fa-beer
+          %tbody
+            -@top_users.each_with_index do |user,i|
+              -profile = user.profile
+              %tr
+                %td.text-center
+                  %a{:href => profile_path(profile)}
+                    %img.img-avatar.img-avatar48{:alt => "", :src => "#{profile.avatar_url}"}/
+                %td.font-w600= link_to profile.full_name, profile_path(profile)
+                %td.text-center.font-w600= user.level
+                %td.text-center= user.reputation_for(:experience)
+                %td.text-center= user.questions.size
+                %td.text-center= user.answers.size
+                %td.text-center= user.bottles.size
 
-= javascript_tag do
-  mead_project.dashboards.render_pie_questions(#{Question.without_best_answer.size},#{Question.with_best_answer.size})
-  mead_project.dashboards.render_pie_trades(#{Trade.started.size}, #{Trade.accepted.size}, #{Trade.in_progress.size}, #{Trade.awaiting_finalization.size}, #{Trade.waiting_to_be_sent.size}, #{Trade.finished.size}, #{Trade.canceled.size})
+.row
+  .col-lg-8
+    .block.block-themed
+      .block-header.bg-primary
+        %h3.block-title Ultimas perguntas
+      .block-content.tab-content.bg-white
+        - @questions.each do |question|
+          = render partial: "questions/item_question", locals:{ question: question }
+        %p.text-center
+          = link_to("Ver completo", questions_path)
+  .col-lg-4
+    .block.block-themed
+      .block-header.bg-primary
+        %h3.block-title Ultimas garrafas
+      .block-content.tab-content.bg-white
+        - @bottles.each do |bottle|
+          %ul.nav-users.push-10-t.push
+            %li
+              %a{:href => user_bottle_path(bottle.user, bottle)}
+                = image_tag bottle.image_url, class:"img-avatar"
+                %h5.push-10-t= "#{bottle.type_s} #{bottle.label}"
+                .font-w400.text-muted
+                  %small= bottle.organization_name
+    .block.block-themed
+      .block-header.bg-primary
+        %h3.block-title Novos usuários
+      .block-content.tab-content.bg-white
+        - @profiles.each do |profile|
+          %ul.nav-users.push-10-t.push
+            %li
+              %a{:href => profile_path(profile)}
+                = image_tag profile.avatar_url, class: "img-avatar"
+                %i.fa.fa-circle{ :class => "#{get_color_online(profile.user)}"}
+                = profile.full_name
+                .font-w400.text-muted
+                  %small=  profile.organization_name
+
 

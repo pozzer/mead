@@ -25,6 +25,8 @@ class QuestionsController < AppController
     value = params[:type] == "up" ? 1 : -1
     @question = Question.friendly.find(params[:id])
     @question.add_or_update_evaluation(:votes, value, current_user)
+    @question.create_activity key: "question.vote", owner: current_user, params: { type:params[:type] }
+
     respond_with(@question)
   end
 

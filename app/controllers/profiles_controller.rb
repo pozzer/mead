@@ -8,6 +8,7 @@ class ProfilesController < AppController
   end
 
   def show
+    @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: @profile.user.id, owner_type: "User")
   end
 
   def edit

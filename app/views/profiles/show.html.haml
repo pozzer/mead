@@ -70,39 +70,65 @@
 
     .block.block-opt-refresh-icon6
       .block-header
-        %ul.block-options
-          %li
-            %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-              %i.si.si-refresh
         %h3.block-title
-          %i.fa.fa-fw.fa-star
+          %i.si.si.info
           Informações
       .block-content
         %ul.list.list-simple
           %li
             .push-5.clearfix
               .pull-right
-                90
-              %a.font-w600{:href => "base_pages_profile.php"} Perguntas feitas
+                = @profile.user.questions.size
+              .font-w600 Perguntas feitas
           %li
             .push-5.clearfix
               .pull-right
-                5
-              %a.font-w600{:href => "base_pages_profile.php"} Perguntas respondidas
+                = @profile.user.answers.size
+              .font-w600 Perguntas respondidas
           %li
             .push-5.clearfix
               .pull-right
-                10
-              %a.font-w600{:href => "base_pages_profile.php"} Melhores respostas
+                = @profile.user.answers.the_best.size
+              .font-w600 Melhores respostas
           %li
             .push-5.clearfix
               .pull-right
-                20
-              %a.font-w600{:href => "base_pages_profile.php"} Trocas realizadas
+                = @profile.user.trades_received.finished.size + @profile.user.trades_requests.finished.size
+              .font-w600 Trocas realizadas
+          %li
+            .push-5.clearfix
+              .pull-right
+                = @profile.user.bottles.publics.size
+              .font-w600 Garrafas na adega
 
-  .col-sm-7.col-sm-pull-5.col-lg-8.col-lg-pull-4
-    = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{@profile.full_name}", user: @profile.user, bottles: @profile.user.bottles.publics }
     = render partial:"shared/block_rating", locals: {rateable: @profile, title: "Avaliar #{@profile.full_name}"}
+    .block.block-themed
+      .block-header.bg-primary
+        %h3.block-title Amigos
+      .block-content.tab-content.bg-white
+        - @profile.user.friends.each do |user|
+          -profile = user.profile
+          %ul.nav-users.push-10-t.push
+            %li
+              %a{:href => profile_path(profile)}
+                = image_tag profile.avatar_url, class: "img-avatar"
+                %i.fa.fa-circle{ :class => "#{get_color_online(profile.user)}"}
+                = profile.full_name
+                .font-w400.text-muted
+                  %small=  profile.organization_name
+    = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{@profile.full_name}", user: @profile.user, bottles: @profile.user.bottles.publics }
+  .col-sm-7.col-sm-pull-5.col-lg-8.col-lg-pull-4
+    .block.block-themed
+      .block-header.bg-primary
+        %h3.block-title Ultimos feeds de noticias
+      .block-content{style: "min-height: 500px;"}
+        %ul.list.list-timeline.pull-t#notifications
+          = render_activities(@activities)
+
+
+
+
+
     /.block.block-opt-refresh-icon6
     /  .block-header
     /    %ul.block-options

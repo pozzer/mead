@@ -1,5 +1,11 @@
 class Question < ActiveRecord::Base
-	extend FriendlyId
+  include PublicActivity::Model
+  tracked :owner => proc {|controller, model| controller.current_user}, # set owner to current_user by default (check app/controllers/application_controller.rb)
+          :params => {
+            :summary => proc {|controller, model| controller.truncate(model.content, length: 30)},
+            :title => proc {|controller, model|   controller.truncate(model.title, length: 30)}
+          }
+  extend FriendlyId
   friendly_id :title, use: :slugged
 
   has_many :answers
@@ -59,7 +65,7 @@ class Question < ActiveRecord::Base
   def creator?(user_id)
     user_id == self.user_id
   end
-  
+
   def can_edit?(user_id)
     ((Time.now - created_at ) < 5.minutes) and creator?(user_id)
   end

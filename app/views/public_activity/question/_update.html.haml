@@ -1,0 +1,10 @@
+%li
+  .list-timeline-time= get_time_ago(activity.created_at)
+  %i.si.si-question.list-timeline-icon.bg-warning
+  .list-timeline-content
+    %p
+      %b= link_to activity.owner.full_name, profile_path(activity.owner.profile)
+      atualizou a
+      %b= link_to "pergunta", question_path(activity.trackable)
+    %p.font-s13
+      = activity.parameters[:title]
