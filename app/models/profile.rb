@@ -67,6 +67,9 @@ class Profile < ActiveRecord::Base
     end
   end
 
+  def can_edit?(user_id)
+    (self.user_id == user_id)
+  end
 
   def self.columns_search
     ["coalesce(profiles.first_name, '') || ' ' || coalesce(profiles.last_name, '')", "profiles.about", "profiles.organization_name",

@@ -1,5 +1,6 @@
 class ProfilesController < AppController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :can_edit?, only: [:edit]
 
   def index
     respond_to do |format|
@@ -29,6 +30,12 @@ class ProfilesController < AppController
       params.require(:profile).permit(:last_name, :about, :organization_name,
                                       pictures_attributes: [:picture, :picture_type],
                                       address_attributes: [:postal_code, :street, :state_id, :city_id, :district, :number, :additional])
+    end
+
+    def can_edit?
+      unless @profile.can_edit?(current_user.id)
+        redirect_to profile_path(@profile)
+      end
     end
 end
 

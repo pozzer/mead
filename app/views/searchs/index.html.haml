@@ -11,10 +11,3 @@
         .tab-pane.fade.fade-up{id: "search-#{model_name.name.downcase}", class: index == 0 ? "active in" : ""}
           .border-b.push-30
             = render partial: "block_#{model_name.name.downcase}_search"
-        //#search-profile.tab-pane.fade.fade-up
-        //  .border-b.push-30
-        //    = render partial: "block_profile_search", locals: { profiles: @profiles}
-        //#search-bottle.tab-pane.fade.fade-up
-        //  .border-b.push-30
-        //    = render partial: "block_bottle_search", locals: { bottles: @bottles}
-

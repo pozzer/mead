@@ -1,54 +1,60 @@
 = simple_form_for(@profile, wrapper: :vertical_form_devise, html: { class: "js-validation-material" } ) do |f|
-  = f.error_notification
+  -errors = f.object.errors.map{|a,m| a.to_s.gsub(/\..*/, '') }
   .block
     %ul.nav.nav-tabs.nav-justified.push-20{"data-toggle" => "tabs"}
-      %li.active
-        %a{:href => "#tab-profile-personal"}
+      %li{class: (errors.include?("pictures") || !errors.include?("address") )  ? "active" : ""}
+        %a{:href => "#tab-profile-personal", style: errors.include?("pictures") ? "color:#c54736;" : "" }
           %i.fa.fa-fw.fa-pencil
           Pessoal
-      %li
-        %a{:href => "#tab-profile-privacy", style: f.object.address.errors.any? ? "color:#c54736;" : "" }
+      %li{class: (errors.include?("address") and !errors.include?("pictures"))  ? "active" : ""}
+        %a{:href => "#tab-profile-address", style: errors.include?("address") ? "color:#c54736;" : "" }
           %i.fa.fa-fw.fa-map-marker
           Endereço
     .block-content.tab-content
-      #tab-profile-personal.tab-pane.fade.active.in
+      #tab-profile-personal.tab-pane.fade.input{class: (errors.include?("pictures") || !errors.include?("address"))  ? "active in" : ""}
         .row.items-push
           .col-sm-6.col-sm-offset-3.form-horizontal
-            .col-xs-6
-              = f.simple_fields_for :pictures, @profile.pictures.new do |a|
-                .col-xs-12.fileinput.fileinput-new{"data-provides" => "fileinput", :style=>"text-align:center;"}
-                  .text-center
-                    %label Perfil
-                  .push.animated.fadeInDown.img-avatar.fileinput-preview.thumbnail{"data-trigger" => "fileinput", :style => "width: 100px; height: 100px; border:none;"}
-                    = image_tag @profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
-                  %div
-                    %span.btn.btn-default.btn-file.hidden
-                      = a.input :picture, as: :file
-                      = a.input :picture_type, :as => :hidden, :input_html => { :value => "avatar" }
-                    %a.hidden.btn.btn-xs.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} remover
-            .col-xs-6
-              = f.simple_fields_for :pictures, @profile.pictures.new do |a|
-                .col-xs-12.fileinput.fileinput-new{"data-provides" => "fileinput", :style=>"text-align:center;"}
-                  .text-center
-                    %label Fundo
-                  .push.animated.fadeInDown.img-avatar.fileinput-preview.thumbnail{"data-trigger" => "fileinput", :style => "width: 100px; height: 100px; border:none;"}
-                    = image_tag @profile.cover_url, class: "img-avatar img-avatar96 img-avatar-thumb"
-                  %div
-                    %span.btn.btn-default.btn-file.hidden
-                      = a.input :picture, as: :file
-                      = a.input :picture_type, :as => :hidden, :input_html => { :value => "cover" }
-                    %a.hidden.btn.btn-xs.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} remover
+            .row
+              .col-xs-6
+                = f.simple_fields_for :pictures, @profile.pictures.new do |a|
+                  .col-xs-12.fileinput.fileinput-new{"data-provides" => "fileinput", :style=>"text-align:center;"}
+                    .text-center{class: errors.include?("pictures") ? "text-danger" : ""}
+                      %label Perfil
+                    .push.animated.fadeInDown.img-avatar.fileinput-preview.thumbnail{"data-trigger" => "fileinput", :style => "width: 100px; height: 100px; border:none;"}
+                      = image_tag @profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
+                    %div
+                      %span.btn.btn-default.btn-file.hidden
+                        = a.input :picture, as: :file
+                        = a.input :picture_type, :as => :hidden, :input_html => { :value => "avatar" }
+                      %a.hidden.btn.btn-xs.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} remover
+              .col-xs-6
+                = f.simple_fields_for :pictures, @profile.pictures.new do |a|
+                  .col-xs-12.fileinput.fileinput-new{"data-provides" => "fileinput", :style=>"text-align:center;"}
+                    .text-center{class: errors.include?("pictures") ? "text-danger" : ""}
+                      %label Fundo
+                    .push.animated.fadeInDown.img-avatar.fileinput-preview.thumbnail{"data-trigger" => "fileinput", :style => "width: 100px; height: 100px; border:none;"}
+                      = image_tag @profile.cover_url, class: "img-avatar img-avatar96 img-avatar-thumb"
+                    %div
+                      %span.btn.btn-default.btn-file.hidden
+                        = a.input :picture, as: :file
+                        = a.input :picture_type, :as => :hidden, :input_html => { :value => "cover" }
+                      %a.hidden.btn.btn-xs.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} remover
+              - if errors.include?("pictures")
+                %p.text-center.text-danger
+                  -if f.object.errors[:"pictures.picture_content_type"]
+                    A imagem não é válida.
+                    %br
+                  -if f.object.errors[:"pictures.pictures.picture_file_size"]
+                    A imagem deve ser menor que 1 MB.
             .col-xs-12.col-md-6
               = f.input :first_name, :readonly => true
             .col-xs-12.col-md-6
               = f.input :last_name
-            /.col-xs-12
-            /  =# f.input :birth_date, as: :string, :readonly => !f.object.birth_date.nil?, :input_html => { :value => l( f.object.birth_date || Date.today ) }
             .col-xs-12
               = f.input :organization_name
             .col-xs-12
               = f.input :about, as: :text
-      #tab-profile-privacy.tab-pane.fade
+      #tab-profile-address.tab-pane.fade{class: (errors.include?("address") and !errors.include?("pictures"))  ? "active in" : ""}
         .row.items-push
           .col-sm-6.col-sm-offset-3.form-horizontal
             = f.simple_fields_for :address do |a|
