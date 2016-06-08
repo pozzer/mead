@@ -1,18 +1,20 @@
 = render "head_block"
 .row
   .col-sm-5.col-sm-push-7.col-lg-4.col-lg-push-8
-    .block
-      .block-content.block-content-full.text-center
-        -unless current_user == @bottle.user
-          = form_for Trade.new do |f|
-            = hidden_field :bottle_id, "", value: @bottle.id
-            %a.block.block-link-hover2.text-center{ onclick: "$('#new_trade').submit();" }
-              .block-content.block-content-full.bg-city
-                %i.fa.fa-exchange.fa-4x.text-white
-                .font-w600.text-white-op.push-15-t Negociar!
-        = link_to_with_icon([" Editar", "fa fa-pencil"], edit_user_bottle_path(@bottle.user, @bottle), class: "btn btn-sm btn-default") if @bottle.can_edit?(current_user.id)
-    .block.block-opt-refresh-icon6
-      .block-header
+    -unless current_user == @bottle.user
+      = form_for Trade.new do |f|
+        = hidden_field :bottle_id, "", value: @bottle.id
+        %a.block.block-link-hover2.text-center{ onclick: "$('#new_trade').submit();" }
+          .block-content.block-content-full.bg-city
+            %i.fa.fa-exchange.fa-4x.text-white
+            .font-w600.text-white-op.push-15-t Negociar!
+    - if @bottle.can_edit?(current_user.id)
+      %a.block.block-link-hover2.text-center{ href: edit_user_bottle_path(@bottle.user, @bottle) }
+        .block-content.block-content-full.bg-city
+          %i.fa.fa-pencil.fa-4x.text-white
+          .font-w600.text-white-op.push-15-t Editar
+    .block.block-themed
+      .block-header.bg-primary
         %h3.block-title
           %i.fa.fa-fw.fa-user
           Dono
@@ -21,11 +23,59 @@
           %li
             = link_to(profile_path(@bottle.user.profile)) do
               = image_tag @bottle.user.profile.avatar_url, class: "img-avatar"
-              %i.fa.fa-circle.text-success
+              %i.fa.fa-circle{ :class => "#{get_color_online(@bottle.user)}"}
               = @bottle.user.full_name
               .font-w400.text-muted
                 %small= @bottle.user.profile.organization_name
-    = render partial: "block_user_bottles", locals:{ title: "Outras garrafas na adega do #{@bottle.user.full_name}", user: @bottle.user, bottles: @bottle.user.bottles.publics }
+    = render partial: "block_user_bottles", locals:{ title: "Outras garrafas na adega do #{@bottle.user.full_name}", user: @bottle.user, bottles: (@bottle.user.bottles.publics - [@bottle])}
   .col-sm-7.col-sm-pull-5.col-lg-8.col-lg-pull-4
-    = render partial: "shared/block_about", locals: { about: @bottle.about }
-    = render partial:"shared/block_rating", locals: {rateable: @bottle, title: "Avaliar #{@bottle.label}"}
+    =# render partial: "shared/block_about", locals: { about: @bottle.about }
+    .block.block-themed
+      .block-header.bg-primary
+        %h3.block-title
+          %i.fa.fa-fw.fa-share-alt
+          Sobre
+      .block-content.row
+        .col-lg-5
+          .push-10-t.push.text-center
+            %img
+              = image_tag @bottle.image_url(:original), class: "img-responsive"
+        .col-lg-7
+          .push-10-t.push
+            %table.table
+              %thead
+                %th
+                  ="#{@bottle.type_s} #{@bottle.label}"
+              %tbody
+                %tr
+                  %td
+                    %b Nome:
+                    = @bottle.label
+                %tr
+                  %td
+                    %b Tipo:
+                    = @bottle.type_s
+                %tr
+                  %td
+                    %b Organização:
+                    = @bottle.organization_name
+                - if @bottle.filling_date
+                  %tr
+                    %td
+                      %b Data de envase:
+                      = l @bottle.filling_date
+                %tr
+                  %td
+                    %b Estilo:
+                    = "#{@bottle.style_s}"
+                %tr
+                  %td
+                    %b Conteúdo:
+                    = "#{@bottle.measure} ml"
+                %tr
+                  %td
+                    %b Graduação:
+                    = "#{@bottle.abv} %"
+          .push-10-t.push{style: "background: url(#{asset_path 'aspas.png'}) no-repeat; padding-left: 28px; " }
+            =@bottle.about
+    = render partial:"shared/block_rating", locals: {rateable: @bottle, title: "Avaliar #{@bottle.label}", rating: true}

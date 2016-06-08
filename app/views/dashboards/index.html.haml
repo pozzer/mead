@@ -76,7 +76,7 @@
             %li
               %a{:href => profile_path(profile)}
                 = image_tag profile.avatar_url, class: "img-avatar"
-                %i.fa.fa-circle{ :class => "#{get_color_online(profile.user)}"}
+                %i.fa.fa-circle{ :class => "#{get_color_online(profile.user)}" }
                 = profile.full_name
                 .font-w400.text-muted
                   %small=  profile.organization_name

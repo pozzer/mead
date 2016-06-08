@@ -19,11 +19,11 @@
         .font-w700.text-gray-darker.animated.fadeIn Membro desde
         %a.h2.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= l @profile.created_at.to_date
       .col-xs-6.col-sm-3
-        - if @profile.ratings.any?
-          .font-w700.text-gray-darker.animated.fadeIn Reputação
-          .text-warning.push-10-t.animated.flipInX
-            - @profile.reputation.times do |x|
-              %i.fa.fa-star
+        .font-w700.text-gray-darker.animated.fadeIn Reputação
+        .push-10-t.animated.flipInX
+          - @profile.reputation.times do |x|
+            %i.fa.fa-star.text-warning
+          - (5 - @profile.reputation).times do |x|
+            %i.fa.fa-star.text-mute
   .progress.active{ }
     .progress-bar.progress-bar-info.progress-bar-striped{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "30", :role => "progressbar", :style => "width: #{@profile.user.percentage_level}%" ,"data-toggle": "tooltip", "data-placement": "top", "data-original-title": "Barra de experiência."}="#{@profile.user.percentage_level.round(2)}%"
-

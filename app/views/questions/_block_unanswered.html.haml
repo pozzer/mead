@@ -1,6 +1,6 @@
 #unanswered-content
   %h4.push-10.font-w400
-    = page_entries_info @unanswereds, :entry_name => 'Perguntas sem respostas'
+    = page_entries_info @unanswereds, :entry_name => 'Perguntas sem melhor resposta'
   .row
     - @unanswereds.each do |question|
       = render partial: "item_question", locals:{ question: question }

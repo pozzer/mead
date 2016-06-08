@@ -4,6 +4,9 @@ pt-BR:
       models:
         user:
     models:
+      notification:
+        one: "Feed de Noticia"
+        other: "Feed de Noticias"
       question:
         one: Pergunta
         other: Perguntas
@@ -55,7 +58,7 @@ pt-BR:
         amount: Quantidade
         style: Estilo
         about: Sobre
-        measure: Volume da garrafa
+        measure: Conteúdo da garrafa
         abv: Graduação alcoólica
         private: Privada
         style_list: Estilo

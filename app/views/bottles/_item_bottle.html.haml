@@ -9,11 +9,13 @@
       .text-center.text-muted= bottle.style_s
     .block-content
       .row.items-push.text-center
-        .col-xs-6
+        .col-xs-12
           .push-5
-            %i.si.si-star.fa-2x
-          .h5.font-w300.text-muted= "#{bottle.reputation}"
-        .col-xs-6
-          .push-5
-            %i.si.si-notebook.fa-2x
-          .h5.font-w300.text-muted= "#{bottle.amount} Garrafas"
+            - bottle.reputation.times do |i|
+              %i.fa.fa-star.text-warning
+            - (5-bottle.reputation).times do |i|
+              %i.fa.fa-star.text-mute
+        /.col-xs-6
+        /  .push-5
+        /    %i.si.si-notebook.fa-2x
+        /  .h5.font-w300.text-muted= "#{bottle.amount} Garrafas"

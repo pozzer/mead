@@ -8,12 +8,14 @@
       - rateable.ratings.each do |rate|
         %li
           .push-5.clearfix
-            .text-warning.pull-right
+            .pull-right
               -rate.score.times do |time|
-                %i.fa.fa-star
+                %i.fa.fa-star.text-warning
+              -(5-rate.score).times do |i|
+                %i.fa.fa-star.text-mute
             = link_to(rate.user.full_name, profile_path(rate.user.profile), class:"font-w600")
             %span.text-muted (#{rate.score}/5)
           .font-s13= rate.comment
     .push
-      - if current_user != rateable.user and rating
+      - if (current_user != rateable.user and rating) and !rateable.ratings.where(user_id: current_user).any?
         = render partial: "shared/modal_ratings", locals: {btn_name: title, rateable: rateable}

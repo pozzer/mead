@@ -28,8 +28,8 @@ class Bottle < ActiveRecord::Base
     images.last
   end
 
-  def image_url
-    image ? image.picture.url(:avatar) : "bottle.jpg"
+  def image_url(type = :avatar)
+    image ? image.picture.url(type) : "bottle.jpg"
   end
 
   def to_s

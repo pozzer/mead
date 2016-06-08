@@ -19,10 +19,12 @@
         .font-w700.text-gray-darker.animated.fadeIn Data de Envase
         %h3.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= (@bottle.filling_date.blank?) ? "-" : l(@bottle.filling_date)
       .col-xs-6.col-sm-2
-        .font-w700.text-gray-darker.animated.fadeIn Medida
-        %h3.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= @bottle.measure
+        .font-w700.text-gray-darker.animated.fadeIn Conteúdo
+        %h3.font-w300.text-primary.animated.flipInX{:href => "javascript:void(0)"}= "#{@bottle.measure} ml"
       .col-xs-6.col-sm-3
         .font-w700.text-gray-darker.animated.fadeIn Reputação
-        .text-warning.push-10-t.animated.flipInX
+        .push-10-t.animated.flipInX
           - @bottle.reputation.times do |x|
-            %i.fa.fa-star
+            %i.fa.fa-star.text-warning
+          - (5 - @bottle.reputation).times do |x|
+            %i.fa.fa-star.text-mute

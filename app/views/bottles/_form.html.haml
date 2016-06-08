@@ -27,15 +27,15 @@
           .col-xs-6
             = f.input :filling_date, as: :string, input_html:{ class: "data" }
           .col-xs-6
-            = f.input :amount, as: :string, input_html:{ class: "integer" }
+            = f.input :amount, as: :string, input_html:{ class: "integer", maxlength: 3 }
           .col-xs-12
             = f.input :style_list, as: :select, collection: ActsAsTaggableOn::Tagging.where(:context=>"style").joins(:tag).select("distinct tags.id, tags.name").collect{ |x| [x.name, x.name]}, input_html: { multiple: false, class: "js-select2" }
           .col-xs-12
             = f.input :type_list, as: :select, collection: ActsAsTaggableOn::Tagging.where(:context=>"type").joins(:tag).select("distinct tags.id, tags.name").collect{ |x| [x.name, x.name]}, input_html: { multiple: false, class: "js-select2" }
           .col-xs-12
-            = f.input :measure
+            = f.input :measure, input_html: {class: "measure"}
           .col-xs-12
-            = f.input :abv, input_html:{ class: "open" }
+            = f.input :abv, input_html:{ class: "open abv" }
           .col-xs-12
             = f.input :about, as: :text
           .col-xs-12

@@ -27,8 +27,11 @@ class BottlesController < AppController
   def create
     @bottle = Bottle.new(bottle_params)
     @bottle.user = current_user
-    @bottle.save
-    respond_with(@bottle, :location => user_bottle_path(@bottle.user, @bottle))
+    if @bottle.save
+      respond_with(@bottle, :location => user_bottle_path(@bottle.user, @bottle))
+    else
+      respond_with(@bottle)
+    end
   end
 
   def update

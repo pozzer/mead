@@ -1,6 +1,6 @@
 #vote-content
   %h4.push-10.font-w400
-    = page_entries_info @votes, :entry_name => 'Perguntas sem respostas'
+    = page_entries_info @votes, :entry_name => 'Perguntas Mais Populares'
   .row
     - @votes.each do |question|
       = render partial: "item_question", locals:{ question: question }

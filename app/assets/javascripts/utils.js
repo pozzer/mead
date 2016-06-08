@@ -49,7 +49,11 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $(".data").mask("99/99/9999");
-  $(".integer").mask("9?9");
+  $(".integer").mask('9?99');
+  $(".measure").mask("9?999ml");
+  $(".measure").mask("9?999ml");
+  $(".abv").mask("9?9%");
+  
   $(".js-select2").select2();
   
 });

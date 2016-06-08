@@ -27,6 +27,7 @@
               .pull-left.push-10-t
                 .font-w600.push-5= question.user.full_name
                 .text-muted= question.user.profile.organization_name
+            .text-muted= "Perguntou a #{time_ago_in_words(question.created_at)}"
 .col-xs-12.col-sm-12.hidden-md.hidden-lg
   %a.block-bordered.block.block-link-hover3{:href => "#{question_path(question) }"}
     .block-header{class: (question.have_best_answer? ? "text-white bg-success" : "")}
