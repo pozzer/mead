@@ -3,75 +3,11 @@
   .col-sm-5.col-sm-push-7.col-lg-4.col-lg-push-8
     = render partial: "block_friendship"
     = render partial: "shared/block_about", locals: { about: @profile.about }
-    /.block.block-opt-refresh-icon6
-    /  .block-header
-    /    %ul.block-options
-    /      %li
-    /        %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-    /          %i.si.si-refresh
-    /    %h3.block-title
-    /      %i.fa.fa-fw.fa-share-alt
-    /      Informações
-    /  .block-content
-    /    %ul.nav-users.push
-    /      %li
-    /        %a{:href => "base_pages_profile.php"}
-    /          %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar11.jpg"}/
-    /          %i.fa.fa-circle.text-success
-    /          Bruce Edwards
-    /          .font-w400.text-muted
-    /            %small Web Developer
-    /      %li
-    /        %a{:href => "base_pages_profile.php"}
-    /          %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar4.jpg"}/
-    /          %i.fa.fa-circle.text-warning
-    /          Megan Dean
-    /          .font-w400.text-muted
-    /            %small Web Designer
-    /      %li
-    /        %a{:href => "base_pages_profile.php"}
-    /          %img.img-avatar{:alt => "", :src => "assets/img/avatars/avatar2.jpg"}/
-    /          %i.fa.fa-circle.text-danger
-    /          Sara Holland
-    /          .font-w400.text-muted
-    /            %small Photographer
-    /    .text-center.push
-    /      %small
-    /        %a{:href => "javascript:void(0)"} Load More..
-    /.block.block-opt-refresh-icon6
-    /  .block-header
-    /    %ul.block-options
-    /      %li
-    /        %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-    /          %i.si.si-refresh
-    /    %h3.block-title
-    /      %i.fa.fa-fw.fa-briefcase
-    /      Products
-    /  .block-content
-    /    %ul.list.list-simple.list-li-clearfix
-    /      %li
-    /        %a.item.item-rounded.pull-left.push-10-r.bg-info{:href => "javascript:void(0)"}
-    /          %i.si.si-rocket.text-white-op
-    /        %h5.push-10-t MyPanel
-    /        .font-s13 Responsive App Template
-    /      %li
-    /        %a.item.item-rounded.pull-left.push-10-r.bg-amethyst{:href => "javascript:void(0)"}
-    /          %i.si.si-calendar.text-white-op
-    /        %h5.push-10-t Project Time
-    /        .font-s13 Web application
-    /      %li
-    /        %a.item.item-rounded.pull-left.push-10-r.bg-danger{:href => "javascript:void(0)"}
-    /          %i.si.si-speedometer.text-white-op
-    /        %h5.push-10-t iDashboard
-    /        .font-s13 Bootstrap Admin Template
-    /    .text-center.push
-    /      %small
-    /        %a{:href => "javascript:void(0)"} View More..
 
-    .block.block-opt-refresh-icon6
-      .block-header
+    .block.block-themed
+      .block-header.bg-primary      
         %h3.block-title
-          %i.si.si.info
+          %i.fa.fa-fw.fa-info
           Informações
       .block-content
         %ul.list.list-simple
@@ -101,10 +37,12 @@
                 = @profile.user.bottles.publics.size
               .font-w600 Garrafas na adega
 
-    = render partial:"shared/block_rating", locals: {rateable: @profile, title: "Avaliar #{@profile.full_name}"}
+    = render partial:"shared/block_rating", locals: {rateable: @profile, title: "Avaliar #{@profile.full_name}", rating: false}
     .block.block-themed
-      .block-header.bg-primary
-        %h3.block-title Amigos
+      .block-header.bg-primary        
+        %h3.block-title
+          %i.si.fa-fw.si-users
+          Amigos
       .block-content.tab-content.bg-white
         - @profile.user.friends.each do |user|
           -profile = user.profile
