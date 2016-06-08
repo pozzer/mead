@@ -2,7 +2,7 @@
   %h4.push-10.font-w400
     = page_entries_info @profiles, :entry_name => 'Usuários'
   .row
-    - profiles.each do |profile|
+    - @profiles.each do |profile|
       .col-sm-6.col-lg-4
         = render partial: "block_profile_list", locals: {profile: profile, title: ""}
         

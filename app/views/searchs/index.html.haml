@@ -1,20 +1,20 @@
 .content
   #tabs-container.block
     %ul.nav.nav-tabs.nav-tabs-alt{"data-toggle" => "tabs"}
-      %li.active
-        %a{:href => "#search-question"}= "Perguntas (#{@questions.total_count })"
-      %li
-        %a{:href => "#search-profile"}= "Usuários (#{@profiles.total_count })"
-      %li
-        %a{:href => "#search-bottle"}= "Garrafas (#{@bottles.total_count })"
+      - @order_find.each_with_index do |objects, index|
+        -model_name = objects.model_name
+        %li{class: index == 0 ? "active" : ""}
+          %a{:href => "#search-#{model_name.name.downcase}"}= "#{model_name.human(count: 2)} (#{objects.total_count })"
     .block-content.tab-content.bg-white
-      #search-question.tab-pane.fade.fade-up.active.in
-        .border-b.push-30
-          = render partial: "block_question_search", locals: { profiles: @questions}
-      #search-profile.tab-pane.fade.fade-up
-        .border-b.push-30
-          = render partial: "block_profile_search", locals: { profiles: @profiles}
-      #search-bottle.tab-pane.fade.fade-up
-        .border-b.push-30
-          = render partial: "block_bottle_search", locals: { bottles: @bottles}
+      - @order_find.each_with_index do |objects, index|
+        -model_name = objects.model_name
+        .tab-pane.fade.fade-up{id: "search-#{model_name.name.downcase}", class: index == 0 ? "active in" : ""}
+          .border-b.push-30
+            = render partial: "block_#{model_name.name.downcase}_search"
+        //#search-profile.tab-pane.fade.fade-up
+        //  .border-b.push-30
+        //    = render partial: "block_profile_search", locals: { profiles: @profiles}
+        //#search-bottle.tab-pane.fade.fade-up
+        //  .border-b.push-30
+        //    = render partial: "block_bottle_search", locals: { bottles: @bottles}
 
