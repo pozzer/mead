@@ -32,6 +32,9 @@
       / Layout API, functionality initialized in App() -> uiLayoutApi()
       %button.btn.btn-default{"data-action" => "side_overlay_toggle", "data-toggle" => "layout", :type => "button"}
         %i.fa.fa-tasks
+        - if current_user.new_messages?
+          %span.count-label.badge
+            = current_user.new_messages.size
   / END Header Navigation Right
   / Header Navigation Left
   %ul.nav-header.pull-left

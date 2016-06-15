@@ -1,132 +1,61 @@
 %aside#side-overlay
-  / Side Overlay Scroll Container
-  #side-overlay-scroll
-    / Side Header
-    .side-header.side-content
-      / Layout API, functionality initialized in App() -> uiLayoutApi()
-      %button.btn.btn-default.pull-right{"data-action" => "side_overlay_close", "data-toggle" => "layout", :type => "button"}
-        %i.fa.fa-times
-      %span
-        = image_tag current_user.profile.avatar_url, class: "img-avatar"
-        %span.font-w600.push-10-l= current_user.full_name 
-    / END Side Header
-    / Side Content
-    .side-content.remove-padding-t
-      / Notifications
-      /.block.pull-r-l
-      /  .block-header.bg-gray-lighter
-      /    %ul.block-options
-      /      %li
-      /        %button{"data-action" => "refresh_toggle", "data-action-mode" => "demo", "data-toggle" => "block-option", :type => "button"}
-      /          %i.si.si-refresh
-      /      %li
-      /        %button{"data-action" => "content_toggle", "data-toggle" => "block-option", :type => "button"}
-      /    %h3.block-title Recent Activity
-      /  .block-content
-      /    / Activity List
-      /    %ul.list.list-activity
-      /      %li
-      /        %i.si.si-wallet.text-success
-      /        .font-w600 New sale ($15)
-      /        %div
-      /          %a{:href => "javascript:void(0)"} Admin Template
-      /        %div
-      /          %small.text-muted 3 min ago
-      /      %li
-      /        %i.si.si-pencil.text-info
-      /        .font-w600 You edited the file
-      /        %div
-      /          %a{:href => "javascript:void(0)"}
-      /            %i.fa.fa-file-text-o
-      /            Documentation.doc
-      /        %div
-      /          %small.text-muted 15 min ago
-      /      %li
-      /        %i.si.si-close.text-danger
-      /        .font-w600 Project deleted
-      /        %div
-      /          %a{:href => "javascript:void(0)"} Line Icon Set
-      /        %div
-      /          %small.text-muted 4 hours ago
-      /      %li
-      /        %i.si.si-wrench.text-warning
-      /        .font-w600 Core v2.5 is available
-      /        %div
-      /          %a{:href => "javascript:void(0)"} Update now
-      /        %div
-      /          %small.text-muted 6 hours ago
-      /    .text-center
-      /      %small
-      /        %a{:href => "javascript:void(0)"} Load More..
-      /    / END Activity List
-      / END Notifications
-      / Online Friends
-      .block.pull-r-l
-        .block-header.bg-gray-lighter
-          %ul.block-options
+  .slimScrollDiv{:style => "position: relative; overflow: hidden; width: auto; height: 614px;"}
+    #side-overlay-scroll{:style => "overflow: hidden; width: auto; height: 614px;"}
+      .side-header.side-content
+        / Layout API, functionality initialized in App() -> uiLayoutApi()
+        %button.btn.btn-default.pull-right{"data-action" => "side_overlay_close", "data-toggle" => "layout", :type => "button"}
+          %i.fa.fa-times
+        %span
+          = image_tag current_user.profile.avatar_url, class: "img-avatar"
+          %span.font-w600.push-10-l= current_user.full_name 
+      .side-content.remove-padding-t
+        .block.pull-r-l.border-t
+          %ul.nav.nav-tabs.nav-tabs-alt.nav-justified{"data-toggle" => "tabs"}
+            %li.active
+              %a{:href => "#tabs-friends"}
+                %i.si.si-users
+                Amigos
             %li
-              %button{"data-action" => "content_toggle", "data-toggle" => "block-option", :type => "button"}
-          %h3.block-title Lista de Amigos
-        .block-content.block-content-full
-          / Users Navigation
-          %ul.nav-users
-            - current_user.friends.each do |user|
-              %li
-                %a{:href => "#", class: "start-conversation", :"data-sid" => current_user.id, :"data-rip" => user.id, :"data-toggle"=>"layout", :"data-action" => "side_overlay_close", :title=>"Mandar Mensagem para #{user.first_name}"}
-                  = image_tag user.profile.avatar_url, class: "img-avatar"                  
-                  %i.fa.fa-circle{ :class => "#{get_color_online(user)}"}
-                  = user.full_name
-                  .font-w400.text-muted
-                    %small= user.profile.organization_name
-          / END Users Navigation
-      / END Online Friends
-      / Quick Settings
-      /.block.pull-r-l
-      /  .block-header.bg-gray-lighter
-      /    %ul.block-options
-      /      %li
-      /        %button{"data-action" => "content_toggle", "data-toggle" => "block-option", :type => "button"}
-      /    %h3.block-title Quick Settings
-      /  .block-content
-      /    / Quick Settings Form
-      /    %form.form-bordered{:action => "index.html", :method => "post", :onsubmit => "return false;"}
-      /      .form-group
-      /        .row
-      /          .col-xs-8
-      /            .font-s13.font-w600 Online Status
-      /            .font-s13.font-w400.text-muted Show your status to all
-      /          .col-xs-4.text-right
-      /            %label.css-input.switch.switch-sm.switch-primary.push-10-t
-      /              %input{:type => "checkbox"}/
-      /              %span
-      /      .form-group
-      /        .row
-      /          .col-xs-8
-      /            .font-s13.font-w600 Auto Updates
-      /            .font-s13.font-w400.text-muted Keep up to date
-      /          .col-xs-4.text-right
-      /            %label.css-input.switch.switch-sm.switch-primary.push-10-t
-      /              %input{:type => "checkbox"}/
-      /              %span
-      /      .form-group
-      /        .row
-      /          .col-xs-8
-      /            .font-s13.font-w600 Notifications
-      /            .font-s13.font-w400.text-muted Do you need them?
-      /          .col-xs-4.text-right
-      /            %label.css-input.switch.switch-sm.switch-primary.push-10-t
-      /              %input{:checked => "checked", :type => "checkbox"}/
-      /              %span
-      /      .form-group
-      /        .row
-      /          .col-xs-8
-      /            .font-s13.font-w600 API Access
-      /            .font-s13.font-w400.text-muted Enable/Disable access
-      /          .col-xs-4.text-right
-      /            %label.css-input.switch.switch-sm.switch-primary.push-10-t
-      /              %input{:checked => "checked", :type => "checkbox"}/
-      /              %span
-      /    / END Quick Settings Form
-      / END Quick Settings
-    / END Side Content
-  / END Side Overlay Scroll Container
+              %a{:href => "#tabs-conversation", style: current_user.new_messages? ? "color:#f3b760;" : ""}
+                %i.si.si-bubble
+                Conversas
+          .block-content.tab-content
+            #tabs-friends.tab-pane.fade.fade-right.in.active
+              .block.pull-r-l
+                .block-header.bg-gray-lighter
+                  /%ul.block-options
+                  /  %li
+                  /    %button{"data-action" => "content_toggle", "data-toggle" => "block-option", :type => "button"}
+                  /      %i.si.si-arrow-up
+                  %h3.block-title Lista de Amigos
+                .block-content.block-content-full
+                  %ul.nav-users
+                    - current_user.friends.each do |user|
+                      %li
+                        %a{:href => "#", class: "start-conversation", :"data-sid" => current_user.id, :"data-rip" => user.id, :"data-toggle"=>"layout", :"data-action" => "side_overlay_close", :title=>"Mandar Mensagem para #{user.first_name}"}
+                          = image_tag user.profile.avatar_url, class: "img-avatar"                  
+                          %i.fa.fa-circle{ :class => "#{get_color_online(user)}"}
+                          = user.full_name
+                          .font-w400.text-muted
+                            %small= user.profile.organization_name
+            #tabs-conversation.tab-pane.fade.fade-left
+              .block.pull-r-l
+                .block-header.bg-gray-lighter
+                  /%ul.block-options
+                  /  %li
+                  /    %button{"data-action" => "content_toggle", "data-toggle" => "block-option", :type => "button"}
+                  /      %i.si.si-arrow-up
+                  %h3.block-title Novas Mensagens
+                .block-content.block-content-full
+                  %ul.nav-users
+                    - current_user.new_messages.uniq.each do |conversation|
+                      - other_user = conversation.other_user(current_user)
+                      %li
+                        %a{:href => "#", class: "start-conversation", :"data-sid" => current_user.id, :"data-rip" => other_user.id, :"data-toggle"=>"layout", :"data-action" => "side_overlay_close", :title=>"Mandar Mensagem para #{other_user.first_name}"}
+                          = image_tag other_user.profile.avatar_url, class: "img-avatar"                  
+                          %i.fa.fa-circle{ :class => "#{get_color_online(other_user)}"}
+                          = other_user.full_name
+                          .font-w400.text-muted
+                            %small 5 novas mensagens
+    .slimScrollBar{:style => "width: 5px; position: absolute; top: 48px; opacity: 0.35; display: none; border-radius: 7px; z-index: 99; right: 2px; height: 321.394714407502px; background: rgb(0, 0, 0);"}
+    .slimScrollRail{:style => "width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 1; z-index: 90; right: 2px; background: rgb(51, 51, 51);"}

@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :evaluations, class_name: "RSEvaluation", as: :source
   has_many :logs
   has_many :conversations, :foreign_key => :sender_id
+  has_many :invert_conversations, :foreign_key => :recipient_id, class_name: "Conversation"
 
   has_many :friendships
   has_many :friends, :through => :friendships
@@ -120,6 +121,14 @@ class User < ActiveRecord::Base
 
   def percentage_level
     ((reputation_for(:experience)%20) * 2)
+  end
+
+  def new_messages?
+    new_messages.any?
+  end
+
+  def new_messages
+    Conversation.involving(self).joins(:messages).where("messages.read = false and messages.user_id <> ?", self.id)
   end
 
   private

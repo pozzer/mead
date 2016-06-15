@@ -9,6 +9,7 @@ class ConversationsController < ApplicationController
     else
       @conversation = Conversation.create!(conversation_params)
     end
+    @conversation.messages.where("messages.user_id <> ?", current_user.id).update_all read: true
 
     render json: { conversation_id: @conversation.id }
   end

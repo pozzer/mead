@@ -36,7 +36,7 @@
               %tr
                 %td.text-center
                   %a{:href => profile_path(profile)}
-                    %img.img-avatar.img-avatar48{:alt => "", :src => "#{profile.avatar_url}"}/
+                    = image_tag profile.avatar_url, class: "img-avatar img-avatar48"
                 %td.font-w600= link_to profile.full_name, profile_path(profile)
                 %td.text-center.font-w600= user.level
                 %td.text-center= user.reputation_for(:experience)

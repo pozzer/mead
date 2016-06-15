@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160602232437) do
-=======
-ActiveRecord::Schema.define(version: 20160526134821) do
->>>>>>> 02618dc382c58cdaded24c28e37d4712cac8a2ef
+ActiveRecord::Schema.define(version: 20160615193320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +92,10 @@ ActiveRecord::Schema.define(version: 20160526134821) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "artigos", force: :cascade do |t|
+    t.string "title"
+  end
+
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
@@ -166,15 +166,18 @@ ActiveRecord::Schema.define(version: 20160526134821) do
   create_table "concept_questions", force: :cascade do |t|
     t.integer "question_id"
     t.integer "concept_id"
-    t.integer "parent_concept"
+    t.integer "parent_concept_id"
   end
 
   add_index "concept_questions", ["concept_id"], name: "index_concept_questions_on_concept_id", using: :btree
-  add_index "concept_questions", ["parent_concept"], name: "index_concept_questions_on_parent_concept", using: :btree
+  add_index "concept_questions", ["parent_concept_id"], name: "index_concept_questions_on_parent_concept_id", using: :btree
   add_index "concept_questions", ["question_id"], name: "index_concept_questions_on_question_id", using: :btree
 
   create_table "concepts", force: :cascade do |t|
+    t.string "val"
   end
+
+  add_index "concepts", ["val"], name: "index_concepts_on_val", using: :btree
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
@@ -259,8 +262,9 @@ ActiveRecord::Schema.define(version: 20160526134821) do
     t.text     "body"
     t.integer  "conversation_id"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "read",            default: false
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
@@ -271,12 +275,12 @@ ActiveRecord::Schema.define(version: 20160526134821) do
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
+    t.datetime "picture_update_at"
     t.integer  "attachable_id"
     t.string   "attachable_type"
-    t.integer  "picture_type"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "picture_type"
   end
 
   create_table "profiles", force: :cascade do |t|

@@ -1,9 +1,9 @@
 development:
-  server: "http://localhost:9292/faye"
-  secret_token: "secret"
+  server: "//heimdallmead.herokuapp.com/faye"
+  secret_token: "mead"
 test:
-  server: "http://localhost:9292/faye"
-  secret_token: "secret"
+  server: "//heimdallmead.herokuapp.com/faye"
+  secret_token: "mead"
 production:
   server: "//heimdallmead.herokuapp.com/faye"
   secret_token: "mead"
