@@ -21,8 +21,6 @@
         = render partial: "trades/block_address", locals: {profile: current_user.profile}
       .col-lg-6
         = render partial: "trades/block_address", locals: {profile: @trade.other_user(current_user).profile}
-
-
   .block#chat.block-themed
     .block-header.bg-primary
       %h3.block-title

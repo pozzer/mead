@@ -29,12 +29,11 @@
           %li
             = link_to (content_tag(:i, "", class: "si si-logout pull-right") + 'Sair').html_safe, destroy_user_session_path, method: :delete
     %li
-      / Layout API, functionality initialized in App() -> uiLayoutApi()
       %button.btn.btn-default{"data-action" => "side_overlay_toggle", "data-toggle" => "layout", :type => "button"}
-        %i.fa.fa-tasks
-        - if current_user.new_notifications?
-          %span.count-label.badge
-            = current_user.new_notifications_size
+        #count_notifications
+          = render partial:"shared/count_notifications"
+      / Layout API, functionality initialized in App() -> uiLayoutApi()
+      
   / END Header Navigation Right
   / Header Navigation Left
   %ul.nav-header.pull-left

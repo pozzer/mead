@@ -6,5 +6,8 @@ class NotificationsController < ApplicationController
 
   def read_all
   	current_user.notifications.update_all(read:true)
+  	respond_to do |format|
+      format.js
+    end
   end
 end

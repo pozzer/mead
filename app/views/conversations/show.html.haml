@@ -1,7 +1,8 @@
 .chatboxhead
   .chatboxtitle
     %i.fa.fa-comments
-    %h1= @reciever.name
+    %h1
+      = link_to @reciever.name, profile_path(@reciever), class:"text-white"
   .chatboxoptions
     = link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", "data-cid" => @conversation.id
     \  

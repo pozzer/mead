@@ -6,8 +6,10 @@ class BottleTradesController < ApplicationController
 
   def add
     @success = BottleTrade.add_or_create(@trade, current_user, @bottle)
-
-    Log.create({user: current_user, trade: @trade, status: 1, log_type: 6, message: "Adicionou #{@bottle.to_s} na proposta"}) if @success
+    if @success
+      Log.create({user: current_user, trade: @trade, status: 1, log_type: 6, message: "Adicionou #{@bottle.to_s} na proposta"})
+      Notification.create({user: @trade.other_user(current_user), trackable: @trade, key: "trade_add_bottle"})
+    end
 
     respond_to do |format|
       format.html { redirect_to trade_path(@trade, anchor: "proposal"), notice: @success ? "Garrafa adicionada com successo." : "Você não pode adicionar essa garrafa."}
@@ -17,7 +19,10 @@ class BottleTradesController < ApplicationController
   def remove
     @bottle = @bottle_trade.bottle
     @success = @bottle_trade.remove_or_destroy(current_user)
-    Log.create({user: current_user, trade: @trade, status: 3, log_type: 6, message: "Removeu #{@bottle.to_s} da proposta"}) if @success
+    if @success
+      Log.create({user: current_user, trade: @trade, status: 3, log_type: 6, message: "Removeu #{@bottle.to_s} da proposta"}) 
+      Notification.create({user: @trade.other_user(current_user), trackable: @trade, key: "trade_remove_bottle"})
+    end
     respond_to do |format|
       format.html { redirect_to trade_path(@trade, anchor: "proposal"), notice: @success ? "Garrafa removida com successo." : "Você não pode remover essa garrafa."}
     end

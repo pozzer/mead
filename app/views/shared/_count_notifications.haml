@@ -1,0 +1,4 @@
+%i.fa.fa-tasks
+- if current_user.new_notifications?
+  %span.count-label.badge
+    = current_user.new_notifications_size

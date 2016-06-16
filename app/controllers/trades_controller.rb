@@ -41,13 +41,19 @@ class TradesController < AppController
 
   def cancel
     @success = @trade.cancel! if @trade.can_cancel?(current_user)
-    Log.create({user: current_user, trade: @trade, status: 3, log_type: 5, message: "Cancelou a negociação"}) if @success
+    if @success
+      Log.create({user: current_user, trade: @trade, status: 3, log_type: 5, message: "Cancelou a negociação"})
+      Notification.create({user: @trade.other_user(current_user), trackable: @trade, key: "trade_canceled"})
+    end
     redirect_to :back, :flash => (@success) ?  { :notice => "Troca cancelada com sucesso!" } : { :error => "Você não pode cancelar essa troca." }
   end
 
   def accept
     @success = @trade.accept! if @trade.can_accept?(current_user)
-    Log.create({user: current_user, trade: @trade, status: 1, log_type: 2, message: "Aceitou a negociação"}) if @success
+    if @success
+      Log.create({user: current_user, trade: @trade, status: 1, log_type: 2, message: "Aceitou a negociação"}) 
+      Notification.create({user: @trade.other_user(current_user), trackable: @trade, key: "trade_accept"})
+    end
     redirect_to :back, :flash => (@success) ?  { :notice => "Troca aceita com sucesso!" } : { :error => "Você não pode aceitar essa troca." }
   end
   

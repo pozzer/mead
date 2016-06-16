@@ -35,36 +35,38 @@
                           .font-w400.text-muted
                             %small= user.profile.organization_name
             #tabs-conversation.tab-pane.fade.fade-left
-              .block.pull-r-l
-                .block-header.bg-gray-lighter
-                  %ul.block-options
-                    %li
-                      .font-w400.text-muted
-                        %small
-                          = link_to "Marcar todas como lida", read_all_notification_path(current_user), remote:true
-                  %h3.block-title Avisos
-                .block-content.block-content-full
-                  %ul.nav-users
-                    - current_user.notifications.reverse.each do |notification|
-                      = render partial: "notifications/#{notification.key}", locals:{notification: notification}
-              .block.pull-r-l
-                .block-header.bg-gray-lighter
-                  /%ul.block-options
-                  /  %li
-                  /    %button{"data-action" => "content_toggle", "data-toggle" => "block-option", :type => "button"}
-                  /      %i.si.si-arrow-up
-                  %h3.block-title Novas Mensagens
-                .block-content.block-content-full
-                  %ul.nav-users
-                    - current_user.new_messages.uniq.each do |conversation|
-                      - other_user = conversation.other_user(current_user)
+              - if current_user.notifications.not_read.any?
+                .block.pull-r-l#notifications_block
+                  .block-header.bg-gray-lighter
+                    %ul.block-options
                       %li
-                        %a{:href => "#", class: "start-conversation", :"data-sid" => current_user.id, :"data-rip" => other_user.id, :"data-toggle"=>"layout", :"data-action" => "side_overlay_close", :title=>"Mandar Mensagem para #{other_user.first_name}"}
-                          = image_tag other_user.profile.avatar_url, class: "img-avatar"                  
-                          %i.fa.fa-circle{ :class => "#{get_color_online(other_user)}"}
-                          = other_user.full_name
-                          .font-w400.text-muted
-                            %small
-                            = "#{conversation.messages.not_read.where.not(user: current_user).size} mensagens não lidas"
+                        .font-w400.text-muted
+                          %small
+                            = link_to "Marcar todas como lida", read_all_notification_path(current_user), remote:true
+                    %h3.block-title Avisos
+                  .block-content.block-content-full
+                    %ul.nav-users
+                      - current_user.notifications.not_read.reverse.each do |notification|
+                        = render partial: "notifications/#{notification.key}", locals:{notification: notification}
+              - if current_user.new_messages.uniq.any?
+                .block.pull-r-l
+                  .block-header.bg-gray-lighter
+                    /%ul.block-options
+                    /  %li
+                    /    %button{"data-action" => "content_toggle", "data-toggle" => "block-option", :type => "button"}
+                    /      %i.si.si-arrow-up
+                    %h3.block-title Novas Mensagens
+                  .block-content.block-content-full
+                    %ul.nav-users
+                      - current_user.new_messages.uniq.each do |conversation|
+                        - other_user = conversation.other_user(current_user)
+                        %li
+                          %a{:href => "#", class: "start-conversation", :"data-sid" => current_user.id, :"data-rip" => other_user.id, :"data-toggle"=>"layout", :"data-action" => "side_overlay_close", :title=>"Mandar Mensagem para #{other_user.first_name}"}
+                            = image_tag other_user.profile.avatar_url, class: "img-avatar"                  
+                            %i.fa.fa-circle{ :class => "#{get_color_online(other_user)}"}
+                            = other_user.full_name
+                            .font-w400.text-muted
+                              %small
+                              = "#{conversation.messages.not_read.where.not(user: current_user).size} mensagens não lidas"
     .slimScrollBar{:style => "width: 5px; position: absolute; top: 48px; opacity: 0.35; display: none; border-radius: 7px; z-index: 99; right: 2px; height: 321.394714407502px; background: rgb(0, 0, 0);"}
     .slimScrollRail{:style => "width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 1; z-index: 90; right: 2px; background: rgb(51, 51, 51);"}

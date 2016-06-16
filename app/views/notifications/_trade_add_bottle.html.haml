@@ -1,0 +1,13 @@
+-other_user = notification.trackable.negotiator
+%li{class: notification.read ? "" : "bg-gray-lighter"}
+  = link_to(trade_path(notification.trackable)) do
+    = image_tag other_user.profile.avatar_url, class: "img-avatar"                  
+    %i.fa.fa-circle{ :class => "#{get_color_online(other_user)}"}
+    = other_user.full_name
+    .font-w400.text-muted
+      %small
+        Adicionou uma garrafa na negociação!
+    .font-w400.text-muted
+      %small
+        = "Há #{get_time_ago(notification.created_at)}"
+      
