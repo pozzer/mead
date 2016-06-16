@@ -69,3 +69,12 @@ abbr[title] {
     background-color: red !important;
 
 }
+.iten-notification {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 42px;
+} 

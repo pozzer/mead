@@ -16,17 +16,13 @@
                 %i.si.si-users
                 Amigos
             %li
-              %a{:href => "#tabs-conversation", style: current_user.new_messages? ? "color:#f3b760;" : ""}
-                %i.si.si-bubble
-                Conversas
+              %a{:href => "#tabs-conversation", style: current_user.new_notifications? ? "color:#f3b760;" : ""}
+                %i.si.si-bell
+                Notificações
           .block-content.tab-content
             #tabs-friends.tab-pane.fade.fade-right.in.active
               .block.pull-r-l
                 .block-header.bg-gray-lighter
-                  /%ul.block-options
-                  /  %li
-                  /    %button{"data-action" => "content_toggle", "data-toggle" => "block-option", :type => "button"}
-                  /      %i.si.si-arrow-up
                   %h3.block-title Lista de Amigos
                 .block-content.block-content-full
                   %ul.nav-users
@@ -39,6 +35,18 @@
                           .font-w400.text-muted
                             %small= user.profile.organization_name
             #tabs-conversation.tab-pane.fade.fade-left
+              .block.pull-r-l
+                .block-header.bg-gray-lighter
+                  %ul.block-options
+                    %li
+                      .font-w400.text-muted
+                        %small
+                          = link_to "Marcar todas como lida", read_all_notification_path(current_user), remote:true
+                  %h3.block-title Avisos
+                .block-content.block-content-full
+                  %ul.nav-users
+                    - current_user.notifications.reverse.each do |notification|
+                      = render partial: "notifications/#{notification.key}", locals:{notification: notification}
               .block.pull-r-l
                 .block-header.bg-gray-lighter
                   /%ul.block-options

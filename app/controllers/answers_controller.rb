@@ -9,6 +9,7 @@ class AnswersController < ApplicationController
     @answer.user = current_user
     respond_to do |format|
       if @answer.save
+        Notification.create({user: @answer.question.user, trackable: @answer, key: "answer_create"})
         format.html { redirect_to question_path(@answer.question, anchor: @answer.id), notice: 'Resposta criada com sucesso!.' }
       else
         format.html { redirect_to @answer.question, notice: 'Não foi hoje' }
@@ -34,6 +35,7 @@ class AnswersController < ApplicationController
     @answer.add_or_update_evaluation(:best_votes, 1, current_user)
     @answer.question.create_activity key: "question.vote_best", owner: current_user, params: { answer_id: @answer.id }
     @answer.create_activity key: "answer.vote_best", owner: current_user
+    Notification.create({user: @answer.user, trackable: @answer, key: "answer_best"})
     redirect_to :back, notice: "Você adicionou uma melhor resposta."
   end
 

@@ -20,8 +20,9 @@ class TradesController < AppController
       @trade = Trade.new(trade_params)
       @trade.save
       Log.create({user: current_user, trade: @trade, status: 1, log_type: 1, message: "Solicitou a negociação"})
+      Notification.create({user: @trade.negotiant, trackable: @trade, key: "trade_new"})
     end
-    BottleTrade.add_or_create(@trade, @bottle.user, @bottle)
+    #BottleTrade.add_or_create(@trade, @bottle.user, @bottle)
     respond_with(@trade)
   end
 

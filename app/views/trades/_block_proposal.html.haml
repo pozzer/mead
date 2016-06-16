@@ -1,11 +1,10 @@
 .col-sm-12.col-md-6
-  .block
-    .block-header.bg-gray-lighter
-      %h3.block-title
-        - if user == current_user
-          Minha proposta
-        -else
-          = "Proposta do #{user.full_name}"
+  .block.block-themed
+    .block-header.bg-primary
+      %h3.block-title= "Proposta de #{user.full_name}"
+    .block-content.block-content-full.text-center
+      %div
+        =image_tag user.profile.avatar_url, class:" img-avatar img-avatar96"
     .block-content
       .table-responsive
         %table.table.table-borderless.table-striped.table-vcenter

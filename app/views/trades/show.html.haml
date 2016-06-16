@@ -11,32 +11,34 @@
     .col-lg-6
       = render partial: "trades/block_user_bottles", locals:{ title: "Garrafas na minha adega", user: current_user.profile.user, bottles: current_user.bottles.publics.with_stock, trade: @trade}
     .col-lg-6
-      = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do Pedro", user: current_user.profile.user, bottles: @trade.other_user(current_user).bottles.publics.with_stock }
-  .row
+      = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{@trade.other_user(current_user).full_name}", user: @trade.other_user(current_user), bottles: @trade.other_user(current_user).bottles.publics.with_stock }
   - unless @trade.user_received_proposal?(current_user)
-    = render partial: "trades/block_actions"
+    .row
+      = render partial: "trades/block_actions"
   - if @trade.status == "waiting_to_be_sent" || @trade.status == "finished"
     .row
       .col-lg-6
         = render partial: "trades/block_address", locals: {profile: current_user.profile}
       .col-lg-6
         = render partial: "trades/block_address", locals: {profile: @trade.other_user(current_user).profile}
+
+
+  .block#chat.block-themed
+    .block-header.bg-primary
+      %h3.block-title
+        Chat
+    .block-content
+      .overflow-y-auto.block-content.block-content-full{style: "overflow-y: auto; height:500px;"}
+        - @trade.messages.group_by(&:group_by_criteria).each do |day, messages|
+          .font-s12.text-muted.text-center.push-20-t.push-15
+            %em= get_day_week(day)
+          - messages.each do |message|
+            .block.block-rounded.block-transparent.push-15{class: (message.user != current_user) ? "push-50-r" : "push-50-l"}
+              .block-content.block-content-full.block-content-mini{class: (message.user == current_user ? "bg-success text-white" : "bg-gray")} 
+                .font-s13= "#{message.user.full_name} #{message.created_at.strftime("%H:%M")}"
+                = message.content
+      .block-content.block-content-full.block-content-mini
+        = simple_form_for([@trade, @trade.messages.new]) do |f|
+          .form-group
+            = f.input :content, label: false, as: :string, :input_html =>{ class: "form-control"}
   = render partial: "trades/block_logs", locals: {trade: @trade}
-  .block#chat
-    .bg-image{:style => "background-image: url(#{ @trade.other_user(current_user).profile.cover_url });"}
-      .block-content.block-content-full.bg-black-op.text-center
-        .push-10
-          = image_tag @trade.other_user(current_user).profile.avatar_url, class: "img-avatar img-avatar96 img-avatar-thumb"
-        %h3.h4
-          %span.text-white= @trade.other_user(current_user).full_name
-    .overflow-y-auto.block-content.block-content-full
-      - @trade.messages.group_by(&:group_by_criteria).each do |day, messages|
-        .font-s12.text-muted.text-center.push-20-t.push-15
-          %em= get_day_week(day)
-        - messages.each do |message|
-          .block.block-rounded.block-transparent.push-15{class: (message.user == current_user) ? "push-50-r" : "push-50-l"}
-            .block-content.block-content-full.block-content-mini.bg-gray= message.content
-    .block-content.block-content-full.block-content-mini
-      = simple_form_for([@trade, @trade.messages.new]) do |f|
-        .form-group
-          = f.input :content, label: false, as: :string, :input_html =>{ class: "form-control"}

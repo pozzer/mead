@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :notifications, only: :index
+  resources :notifications, only: :index do
+    member do
+      get :read_all, defaults: { :format => :js }
+    end
+  end
 
   resources :friendships
 

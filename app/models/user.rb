@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :trades_requests, foreign_key: "negotiator_id", class_name: "Trade"
   has_many :trades_received, foreign_key: "negotiant_id", class_name: "Trade"
   has_many :questions
+  has_many :notifications
   has_many :answers
   has_many :bottles
   has_many :bottle_trades
@@ -123,10 +124,13 @@ class User < ActiveRecord::Base
     ((reputation_for(:experience)%20) * 2)
   end
 
-  def new_messages?
-    new_messages.any?
+  def new_notifications?
+    new_messages.any? || notifications.not_read.any?
   end
 
+  def new_notifications_size
+    new_messages.size + notifications.not_read.size
+  end
   def new_messages
     Conversation.involving(self).joins(:messages).where("messages.read = false and messages.user_id <> ?", self.id)
   end
