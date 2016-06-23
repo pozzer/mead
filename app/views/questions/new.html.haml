@@ -1,1 +1,55 @@
-= render 'form'
+.js-wizard-simple.block
+  %ul.nav.nav-tabs.nav-tabs-alt.nav-justified
+    %li.active
+      %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#simple-step1"} Pesquise
+    %li
+      %a{"data-toggle" => "tab", :href => "#simple-step2"} Nova Pergunta
+    .block-content.tab-content
+      #simple-step1.tab-pane.fade.push-30-t.push-50.active.in
+        %h1 Como perguntar
+
+        %p Bem-vindo ao MEAD
+
+        %p Nós adoraríamos ajudá-lo, mas a realidade é que nem todas as perguntas é respondida. Para melhorar suas chances , aqui estão algumas dicas:
+
+        %p Pesquise e pesquise
+
+        %p Você pesquisou minuciosamente por uma resposta antes de fazer sua pergunta? Compartilhando sua pesquisa ajuda a todos. Diga-nos o que você encontrou (neste site ou em outro lugar) e por que não atender às suas necessidades. Isso demonstra que você tomou o tempo para tentar ajudar a si mesmo, ele nos salva de reiterar respostas óbvias, e acima de tudo, ele ajuda você obter uma resposta mais específica e relevante!
+
+
+        %p Experimente a nossa mais pesquisa avançada !
+
+        .row
+          .ui-widget
+            %input#birds{:size => "50"}/
+          %ul#question_list
+
+        %p Seja on-topic
+
+        %p Nossa comunidade é definida por um conjunto específico de tópicos no centro de ajuda ; Por favor mantenha a esses temas e evitar a pedir opiniões ou discussão aberta . Se a sua pergunta é sobre o site em si, pergunte no nosso site de meta-discussão . Se você está procurando um tópico diferente, pode ser coberto em outro local Stack Exchange .
+
+        %p Seja específico
+
+        %p Se você perguntar a uma pergunta vaga, você terá uma resposta vaga. Mas se você nos dá detalhes e contexto, podemos fornecer uma resposta útil, relevante.
+
+        %p Torná-la relevante para os outros
+
+        %p Nós gostamos de ajudar tantas pessoas ao mesmo tempo que pudermos. Deixe claro como a sua pergunta é relevante para mais pessoas do que apenas você, e mais de nós vai estar interessado na sua pergunta e dispostos a olhar para ele.
+
+        %p Mantenha a mente aberta
+
+        %p A resposta à sua pergunta pode não ser sempre o que você queria, mas isso não significa que ele está errado. A resposta conclusiva nem sempre é possível. Em caso de dúvida, pedir às pessoas para citar suas fontes, ou para explicar como / onde eles aprenderam alguma coisa. Mesmo que nós não concordamos com você, ou dizer-lhe exatamente o que você queria ouvir, lembre-se: nós estamos apenas tentando ajudar.
+
+
+      #simple-step2.tab-pane.fade.push-30-t.push-50
+        = render 'form'
+  .block-content.block-content-mini.block-content-full.border-t
+    .row
+      .col-xs-6
+        %button.wizard-prev.btn.btn-warning.disabled{:type => "button"}
+          %i.fa.fa-arrow-circle-o-left
+          Voltar
+      .col-xs-6.text-right
+        %button.wizard-next.btn.btn-success{:type => "button"}
+          Avançar
+          %i.fa.fa-arrow-circle-o-right
