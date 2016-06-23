@@ -19,7 +19,7 @@ class MonsterSearch
       rows = []
       @array_search.each do |val|
         @columns.each do |column|
-          rows << "#{column} ilike '%#{val}%'"
+          rows << "#{column} ilike '%#{val.sanitize}%'"
         end
       end
       rows.join(" OR ")
@@ -28,7 +28,7 @@ class MonsterSearch
     def order_each
       @array_search.each do |val|
         @columns.each do |column|
-          @orders << "#{column} ilike '%#{val}%' desc"
+          @orders << "#{column} ilike '%#{val.sanitize}%' desc"
         end
       end
       @orders.join(", ")
