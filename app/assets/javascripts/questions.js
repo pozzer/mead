@@ -17,6 +17,7 @@ mead_project.questions = {
         $.ajax({
           type: "GET",
           dataType: "jsonp",
+          contentType: "application/json",
           //crossDomain: true,
           url: "https://gerda.herokuapp.com/api/questions",
           data: {valor: $(this).val()},
