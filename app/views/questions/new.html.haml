@@ -20,9 +20,14 @@
         %p Experimente a nossa mais pesquisa avançada !
 
         .row
-          .ui-widget
-            %input#birds{:size => "50"}/
-          %ul#question_list
+          .form-group
+            .col-xs-12
+              .form-material.floating.form-material-primary
+                %input#birds.form-control/
+                %label{:for => "birds"} Busca fodona
+
+        .row
+          #question_list.col-xs-12
 
         %p Seja on-topic
 
@@ -45,11 +50,11 @@
         = render 'form'
   .block-content.block-content-mini.block-content-full.border-t
     .row
-      .col-xs-6
-        %button.wizard-prev.btn.btn-warning.disabled{:type => "button"}
-          %i.fa.fa-arrow-circle-o-left
-          Voltar
-      .col-xs-6.text-right
-        %button.wizard-next.btn.btn-success{:type => "button"}
-          Avançar
-          %i.fa.fa-arrow-circle-o-right
+      //.col-xs-6
+      //  %button.wizard-prev.btn.btn-warning.disabled{:type => "button"}
+      //    %i.fa.fa-arrow-circle-o-left
+      //    Voltar
+      //.col-xs-6.text-right
+      //  %button.wizard-next.btn.btn-success{:type => "button"}
+      //    Avançar
+      //    %i.fa.fa-arrow-circle-o-right

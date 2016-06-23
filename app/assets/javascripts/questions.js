@@ -16,52 +16,33 @@ mead_project.questions = {
         console.log("up");
         jQuery.ajax({
             type: "GET",
-            crossDomain: true,
+            contentType: "application/json",
+            dataType:"json",
             url: "https://gerda.herokuapp.com/api/questions",
             data: {valor: $(this).val()},
-            dataType:"json",
-
             beforeSend: function (xhr) {
-              xhr.setRequestHeader("Authorization", "Token token=token");
-              xhr.setRequestHeader('Access-Control-Allow-Origin','*');
+              xhr.setRequestHeader("Authorization", "Token token=token")
             },
             success: function(data) {
-                console.log("success")
+                if (data != null){
+                    pub.mount_question(data.questions);
+                }
+
             },
             error: function(data) {
                 console.log("erro")
             }
         });
-        //$.ajax({
-        //  type: "GET",
-        //  dataType: "jsonp",
-        //  contentType: "application/json",
-        //  //crossDomain: true,
-        //  url: "https://gerda.herokuapp.com/api/questions",
-        //  data: {valor: $(this).val()},
-        //  //xhrFields: {
-        //  //  withCredentials: true
-        //  //},
-        //  //headers: {
-        //  //  "Access-Control-Allow-Origin": "*",
-        //  //  "Authorization": "Token token=token"
-        //  //}
-        //  beforeSend: function (xhr) {
-        //    xhr.setRequestHeader ("Authorization", "Token token=token");
-        //  },
-        //}).done(function(data) {
-        //  console.log(data)
-        //  //console.log(data.sugestoes);
-        //  //mount_question(data.questions);
-        //});
       });
     }
-    //function mount_question(questions){
-    //    $("#question_list li").remove();
-    //    $(questions).each(function() {
-    //    $("#question_list").append('<li><a href="https://nameless-sea-78060.herokuapp.com/questions/'+this.id+'"><span class="tab">'+this.title+'</span></a></li>');
-    //    });
-    //    }
+
+    pub.mount_question = function (questions){
+        $("#question_list div").remove();
+        $(questions).each(function() {
+            $("#question_list").append('<div><a class="block block-content-full bg-flat block-link-hover3" href="https://tccmead.herokuapp.com/questions/'+this.id+'"><div class="block-content block-content-full  clearfix"><span class="text-white tab">'+this.title+'</span></div></a></div>');
+        });
+    }
+
     pub.init = function() {
       console.log("init");
       pub.search();
