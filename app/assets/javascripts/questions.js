@@ -11,7 +11,7 @@ mead_project.questions = {
     	form.closest("td").find(".content").toggle("slow");
     	form.slideToggle("slow");
   	}
-    pub.search =  function () {
+    pub.search =  function() {
       $("#birds").keyup(function(){
         console.log("up");
         jQuery.ajax({
@@ -26,6 +26,7 @@ mead_project.questions = {
             success: function(data) {
                 if (data != null){
                     pub.mount_question(data.questions);
+                    pub.autocomplete(data.sugestoes)
                 }
 
             },
@@ -36,6 +37,21 @@ mead_project.questions = {
       });
     }
 
+    pub.complet = function(text) {
+        var texto = $("#birds").val() + " " + text;
+        console.log(texto)
+        return texto
+    }
+
+    pub.autocomplete = function(sugestoes) {
+        console.log(sugestoes);
+
+        $('#birds').autocomplete({
+            source:[sugestoes.map(pub.complet)]
+        });
+    }
+
+
     pub.mount_question = function (questions){
         $("#question_list div").remove();
         $(questions).each(function() {
@@ -44,7 +60,7 @@ mead_project.questions = {
     }
 
     pub.init = function() {
-      console.log("init");
+      pub.autocomplete();
       pub.search();
       $(".edit-answer").click(priv.toggleAnswerEdit);
     }
