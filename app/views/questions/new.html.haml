@@ -16,7 +16,7 @@
 
         %p Você pesquisou minuciosamente por uma resposta antes de fazer sua pergunta? Compartilhando sua pesquisa ajuda a todos. Diga-nos o que você encontrou (neste site ou em outro lugar) e por que não atender às suas necessidades. Isso demonstra que você tomou o tempo para tentar ajudar a si mesmo, ele nos salva de reiterar respostas óbvias, e acima de tudo, ele ajuda você obter uma resposta mais específica e relevante!
 
-          
+
         %p Experimente a nossa mais pesquisa avançada !
 
         .row
@@ -53,23 +53,3 @@
         %button.wizard-next.btn.btn-success{:type => "button"}
           Avançar
           %i.fa.fa-arrow-circle-o-right
-
-= javascript_tag do
-  $(function () {
-  $("#birds").keyup(function(){
-  $.ajax({
-  url: "https://gerda.herokuapp.com/searchs",
-  data: {valor: $(this).val()},
-  }).done(function(data) {
-  console.log(data.sugestoes);
-  mount_question(data.questions);
-  });
-  });
-  })
-
-  function mount_question(questions){
-  $("#question_list li").remove();
-  $(questions).each(function() {
-  $("#question_list").append('<li><a href="https://nameless-sea-78060.herokuapp.com/questions/'+this.id+'"><span class="tab">'+this.title+'</span></a></li>');
-  });
-  }
