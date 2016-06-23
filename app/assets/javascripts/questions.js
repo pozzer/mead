@@ -14,28 +14,46 @@ mead_project.questions = {
     pub.search =  function () {
       $("#birds").keyup(function(){
         console.log("up");
-        $.ajax({
-          type: "GET",
-          dataType: "jsonp",
-          contentType: "application/json",
-          //crossDomain: true,
-          url: "https://gerda.herokuapp.com/api/questions",
-          data: {valor: $(this).val()},
-          //xhrFields: {
-          //  withCredentials: true
-          //},
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Authorization": "Token token=token"
-          }
-          //beforeSend: function (xhr) {
-          //  xhr.setRequestHeader ("Authorization", "Token token=token");
-          //},
-        }).done(function(data) {
-          console.log(data)
-          //console.log(data.sugestoes);
-          //mount_question(data.questions);
+        jQuery.ajax({
+            type: "GET",
+            crossDomain: true,
+            url: "https://gerda.herokuapp.com/api/questions",
+            data: {valor: $(this).val()},
+            dataType:"json",
+
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", "Token token=token");
+              xhr.setRequestHeader('Access-Control-Allow-Origin','*');
+            },
+            success: function(data) {
+                console.log("success")
+            },
+            error: function(data) {
+                console.log("erro")
+            }
         });
+        //$.ajax({
+        //  type: "GET",
+        //  dataType: "jsonp",
+        //  contentType: "application/json",
+        //  //crossDomain: true,
+        //  url: "https://gerda.herokuapp.com/api/questions",
+        //  data: {valor: $(this).val()},
+        //  //xhrFields: {
+        //  //  withCredentials: true
+        //  //},
+        //  //headers: {
+        //  //  "Access-Control-Allow-Origin": "*",
+        //  //  "Authorization": "Token token=token"
+        //  //}
+        //  beforeSend: function (xhr) {
+        //    xhr.setRequestHeader ("Authorization", "Token token=token");
+        //  },
+        //}).done(function(data) {
+        //  console.log(data)
+        //  //console.log(data.sugestoes);
+        //  //mount_question(data.questions);
+        //});
       });
     }
     //function mount_question(questions){
