@@ -21,7 +21,7 @@
  *= require_self
  *= stub active_admin
  *= require js/plugins/summernote/summernote.min.css
- *= require js/plugins/autocomplete/jquery.autocomplete.css
+ *= require js/plugins/awesomplete/awesomplete.css
  */
 
 .row_item {

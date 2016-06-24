@@ -37,17 +37,23 @@ mead_project.questions = {
       });
     }
 
-    pub.complet = function(text) {
-        var texto = $("#birds").val() + " " + text;
-        console.log(texto)
-        return texto
-    }
-
     pub.autocomplete = function(sugestoes) {
-        console.log(sugestoes);
-
+        console.log(sugestoes)
+        var newSugestoes = sugestoes.map( function(a) { var text = $("#birds").val() + " " + a; return text; });
+        console.log(newSugestoes);
         $('#birds').autocomplete({
-            source:[sugestoes.map(pub.complet)]
+            dropdownWidth:'auto',
+            appendMethod:'replace',
+            valid: function () {
+              return true;
+            },
+            source:[
+                function(q, add){
+                    console.log(q)
+                    console.log(newSugestoes)
+                    add(newSugestoes);            
+                }
+            ]
         });
     }
 
@@ -60,13 +66,26 @@ mead_project.questions = {
     }
 
     pub.init = function() {
-      pub.autocomplete();
+        var input = document.getElementById("birds");
+        new Awesomplete(input, {list: "#birds"});
+        //$('#birds').autocomplete({
+        //    valueKey:'title',
+        //    dropdownWidth:'auto',
+        //    appendMethod:'replace',
+        //    source:[['Delta','Epsilon','Zeta','Eta']]
+        //});
       pub.search();
       $(".edit-answer").click(priv.toggleAnswerEdit);
     }
     return pub;
   }()
 };
-mead_project.questions.index = mead_project.questions.search = mead_project.questions.update =
-    mead_project.questions.create = mead_project.questions.new = mead_project.questions.edit = mead_project.questions.show =  mead_project.questions.common;
+mead_project.questions.index = mead_project.questions.common;
+mead_project.questions.search = mead_project.questions.common;
+mead_project.questions.update = mead_project.questions.common;
+mead_project.questions.create = mead_project.questions.common;
+mead_project.questions.new = mead_project.questions.common;
+mead_project.questions.edit = mead_project.questions.common;
+mead_project.questions.show = mead_project.questions.common;
+
 
