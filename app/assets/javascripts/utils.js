@@ -55,14 +55,6 @@ $(document).ready(function () {
   $(".abv").mask("9?9%");
   
   $(".js-select2").select2();
+  $("span.select2").css("width", "100%");
   
 });
-//$(function() {
-//  $("li.page").on("click", function() {
-//    //$("#profile-content").html("");
-//    hrf = $(this).find('a').href 
-//    console.log(hrf);
-//    //$.getScript($(this).find('a').href );
-//    return false;
-//  });
-//});
