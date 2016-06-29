@@ -5,59 +5,6 @@ mead_project.questions = {
     var priv = {};
     var pub = {};
 
-    priv.toggleAnswerEdit = function(e){
-    	e.preventDefault();
-    	var form = $("#"+ $(this).data("id"));
-    	form.closest("td").find(".content").toggle("slow");
-    	form.slideToggle("slow");
-  	}
-    pub.search =  function() {
-      $("#birds").keyup(function(){
-        console.log("up");
-        jQuery.ajax({
-            type: "GET",
-            contentType: "application/json",
-            dataType:"json",
-            url: "https://gerda.herokuapp.com/api/questions",
-            data: {valor: $(this).val()},
-            beforeSend: function (xhr) {
-              xhr.setRequestHeader("Authorization", "Token token=token")
-            },
-            success: function(data) {
-                if (data != null){
-                    pub.mount_question(data.questions);
-                    pub.autocomplete(data.sugestoes)
-                }
-
-            },
-            error: function(data) {
-                console.log("erro")
-            }
-        });
-      });
-    }
-
-    pub.autocomplete = function(sugestoes) {
-        console.log(sugestoes)
-        var newSugestoes = sugestoes.map( function(a) { var text = $("#birds").val() + " " + a; return text; });
-        console.log(newSugestoes);
-        $('#birds').autocomplete({
-            dropdownWidth:'auto',
-            appendMethod:'replace',
-            valid: function () {
-              return true;
-            },
-            source:[
-                function(q, add){
-                    console.log(q)
-                    console.log(newSugestoes)
-                    add(newSugestoes);            
-                }
-            ]
-        });
-    }
-
-
     pub.mount_question = function (questions){
         $("#question_list div").remove();
         $(questions).each(function() {
@@ -65,27 +12,57 @@ mead_project.questions = {
         });
     }
 
+    pub.add_tags = function(sugestoes){
+      if (sugestoes.length > 0) {
+        $("#finder option:not(:selected)").remove();
+        $.each(sugestoes, function( index, value) {
+          $("#finder").select2({ tags: sugestoes });
+        });
+        $("#finder").select2("open"); 
+      }
+    }
     pub.init = function() {
-        var input = document.getElementById("birds");
-        new Awesomplete(input, {list: "#birds"});
-        //$('#birds').autocomplete({
-        //    valueKey:'title',
-        //    dropdownWidth:'auto',
-        //    appendMethod:'replace',
-        //    source:[['Delta','Epsilon','Zeta','Eta']]
-        //});
-      pub.search();
-      $(".edit-answer").click(priv.toggleAnswerEdit);
+        $('#finder').change(function(){
+          var val = $(this).val()
+          if (val) {            
+            $.ajax({
+              type: "GET",
+              contentType: "application/json",
+              dataType:"json",
+              url: "https://gerda.herokuapp.com/api/questions",
+              data: {valor: val.toString()},
+              beforeSend: function (xhr) {
+                $("#spinner-search").show();
+                xhr.setRequestHeader("Authorization", "Token token=token")
+              },
+              success: function(data) {
+                if (data != null){
+                  pub.mount_question(data.questions);
+                  pub.add_tags(data.sugestoes);
+                }
+              },
+              complete: function(data){
+                $("#spinner-search").hide();
+              },
+              error: function(data) {}
+            });   
+          } else {
+            $("#question_list div").remove();
+          }
+        });
+        
+        $('#finder').select2({
+          tags: true,
+          placeholder: "Procure por algo",
+          tokenSeparators: [",", " "]
+        });
+
+        $('#finder').on("select2:open", function (e) { $('*[aria-selected="true"]').hide(); });
     }
     return pub;
   }()
 };
-mead_project.questions.index = mead_project.questions.common;
-mead_project.questions.search = mead_project.questions.common;
-mead_project.questions.update = mead_project.questions.common;
-mead_project.questions.create = mead_project.questions.common;
-mead_project.questions.new = mead_project.questions.common;
-mead_project.questions.edit = mead_project.questions.common;
-mead_project.questions.show = mead_project.questions.common;
+mead_project.questions.index = mead_project.questions.show = mead_project.questions.update =
+    mead_project.questions.create = mead_project.questions.new = mead_project.questions.edit = mead_project.questions.show =  mead_project.questions.common;
 
 
