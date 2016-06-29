@@ -15,9 +15,7 @@ mead_project.questions = {
     pub.add_tags = function(sugestoes){
       if (sugestoes.length > 0) {
         $("#finder option:not(:selected)").remove();
-        $.each(sugestoes, function( index, value) {
-          $("#finder").select2({ tags: sugestoes });
-        });
+        $("#finder").select2({ tags: sugestoes, tokenSeparators: [",", " "] });
         $("#finder").select2("open"); 
       }
     }
