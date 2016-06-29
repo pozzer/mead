@@ -3,7 +3,7 @@
     .block.block-themed
       .block-header.bg-primary
         %h3.block-title Ultimos feeds de noticias
-      .block-content
+      .block-content{style: "overflow-y: auto; height:500px;"}
         %ul.list.list-timeline.pull-t#notifications
           = render_activities(@activities)
         %p.text-center
