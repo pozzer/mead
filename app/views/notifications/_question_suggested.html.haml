@@ -1,0 +1,13 @@
+- user = notification.user
+%li{class: notification.read ? "" : "bg-gray-lighter"}
+  = link_to(question_path(notification.trackable) +"#Answer_#{notification.trackable.id}") do
+    = image_tag user.profile.avatar_url, class: "img-avatar"                  
+    %i.fa.fa-circle{ :class => "#{get_color_online(user)}"}
+    = user.full_name
+    .font-w400.text-muted
+      %small
+        Parabens, você foi sugerido a responder essa pergunta!
+    .font-w400.text-muted
+      %small
+        = "Há #{get_time_ago(notification.created_at)}"
+      

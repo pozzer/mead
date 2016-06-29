@@ -36,8 +36,7 @@ class Question < ActiveRecord::Base
   scope :joins_for_union,-> { top_rated }
   scope :top_rated, -> { find_with_reputation(:votes, :all).order("votes DESC") }
 
-  after_create :create_concepts 
-
+  after_create :create_concepts, :notification_best_user
 
   paginates_per 20
 
@@ -72,10 +71,20 @@ class Question < ActiveRecord::Base
 
   def create_concepts
     filter = Stopwords::Snowball::Filter.new "pt"
-    concepts = filter.filter self.title.downcase.split
+    concepts = filter.filter self.title.downcase.split.uniq
     koncepts = []
     concepts.each {|concept| koncepts << Concept.find_or_create(concept)}
     ConceptQuestion.create_tree(koncepts, self)
+
+  end
+  
+  def notification_best_user
+    filter = Stopwords::Snowball::Filter.new "pt"
+    concepts = filter.filter (self.title.downcase.split + self.content.downcase.split).uniq
+    koncepts = []
+    concepts.each {|concept| koncepts << Concept.find_or_create(concept)}
+    suggested_user = ConceptUser.get_user_best_to_answer(koncepts)
+    Notification.create({user: suggested_user, trackable: self, key: "question_suggested"}) if suggested_user and suggested_user != self.user
   end
 
 

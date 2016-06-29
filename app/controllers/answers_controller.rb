@@ -25,14 +25,14 @@ class AnswersController < ApplicationController
   def vote
     value = params[:type] == "up" ? 1 : -1
     @answer = Answer.find(params[:id])
-    @answer.add_or_update_evaluation(:votes, value, current_user)
+    @answer.add_or_update_evaluation(:votes, value, @answer.user)
     @answer.create_activity key: "answer.vote", owner: current_user, params: { type: params[:type] }
   end
 
   def vote_best_answer
     @answer = Answer.find(params[:id])
     @answer.voted_the_best
-    @answer.add_or_update_evaluation(:best_votes, 1, current_user)
+    @answer.add_or_update_evaluation(:best_votes, 5, @answer.user)
     @answer.question.create_activity key: "question.vote_best", owner: current_user, params: { answer_id: @answer.id }
     @answer.create_activity key: "answer.vote_best", owner: current_user
     Notification.create({user: @answer.user, trackable: @answer, key: "answer_best"})

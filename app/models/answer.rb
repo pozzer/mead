@@ -16,7 +16,10 @@ class Answer < ActiveRecord::Base
       aggregated_by: :sum
 
   def voted_the_best
-    self.update_attributes(best: true) if !self.question.have_best_answer?
+    if !self.question.have_best_answer?
+      self.update_attributes(best: true)
+      create_concepts
+    end
   end
 
   def creator?(user_id)
@@ -25,5 +28,13 @@ class Answer < ActiveRecord::Base
 
   def can_edit?(user_id)
     ((Time.now - created_at ) < 5.minutes) and creator?(user_id)
+  end
+
+  def create_concepts
+    filter = Stopwords::Snowball::Filter.new "pt"
+    concepts = filter.filter (self.content.downcase.split + self.question.title.downcase.split).uniq
+    koncepts = []
+    concepts.each {|concept| koncepts << Concept.find_or_create(concept)}
+    ConceptUser.create_concepts(koncepts, self.user)
   end
 end
