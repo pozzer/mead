@@ -5,6 +5,18 @@ mead_project.questions = {
     var priv = {};
     var pub = {};
 
+    priv.toggleAnswerEdit = function(e){
+     e.preventDefault();
+     var form = $("#"+ $(this).data("id"));
+     form.closest("td").find(".content").toggle("slow");
+     form.slideToggle("slow");
+    }
+    priv.changetab = function(e){
+      e.preventDefault();
+      $(".tab-new-question").click()
+      $('html, body').animate({ scrollTop: $('.page-heading').offset().top }, 'slow');
+    }
+
     pub.mount_question = function (questions){
         $("#question_list div").remove();
         $(questions).each(function() {
@@ -54,8 +66,11 @@ mead_project.questions = {
           placeholder: "Procure por algo",
           tokenSeparators: [",", " "]
         });
-
+        $(".edit-answer").click(priv.toggleAnswerEdit);
         $('#finder').on("select2:open", function (e) { $('*[aria-selected="true"]').hide(); });
+        $(".click_btn").click(priv.changetab);
+      
+        
     }
     return pub;
   }()

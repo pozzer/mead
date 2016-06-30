@@ -7,7 +7,7 @@
     - else
       = "Respondeu a #{time_ago_in_words(object.created_at)}"
       - if object.can_edit?(current_user.id)
-        = link_to_with_icon([" Editar", "fa fa-pencil"], "#", class:"edit-answer", "data-id":"form-#{object.id}")
+        = link_to_with_icon([" Editar", "fa fa-pencil"], "#", class:"edit-answer", "data-id": "form-#{object.id}")
 %tr{id: "#{object.class.name}_#{object.id}" }
   %td.text-center.hidden-xs{:style => "width: 140px;"}
     .push-10

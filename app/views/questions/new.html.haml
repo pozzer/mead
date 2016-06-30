@@ -3,7 +3,7 @@
     %li.active
       %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#simple-step1"} Pesquise
     %li
-      %a{"data-toggle" => "tab", :href => "#simple-step2"} Nova Pergunta
+      %a.tab-new-question{"data-toggle" => "tab", :href => "#simple-step2"} Nova Pergunta
     .block-content.tab-content
       #simple-step1.tab-pane.fade.push-30-t.push-50.active.in
         %h1.text-center Como perguntar
@@ -15,7 +15,6 @@
         %h3 Pesquise e pesquise
 
         %p Você pesquisou minuciosamente por uma resposta antes de fazer sua pergunta? Compartilhando sua pesquisa ajuda a todos. Diga-nos o que você encontrou (neste site ou em outro lugar) e por que não atender às suas necessidades. Isso demonstra que você tomou o tempo para tentar ajudar a si mesmo, ele nos salva de reiterar respostas óbvias, e acima de tudo, ele ajuda você obter uma resposta mais específica e relevante!
-
 
         %h3 Experimente a nossa pesquisa mais avançada!
         %br
@@ -49,8 +48,8 @@
         %h3 Mantenha a mente aberta
 
         %p A resposta à sua pergunta pode não ser sempre o que você queria, mas isso não significa que ele está errado. A resposta conclusiva nem sempre é possível. Em caso de dúvida, pedir às pessoas para citar suas fontes, ou para explicar como / onde eles aprenderam alguma coisa. Mesmo que nós não concordamos com você, ou dizer-lhe exatamente o que você queria ouvir, lembre-se: nós estamos apenas tentando ajudar.
-
-
+        %p.text-center
+          %a.click_btn.btn.btn-minw.btn-rounded.btn-primary.btn-lg{href: "#"} Criar nova pergunta
       #simple-step2.tab-pane.fade.push-30-t.push-50
         = render 'form'
   .block-content.block-content-mini.block-content-full.border-t
