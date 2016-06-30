@@ -1,11 +1,15 @@
 .content
   .block
-    .block-content.tab-content.bg-white
-      = form_tag(profiles_path, {:method=>:get, :class=>"form-horizontal"}) do
-        .form-material.form-material-primary.input-group.remove-margin-t.remove-margin-b
-          %input#base-material-text.form-control{:name => "search", :placeholder => "Pesquisar...", :type => "text"}/
-          %span.input-group-addon
-            %button{style:"border:none; background-color: white;"}
-              %i.si.si-magnifier
-      %hr
+    .block-header.bg-primary
+      %h3.block-title Perfis de usuários
+    .block-content
+      .row.push-30
+        = form_tag(profiles_path, {:method=>:get, :class=>"form-horizontal"}) do
+          .col-md-6
+            .form-material.form-material-primary.input-group.remove-margin-t.remove-margin-b
+              %input#base-material-text.form-control{:name => "search", :placeholder => "Pesquisar...", :type => "text", value: params[:search]}/
+              %span.input-group-addon
+                %button{style:"border:none; background-color: white;"}
+                  %i.si.si-magnifier
+
       = render "searchs/block_profile_search"

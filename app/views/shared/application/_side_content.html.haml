@@ -20,9 +20,11 @@
 					%span.sidebar-mini-hide Perfil
 				%ul
 					%li
-						= link_to "Ver Perfil", profile_path(current_user.profile), class: "#{submenu_active?('ProfilesController#show')} "
+						= link_to "Encontrar Usuários", profiles_path, class: "#{submenu_active?('ProfilesController#index')} "
 					%li
-						= link_to "Editar Perfil", edit_profile_path(current_user.profile), class: "#{submenu_active?('ProfilesController#edit')} "
+						= link_to "Ver meu perfil", profile_path(current_user.profile), class: "#{submenu_active?('ProfilesController#show')} "
+					%li
+						= link_to "Editar meu perfil", edit_profile_path(current_user.profile), class: "#{submenu_active?('ProfilesController#edit')} "
 			%li
 				%a.nav-submenu{"data-toggle" => "nav-submenu", :href => "#"}
 					%i.si.si-layers
