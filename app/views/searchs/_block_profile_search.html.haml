@@ -4,6 +4,6 @@
   .row
     - @profiles.each do |profile|
       .col-sm-6.col-lg-4
-        = render partial: "block_profile_list", locals: {profile: profile, title: ""}
-        
+        = render partial: "searchs/block_profile_list", locals: {profile: profile, title: ""}
+
   = paginate @profiles, param_name: :profile_page, remote: true

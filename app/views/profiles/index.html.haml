@@ -1,0 +1,11 @@
+.content
+  .block
+    .block-content.tab-content.bg-white
+      = form_tag(profiles_path, {:method=>:get, :class=>"form-horizontal"}) do
+        .form-material.form-material-primary.input-group.remove-margin-t.remove-margin-b
+          %input#base-material-text.form-control{:name => "search", :placeholder => "Pesquisar...", :type => "text"}/
+          %span.input-group-addon
+            %button{style:"border:none; background-color: white;"}
+              %i.si.si-magnifier
+      %hr
+      = render "searchs/block_profile_search"

@@ -25,7 +25,7 @@ class Profile < ActiveRecord::Base
                              LEFT JOIN states ON addresses.state_id = states.id") }
 
 
-  paginates_per 12
+  paginates_per 1
 
   def full_name
     "#{first_name} #{last_name}"

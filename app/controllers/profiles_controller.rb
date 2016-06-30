@@ -3,8 +3,10 @@ class ProfilesController < AppController
   before_action :can_edit?, only: [:edit]
 
   def index
-    respond_to do |format|
-      format.html { redirect_to profile_path(current_user.profile) }
+    if params[:search]
+      @profiles = MonsterSearch.new(Profile, params[:search]).search.page(params[:profile_page])
+    else
+      @profiles = Profile.all.page(params[:profile_page])
     end
   end
 
