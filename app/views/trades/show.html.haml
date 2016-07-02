@@ -7,11 +7,12 @@
   .row#proposal
     = render partial: "trades/block_proposal", locals:{ user: current_user}
     = render partial: "trades/block_proposal", locals:{ user: @trade.other_user(current_user)}
-  .row
-    .col-lg-6
-      = render partial: "trades/block_user_bottles", locals:{ title: "Garrafas na minha adega", user: current_user.profile.user, bottles: current_user.bottles.publics.with_stock, trade: @trade}
-    .col-lg-6
-      = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{@trade.other_user(current_user).full_name}", user: @trade.other_user(current_user), bottles: @trade.other_user(current_user).bottles.publics.with_stock }
+  - if status == "in_progress"
+    .row
+      .col-lg-6
+        = render partial: "trades/block_user_bottles", locals:{ title: "Garrafas na minha adega", user: current_user.profile.user, bottles: current_user.bottles.publics.with_stock, trade: @trade}
+      .col-lg-6
+        = render partial: "bottles/block_user_bottles", locals:{ title: "Garrafas na adega do #{@trade.other_user(current_user).full_name}", user: @trade.other_user( current_user), bottles: @trade.other_user(current_user).bottles.publics.with_stock }
   - unless @trade.user_received_proposal?(current_user)
     .row
       = render partial: "trades/block_actions"

@@ -1,4 +1,4 @@
--other_user = notification.trackable.negotiator
+-other_user = notification.trackable.other_user(current_user)
 %li{class: notification.read ? "" : "bg-gray-lighter"}
   = link_to(trade_path(notification.trackable)) do
     = image_tag other_user.profile.avatar_url, class: "img-avatar"                  
