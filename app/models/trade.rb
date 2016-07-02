@@ -104,7 +104,7 @@ class Trade < ActiveRecord::Base
         return true
       when 1
         unless user_received_proposal?(user)
-          self.update_attribute(:status, 5)
+          self.update_attributes({status: 5, finished_at: Time.now})
           Log.create({user: user, trade: self, status: 1, log_type: 10, message: "Recebeu a(s) Garrafa(s)"})
           Log.create({user: user, trade: self, status: 1, log_type: 4, message: "Finalizou a entrega)"})
           return true
