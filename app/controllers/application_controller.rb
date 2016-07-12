@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include PublicActivity::StoreController
   include ActionView::Helpers::TextHelper
-  hide_action :current_user
+  #hide_action :current_user
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(resource_or_scope)
     root_path

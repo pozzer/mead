@@ -19,7 +19,6 @@
  *= require themes/modern
  *= require_tree .
  *= require_self
- *= stub active_admin
  *= require js/plugins/summernote/summernote.min.css
  *= require js/plugins/awesomplete/awesomplete.css
  */

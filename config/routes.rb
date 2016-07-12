@@ -8,10 +8,6 @@ Rails.application.routes.draw do
 
   resources :friendships
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
-  ActiveAdmin.routes(self)
-
   resources :ratings
 
   resources :trades do
