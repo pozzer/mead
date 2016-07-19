@@ -1,4 +1,3 @@
-Turbolinks.enableProgressBar();
 
 function debug(msg) {
   if (window.console) {
@@ -53,8 +52,8 @@ $(document).ready(function () {
   $(".measure").mask("9?999ml");
   $(".measure").mask("9?999ml");
   $(".abv").mask("9?9%");
-  
+
   $(".js-select2").select2();
   $("span.select2").css("width", "100%");
-  
+
 });
